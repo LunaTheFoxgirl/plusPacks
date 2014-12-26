@@ -197,7 +197,6 @@ public class mcreator_detonator {
 				doesClick = false;
 				clickProgression = 0;
 			}
-			System.out.println(clickProgression);
 			return 20; //Each second.
 		}
 
@@ -239,7 +238,7 @@ public class mcreator_detonator {
 				doesClick = true;
 				if (true) {
 					
-					if (entity instanceof EntityPlayer && mc.thePlayer.capabilities.isCreativeMode == false)
+					if (entity instanceof EntityPlayer)
 							((EntityPlayer) entity).inventory
 								.consumeInventoryItem(mcreator_boomJacket.block);
 				}
@@ -271,7 +270,7 @@ public class mcreator_detonator {
 				world.createExplosion((Entity) null, i, j, k, 4F, true);
 				doesClick = true;
 				if (true) {
-					if (entity instanceof EntityPlayer && mc.thePlayer.capabilities.isCreativeMode == false)
+					if (entity instanceof EntityPlayer)
 							((EntityPlayer) entity).inventory
 								.consumeInventoryItem(mcreator_boomJacket.block);
 				}

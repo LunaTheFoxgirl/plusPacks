@@ -197,7 +197,6 @@ public class mcreator_detonator {
 				doesClick = false;
 				clickProgression = 0;
 			}
-			System.out.println(clickProgression);
 			return 20; //Each second.
 		}
 
