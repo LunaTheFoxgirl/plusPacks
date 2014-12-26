@@ -94,28 +94,40 @@ import java.util.Random;
 
 public class mcreator_boomPlusTab {
 
-public Object instance;
+	public Object instance;
 
-public static CreativeTabs tab = new CreativeTabs("tabboomPlusTab") {
-                @SideOnly(Side.CLIENT)
-                public Item getTabIconItem(){
-                        return Item.getItemFromBlock(Blocks.tnt);
-                }
-        };
+	public static CreativeTabs tab = new CreativeTabs("tabboomPlusTab") {
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {
+			return Item.getItemFromBlock(Blocks.tnt);
+		}
+	};
 
-public mcreator_boomPlusTab(){}
+	public mcreator_boomPlusTab() {
+	}
 
-public void load(){
-}
+	public void load() {
+	}
 
-public void registerRenderers(){}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){
-	return 0;
-}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
+	public void registerRenderers() {
+	}
 
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
 
 }

@@ -96,134 +96,158 @@ import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 public class mcreator_sneakyBoomDiamond {
 
-public mcreator_sneakyBoomDiamond(){}
+	public mcreator_sneakyBoomDiamond() {
+	}
 
-public static BlockSneakyBoomDiamond block;
+	public static BlockSneakyBoomDiamond block;
 
-public static Object instance;public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){
+	public static Object instance;
 
-GameRegistry.registerBlock(block, "SneakyBoomDiamond");
-}
-public void registerRenderers(){}
-public void load(){
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
 
-GameRegistry.addRecipe(new ItemStack(block, 1), new Object[]{
-	"012", "345", "678", Character.valueOf('0'), new ItemStack(Items.diamond, 1), Character.valueOf('1'), new ItemStack(Items.diamond, 1), Character.valueOf('2'), new ItemStack(Items.diamond, 1), Character.valueOf('3'), new ItemStack(Items.diamond, 1), Character.valueOf('4'), new ItemStack(Blocks.tnt, 1), Character.valueOf('5'), new ItemStack(Items.diamond, 1), Character.valueOf('6'), new ItemStack(Items.diamond, 1), Character.valueOf('7'), new ItemStack(Items.diamond, 1), Character.valueOf('8'), new ItemStack(Items.diamond, 1), 
-});
-}
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
 
+	public void preInit(FMLPreInitializationEvent event) {
 
-static{
+		GameRegistry.registerBlock(block, "SneakyBoomDiamond");
+	}
 
-block = (BlockSneakyBoomDiamond)(new BlockSneakyBoomDiamond().setHardness(2.0F)
-.setResistance(10.0F)
-.setLightLevel(0.0F)
-.setBlockName("SneakyBoomDiamond")
-.setBlockTextureName("sneakyBoomdiamondtexture")
-.setLightOpacity(0)
-.setStepSound(Block.soundTypeStone)
-.setCreativeTab(mcreator_boomPlusTab.tab)
-);block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
-Block.blockRegistry.addObject(194, "SneakyBoomDiamond", block);
-block.setHarvestLevel("pickaxe", 2);
-}
+	public void registerRenderers() {
+	}
 
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-static class BlockSneakyBoomDiamond extends Block
-{
+	public void load() {
 
-int a1 = 0,a2 = 0,a3 = 0,a4 = 0,a5 = 0,a6 = 0;
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
+				"345", "678", Character.valueOf('0'),
+				new ItemStack(Items.diamond, 1), Character.valueOf('1'),
+				new ItemStack(Items.diamond, 1), Character.valueOf('2'),
+				new ItemStack(Items.diamond, 1), Character.valueOf('3'),
+				new ItemStack(Items.diamond, 1), Character.valueOf('4'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
+				new ItemStack(Items.diamond, 1), Character.valueOf('6'),
+				new ItemStack(Items.diamond, 1), Character.valueOf('7'),
+				new ItemStack(Items.diamond, 1), Character.valueOf('8'),
+				new ItemStack(Items.diamond, 1), });
+	}
 
-IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null, st4 = null;
+	static {
 
-boolean red = false;
+		block = (BlockSneakyBoomDiamond) (new BlockSneakyBoomDiamond()
+				.setHardness(2.0F).setResistance(10.0F).setLightLevel(0.0F)
+				.setBlockName("SneakyBoomDiamond")
+				.setBlockTextureName("boomplus:sneakyBoomdiamondtexture")
+				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
+				.setCreativeTab(mcreator_boomPlusTab.tab));
+		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		Block.blockRegistry.addObject(194, "SneakyBoomDiamond", block);
+		block.setHarvestLevel("pickaxe", 2);
+	}
 
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
+	static class BlockSneakyBoomDiamond extends Block {
 
+		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
 
-protected BlockSneakyBoomDiamond()
-{
-        super(Material.iron);
+		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
+				st4 = null;
 
-}
+		boolean red = false;
 
+		protected BlockSneakyBoomDiamond() {
+			super(Material.iron);
 
-public void onBlockAdded(World world, int i, int j, int k){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-if(entity!=null&&world!=null){
-int le = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-world.setBlockMetadataWithNotify(i, j, k, le, 2);
-}
+		}
 
-world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
 
-}
-public int isProvidingStrongPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5){
-return red?1:0;
-}
-public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
 
-if(true){
-world.createExplosion((Entity)null, i, j, k, 4F, true);
-}
+		}
 
-}
-@SideOnly(Side.CLIENT)
-@Override
-public IIcon getIcon(int i, int par2){
+		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
+				int par2, int par3, int par4, int par5) {
+			return red ? 1 : 0;
+		}
 
-if (i == 0)
-return gor;
+		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
+				int l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-else if (i == 1)
-return dol;
+			if (true) {
+				world.createExplosion((Entity) null, i, j, k, 4F, true);
+			}
 
-else if (i == 2)
-return st1;
+		}
 
-else if (i == 3)
-return st2;
+		@SideOnly(Side.CLIENT)
+		@Override
+		public IIcon getIcon(int i, int par2) {
 
-else if (i == 4)
-return st4;
+			if (i == 0)
+				return gor;
 
-else if (i == 5)
-return st3;
+			else if (i == 1)
+				return dol;
 
-else
-return gor;
+			else if (i == 2)
+				return st1;
 
-}
+			else if (i == 3)
+				return st2;
 
-@SideOnly(Side.CLIENT)
-@Override
-public void registerBlockIcons(IIconRegister reg){
-this.gor = reg.registerIcon("sneakyBoomdiamondtexture");
-this.dol = reg.registerIcon("sneakyBoomdiamondtexture");
-this.st1 = reg.registerIcon("sneakyBoomdiamondtexture");
-this.st2 = reg.registerIcon("sneakyBoomdiamondtexture");
-this.st3 = reg.registerIcon("sneakyBoomdiamondtexture");
-this.st4 = reg.registerIcon("sneakyBoomdiamondtexture");
-}
-public int getRenderType(){
-return 0;
-}
-@Override
-public int tickRate(World world)
-{
-    return 10;
-}
+			else if (i == 4)
+				return st4;
 
-public int quantityDropped(Random par1Random){
-return 1;
-}
+			else if (i == 5)
+				return st3;
 
-}
+			else
+				return gor;
+
+		}
+
+		@SideOnly(Side.CLIENT)
+		@Override
+		public void registerBlockIcons(IIconRegister reg) {
+			this.gor = reg.registerIcon("sneakyBoomdiamondtexture");
+			this.dol = reg.registerIcon("sneakyBoomdiamondtexture");
+			this.st1 = reg.registerIcon("sneakyBoomdiamondtexture");
+			this.st2 = reg.registerIcon("sneakyBoomdiamondtexture");
+			this.st3 = reg.registerIcon("sneakyBoomdiamondtexture");
+			this.st4 = reg.registerIcon("sneakyBoomdiamondtexture");
+		}
+
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int tickRate(World world) {
+			return 10;
+		}
+
+		public int quantityDropped(Random par1Random) {
+			return 1;
+		}
+
+	}
 }

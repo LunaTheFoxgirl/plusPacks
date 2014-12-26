@@ -95,53 +95,69 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
-
-
 @SuppressWarnings("unchecked")
-public class mcreator_radGunpowder{
+public class mcreator_radGunpowder {
 
-public mcreator_radGunpowder(){}
+	public mcreator_radGunpowder() {
+	}
 
-public static Item block;public static Object instance;public void load(){
-new ChestGenHooks("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(block), 1, 6, 6));}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-public void registerRenderers(){
+	public static Item block;
+	public static Object instance;
+
+	public void load() {
+		new ChestGenHooks("dungeonChest")
+				.addItem(new WeightedRandomChestContent(new ItemStack(block),
+						1, 6, 6));
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
+	}
+
+	static {
+		block = (new ItemradGunpowder(424));
+		Item.itemRegistry.addObject(424, "RadGunpowder", block);
+
+	}
+
+	static class ItemradGunpowder extends Item {
+
+		public ItemradGunpowder(int par1) {
+			setMaxDamage(0);
+			maxStackSize = 64;
+			setUnlocalizedName("RadGunpowder");
+			setTextureName("boomplus:radioactiveGunpowdertexture");
+			setCreativeTab(mcreator_boomPlusTab.tab);
+		}
+
+		public int getItemEnchantability() {
+			return 0;
+		}
+
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
+		}
+
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
+		}
+
+	}
 }
-
-
-static{
-block = (new ItemradGunpowder(424));
-Item.itemRegistry.addObject(424, "RadGunpowder", block);
-
-}
-
-static class ItemradGunpowder extends Item{
-
-public ItemradGunpowder(int par1){
-setMaxDamage(0);
-maxStackSize = 64;
-setUnlocalizedName("RadGunpowder");
-setTextureName("radioactiveGunpowdertexture");
-setCreativeTab(mcreator_boomPlusTab.tab);
-}
-public int getItemEnchantability()
-{
-    return 0;
-}
-public int getMaxItemUseDuration(ItemStack par1ItemStack)
-{
-    return 0;
-}
-public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
-{
-    return 1.0F;
-}
-
-
-
-
-}}

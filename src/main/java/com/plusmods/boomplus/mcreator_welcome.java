@@ -97,67 +97,83 @@ import cpw.mods.fml.common.gameevent.*;
 
 public class mcreator_welcome {
 
-public static Object instance;
+	public static Object instance;
 
-public mcreator_welcome(){}
-
-public void load(){
-	FMLCommonHandler.instance().bus().register(new KeyHandlerClass());
-}
-
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public void registerRenderers(){}
-public int addFuel(ItemStack fuel){
-	return 0;
-}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-
-public class KeyHandlerClass
-{
-
-	private static final String desc = "key.tut_inventory.desc";
-	private static final int keyValues = Keyboard.KEY_X ;
-	private final KeyBinding keys;
-	public KeyHandlerClass() {
-		keys = new KeyBinding(desc, keyValues, "key.tutorial.category");
-		ClientRegistry.registerKeyBinding(keys);
+	public mcreator_welcome() {
 	}
 
-	@SubscribeEvent
-	public void onKeyInput(InputEvent.KeyInputEvent event) {
-		if (!FMLClientHandler.instance().isGUIOpen(GuiChat.class)) {
-			if (keys.isPressed()) {
-				EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-				int i = (int)entity.posX;
-				int j = (int)entity.posY;
-				int k = (int)entity.posZ;
-				/*World world = null;
-				WorldServer[] list = MinecraftServer.getServer().worldServers;
-				for(WorldServer ins : list){
-				if(ins.provider.dimensionId==entity.worldObj.provider.dimensionId)
-					world = ins;
+	public void load() {
+		FMLCommonHandler.instance().bus().register(new KeyHandlerClass());
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void registerRenderers() {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public class KeyHandlerClass {
+
+		private static final String desc = "key.tut_inventory.desc";
+		private static final int keyValues = Keyboard.KEY_X;
+		private final KeyBinding keys;
+
+		public KeyHandlerClass() {
+			keys = new KeyBinding(desc, keyValues, "key.tutorial.category");
+			ClientRegistry.registerKeyBinding(keys);
+		}
+
+		@SubscribeEvent
+		public void onKeyInput(InputEvent.KeyInputEvent event) {
+			if (!FMLClientHandler.instance().isGUIOpen(GuiChat.class)) {
+				if (keys.isPressed()) {
+					EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+					int i = (int) entity.posX;
+					int j = (int) entity.posY;
+					int k = (int) entity.posZ;
+					/*
+					 * World world = null; WorldServer[] list =
+					 * MinecraftServer.getServer().worldServers; for(WorldServer
+					 * ins : list){
+					 * if(ins.provider.dimensionId==entity.worldObj.
+					 * provider.dimensionId) world = ins; } if(world==null)
+					 * world = list[0];
+					 */
+					MinecraftServer server = FMLCommonHandler.instance()
+							.getMinecraftServerInstance();
+					World world = server.worldServers[0];
+
+					if (true) {
+						if (true) {
+
+							if (true) {
+								if (entity instanceof EntityPlayer)
+									((EntityPlayer) entity).openGui(instance,
+											mcreator_welcomeGUI.GUIID, world,
+											i, j, k);
+							}
+
+						}
+					}
+
 				}
-				if(world==null)
-					world = list[0];
-				*/
-				MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-				World world = server.worldServers[0];
-
-            	if(true){
-if(true){
-
-if(true){
-if(entity instanceof EntityPlayer)((EntityPlayer)entity).openGui(instance, mcreator_welcomeGUI.GUIID, world, i, j, k);
-}
-
-}
-}
-
 			}
 		}
 	}
-}
 
 }

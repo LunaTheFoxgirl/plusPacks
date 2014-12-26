@@ -8,8 +8,11 @@ import net.minecraft.entity.player.*;
 public interface IPacketBoomPlus {
 
 	public void readBytes(ByteBuf bytes);
+
 	public void writeBytes(ByteBuf bytes);
+
 	public void executeClient(EntityPlayer player);
-    public void executeServer(EntityPlayer player);
+
+	public void executeServer(EntityPlayer player);
 
 }

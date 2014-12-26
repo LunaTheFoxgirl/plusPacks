@@ -96,139 +96,169 @@ import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 public class mcreator_smallBoom {
 
-public mcreator_smallBoom(){}
+	public mcreator_smallBoom() {
+	}
 
-public static BlockSmallBoom block;
+	public static BlockSmallBoom block;
 
-public static Object instance;public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){
+	public static Object instance;
 
-GameRegistry.registerBlock(block, "SmallBoom");
-}
-public void registerRenderers(){}
-public void load(){
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
 
-GameRegistry.addRecipe(new ItemStack(block, 1), new Object[]{
-	"012", "345", "678", Character.valueOf('0'), new ItemStack(Blocks.wool, 1, 4), Character.valueOf('1'), new ItemStack(Blocks.tnt, 1), Character.valueOf('2'), new ItemStack(Blocks.wool, 1, 4), Character.valueOf('3'), new ItemStack(Blocks.wool, 1, 4), Character.valueOf('4'), new ItemStack(Blocks.tnt, 1), Character.valueOf('5'), new ItemStack(Blocks.wool, 1, 4), Character.valueOf('6'), new ItemStack(Blocks.wool, 1, 4), Character.valueOf('7'), new ItemStack(Blocks.tnt, 1), Character.valueOf('8'), new ItemStack(Blocks.wool, 1, 4), 
-});
-}
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
 
+	public void preInit(FMLPreInitializationEvent event) {
 
-static{
+		GameRegistry.registerBlock(block, "SmallBoom");
+	}
 
-block = (BlockSmallBoom)(new BlockSmallBoom().setHardness(2.0F)
-.setResistance(0.0F)
-.setLightLevel(0.0F)
-.setBlockName("SmallBoom")
-.setBlockTextureName("smallBoomtexture")
-.setLightOpacity(0)
-.setStepSound(Block.soundTypeGrass)
-.setCreativeTab(mcreator_boomPlusTab.tab)
-);block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
-Block.blockRegistry.addObject(176, "SmallBoom", block);
-block.setHarvestLevel("pickaxe", 0);
-}
+	public void registerRenderers() {
+	}
 
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-static class BlockSmallBoom extends BlockTNT
-{
+	public void load() {
 
-int a1 = 0,a2 = 0,a3 = 0,a4 = 0,a5 = 0,a6 = 0;
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
+				"345", "678", Character.valueOf('0'),
+				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('1'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('2'),
+				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('3'),
+				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('4'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
+				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('6'),
+				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('7'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('8'),
+				new ItemStack(Blocks.wool, 1, 4), });
+	}
 
-IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null, st4 = null;
+	static {
 
-boolean red = false;
+		block = (BlockSmallBoom) (new BlockSmallBoom().setHardness(2.0F)
+				.setResistance(0.0F).setLightLevel(0.0F)
+				.setBlockName("SmallBoom")
+				.setBlockTextureName("boomplus:smallBoomtexture").setLightOpacity(0)
+				.setStepSound(Block.soundTypeGrass)
+				.setCreativeTab(mcreator_boomPlusTab.tab));
+		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		Block.blockRegistry.addObject(176, "SmallBoom", block);
+		block.setHarvestLevel("pickaxe", 0);
+	}
 
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
+	static class BlockSmallBoom extends BlockTNT {
 
+		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
 
-public BlockSmallBoom(){}
+		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
+				st4 = null;
 
-public void onBlockAdded(World world, int i, int j, int k){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-if(entity!=null&&world!=null){
-int le = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-world.setBlockMetadataWithNotify(i, j, k, le, 2);
-}
+		boolean red = false;
 
-world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+		public BlockSmallBoom() {
+		}
 
-}
-public int isProvidingStrongPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5){
-return red?1:0;
-}
-public void onNeighborBlockChange(World world, int i, int j, int k, Block l){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k)){
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
 
-if(true){
-world.createExplosion((Entity)null, i, j, k, 2F, true);
-}
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
 
-}
-}
-public void onBlockDestroyedByExplosion(World world, int i, int j, int k, Explosion e){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+		}
 
-if(true){
-world.createExplosion((Entity)null, i, j, k, 2F, true);
-}
+		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
+				int par2, int par3, int par4, int par5) {
+			return red ? 1 : 0;
+		}
 
-}
-@SideOnly(Side.CLIENT)
-@Override
-public IIcon getIcon(int i, int par2){
+		public void onNeighborBlockChange(World world, int i, int j, int k,
+				Block l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
+					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
-if (i == 0)
-return gor;
+				if (true) {
+					world.createExplosion((Entity) null, i, j, k, 2F, true);
+				}
 
-else if (i == 1)
-return dol;
+			}
+		}
 
-else if (i == 2)
-return st1;
+		public void onBlockDestroyedByExplosion(World world, int i, int j,
+				int k, Explosion e) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-else if (i == 3)
-return st2;
+			if (true) {
+				world.createExplosion((Entity) null, i, j, k, 2F, true);
+			}
 
-else if (i == 4)
-return st4;
+		}
 
-else if (i == 5)
-return st3;
+		@SideOnly(Side.CLIENT)
+		@Override
+		public IIcon getIcon(int i, int par2) {
 
-else
-return gor;
+			if (i == 0)
+				return gor;
 
-}
+			else if (i == 1)
+				return dol;
 
-@SideOnly(Side.CLIENT)
-@Override
-public void registerBlockIcons(IIconRegister reg){
-this.gor = reg.registerIcon("smallBoomtexture");
-this.dol = reg.registerIcon("smallBoomtexture");
-this.st1 = reg.registerIcon("smallBoomtexture");
-this.st2 = reg.registerIcon("smallBoomtexture");
-this.st3 = reg.registerIcon("smallBoomtexture");
-this.st4 = reg.registerIcon("smallBoomtexture");
-}
-public int getRenderType(){
-return 0;
-}
-@Override
-public int tickRate(World world)
-{
-    return 10;
-}
+			else if (i == 2)
+				return st1;
 
-public int quantityDropped(Random par1Random){
-return 1;
-}
+			else if (i == 3)
+				return st2;
 
-}
+			else if (i == 4)
+				return st4;
+
+			else if (i == 5)
+				return st3;
+
+			else
+				return gor;
+
+		}
+
+		@SideOnly(Side.CLIENT)
+		@Override
+		public void registerBlockIcons(IIconRegister reg) {
+			this.gor = reg.registerIcon("smallBoomtexture");
+			this.dol = reg.registerIcon("smallBoomtexture");
+			this.st1 = reg.registerIcon("smallBoomtexture");
+			this.st2 = reg.registerIcon("smallBoomtexture");
+			this.st3 = reg.registerIcon("smallBoomtexture");
+			this.st4 = reg.registerIcon("smallBoomtexture");
+		}
+
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int tickRate(World world) {
+			return 10;
+		}
+
+		public int quantityDropped(Random par1Random) {
+			return 1;
+		}
+
+	}
 }

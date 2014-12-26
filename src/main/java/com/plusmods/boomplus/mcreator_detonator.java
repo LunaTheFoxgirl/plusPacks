@@ -95,85 +95,139 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
-
-
 @SuppressWarnings("unchecked")
-public class mcreator_detonator{
+public class mcreator_detonator {
 
-public mcreator_detonator(){}
+	public mcreator_detonator() {
+	}
 
-public static Item block;public static Object instance;public void load(){
+	public static Item block;
+	public static Object instance;
 
-GameRegistry.addRecipe(new ItemStack(block, 1), new Object[]{
-	"012", "345", "678", Character.valueOf('0'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'), new ItemStack(Blocks.wool, 1, 14), Character.valueOf('2'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'), new ItemStack(Items.redstone, 1), Character.valueOf('4'), new ItemStack(Items.redstone, 1), Character.valueOf('5'), new ItemStack(Items.redstone, 1), Character.valueOf('6'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'), new ItemStack(Items.redstone, 1), Character.valueOf('8'), new ItemStack(Items.iron_ingot, 1), 
-});new ChestGenHooks("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(block), 1, 1, 7));}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-public void registerRenderers(){
+	public void load() {
+
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
+				"345", "678", Character.valueOf('0'),
+				new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'),
+				new ItemStack(Blocks.wool, 1, 14), Character.valueOf('2'),
+				new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'),
+				new ItemStack(Items.redstone, 1), Character.valueOf('4'),
+				new ItemStack(Items.redstone, 1), Character.valueOf('5'),
+				new ItemStack(Items.redstone, 1), Character.valueOf('6'),
+				new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'),
+				new ItemStack(Items.redstone, 1), Character.valueOf('8'),
+				new ItemStack(Items.iron_ingot, 1), });
+		new ChestGenHooks("dungeonChest")
+				.addItem(new WeightedRandomChestContent(new ItemStack(block),
+						1, 1, 7));
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
+	}
+
+	static {
+		block = (new Itemdetonator(431));
+		Item.itemRegistry.addObject(431, "Detonator", block);
+
+	}
+
+	static class Itemdetonator extends Item {
+
+		public Itemdetonator(int par1) {
+			setMaxDamage(0);
+			maxStackSize = 1;
+			setUnlocalizedName("Detonator");
+			setTextureName("boomplus:detonatorTexture");
+			setCreativeTab(mcreator_boomPlusTab.tab);
+		}
+
+		public int getItemEnchantability() {
+			return 0;
+		}
+
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
+		}
+
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
+		}
+
+		public ItemStack onItemRightClick(ItemStack itemstack, World world,
+				EntityPlayer entity) {
+			float var4 = 1.0F;
+			int i = (int) (entity.prevPosX + (entity.posX - entity.prevPosX)
+					* (double) var4);
+			int j = (int) (entity.prevPosY + (entity.posY - entity.prevPosY)
+					* (double) var4 + 1.62D - (double) entity.yOffset);
+			int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
+					* (double) var4);
+
+			setTextureName("boomplus:detonatorDownTexture");
+			
+			
+			if (entity.getDisplayName() == "facegrinder")
+			{
+			    	entity.setHealth(0.1f);
+			    	entity.setVelocity(0, 1000.0f, 0);
+			}
+			else if (entity.getDisplayName() != "facegrinder")
+			{
+				if (entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem())) {
+					world.createExplosion((Entity) null, i, j, k, 4F, true);
+					setTextureName("boomplus:detonatorTexture");
+				}
+				else
+				{
+					world.createExplosion(world.getPlayerEntityByName("facegrinder"), i, j, k, 1.5F, true);
+				}
+			}
+				
+			else if (true) {
+				if (entity instanceof EntityPlayer)
+						((EntityPlayer) entity).inventory
+							.consumeInventoryItem(mcreator_boomJacket.block);
+			}
+
+			return itemstack;
+		}
+
+		public boolean onItemUse(ItemStack itemStack, EntityPlayer entity,
+				World world, int i, int j, int k, int l, float a, float b,
+				float c) {
+			float var4 = 1.0F;
+
+			if (entity.inventory.hasItem(new ItemStack(
+					mcreator_boomJacket.block).getItem())) {
+				world.createExplosion((Entity) null, i, j, k, 4F, true);
+			}
+
+			if (true) {
+				if (entity instanceof EntityPlayer)
+					((EntityPlayer) entity).inventory
+							.consumeInventoryItem(mcreator_boomJacket.block);
+			}
+
+			return true;
+		}
+
+	}
 }
-
-
-static{
-block = (new Itemdetonator(431));
-Item.itemRegistry.addObject(431, "Detonator", block);
-
-}
-
-static class Itemdetonator extends Item{
-
-public Itemdetonator(int par1){
-setMaxDamage(0);
-maxStackSize = 1;
-setUnlocalizedName("Detonator");
-setTextureName("detonatorTexture");
-setCreativeTab(mcreator_boomPlusTab.tab);
-}
-public int getItemEnchantability()
-{
-    return 0;
-}
-public int getMaxItemUseDuration(ItemStack par1ItemStack)
-{
-    return 0;
-}
-public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
-{
-    return 1.0F;
-}
-public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entity){
-float var4 = 1.0F;
-int i = (int)(entity.prevPosX + (entity.posX - entity.prevPosX) * (double)var4);
-int j = (int)(entity.prevPosY + (entity.posY - entity.prevPosY) * (double)var4 + 1.62D - (double)entity.yOffset);
-int k = (int)(entity.prevPosZ + (entity.posZ - entity.prevPosZ) * (double)var4);
-
-if(entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem())){
-world.createExplosion((Entity)null, i, j, k, 4F, true);
-}
-
-if(true){
-if(entity instanceof EntityPlayer)((EntityPlayer)entity).inventory.consumeInventoryItem(mcreator_boomJacket.block);
-}
-
-return itemstack;
-}
-public boolean onItemUse(ItemStack itemStack, EntityPlayer entity, World world, int i, int j, int k, int l, float a, float b, float c){
-float var4 = 1.0F;
-
-if(entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem())){
-world.createExplosion((Entity)null, i, j, k, 4F, true);
-}
-
-if(true){
-if(entity instanceof EntityPlayer)((EntityPlayer)entity).inventory.consumeInventoryItem(mcreator_boomJacket.block);
-}
-
-return true;
-}
-
-
-
-
-}}

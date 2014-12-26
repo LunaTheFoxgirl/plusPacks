@@ -1,7 +1,5 @@
 package com.plusmods.boomplus;//based on master condiguration
 
-public class mcreator_VarListTestEnvironmentMod{
-
-	
+public class mcreator_VarListTestEnvironmentMod {
 
 }

@@ -130,8 +130,6 @@ import net.minecraft.client.renderer.texture.*;
 
 import cpw.mods.fml.common.eventhandler.*;
 
-public class mcreator_GlobalEventsBoomPlus{
-
-	
+public class mcreator_GlobalEventsBoomPlus {
 
 }

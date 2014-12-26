@@ -96,131 +96,168 @@ import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 public class mcreator_massiveBoom {
 
-public mcreator_massiveBoom(){}
+	public mcreator_massiveBoom() {
+	}
 
-public static BlockMassiveBoom block;
+	public static BlockMassiveBoom block;
 
-public static Object instance;public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){
+	public static Object instance;
 
-GameRegistry.registerBlock(block, "MassiveBoom");
-}
-public void registerRenderers(){}
-public void load(){
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
 
-GameRegistry.addRecipe(new ItemStack(block, 1), new Object[]{
-	"012", "345", "678", Character.valueOf('0'), new ItemStack(Blocks.wool, 1, 4), Character.valueOf('1'), new ItemStack(mcreator_mediumBoom.block, 1), Character.valueOf('2'), new ItemStack(Blocks.wool, 1, 4), Character.valueOf('3'), new ItemStack(mcreator_mediumBoom.block, 1), Character.valueOf('4'), new ItemStack(mcreator_largeBoom.block, 1), Character.valueOf('5'), new ItemStack(mcreator_mediumBoom.block, 1), Character.valueOf('6'), new ItemStack(Blocks.wool, 1, 4), Character.valueOf('7'), new ItemStack(mcreator_mediumBoom.block, 1), Character.valueOf('8'), new ItemStack(Blocks.wool, 1, 4), 
-});
-}
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
 
+	public void preInit(FMLPreInitializationEvent event) {
 
-static{
+		GameRegistry.registerBlock(block, "MassiveBoom");
+	}
 
-block = (BlockMassiveBoom)(new BlockMassiveBoom().setHardness(2.0F)
-.setResistance(0.0F)
-.setLightLevel(0.0F)
-.setBlockName("MassiveBoom")
-.setBlockTextureName("massiveBoomtexture")
-.setLightOpacity(0)
-.setStepSound(Block.soundTypeGrass)
-.setCreativeTab(mcreator_boomPlusTab.tab)
-);block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
-Block.blockRegistry.addObject(191, "MassiveBoom", block);
-block.setHarvestLevel("pickaxe", 0);
-}
+	public void registerRenderers() {
+	}
 
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-static class BlockMassiveBoom extends BlockTNT
-{
+	public void load() {
 
-int a1 = 0,a2 = 0,a3 = 0,a4 = 0,a5 = 0,a6 = 0;
+		GameRegistry.addRecipe(
+				new ItemStack(block, 1),
+				new Object[] { "012", "345", "678", Character.valueOf('0'),
+						new ItemStack(Blocks.wool, 1, 4),
+						Character.valueOf('1'),
+						new ItemStack(mcreator_mediumBoom.block, 1),
+						Character.valueOf('2'),
+						new ItemStack(Blocks.wool, 1, 4),
+						Character.valueOf('3'),
+						new ItemStack(mcreator_mediumBoom.block, 1),
+						Character.valueOf('4'),
+						new ItemStack(mcreator_largeBoom.block, 1),
+						Character.valueOf('5'),
+						new ItemStack(mcreator_mediumBoom.block, 1),
+						Character.valueOf('6'),
+						new ItemStack(Blocks.wool, 1, 4),
+						Character.valueOf('7'),
+						new ItemStack(mcreator_mediumBoom.block, 1),
+						Character.valueOf('8'),
+						new ItemStack(Blocks.wool, 1, 4), });
+	}
 
-IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null, st4 = null;
+	static {
 
-boolean red = false;
+		block = (BlockMassiveBoom) (new BlockMassiveBoom().setHardness(2.0F)
+				.setResistance(0.0F).setLightLevel(0.0F)
+				.setBlockName("MassiveBoom")
+				.setBlockTextureName("boomplus:massiveBoomtexture").setLightOpacity(0)
+				.setStepSound(Block.soundTypeGrass)
+				.setCreativeTab(mcreator_boomPlusTab.tab));
+		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		Block.blockRegistry.addObject(191, "MassiveBoom", block);
+		block.setHarvestLevel("pickaxe", 0);
+	}
 
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
+	static class BlockMassiveBoom extends BlockTNT {
 
+		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
 
-public BlockMassiveBoom(){}
+		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
+				st4 = null;
 
-public void onBlockAdded(World world, int i, int j, int k){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-if(entity!=null&&world!=null){
-int le = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-world.setBlockMetadataWithNotify(i, j, k, le, 2);
-}
+		boolean red = false;
 
-world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+		public BlockMassiveBoom() {
+		}
 
-}
-public int isProvidingStrongPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5){
-return red?1:0;
-}
-public void onNeighborBlockChange(World world, int i, int j, int k, Block l){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k)){
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
 
-if(true){
-world.createExplosion((Entity)null, i, j, k, 60F, true);
-}
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
 
-}
-}
-@SideOnly(Side.CLIENT)
-@Override
-public IIcon getIcon(int i, int par2){
+		}
 
-if (i == 0)
-return gor;
+		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
+				int par2, int par3, int par4, int par5) {
+			return red ? 1 : 0;
+		}
 
-else if (i == 1)
-return dol;
+		public void onNeighborBlockChange(World world, int i, int j, int k,
+				Block l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
+					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
-else if (i == 2)
-return st1;
+				if (true) {
+					world.createExplosion((Entity) null, i, j, k, 60F, true);
+				}
 
-else if (i == 3)
-return st2;
+			}
+		}
 
-else if (i == 4)
-return st4;
+		@SideOnly(Side.CLIENT)
+		@Override
+		public IIcon getIcon(int i, int par2) {
 
-else if (i == 5)
-return st3;
+			if (i == 0)
+				return gor;
 
-else
-return gor;
+			else if (i == 1)
+				return dol;
 
-}
+			else if (i == 2)
+				return st1;
 
-@SideOnly(Side.CLIENT)
-@Override
-public void registerBlockIcons(IIconRegister reg){
-this.gor = reg.registerIcon("massiveBoomtexture");
-this.dol = reg.registerIcon("massiveBoomtexture");
-this.st1 = reg.registerIcon("massiveBoomtexture");
-this.st2 = reg.registerIcon("massiveBoomtexture");
-this.st3 = reg.registerIcon("massiveBoomtexture");
-this.st4 = reg.registerIcon("massiveBoomtexture");
-}
-public int getRenderType(){
-return 0;
-}
-@Override
-public int tickRate(World world)
-{
-    return 10;
-}
+			else if (i == 3)
+				return st2;
 
-public int quantityDropped(Random par1Random){
-return 1;
-}
+			else if (i == 4)
+				return st4;
 
-}
+			else if (i == 5)
+				return st3;
+
+			else
+				return gor;
+
+		}
+
+		@SideOnly(Side.CLIENT)
+		@Override
+		public void registerBlockIcons(IIconRegister reg) {
+			this.gor = reg.registerIcon("massiveBoomtexture");
+			this.dol = reg.registerIcon("massiveBoomtexture");
+			this.st1 = reg.registerIcon("massiveBoomtexture");
+			this.st2 = reg.registerIcon("massiveBoomtexture");
+			this.st3 = reg.registerIcon("massiveBoomtexture");
+			this.st4 = reg.registerIcon("massiveBoomtexture");
+		}
+
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int tickRate(World world) {
+			return 10;
+		}
+
+		public int quantityDropped(Random par1Random) {
+			return 1;
+		}
+
+	}
 }

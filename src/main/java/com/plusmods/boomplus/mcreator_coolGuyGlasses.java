@@ -95,66 +95,89 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
-
-
 @SuppressWarnings("unchecked")
-public class mcreator_coolGuyGlasses{
+public class mcreator_coolGuyGlasses {
 
-public mcreator_coolGuyGlasses(){}
+	public mcreator_coolGuyGlasses() {
+	}
 
-public static Item block;public static Object instance;public void load(){
+	public static Item block;
+	public static Object instance;
 
-GameRegistry.addRecipe(new ItemStack(block, 1), new Object[]{
-	"XXX", "345", "XXX", Character.valueOf('3'), new ItemStack(Blocks.wool, 1, 15), Character.valueOf('4'), new ItemStack(Blocks.glass, 1), Character.valueOf('5'), new ItemStack(Blocks.wool, 1, 15), 
-});new ChestGenHooks("dungeonChest").addItem(new WeightedRandomChestContent(new ItemStack(block), 1, 1, 10));}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-public void registerRenderers(){
+	public void load() {
+
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "XXX",
+				"345", "XXX", Character.valueOf('3'),
+				new ItemStack(Blocks.wool, 1, 15), Character.valueOf('4'),
+				new ItemStack(Blocks.glass, 1), Character.valueOf('5'),
+				new ItemStack(Blocks.wool, 1, 15), });
+		new ChestGenHooks("dungeonChest")
+				.addItem(new WeightedRandomChestContent(new ItemStack(block),
+						1, 1, 10));
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
+	}
+
+	static {
+		block = (new ItemcoolGuyGlasses(425));
+		Item.itemRegistry.addObject(425, "CoolGuyGlasses", block);
+
+	}
+
+	static class ItemcoolGuyGlasses extends Item {
+
+		public ItemcoolGuyGlasses(int par1) {
+			setMaxDamage(0);
+			maxStackSize = 1;
+			setUnlocalizedName("CoolGuyGlasses");
+			setTextureName("boomplus:coolGuystexture");
+			setCreativeTab(mcreator_boomPlusTab.tab);
+		}
+
+		public int getItemEnchantability() {
+			return 0;
+		}
+
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
+		}
+
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
+		}
+
+		public void onUpdate(ItemStack itemstack, World world, Entity entity,
+				int par4, boolean par5) {
+			int i = (int) entity.posX;
+			int j = (int) entity.posY;
+			int k = (int) entity.posZ;
+
+			if (true) {
+				if (entity instanceof EntityPlayer)
+					((EntityPlayer) entity).addStat(
+							mcreator_coolAchievement.achievement, 1);
+			}
+
+		}
+
+	}
 }
-
-
-static{
-block = (new ItemcoolGuyGlasses(425));
-Item.itemRegistry.addObject(425, "CoolGuyGlasses", block);
-
-}
-
-static class ItemcoolGuyGlasses extends Item{
-
-public ItemcoolGuyGlasses(int par1){
-setMaxDamage(0);
-maxStackSize = 1;
-setUnlocalizedName("CoolGuyGlasses");
-setTextureName("coolGuystexture");
-setCreativeTab(mcreator_boomPlusTab.tab);
-}
-public int getItemEnchantability()
-{
-    return 0;
-}
-public int getMaxItemUseDuration(ItemStack par1ItemStack)
-{
-    return 0;
-}
-public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
-{
-    return 1.0F;
-}
-public void onUpdate(ItemStack itemstack, World world, Entity entity, int par4, boolean par5) {
-int i = (int)entity.posX;
-int j = (int)entity.posY;
-int k = (int)entity.posZ;
-
-if(true){
-if(entity instanceof EntityPlayer)((EntityPlayer)entity).addStat(mcreator_coolAchievement.achievement, 1);
-}
-
-}
-
-
-
-
-}}

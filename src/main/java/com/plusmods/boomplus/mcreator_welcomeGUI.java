@@ -99,155 +99,177 @@ import org.lwjgl.opengl.GL12;
 @SuppressWarnings("unchecked")
 public class mcreator_welcomeGUI {
 
-public static Object instance;
+	public static Object instance;
 
-public static int GUIID = 1;
+	public static int GUIID = 1;
 
-public mcreator_welcomeGUI(){}
-
-public void load(){
-	NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
-}
-
-public void registerRenderers(){}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){
-	return 0;
-}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-
-public static class GuiHandler implements IGuiHandler {
-@Override public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {return new mcreator_welcomeGUI.GuiContainerMod(player);}
-@Override public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {return new mcreator_welcomeGUI.GuiWindow(world, x, y, z, player);}
-}
-
-public static class GuiContainerMod extends Container {
-
-        public GuiContainerMod (EntityPlayer player){
-        }
-
-        @Override
-        public boolean canInteractWith(EntityPlayer player) {
-                return true;
-        }
-
-
-        protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
-        }
-
-        @Override
-        public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-                return null;
-        }
-}
-
-public static class GuiWindow extends GuiContainer
-{
-
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	EntityPlayer entity = null;
-
-	
-
-public GuiWindow(World world, int i, int j, int k, EntityPlayer entity){
-	super(new GuiContainerMod((EntityPlayer)entity));
-	this.i = i;
-	this.j = j;
-	this.k = k;
-	this.entity = entity;
-}
-
-private static final ResourceLocation texture = new ResourceLocation("WelcomeGUI4427199964071195392.png");
-
-protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
-{
-	int posX = (this.width) /2;
-	int posY = (this.height) /2;
-	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-	
-this.mc.renderEngine.bindTexture(texture);
-this.xSize=350;
-this.ySize=225;
-int k = (this.width - this.xSize) / 2;
-int l = (this.height - this.ySize) / 2;
-this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
-
-
-    zLevel = 100.0F;
-    
-this.mc.renderEngine.bindTexture(new ResourceLocation("logoPNG.png"));
-this.drawTexturedModalRect(posX+(-117), posY+(-119), 0, 0, 256, 256);
-
-
-}
-
-protected void mouseClicked(int par1, int par2, int par3)
-{
-super.mouseClicked(par1, par2, par3);
-
-}
-
-public void updateScreen()
-{
-int posX = (this.width) /2;
-int posY = (this.height) /2;
-
-}
-
-protected void keyTyped(char par1, int par2)
-{
-
-
-if (par2 != 28 && par2 != 156){
-	if (par2 == 1){
-		this.mc.displayGuiScreen((GuiScreen)null);
+	public mcreator_welcomeGUI() {
 	}
-}
 
-}
+	public void load() {
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+	}
 
-protected void drawGuiContainerForegroundLayer(int par1, int par2){
-	int posX = (this.width) /2;
-	int posY = (this.height) /2;
-	this.fontRendererObj.drawString("--------------------------------------", posX+(-115), posY+(-30), 0xffffff);
-this.fontRendererObj.drawString("Hello!", posX+(-24), posY+(-20), 0xffffff);
-this.fontRendererObj.drawString("Thanks for playing with Boom+", posX+(-79), posY+(-6), 0xffffff);
-this.fontRendererObj.drawString("Please contact us if you think we should add your idea into the mod!", posX+(-159), posY+(13), 0xffffff);
-this.fontRendererObj.drawString("Contact Email: zak@thegamingunion.org", posX+(-86), posY+(40), 0x000000);
-this.fontRendererObj.drawString("Thanks!", posX+(-22), posY+(70), 0xff3333);
+	public void registerRenderers() {
+	}
 
-}
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
-public void onGuiClosed()
-{
-Keyboard.enableRepeatEvents(false);
-}
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
-public void initGui(){
-Keyboard.enableRepeatEvents(true);
-this.buttonList.clear();
-int posX = (this.width) / 2;
-int posY = (this.height) / 2;
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
 
-}
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
 
-protected void actionPerformed(GuiButton button)
-{
-MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-World world = server.worldServers[0];
+	public void preInit(FMLPreInitializationEvent event) {
+	}
 
+	public static class GuiHandler implements IGuiHandler {
+		@Override
+		public Object getServerGuiElement(int id, EntityPlayer player,
+				World world, int x, int y, int z) {
+			return new mcreator_welcomeGUI.GuiContainerMod(player);
+		}
 
-}
+		@Override
+		public Object getClientGuiElement(int id, EntityPlayer player,
+				World world, int x, int y, int z) {
+			return new mcreator_welcomeGUI.GuiWindow(world, x, y, z, player);
+		}
+	}
 
-public boolean doesGuiPauseGame()
-{
-    return false;
-}
+	public static class GuiContainerMod extends Container {
 
-}
+		public GuiContainerMod(EntityPlayer player) {
+		}
+
+		@Override
+		public boolean canInteractWith(EntityPlayer player) {
+			return true;
+		}
+
+		protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+		}
+
+		@Override
+		public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+			return null;
+		}
+	}
+
+	public static class GuiWindow extends GuiContainer {
+
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		EntityPlayer entity = null;
+
+		public GuiWindow(World world, int i, int j, int k, EntityPlayer entity) {
+			super(new GuiContainerMod((EntityPlayer) entity));
+			this.i = i;
+			this.j = j;
+			this.k = k;
+			this.entity = entity;
+		}
+
+		private static final ResourceLocation texture = new ResourceLocation(
+				"WelcomeGUI4427199964071195392.png");
+
+		protected void drawGuiContainerBackgroundLayer(float par1, int par2,
+				int par3) {
+			int posX = (this.width) / 2;
+			int posY = (this.height) / 2;
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+
+			this.mc.renderEngine.bindTexture(texture);
+			this.xSize = 350;
+			this.ySize = 225;
+			int k = (this.width - this.xSize) / 2;
+			int l = (this.height - this.ySize) / 2;
+			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+
+			zLevel = 100.0F;
+
+			this.mc.renderEngine
+					.bindTexture(new ResourceLocation("logoPNG.png"));
+			this.drawTexturedModalRect(posX + (-117), posY + (-119), 0, 0, 256,
+					256);
+
+		}
+
+		protected void mouseClicked(int par1, int par2, int par3) {
+			super.mouseClicked(par1, par2, par3);
+
+		}
+
+		public void updateScreen() {
+			int posX = (this.width) / 2;
+			int posY = (this.height) / 2;
+
+		}
+
+		protected void keyTyped(char par1, int par2) {
+
+			if (par2 != 28 && par2 != 156) {
+				if (par2 == 1) {
+					this.mc.displayGuiScreen((GuiScreen) null);
+				}
+			}
+
+		}
+
+		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+			int posX = (this.width) / 2;
+			int posY = (this.height) / 2;
+			this.fontRendererObj.drawString(
+					"--------------------------------------", posX + (-115),
+					posY + (-30), 0xffffff);
+			this.fontRendererObj.drawString("Hello!", posX + (-24), posY
+					+ (-20), 0xffffff);
+			this.fontRendererObj.drawString("Thanks for playing with Boom+",
+					posX + (-79), posY + (-6), 0xffffff);
+			this.fontRendererObj
+					.drawString(
+							"Please contact us if you think we should add your idea into the mod!",
+							posX + (-159), posY + (13), 0xffffff);
+			this.fontRendererObj.drawString(
+					"Contact Email: zak@thegamingunion.org", posX + (-86),
+					posY + (40), 0x000000);
+			this.fontRendererObj.drawString("Thanks!", posX + (-22),
+					posY + (70), 0xff3333);
+
+		}
+
+		public void onGuiClosed() {
+			Keyboard.enableRepeatEvents(false);
+		}
+
+		public void initGui() {
+			Keyboard.enableRepeatEvents(true);
+			this.buttonList.clear();
+			int posX = (this.width) / 2;
+			int posY = (this.height) / 2;
+
+		}
+
+		protected void actionPerformed(GuiButton button) {
+			MinecraftServer server = FMLCommonHandler.instance()
+					.getMinecraftServerInstance();
+			World world = server.worldServers[0];
+
+		}
+
+		public boolean doesGuiPauseGame() {
+			return false;
+		}
+
+	}
 
 }

@@ -94,17 +94,37 @@ import java.util.Random;
 
 public class mcreator_nuclearAchievement {
 
-public mcreator_nuclearAchievement(){}
+	public mcreator_nuclearAchievement() {
+	}
 
-public Object instance;public static Achievement achievement = (new Achievement("achievement.nuclearAchievement", "nuclearAchievement", 0, -5, mcreator_radioactiveBoom.block, (Achievement)null)).initIndependentStat();
+	public Object instance;
+	public static Achievement achievement = (new Achievement(
+			"achievement.nuclearAchievement", "nuclearAchievement", 0, -5,
+			mcreator_radioactiveBoom.block, (Achievement) null))
+			.initIndependentStat();
 
-public void load(){
-achievement.registerStat();
-}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-public void registerRenderers(){}
+	public void load() {
+		achievement.registerStat();
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
+	}
 }

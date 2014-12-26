@@ -94,17 +94,37 @@ import java.util.Random;
 
 public class mcreator_coolAchievement {
 
-public mcreator_coolAchievement(){}
+	public mcreator_coolAchievement() {
+	}
 
-public Object instance;public static Achievement achievement = (new Achievement("achievement.coolAchievement", "coolAchievement", 5, 0, mcreator_coolGuyGlasses.block, (Achievement)null)).initIndependentStat();
+	public Object instance;
+	public static Achievement achievement = (new Achievement(
+			"achievement.coolAchievement", "coolAchievement", 5, 0,
+			mcreator_coolGuyGlasses.block, (Achievement) null))
+			.initIndependentStat();
 
-public void load(){
-achievement.registerStat();
-}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-public void registerRenderers(){}
+	public void load() {
+		achievement.registerStat();
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
+	}
 }

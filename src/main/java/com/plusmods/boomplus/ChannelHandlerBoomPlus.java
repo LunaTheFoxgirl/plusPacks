@@ -89,25 +89,29 @@ import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 
-public class ChannelHandlerBoomPlus extends FMLIndexedMessageToMessageCodec<IPacketBoomPlus> {
+public class ChannelHandlerBoomPlus extends
+		FMLIndexedMessageToMessageCodec<IPacketBoomPlus> {
 
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, IPacketBoomPlus packet, ByteBuf data) throws Exception {
+	public void encodeInto(ChannelHandlerContext ctx, IPacketBoomPlus packet,
+			ByteBuf data) throws Exception {
 		packet.writeBytes(data);
-    }
+	}
 
-    @Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf data, IPacketBoomPlus packet) {
-	    packet.readBytes(data);
-	    switch (FMLCommonHandler.instance().getEffectiveSide()) {
-	        case CLIENT:
-	            packet.executeClient(Minecraft.getMinecraft().thePlayer);
-	            break;
-	        case SERVER:
-	            INetHandler netHandler = ctx.channel().attr(NetworkRegistry.NET_HANDLER).get();
-	            packet.executeServer(((NetHandlerPlayServer) netHandler).playerEntity);
-	            break;
-	    }
-    }
+	@Override
+	public void decodeInto(ChannelHandlerContext ctx, ByteBuf data,
+			IPacketBoomPlus packet) {
+		packet.readBytes(data);
+		switch (FMLCommonHandler.instance().getEffectiveSide()) {
+		case CLIENT:
+			packet.executeClient(Minecraft.getMinecraft().thePlayer);
+			break;
+		case SERVER:
+			INetHandler netHandler = ctx.channel()
+					.attr(NetworkRegistry.NET_HANDLER).get();
+			packet.executeServer(((NetHandlerPlayServer) netHandler).playerEntity);
+			break;
+		}
+	}
 
 }
