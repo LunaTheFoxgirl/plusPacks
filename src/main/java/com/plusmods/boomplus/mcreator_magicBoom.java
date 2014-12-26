@@ -90,10 +90,12 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -138,7 +140,7 @@ public class mcreator_magicBoom {
 
 	static {
 
-		block = (BlockMagicBoom) (new BlockMagicBoom().setHardness(2.0F)
+		block = (BlockMagicBoom) (new BlockMagicBoom(Material.tnt).setHardness(2.0F)
 				.setResistance(0.0F).setLightLevel(0.0F)
 				.setBlockName("MagicBoom")
 				.setBlockTextureName("boomplus:magicBoomtexture").setLightOpacity(0)
@@ -157,16 +159,13 @@ public class mcreator_magicBoom {
 			int chunkZ) {
 	}
 
-	static class BlockMagicBoom extends BlockTNT {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
+	static class BlockMagicBoom extends Block {
 
 		boolean red = false;
 
-		public BlockMagicBoom() {
+		public BlockMagicBoom(Material blockMaterial) 
+		{
+			super(blockMaterial);
 		}
 
 		public void onBlockAdded(World world, int i, int j, int k) {
@@ -257,43 +256,6 @@ public class mcreator_magicBoom {
 		}
 
 		@SideOnly(Side.CLIENT)
-		@Override
-		public IIcon getIcon(int i, int par2) {
-
-			if (i == 0)
-				return gor;
-
-			else if (i == 1)
-				return dol;
-
-			else if (i == 2)
-				return st1;
-
-			else if (i == 3)
-				return st2;
-
-			else if (i == 4)
-				return st4;
-
-			else if (i == 5)
-				return st3;
-
-			else
-				return gor;
-
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public void registerBlockIcons(IIconRegister reg) {
-			this.gor = reg.registerIcon("magicBoomtexture");
-			this.dol = reg.registerIcon("magicBoomtexture");
-			this.st1 = reg.registerIcon("magicBoomtexture");
-			this.st2 = reg.registerIcon("magicBoomtexture");
-			this.st3 = reg.registerIcon("magicBoomtexture");
-			this.st4 = reg.registerIcon("magicBoomtexture");
-		}
-
 		public int getRenderType() {
 			return 0;
 		}

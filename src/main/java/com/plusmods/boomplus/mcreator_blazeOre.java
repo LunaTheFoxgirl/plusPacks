@@ -130,7 +130,7 @@ public class mcreator_blazeOre {
 				.setResistance(15.0F).setLightLevel(0.0F)
 				.setBlockName("BlazeOre")
 				.setBlockTextureName("boomplus:blazeOreTexture")
-				.setBlockTextureName("blazeOretexture").setLightOpacity(0)
+				.setLightOpacity(0)
 				.setStepSound(Block.soundTypeStone)
 				.setCreativeTab(mcreator_boomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
@@ -241,32 +241,7 @@ public class mcreator_blazeOre {
 
 		}
 
-		@SideOnly(Side.CLIENT)
-		@Override
-		public IIcon getIcon(int i, int par2) {
 
-			if (i == 0)
-				return gor;
-
-			else if (i == 1)
-				return dol;
-
-			else if (i == 2)
-				return st1;
-
-			else if (i == 3)
-				return st2;
-
-			else if (i == 4)
-				return st4;
-
-			else if (i == 5)
-				return st3;
-
-			else
-				return gor;
-
-		}
 
 		@SideOnly(Side.CLIENT)
 		public int getRenderType() {

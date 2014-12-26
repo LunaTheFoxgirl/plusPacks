@@ -48,11 +48,11 @@ public class OresPlus {
 	public void load(FMLPreInitializationEvent event) 
 	{
 			//Jade
-			jade = new ItemJade(5001).setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
+			jade = new ItemJade(5001).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
 				
 				
 			//JadeStone
-			jadeStone = new BlockJadeStone(5000).setBlockName("JadeStone").setCreativeTab(CreativeTabs.tabTools).setBlockTextureName("oresplus:jade_ore");
+			jadeStone = new BlockJadeStone(5000).setBlockName("JadeStone").setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
 			jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 			jadeStone.setHarvestLevel("pickaxe", 3);
 		

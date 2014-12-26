@@ -209,44 +209,6 @@ public class mcreator_radOre {
 
 		}
 
-		@SideOnly(Side.CLIENT)
-		@Override
-		public IIcon getIcon(int i, int par2) {
-
-			if (i == 0)
-				return gor;
-
-			else if (i == 1)
-				return dol;
-
-			else if (i == 2)
-				return st1;
-
-			else if (i == 3)
-				return st2;
-
-			else if (i == 4)
-				return st4;
-
-			else if (i == 5)
-				return st3;
-
-			else
-				return gor;
-
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public void registerBlockIcons(IIconRegister reg) {
-			this.gor = reg.registerIcon("radioactiveOretexture");
-			this.dol = reg.registerIcon("radioactiveOretexture");
-			this.st1 = reg.registerIcon("radioactiveOretexture");
-			this.st2 = reg.registerIcon("radioactiveOretexture");
-			this.st3 = reg.registerIcon("radioactiveOretexture");
-			this.st4 = reg.registerIcon("radioactiveOretexture");
-		}
-
 		public int getRenderType() {
 			return 0;
 		}

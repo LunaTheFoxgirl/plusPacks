@@ -199,42 +199,6 @@ public class mcreator_sneakyBoom {
 		}
 
 		@SideOnly(Side.CLIENT)
-		@Override
-		public IIcon getIcon(int i, int par2) {
-
-			if (i == 0)
-				return gor;
-
-			else if (i == 1)
-				return dol;
-
-			else if (i == 2)
-				return st1;
-
-			else if (i == 3)
-				return st2;
-
-			else if (i == 4)
-				return st4;
-
-			else if (i == 5)
-				return st3;
-
-			else
-				return gor;
-
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public void registerBlockIcons(IIconRegister reg) {
-			this.gor = reg.registerIcon("sneakyBoomtexture");
-			this.dol = reg.registerIcon("sneakyBoomtexture");
-			this.st1 = reg.registerIcon("sneakyBoomtexture");
-			this.st2 = reg.registerIcon("sneakyBoomtexture");
-			this.st3 = reg.registerIcon("sneakyBoomtexture");
-			this.st4 = reg.registerIcon("sneakyBoomtexture");
-		}
 
 		public int getRenderType() {
 			return 0;

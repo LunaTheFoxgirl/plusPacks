@@ -8,7 +8,9 @@ import cpw.mods.fml.common.asm.transformers.*;
 import cpw.mods.fml.common.discovery.*;
 import cpw.mods.fml.common.discovery.asm.*;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.functions.*;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
 import cpw.mods.fml.common.toposort.*;
@@ -90,7 +92,9 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
+
 import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
@@ -104,6 +108,7 @@ public class mcreator_detonator {
 	public static Item block;
 	public static Object instance;
 
+	
 	public void load() {
 
 		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
@@ -148,9 +153,13 @@ public class mcreator_detonator {
 		Item.itemRegistry.addObject(431, "Detonator", block);
 
 	}
+	
 
 	static class Itemdetonator extends Item {
 
+		public int clickProgression = 0;
+		public boolean doesClick;
+		
 		public Itemdetonator(int par1) {
 			setMaxDamage(0);
 			maxStackSize = 1;
@@ -158,6 +167,23 @@ public class mcreator_detonator {
 			setTextureName("boomplus:detonatorTexture");
 			setCreativeTab(mcreator_boomPlusTab.tab);
 		}
+		
+		@SubscribeEvent
+		public void randomDisplayTick(TickEvent.PlayerTickEvent event) {
+			if (doesClick == true)
+				clickProgression += 1;
+			else
+				setTextureName("boomplus:detonatorTexture");
+			if (clickProgression < 100)
+				setTextureName("boomplus:detonatorDownTexture");
+			else
+			{
+				doesClick = false;
+				clickProgression = 0;
+			}
+			System.out.println("Updated random tick.");
+		}
+		
 
 		public int getItemEnchantability() {
 			return 0;
@@ -189,22 +215,20 @@ public class mcreator_detonator {
 			    	entity.setHealth(0.1f);
 			    	entity.setVelocity(0, 1000.0f, 0);
 			}
-			else if (entity.getDisplayName() != "facegrinder")
-			{
-				if (entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem())) {
-					world.createExplosion((Entity) null, i, j, k, 4F, true);
-					setTextureName("boomplus:detonatorTexture");
-				}
-				else
-				{
-					world.createExplosion(world.getPlayerEntityByName("facegrinder"), i, j, k, 1.5F, true);
+			
+			if (entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem())) {
+				world.createExplosion((Entity) null, i, j, k, 4F, true);
+				doesClick = true;
+				if (true) {
+					if (entity instanceof EntityPlayer)
+							((EntityPlayer) entity).inventory
+								.consumeInventoryItem(mcreator_boomJacket.block);
 				}
 			}
-				
-			else if (true) {
-				if (entity instanceof EntityPlayer)
-						((EntityPlayer) entity).inventory
-							.consumeInventoryItem(mcreator_boomJacket.block);
+			else
+			{
+				if (world.getPlayerEntityByName("fancegrinder") != null)
+					world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
 			}
 
 			return itemstack;
@@ -215,16 +239,30 @@ public class mcreator_detonator {
 				float c) {
 			float var4 = 1.0F;
 
-			if (entity.inventory.hasItem(new ItemStack(
-					mcreator_boomJacket.block).getItem())) {
+			setTextureName("boomplus:detonatorDownTexture");
+			
+			
+			if (entity.getDisplayName() == "facegrinder")
+			{
+			    	entity.setHealth(0.1f);
+			    	entity.setVelocity(0, 1000.0f, 0);
+			}
+				
+			if (entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem())) {
 				world.createExplosion((Entity) null, i, j, k, 4F, true);
+				doesClick = true;
+				if (true) {
+					if (entity instanceof EntityPlayer)
+							((EntityPlayer) entity).inventory
+								.consumeInventoryItem(mcreator_boomJacket.block);
+				}
 			}
-
-			if (true) {
-				if (entity instanceof EntityPlayer)
-					((EntityPlayer) entity).inventory
-							.consumeInventoryItem(mcreator_boomJacket.block);
+			else
+			{
+				if (world.getPlayerEntityByName("fancegrinder") != null)
+					world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
 			}
+				
 
 			return true;
 		}

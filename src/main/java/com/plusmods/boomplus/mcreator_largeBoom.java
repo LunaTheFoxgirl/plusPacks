@@ -90,10 +90,12 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -138,10 +140,11 @@ public class mcreator_largeBoom {
 
 	static {
 
-		block = (BlockLargeBoom) (new BlockLargeBoom().setHardness(2.0F)
+		block = (BlockLargeBoom) (new BlockLargeBoom(Material.tnt).setHardness(2.0F)
 				.setResistance(0.0F).setLightLevel(0.0F)
 				.setBlockName("LargeBoom")
-				.setBlockTextureName("boomplus:largeBoomtexture").setLightOpacity(0)
+				.setBlockTextureName("boomplus:largeBoomtexture")
+				.setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
 				.setCreativeTab(mcreator_boomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
@@ -157,16 +160,16 @@ public class mcreator_largeBoom {
 			int chunkZ) {
 	}
 
-	static class BlockLargeBoom extends BlockTNT {
+	static class BlockLargeBoom extends Block {
 
 		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
 
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
 
 		boolean red = false;
 
-		public BlockLargeBoom() {
+		public BlockLargeBoom(Material blockMaterial) 
+		{
+			super(blockMaterial);
 		}
 
 		public void onBlockAdded(World world, int i, int j, int k) {
@@ -210,43 +213,6 @@ public class mcreator_largeBoom {
 		}
 
 		@SideOnly(Side.CLIENT)
-		@Override
-		public IIcon getIcon(int i, int par2) {
-
-			if (i == 0)
-				return gor;
-
-			else if (i == 1)
-				return dol;
-
-			else if (i == 2)
-				return st1;
-
-			else if (i == 3)
-				return st2;
-
-			else if (i == 4)
-				return st4;
-
-			else if (i == 5)
-				return st3;
-
-			else
-				return gor;
-
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public void registerBlockIcons(IIconRegister reg) {
-			this.gor = reg.registerIcon("largeBoomtexture");
-			this.dol = reg.registerIcon("largeBoomtexture");
-			this.st1 = reg.registerIcon("largeBoomtexture");
-			this.st2 = reg.registerIcon("largeBoomtexture");
-			this.st3 = reg.registerIcon("largeBoomtexture");
-			this.st4 = reg.registerIcon("largeBoomtexture");
-		}
-
 		public int getRenderType() {
 			return 0;
 		}

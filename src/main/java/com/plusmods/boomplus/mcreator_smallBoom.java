@@ -90,10 +90,12 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -138,7 +140,7 @@ public class mcreator_smallBoom {
 
 	static {
 
-		block = (BlockSmallBoom) (new BlockSmallBoom().setHardness(2.0F)
+		block = (BlockSmallBoom) (new BlockSmallBoom(Material.tnt).setHardness(2.0F)
 				.setResistance(0.0F).setLightLevel(0.0F)
 				.setBlockName("SmallBoom")
 				.setBlockTextureName("boomplus:smallBoomtexture").setLightOpacity(0)
@@ -157,7 +159,7 @@ public class mcreator_smallBoom {
 			int chunkZ) {
 	}
 
-	static class BlockSmallBoom extends BlockTNT {
+	static class BlockSmallBoom extends Block {
 
 		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
 
@@ -166,7 +168,9 @@ public class mcreator_smallBoom {
 
 		boolean red = false;
 
-		public BlockSmallBoom() {
+		public BlockSmallBoom(Material blockMaterial) 
+		{
+			super(blockMaterial);
 		}
 
 		public void onBlockAdded(World world, int i, int j, int k) {
@@ -208,45 +212,8 @@ public class mcreator_smallBoom {
 			}
 
 		}
-
+		
 		@SideOnly(Side.CLIENT)
-		@Override
-		public IIcon getIcon(int i, int par2) {
-
-			if (i == 0)
-				return gor;
-
-			else if (i == 1)
-				return dol;
-
-			else if (i == 2)
-				return st1;
-
-			else if (i == 3)
-				return st2;
-
-			else if (i == 4)
-				return st4;
-
-			else if (i == 5)
-				return st3;
-
-			else
-				return gor;
-
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public void registerBlockIcons(IIconRegister reg) {
-			this.gor = reg.registerIcon("smallBoomtexture");
-			this.dol = reg.registerIcon("smallBoomtexture");
-			this.st1 = reg.registerIcon("smallBoomtexture");
-			this.st2 = reg.registerIcon("smallBoomtexture");
-			this.st3 = reg.registerIcon("smallBoomtexture");
-			this.st4 = reg.registerIcon("smallBoomtexture");
-		}
-
 		public int getRenderType() {
 			return 0;
 		}
