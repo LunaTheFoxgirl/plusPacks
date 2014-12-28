@@ -3,6 +3,7 @@ package com.plusmods.oresplus;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,10 +34,12 @@ public class OresPlus {
 	
 	//Blocks
 	public static Block jadeStone;
+	public static Block theisOre;
 
 	
 	//Items
 	public static Item jade;
+	public static Item theisIngot;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -48,14 +51,22 @@ public class OresPlus {
 	public void load(FMLPreInitializationEvent event) 
 	{
 			//Jade
-			jade = new ItemJade(5001).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
+				jade = new ItemJade(5000).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
 				
 				
 			//JadeStone
-			jadeStone = new BlockJadeStone(5000).setBlockName("JadeStone").setHardness(2.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
-			jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-			jadeStone.setHarvestLevel("pickaxe", 2);
-		
+				jadeStone = new BlockJadeStone(5001).setBlockName("JadeStone").setHardness(2.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
+				jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+				jadeStone.setHarvestLevel("pickaxe", 2);
+			
+			//TheisIngot
+				theisIngot = new TheisIngot(5002).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:theis_ingot");
+			
+			
+			//TheisOre
+				theisOre = new TheisOre(Material.iron).setBlockName("TheisOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:theis_ore");
+				theisOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+				theisOre.setHarvestLevel("pickaxe", 2);
 	}
 	
 	@EventHandler
@@ -64,10 +75,17 @@ public class OresPlus {
 		
 		
 		//Register everything
-		GameRegistry.registerBlock(jadeStone, "JadeStone");
-		GameRegistry.registerItem(jade, "Jade");
+			//Block
+				GameRegistry.registerBlock(jadeStone, "JadeStone");
+				GameRegistry.registerBlock(theisOre, "TheisOre");
 		
-		GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 10);
+			//Item
+				GameRegistry.registerItem(jade, "Jade");
+				GameRegistry.registerItem(theisIngot, "TheisIngot");
+		
+			//IWorldGenerator		
+				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 7);
+				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);
 	}
 
 

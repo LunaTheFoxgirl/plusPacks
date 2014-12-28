@@ -1,6 +1,11 @@
-
 tile.JadeStone.name=Jade Ore
+tile.TheisOre.name=Theis Ore
+
+
+
 item.Jade.name=Jade
+item.TheisIngot.name=Theis Ingot
+
 
 
 itemGroup.tabOresPlus=Ores+

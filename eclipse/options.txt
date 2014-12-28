@@ -1,10 +1,10 @@
 invertYMouse:false
 mouseSensitivity:0.5
-fov:0.0
-gamma:0.0
+fov:1.0
+gamma:1.0
 saturation:0.0
-renderDistance:4
-guiScale:3
+renderDistance:8
+guiScale:2
 particles:0
 bobView:true
 anaglyph3d:false
@@ -12,7 +12,7 @@ advancedOpengl:false
 maxFps:260
 fboEnable:true
 difficulty:1
-fancyGraphics:true
+fancyGraphics:false
 ao:2
 clouds:true
 resourcePacks:[]
@@ -25,7 +25,7 @@ chatLinksPrompt:true
 chatOpacity:1.0
 snooperEnabled:true
 fullscreen:false
-enableVsync:true
+enableVsync:false
 hideServerAddress:false
 advancedItemTooltips:false
 pauseOnLostFocus:true
