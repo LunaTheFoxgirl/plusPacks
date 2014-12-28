@@ -1,0 +1,31 @@
+{
+    "modinfoversion": 2,
+    "modlist": [{
+        "modid": "oresplus",
+        "name": "Ores+",
+        "description": "Ores+ is an enhancment to the original ores, in Minecraft.",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": ["Member1221"],
+        "credits": "Member1221",
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": []
+    },
+    {
+        "modid": "boomplus",
+        "name": "Boom+",
+        "description": "Boom+ adds a new array of Explosives, to Minecraft.",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": ["Member1221", "ZakDoesGaming"],
+        "credits": "Member1221", "ZakDoesGaming"
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": []
+    }]
+}

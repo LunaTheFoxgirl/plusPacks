@@ -1,3 +1,35 @@
+<<<<<<< HEAD
+[23:06:16] [main/INFO]: Setting user: Player49
+[23:06:19] [Client thread/INFO]: LWJGL Version: 2.9.1
+[23:06:27] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:OresPlus
+[23:06:28] [Sound Library Loader/INFO]: Sound engine started
+[23:06:31] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[23:06:31] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[23:06:31] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:OresPlus
+[23:06:32] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[23:06:32] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[23:06:33] [Sound Library Loader/INFO]: Sound engine started
+[23:06:38] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[23:06:38] [Server thread/INFO]: Generating keypair
+[23:06:38] [Server thread/INFO]: Preparing start region for level 0
+[23:06:39] [Server thread/INFO]: Preparing spawn area: 31%
+[23:06:40] [Server thread/INFO]: Preparing spawn area: 86%
+[23:06:41] [Server thread/INFO]: Changing view distance to 4, from 10
+[23:06:41] [Server thread/INFO]: Player49[local:E:342a1d91] logged in with entity id 649 at (382.6883597409757, 75.0, 1647.6344633697304)
+[23:06:41] [Server thread/INFO]: Player49 joined the game
+[23:06:42] [Server thread/INFO]: Player49 has just earned the achievement [Coolness]
+[23:06:42] [Client thread/INFO]: [CHAT] Player49 has just earned the achievement [Coolness]
+[23:06:44] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2859ms behind, skipping 57 tick(s)
+[23:06:44] [Server thread/INFO]: Player49 has just earned the achievement [Taking Inventory]
+[23:06:45] [Client thread/INFO]: [CHAT] Player49 has just earned the achievement [Taking Inventory]
+[23:06:49] [Client thread/INFO]: Stopping!
+[23:06:49] [Server thread/INFO]: Stopping server
+[23:06:49] [Server thread/INFO]: Saving players
+[23:06:49] [Server thread/INFO]: Saving worlds
+[23:06:49] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[23:06:50] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[23:06:50] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+=======
 [21:49:28] [main/INFO]: Setting user: Player284
 [21:49:29] [Client thread/INFO]: LWJGL Version: 2.9.1
 [21:49:33] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:Ores+
@@ -99,3 +131,4 @@
 [21:53:44] [Server thread/INFO]: Saving chunks for level 'Ores+ T_Ingot T_Ore Jade J_Ore'/Nether
 [21:53:44] [Server thread/INFO]: Saving chunks for level 'Ores+ T_Ingot T_Ore Jade J_Ore'/The End
 [21:53:45] [Client thread/INFO]: Stopping!
+>>>>>>> 04afa8ebf446d1b44e0b05cd14db7d8e53832c3a

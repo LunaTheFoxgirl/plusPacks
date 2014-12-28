@@ -5,11 +5,95 @@
  R4wk, ZeuX, IngisKahn, bspkrs
  MCP Data version : unknown
 ****************************
-:eclipseClasspath
-:eclipseJdt
-:eclipseProject
-:eclipse
+:compileApiJava UP-TO-DATE
+:processApiResources UP-TO-DATE
+:apiClasses UP-TO-DATE
+:sourceMainJava
+:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:112: error: no suitable method found for registerBlock(BlockEnderBoom,String)
+GameRegistry.registerBlock(block, "EnderBoom");
+            ^
+    method GameRegistry.registerBlock(Block,String) is not applicable
+      (argument mismatch; BlockEnderBoom cannot be converted to Block)
+    method GameRegistry.registerBlock(Block,Class<? extends ItemBlock>,String,String,Object...) is not applicable
+      (argument mismatch; BlockEnderBoom cannot be converted to Block)
+    method GameRegistry.registerBlock(Block,Class<? extends ItemBlock>,String,Object...) is not applicable
+      (argument mismatch; BlockEnderBoom cannot be converted to Block)
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:117: error: no suitable constructor found for ItemStack(BlockEnderBoom,int)
+GameRegistry.addRecipe(new ItemStack(block, 1), new Object[]{
+                       ^
+    constructor ItemStack.ItemStack(Block,int) is not applicable
+      (argument mismatch; BlockEnderBoom cannot be converted to Block)
+    constructor ItemStack.ItemStack(Item,int) is not applicable
+      (argument mismatch; BlockEnderBoom cannot be converted to Item)
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:131: error: cannot find symbol
+.setStepSound(Block.soundTypeGrass)
+                   ^
+  symbol:   variable soundTypeGrass
+  location: class Block
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:126: error: cannot find symbol
+.setResistance(0.0F)
+^
+  symbol:   method setResistance(float)
+  location: class Object
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:133: error: cannot find symbol
+);block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
+       ^
+  symbol:   method setBlockBounds(float,float,float,float,float,float)
+  location: variable block of type BlockEnderBoom
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:134: error: cannot find symbol
+Block.blockRegistry.addObject(176, "EnderBoom", block);
+     ^
+  symbol:   variable blockRegistry
+  location: class Block
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:135: error: cannot find symbol
+block.setHarvestLevel("pickaxe", 0);
+     ^
+  symbol:   method setHarvestLevel(String,int)
+  location: variable block of type BlockEnderBoom
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:155: error: incompatible types: Material cannot be converted to long
+        super(Material.tnt);
+                      ^
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:173: error: incompatible types: BlockEnderBoom cannot be converted to Block
+world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+                                   ^
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:181: error: cannot find symbol
+if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k)){
+         ^
+  symbol:   method getIdFromBlock(Block)
+  location: class Block
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:181: error: cannot find symbol
+if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k)){
+                                    ^
+  symbol:   method canProvidePower()
+  location: variable l of type Block
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:226: error: method does not override or implement a method from a supertype
+@Override
+^
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:253: error: method does not override or implement a method from a supertype
+@Override
+^
+C:\Workspace\Mods\-Plus_Packs\build\sources\java\boommod\com\plusmods\boomplus\mcreator_enderBoom.java:265: error: method does not override or implement a method from a supertype
+@Override
+^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+14 errors
+1 warning
+ FAILED
 
-BUILD SUCCESSFUL
+FAILURE: Build failed with an exception.
 
-Total time: 9.326 secs
+<<<<<<< HEAD
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 15.589 secs
+=======
+Total time: 17.701 secs
+>>>>>>> origin/master

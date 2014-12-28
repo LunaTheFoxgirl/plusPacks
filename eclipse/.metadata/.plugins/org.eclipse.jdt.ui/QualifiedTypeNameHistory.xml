@@ -27,4 +27,7 @@
 <fullyQualifiedTypeName name="com.plusmods.boomplus.mcreator_sneakyBoomGold.BlockSneakyBoomGold"/>
 <fullyQualifiedTypeName name="net.minecraft.init.Blocks"/>
 <fullyQualifiedTypeName name="cpw.mods.fml.common.eventhandler.SubscribeEvent"/>
+<fullyQualifiedTypeName name="net.minecraftforge.client.event.sound.SoundLoadEvent"/>
+<fullyQualifiedTypeName name="net.minecraft.util.ResourceLocation"/>
+<fullyQualifiedTypeName name="net.minecraft.item.ItemArmor.ArmorMaterial"/>
 </qualifiedTypeNameHistroy>

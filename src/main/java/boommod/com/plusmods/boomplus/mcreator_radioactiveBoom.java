@@ -214,6 +214,10 @@ public class mcreator_radioactiveBoom {
 				if (true) {
 					world.setBlock(i, j, k + 2, Blocks.flowing_lava, 0, 2);
 				}
+				if (true)
+				{
+					//dqwdqwdqwd
+				}
 
 			}
 		}

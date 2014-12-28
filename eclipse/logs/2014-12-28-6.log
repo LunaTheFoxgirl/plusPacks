@@ -1,0 +1,62 @@
+[18:27:16] [main/INFO]: Setting user: Player758
+[18:27:18] [Client thread/INFO]: LWJGL Version: 2.9.1
+[18:27:24] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:OresPlus
+[18:27:25] [Sound Library Loader/INFO]: Sound engine started
+[18:27:27] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[18:27:27] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[18:27:28] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:OresPlus
+[18:27:28] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[18:27:28] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[18:27:29] [Sound Library Loader/INFO]: Sound engine started
+[18:28:13] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[18:28:13] [Server thread/INFO]: Generating keypair
+[18:28:17] [Server thread/INFO]: Preparing start region for level 0
+[18:28:18] [Server thread/INFO]: Preparing spawn area: 28%
+[18:28:19] [Server thread/INFO]: Changing view distance to 4, from 10
+[18:28:20] [Server thread/INFO]: Player758[local:E:a4349203] logged in with entity id 631 at (-20.21355381092563, 69.0, 385.24749185302727)
+[18:28:20] [Server thread/INFO]: Player758 joined the game
+[18:28:23] [Server thread/INFO]: Player758 has just earned the achievement [Taking Inventory]
+[18:28:23] [Client thread/INFO]: [CHAT] Player758 has just earned the achievement [Taking Inventory]
+[18:28:40] [Server thread/INFO]: Saving and pausing game...
+[18:28:40] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[18:28:40] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[18:28:40] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[18:29:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:mob.witch.idle
+[18:31:59] [Server thread/INFO]: Player758 has just earned the achievement [Ore is it?!??!]
+[18:31:59] [Client thread/INFO]: [CHAT] Player758 has just earned the achievement [Ore is it?!??!]
+[18:32:11] [Server thread/INFO]: Player758 has just earned the achievement [Coolness]
+[18:32:11] [Client thread/INFO]: [CHAT] Player758 has just earned the achievement [Coolness]
+[18:35:29] [Server thread/INFO]: Saving and pausing game...
+[18:35:29] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[18:35:29] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[18:35:29] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[18:37:02] [Server thread/INFO]: Saving and pausing game...
+[18:37:02] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[18:37:02] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[18:37:02] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[18:56:27] [Client thread/INFO]: Warning: Clientside chunk ticking took 103 ms
+[18:56:27] [Client thread/INFO]: Warning: Clientside chunk ticking took 101 ms
+[18:56:28] [Client thread/INFO]: Warning: Clientside chunk ticking took 331 ms
+[18:56:28] [Client thread/INFO]: Warning: Clientside chunk ticking took 318 ms
+[18:56:43] [Client thread/INFO]: Warning: Clientside chunk ticking took 213 ms
+[18:56:48] [Client thread/INFO]: Warning: Clientside chunk ticking took 178 ms
+[18:58:09] [Client thread/INFO]: Warning: Clientside chunk ticking took 206 ms
+[18:58:10] [Client thread/INFO]: Warning: Clientside chunk ticking took 348 ms
+[18:58:29] [Client thread/INFO]: Warning: Clientside chunk ticking took 202 ms
+[18:58:38] [Client thread/INFO]: Warning: Clientside chunk ticking took 459 ms
+[18:58:45] [Client thread/INFO]: Warning: Clientside chunk ticking took 398 ms
+[18:58:59] [Client thread/INFO]: Warning: Clientside chunk ticking took 287 ms
+[18:59:01] [Client thread/INFO]: Warning: Clientside chunk ticking took 162 ms
+[18:59:04] [Client thread/INFO]: Warning: Clientside chunk ticking took 259 ms
+[18:59:55] [Client thread/INFO]: Warning: Clientside chunk ticking took 414 ms
+[18:59:56] [Client thread/INFO]: Warning: Clientside chunk ticking took 206 ms
+[18:59:57] [Client thread/INFO]: Warning: Clientside chunk ticking took 115 ms
+[18:59:58] [Client thread/INFO]: Warning: Clientside chunk ticking took 269 ms
+[19:05:35] [Server thread/INFO]: Saving and pausing game...
+[19:05:35] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[19:05:35] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[19:05:35] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[19:39:00] [Server thread/INFO]: Saving and pausing game...
+[19:39:00] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[19:39:00] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[19:39:00] [Server thread/INFO]: Saving chunks for level 'New World'/The End

@@ -4,5 +4,5 @@ package com.plusmods.hooks;
  */
 
 public class MainHook {
-
+	
 }

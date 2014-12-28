@@ -47,6 +47,7 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -90,7 +91,9 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
+
 import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
@@ -138,19 +141,30 @@ public class mcreator_coolGuyGlasses {
 	}
 
 	static {
-		block = (new ItemcoolGuyGlasses(425));
+		block = (new ItemcoolGuyGlasses(ArmorMaterial.DIAMOND, 1, 0));
 		Item.itemRegistry.addObject(425, "CoolGuyGlasses", block);
 
 	}
 
-	static class ItemcoolGuyGlasses extends Item {
+	static class ItemcoolGuyGlasses extends ItemArmor {
 
-		public ItemcoolGuyGlasses(int par1) {
-			setMaxDamage(0);
+		public ItemcoolGuyGlasses(ArmorMaterial armor, int par1, int par2)
+		{
+			super(armor, 1, par2);
+			setMaxDamage(1);
 			maxStackSize = 1;
 			setUnlocalizedName("CoolGuyGlasses");
 			setTextureName("boomplus:coolGuystexture");
 			setCreativeTab(mcreator_boomPlusTab.tab);
+		}
+
+		
+		
+		
+		@Override
+		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+		{
+			return "boomplus:textures/armor/coolGlasses.png";
 		}
 
 		public int getItemEnchantability() {
@@ -171,12 +185,15 @@ public class mcreator_coolGuyGlasses {
 			int j = (int) entity.posY;
 			int k = (int) entity.posZ;
 
-			if (true) {
-				if (entity instanceof EntityPlayer)
-					((EntityPlayer) entity).addStat(
-							mcreator_coolAchievement.achievement, 1);
+			if (entity instanceof EntityPlayer)
+			{
+				/*ItemStack armorInvHelmet = ((EntityPlayer)entity).inventory.armorInventory[0];
+				ItemStack Armor = new ItemStack(mcreator_coolGuyGlasses.block);
+				if (armorInvHelmet != null)
+					if (armorInvHelmet.getDisplayName().startsWith(Armor.getDisplayName())) {*/
+						world.getPlayerEntityByName(((EntityPlayer) entity).getDisplayName()).addStat(mcreator_coolAchievement.achievement, 1);
+				//}
 			}
-
 		}
 
 	}
