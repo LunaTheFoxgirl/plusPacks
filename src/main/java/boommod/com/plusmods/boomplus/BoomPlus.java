@@ -340,6 +340,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_20.serverLoad(event);
 		mcreator_21.serverLoad(event);
 		mcreator_22.serverLoad(event);
+		mcreator_24.serverLoad(event);
 	}
 
 	@EventHandler
@@ -390,6 +391,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_20.preInit(event);
 		mcreator_21.preInit(event);
 		mcreator_22.preInit(event);
+		mcreator_24.preInit(event);
 		proxy.registerRenderers(this);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
