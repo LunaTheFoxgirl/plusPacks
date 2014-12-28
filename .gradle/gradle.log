@@ -5,34 +5,6 @@
  R4wk, ZeuX, IngisKahn, bspkrs
  MCP Data version : unknown
 ****************************
-<<<<<<< HEAD
-:compileApiJava UP-TO-DATE
-:processApiResources UP-TO-DATE
-:apiClasses UP-TO-DATE
-:sourceMainJava
-:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
-1 warning
-
-:processResources
-:classes
-:jar
-:compileTestJava UP-TO-DATE
-:processTestResources UP-TO-DATE
-:testClasses UP-TO-DATE
-:test UP-TO-DATE
-:extractMcpData UP-TO-DATE
-:getVersionJson
-:extractUserDev UP-TO-DATE
-:genSrgs SKIPPED
-:reobf
-:assemble
-:check UP-TO-DATE
-:build
-
-BUILD SUCCESSFUL
-
-Total time: 47.684 secs
-=======
 :eclipseClasspath
 :eclipseJdt
 :eclipseProject
@@ -40,5 +12,4 @@ Total time: 47.684 secs
 
 BUILD SUCCESSFUL
 
-Total time: 9.326 secs
->>>>>>> 04afa8ebf446d1b44e0b05cd14db7d8e53832c3a
+Total time: 17.701 secs
