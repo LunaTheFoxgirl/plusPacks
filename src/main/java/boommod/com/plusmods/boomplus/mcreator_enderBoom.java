@@ -90,13 +90,10 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
-
 import java.util.*;
 
-import jdk.nashorn.internal.ir.Block;
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
-
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 public class mcreator_enderBoom {
@@ -129,7 +126,7 @@ block = (BlockEnderBoom)(new BlockEnderBoom().setHardness(1.0F)
 .setBlockTextureName("enderBoomtexture")
 .setLightOpacity(0)
 .setStepSound(Block.soundTypeGrass)
-.setCreativeTab(CreativeTabs.tabBlock)
+.setCreativeTab(mcreator_boomPlusTab.tab)
 );block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
 Block.blockRegistry.addObject(176, "EnderBoom", block);
 block.setHarvestLevel("pickaxe", 0);
@@ -154,12 +151,6 @@ protected BlockEnderBoom()
 {
         super(Material.tnt);
 
-}
-
-
-public Object setHardness(float f) {
-	// TODO Auto-generated method stub
-	return null;
 }
 
 
