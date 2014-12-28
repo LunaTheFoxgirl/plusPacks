@@ -196,7 +196,7 @@ public class mcreator_radioactiveBoom {
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
 				if (true) {
-					world.createExplosion((Entity) null, i, j, k, 100F, true);
+					world.createExplosion((Entity) null, i, j, k, 120F, true);
 				}
 
 				if (true) {
