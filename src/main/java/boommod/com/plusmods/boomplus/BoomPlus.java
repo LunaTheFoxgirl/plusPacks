@@ -132,6 +132,8 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 	mcreator_welcome mcreator_21 = new mcreator_welcome();
 	mcreator_guideBook mcreator_22 = new mcreator_guideBook();
 	mcreator_orisitAchievement mcreator_23 = new mcreator_orisitAchievement();
+	mcreator_enderBoom mcreator_24 = new mcreator_enderBoom();
+
 
 	@Override
 	public int getBurnTime(ItemStack fuel) {
