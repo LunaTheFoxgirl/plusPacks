@@ -5,6 +5,7 @@
  R4wk, ZeuX, IngisKahn, bspkrs
  MCP Data version : unknown
 ****************************
+<<<<<<< HEAD
 :compileApiJava UP-TO-DATE
 :processApiResources UP-TO-DATE
 :apiClasses UP-TO-DATE
@@ -31,3 +32,13 @@
 BUILD SUCCESSFUL
 
 Total time: 47.684 secs
+=======
+:eclipseClasspath
+:eclipseJdt
+:eclipseProject
+:eclipse
+
+BUILD SUCCESSFUL
+
+Total time: 9.326 secs
+>>>>>>> 04afa8ebf446d1b44e0b05cd14db7d8e53832c3a

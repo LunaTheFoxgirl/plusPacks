@@ -216,12 +216,6 @@ public class mcreator_welcomeGUI {
 
 		}
 
-		protected void keyTyped(char par1, int par2) {
-
-			mc.thePlayer.sendChatMessage("The players name is: " + mc.thePlayer.getDisplayName());
-
-		}
-
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 			int posX = (this.width) / 2;
 			int posY = (this.height) / 2;
