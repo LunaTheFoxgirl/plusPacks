@@ -90,7 +90,7 @@ public class OresPlus {
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");
-				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
+				//GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
 				
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 7);
