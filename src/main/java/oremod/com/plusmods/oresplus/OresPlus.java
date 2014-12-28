@@ -52,9 +52,9 @@ public class OresPlus {
 				
 				
 			//JadeStone
-			jadeStone = new BlockJadeStone(5000).setBlockName("JadeStone").setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
+			jadeStone = new BlockJadeStone(5000).setBlockName("JadeStone").setHardness(2.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
 			jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-			jadeStone.setHarvestLevel("pickaxe", 3);
+			jadeStone.setHarvestLevel("pickaxe", 2);
 		
 	}
 	

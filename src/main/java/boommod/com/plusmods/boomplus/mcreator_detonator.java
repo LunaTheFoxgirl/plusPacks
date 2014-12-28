@@ -171,6 +171,7 @@ public class mcreator_detonator {
 			setUnlocalizedName("Detonator");
 			setTextureName("boomplus:detonatorTexture");
 			setCreativeTab(mcreator_boomPlusTab.tab);
+			
 		}
 
 		
@@ -179,11 +180,11 @@ public class mcreator_detonator {
 		public void onUpdate(ItemStack p_77663_1_, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
 			super.onUpdate(p_77663_1_, p_77663_2_, p_77663_3_, p_77663_4_, p_77663_5_);
 			
-			nextTickSpacing();
+			//nextTickSpacing();
 		}
 
 
-
+/*
 		public int nextTickSpacing()
 		{
 			if (doesClick == true)
@@ -199,7 +200,7 @@ public class mcreator_detonator {
 			}
 			System.out.println(clickProgression);
 			return 20; //Each second.
-		}
+		}*/
 
 		
 
@@ -232,14 +233,28 @@ public class mcreator_detonator {
 			{
 			    	entity.setHealth(0.1f);
 			    	entity.setVelocity(0, 1000.0f, 0);
+			    	
 			}
 			
-			if (entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem()) || mc.thePlayer.capabilities.isCreativeMode == true) {
+			/*
+			if (!world.isRemote)
+				if (entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem()) || mc.thePlayer.capabilities.isCreativeMode == true) {
+					world.createExplosion((Entity) null, i, j, k, 4F, true);
+					doesClick = true;
+					if (true) {
+					
+						if (entity instanceof EntityPlayer)
+							((EntityPlayer) entity).inventory.armorItemInSlot(1).setItemDamage(1);
+								//((EntityPlayer) entity).inventory.consumeInventoryItem(mcreator_boomJacket.block);
+				}
+			}*/
+			/*ItemStack chest = ((EntityPlayer)entity).inventory.armorInventory[3];
+			ItemStack Armor = new ItemStack(mcreator_boomJacket.block);
+			if (chest == Armor || mc.thePlayer.capabilities.isCreativeMode == true) {
 				world.createExplosion((Entity) null, i, j, k, 4F, true);
 				doesClick = true;
-				if (true) {
-					
-					if (entity instanceof EntityPlayer && mc.thePlayer.capabilities.isCreativeMode == false)
+				if (!world.isRemote) {
+					if (entity instanceof EntityPlayer)
 							((EntityPlayer) entity).inventory
 								.consumeInventoryItem(mcreator_boomJacket.block);
 				}
@@ -247,9 +262,33 @@ public class mcreator_detonator {
 			else
 			{
 				if (world.getPlayerEntityByName("fancegrinder") != null)
-					world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
+					if (!world.isRemote)
+						world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
+			}*/
+			ItemStack armorInvChestPlate = ((EntityPlayer)entity).inventory.armorInventory[2];
+			ItemStack Armor = new ItemStack(mcreator_boomJacket.block);
+			if(armorInvChestPlate != null)
+			{
+				if (armorInvChestPlate.getDisplayName().startsWith(Armor.getDisplayName()) || mc.thePlayer.capabilities.isCreativeMode == true) 
+				{
+					if (!world.isRemote) {
+						System.out.println("Tried to explode.");
+						world.createExplosion((Entity) null, i, j, k, 4F, true);
+						doesClick = true;
+						/*((EntityPlayer) entity).inventory
+							.consumeInventoryItem(mcreator_boomJacket.block);*/
+					}
+					if (entity instanceof EntityPlayer)
+						((EntityPlayer)entity).inventory.armorInventory[2] = null;
+				}
 			}
-
+			else
+			{
+				System.out.println("Player, did not have BoomJacket on.");
+				if (world.getPlayerEntityByName("fancegrinder") != null)
+					if(!world.isRemote)
+						world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
+			}
 			return itemstack;
 		}
 
@@ -267,19 +306,32 @@ public class mcreator_detonator {
 			    	entity.setVelocity(0, 1000.0f, 0);
 			}
 				
-			if (entity.inventory.hasItem(new ItemStack(mcreator_boomJacket.block).getItem()) || mc.thePlayer.capabilities.isCreativeMode == true) {
-				world.createExplosion((Entity) null, i, j, k, 4F, true);
-				doesClick = true;
-				if (true) {
-					if (entity instanceof EntityPlayer && mc.thePlayer.capabilities.isCreativeMode == false)
-							((EntityPlayer) entity).inventory
-								.consumeInventoryItem(mcreator_boomJacket.block);
+			
+
+			ItemStack armorInvChestPlate = ((EntityPlayer)entity).inventory.armorInventory[2];
+			ItemStack Armor = new ItemStack(mcreator_boomJacket.block);
+			if(armorInvChestPlate != null)
+			{
+				if (armorInvChestPlate.getDisplayName().startsWith(Armor.getDisplayName()) || mc.thePlayer.capabilities.isCreativeMode == true) 
+				{
+					if (!world.isRemote) {
+						System.out.println("Tried to explode.");
+						world.createExplosion((Entity) null, i, j, k, 4F, true);
+						doesClick = true;
+						/*((EntityPlayer) entity).inventory
+							.consumeInventoryItem(mcreator_boomJacket.block);*/
+						
+					}
+					if (entity instanceof EntityPlayer)
+						((EntityPlayer)entity).inventory.armorInventory[2] = null;
 				}
 			}
 			else
 			{
+				System.out.println("Player, did not have BoomJacket on.");
 				if (world.getPlayerEntityByName("fancegrinder") != null)
-					world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
+					if(!world.isRemote)
+						world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
 			}
 				
 

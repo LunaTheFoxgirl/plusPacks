@@ -1,0 +1,29 @@
+package com.plusmods.boomplus;
+
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.eventhandler.Event;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.stats.Achievement;
+import net.minecraft.stats.AchievementList;
+import net.minecraft.world.World;
+
+public class BoomSpawn 
+{
+	Minecraft mc = Minecraft.getMinecraft();
+	boolean firstUse = false;
+	
+	
+	
+	@SubscribeEvent
+	public void BoomJoin(Event event)
+	{
+		if(mc.thePlayer != null)
+			if(!mc.thePlayer.getStatFileWriter().hasAchievementUnlocked(AchievementList.openInventory) && firstUse == false)
+			{
+				mc.thePlayer.openGui(BoomPlus.class, mcreator_welcomeGUI.GUIID, mc.theWorld, (int)mc.thePlayer.posX, (int)mc.thePlayer.posY, (int)mc.thePlayer.posZ);
+				System.out.println("Running gui...");
+				firstUse = true;
+			}
+	}
+}

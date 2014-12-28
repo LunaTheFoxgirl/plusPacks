@@ -90,10 +90,12 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -126,13 +128,13 @@ public class mcreator_sneakyBoomGold {
 		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
 				"345", "678", Character.valueOf('0'),
 				new ItemStack(Items.gold_ingot, 1), Character.valueOf('1'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('2'),
+				new ItemStack(Item.getItemById(69), 1), Character.valueOf('2'),
 				new ItemStack(Items.gold_ingot, 1), Character.valueOf('3'),
 				new ItemStack(Items.gold_ingot, 1), Character.valueOf('4'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
+				new ItemStack(Items.redstone, 1), Character.valueOf('5'),
 				new ItemStack(Items.gold_ingot, 1), Character.valueOf('6'),
 				new ItemStack(Items.gold_ingot, 1), Character.valueOf('7'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('8'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('8'),
 				new ItemStack(Items.gold_ingot, 1), });
 	}
 
@@ -192,7 +194,7 @@ public class mcreator_sneakyBoomGold {
 				int l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-			if (true) {
+			if (!world.isRemote) {
 				world.createExplosion((Entity) null, i, j, k, 4F, true);
 			}
 
@@ -209,6 +211,13 @@ public class mcreator_sneakyBoomGold {
 			return 10;
 		}
 
+		@Override
+		public Item getItemDropped(int metaData, Random random, int fortune)
+		{
+			return Item.getItemById(266);
+		}
+		
+		@Override
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}

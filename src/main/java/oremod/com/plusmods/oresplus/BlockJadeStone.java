@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -44,6 +45,13 @@ import net.minecraft.world.World;
 			return 10;
 		}
 
+		@Override
+		public Item getItemDropped(int metaData, Random random, int fortune)
+		{
+			return OresPlus.jade;
+		}
+		
+		
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}

@@ -47,6 +47,7 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -90,7 +91,9 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
+
 import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
@@ -149,27 +152,39 @@ public class mcreator_boomJacket {
 	}
 
 	static {
-		block = (new ItemboomJacket(430));
+		block = (new ItemboomJacket(ArmorMaterial.CLOTH, 430, 1));
 		Item.itemRegistry.addObject(430, "BoomJacket", block);
 
 	}
 
-	static class ItemboomJacket extends Item {
+	static class ItemboomJacket extends ItemArmor {
 
-		public ItemboomJacket(int par1) {
-			setMaxDamage(0);
+		public ItemboomJacket(ArmorMaterial armor, int par1, int par2)
+		{
+			super(armor, 1, par2);
+			setMaxDamage(1);
 			maxStackSize = 1;
 			setUnlocalizedName("BoomJacket");
 			setTextureName("boomplus:boomJackettexture");
 			setCreativeTab(mcreator_boomPlusTab.tab);
 		}
 
+		
+		
+		
+		@Override
+		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+		{
+			return "boomplus:textures/armor/BoomJacket.png";
+		}
+		
 		public int getItemEnchantability() {
 			return 0;
 		}
 
+		@Override
 		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 0;
+			return 1;
 		}
 
 		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {

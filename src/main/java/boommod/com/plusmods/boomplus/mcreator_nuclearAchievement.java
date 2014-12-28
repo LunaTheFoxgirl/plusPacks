@@ -99,8 +99,8 @@ public class mcreator_nuclearAchievement {
 
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
-			"achievement.nuclearAchievement", "nuclearAchievement", 0, -5,
-			mcreator_radioactiveBoom.block, (Achievement) null))
+			"achievement.nuclearAchievement", "nuclearAchievement", 5, 5,
+			mcreator_radGunpowder.block, (Achievement) null))
 			.initIndependentStat();
 
 	public void load() {

@@ -200,7 +200,7 @@ public class mcreator_massiveBoom {
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
-				if (true) {
+				if (!world.isRemote) {
 					world.createExplosion((Entity) null, i, j, k, 60F, true);
 				}
 

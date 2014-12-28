@@ -90,10 +90,12 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -126,13 +128,13 @@ public class mcreator_sneakyBoomDiamond {
 		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
 				"345", "678", Character.valueOf('0'),
 				new ItemStack(Items.diamond, 1), Character.valueOf('1'),
-				new ItemStack(Items.diamond, 1), Character.valueOf('2'),
+				new ItemStack(Item.getItemById(69), 1), Character.valueOf('2'),
 				new ItemStack(Items.diamond, 1), Character.valueOf('3'),
 				new ItemStack(Items.diamond, 1), Character.valueOf('4'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
+				new ItemStack(Items.redstone, 1), Character.valueOf('5'),
 				new ItemStack(Items.diamond, 1), Character.valueOf('6'),
 				new ItemStack(Items.diamond, 1), Character.valueOf('7'),
-				new ItemStack(Items.diamond, 1), Character.valueOf('8'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('8'),
 				new ItemStack(Items.diamond, 1), });
 	}
 
@@ -188,26 +190,45 @@ public class mcreator_sneakyBoomDiamond {
 			return red ? 1 : 0;
 		}
 
-		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
-				int l) {
+		public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l) 
+		{
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-			if (true) {
+			if (!world.isRemote) 
+			{
+				if (!((EntityClientPlayerMP)entity).getStatFileWriter().hasAchievementUnlocked(mcreator_orisitAchievement.achievement))
+				{
+					world.getPlayerEntityByName(entity.getDisplayName()).addStat(mcreator_orisitAchievement.achievement, 1);
+				}
 				world.createExplosion((Entity) null, i, j, k, 4F, true);
 			}
-
+			else
+			{
+				if (!((EntityClientPlayerMP)entity).getStatFileWriter().hasAchievementUnlocked(mcreator_orisitAchievement.achievement))
+				{
+					((EntityPlayer) entity).playSound("boomplus:orIsIt", 0.5f, 1);
+				}
+			}
 		}
 
 		@SideOnly(Side.CLIENT)
 		public int getRenderType() {
 			return 0;
 		}
+		
+		@Override
+		public Item getItemDropped(int metaData, Random random, int fortune)
+		{
+			return Item.getItemById(264);
+		}
+		
 
 		@Override
 		public int tickRate(World world) {
 			return 10;
 		}
 
+		@Override
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}

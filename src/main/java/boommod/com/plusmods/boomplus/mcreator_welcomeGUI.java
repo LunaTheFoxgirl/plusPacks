@@ -90,6 +90,7 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.Random;
 
 import org.lwjgl.input.Keyboard;
@@ -180,7 +181,7 @@ public class mcreator_welcomeGUI {
 		}
 
 		private static final ResourceLocation texture = new ResourceLocation(
-				"WelcomeGUI4427199964071195392.png");
+				"WelcomeGUI2.png");
 
 		protected void drawGuiContainerBackgroundLayer(float par1, int par2,
 				int par3) {
@@ -188,18 +189,18 @@ public class mcreator_welcomeGUI {
 			int posY = (this.height) / 2;
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-			this.mc.renderEngine.bindTexture(texture);
-			this.xSize = 350;
-			this.ySize = 225;
+			/*this.mc.renderEngine.bindTexture(texture);
+			this.xSize = 225;
+			this.ySize = 127;
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);*/
 
 			zLevel = 100.0F;
 
 			this.mc.renderEngine
-					.bindTexture(new ResourceLocation("logoPNG.png"));
-			this.drawTexturedModalRect(posX + (-117), posY + (-119), 0, 0, 256,
+					.bindTexture(new ResourceLocation("booml.png"));
+			this.drawTexturedModalRect(posX + (-130), posY + (-199), 0, 0, 256,
 					256);
 
 		}
@@ -217,11 +218,7 @@ public class mcreator_welcomeGUI {
 
 		protected void keyTyped(char par1, int par2) {
 
-			if (par2 != 28 && par2 != 156) {
-				if (par2 == 1) {
-					this.mc.displayGuiScreen((GuiScreen) null);
-				}
-			}
+			mc.thePlayer.sendChatMessage("The players name is: " + mc.thePlayer.getDisplayName());
 
 		}
 
@@ -231,18 +228,18 @@ public class mcreator_welcomeGUI {
 			this.fontRendererObj.drawString(
 					"--------------------------------------", posX + (-115),
 					posY + (-30), 0xffffff);
-			this.fontRendererObj.drawString("Hello!", posX + (-24), posY
+			this.fontRendererObj.drawString("Hello!", posX + (-18), posY
 					+ (-20), 0xffffff);
 			this.fontRendererObj.drawString("Thanks for playing with Boom+",
 					posX + (-79), posY + (-6), 0xffffff);
 			this.fontRendererObj
 					.drawString(
 							"Please contact us if you think we should add your idea into the mod!",
-							posX + (-159), posY + (13), 0xffffff);
+							posX + (-170), posY + (13), 0xffffff);
 			this.fontRendererObj.drawString(
-					"Contact Email: zak@thegamingunion.org", posX + (-86),
-					posY + (40), 0x000000);
-			this.fontRendererObj.drawString("Thanks!", posX + (-22),
+					"Contact Email: zak@thegamingunion.org", posX + (-94),
+					posY + (40), 0x666600);
+			this.fontRendererObj.drawString("Thanks!", posX + (-23),
 					posY + (70), 0xff3333);
 
 		}
@@ -256,13 +253,25 @@ public class mcreator_welcomeGUI {
 			this.buttonList.clear();
 			int posX = (this.width) / 2;
 			int posY = (this.height) / 2;
-
+		    this.buttonList.add(new GuiButton(0, posX+(-28), posY+(90), 50, 20, "Close"));
 		}
 
 		protected void actionPerformed(GuiButton button) {
 			MinecraftServer server = FMLCommonHandler.instance()
 					.getMinecraftServerInstance();
 			World world = server.worldServers[0];
+			EntityLiving living;
+			
+			if (button.id == 0){
+				if(true){
+							mc.thePlayer.setHealth(40.0f);
+							this.mc.displayGuiScreen((GuiScreen) null);
+							
+					}
+					//boom
+				}
+
+			}
 
 		}
 
@@ -271,5 +280,3 @@ public class mcreator_welcomeGUI {
 		}
 
 	}
-
-}

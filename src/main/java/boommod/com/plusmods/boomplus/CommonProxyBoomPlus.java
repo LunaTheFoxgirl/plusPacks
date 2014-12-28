@@ -85,7 +85,11 @@ import org.apache.logging.log4j.Logger;
 import java.util.Random;
 import java.util.Map;
 
-public class CommonProxyBoomPlus {
+public class CommonProxyBoomPlus{
 	public void registerRenderers(BoomPlus ins) {
+	}
+	
+	public void initSounds() {
+	    MinecraftForge.EVENT_BUS.register(new BoomSound());
 	}
 }

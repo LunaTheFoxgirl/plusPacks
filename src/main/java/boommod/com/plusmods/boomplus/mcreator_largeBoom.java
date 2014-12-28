@@ -193,7 +193,8 @@ public class mcreator_largeBoom {
 				Block l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
-					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
+					&& world.isBlockIndirectlyGettingPowered(i, j, k) || Block.getIdFromBlock(l) > 0 && l.canProvidePower()) 
+			{
 
 				if (true) {
 					world.createExplosion((Entity) null, i, j, k, 10F, true);
@@ -206,7 +207,7 @@ public class mcreator_largeBoom {
 				int k, Explosion e) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-			if (true) {
+			if (!world.isRemote) {
 				world.createExplosion((Entity) null, i, j, k, 10F, true);
 			}
 

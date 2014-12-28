@@ -8,6 +8,7 @@ import cpw.mods.fml.common.asm.transformers.*;
 import cpw.mods.fml.common.discovery.*;
 import cpw.mods.fml.common.discovery.asm.*;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.functions.*;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
@@ -90,10 +91,12 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -138,12 +141,15 @@ public class mcreator_sneakyBoom {
 
 	static {
 
+		Random xRandom;
+		
 		block = (BlockSneakyBoom) (new BlockSneakyBoom().setHardness(2.0F)
 				.setResistance(10.0F).setLightLevel(0.0F)
 				.setBlockName("SneakyBoom")
 				.setBlockTextureName("boomplus:sneakyBoomtexture").setLightOpacity(0)
 				.setStepSound(Block.soundTypeStone)
 				.setCreativeTab(mcreator_boomPlusTab.tab));
+				
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(190, "SneakyBoom", block);
 		block.setHarvestLevel("pickaxe", 1);
@@ -191,8 +197,8 @@ public class mcreator_sneakyBoom {
 		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
 				int l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-
-			if (true) {
+			
+			if (!world.isRemote) {
 				world.createExplosion((Entity) null, i, j, k, 2F, true);
 			}
 
@@ -208,7 +214,15 @@ public class mcreator_sneakyBoom {
 		public int tickRate(World world) {
 			return 10;
 		}
-
+		
+		@Override
+		public Item getItemDropped(int metaData, Random random, int fortune)
+		{
+			return Item.getItemById(1);
+		}
+		
+		
+		@Override
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}

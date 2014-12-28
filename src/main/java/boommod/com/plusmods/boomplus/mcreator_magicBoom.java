@@ -188,8 +188,7 @@ public class mcreator_magicBoom {
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
-					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k) || Block.getIdFromBlock(l) > 0 && l.canProvidePower()) {
 
 				if (true) {
 					world.spawnEntityInWorld(new EntityLightningBolt(world,
@@ -245,11 +244,8 @@ public class mcreator_magicBoom {
 				int k, Explosion e) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-			if (true) {
+			if (!world.isRemote) {
 				world.spawnEntityInWorld(new EntityLightningBolt(world, i, j, k));
-			}
-
-			if (true) {
 				world.createExplosion((Entity) null, i, j, k, 4F, true);
 			}
 

@@ -1,0 +1,63 @@
+package com.plusmods.boomplus;
+
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.eventhandler.Event;
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.Achievement;
+import net.minecraft.stats.AchievementList;
+import net.minecraft.world.World;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+
+public class BoomSpawn
+{
+
+	boolean firstUse = false;
+	EntityClientPlayerMP entityPlayer;
+	Minecraft mc = Minecraft.getMinecraft();
+	
+	
+	
+	@SubscribeEvent()
+	public void BoomJoin(EntityJoinWorldEvent event)
+	{
+				if (event.entity instanceof EntityClientPlayerMP)
+				{
+					entityPlayer = (EntityClientPlayerMP) event.entity;
+						if(!entityPlayer.getStatFileWriter().hasAchievementUnlocked(AchievementList.openInventory) && firstUse == false)
+						{
+							
+							System.out.println("Running gui..., giving book to: " + mc.thePlayer.getGameProfile().getName() + " entpl is: " + entityPlayer.getGameProfile().getName());
+							boolean accepted = ((EntityPlayer)entityPlayer).inventory.addItemStackToInventory(new ItemStack(mcreator_guideBook.block, 1, 1));
+							((EntityPlayer)entityPlayer).inventory.setInventorySlotContents(1, new ItemStack(mcreator_guideBook.block, 1, 1));
+							System.out.println("AcceptStatus = " + accepted);
+							//entityPlayer.openGui(BoomPlus.class, mcreator_welcomeGUI.GUIID, event.world, (int) entityPlayer.posX, (int) entityPlayer.posY, (int) entityPlayer.posZ);
+							
+							firstUse = true;
+						}
+				}
+	}
+	
+	@SubscribeEvent
+	public void PlayerDies(LivingDeathEvent event)
+	{
+		System.out.println("EntityDied...." + event.entity);
+		if (event.entity instanceof EntityPlayerMP)
+		{
+			EntityClientPlayerMP entity = Minecraft.getMinecraft().thePlayer;
+			if (!entity.getStatFileWriter().hasAchievementUnlocked(mcreator_orisitAchievement.achievement))
+			{
+				System.out.println("Tried to give acheivement.");
+				((EntityPlayer) event.entity).addStat(mcreator_orisitAchievement.achievement, 1);
+				((EntityPlayer) event.entity).playSound("boomplus:orIsIlæt", 1, 1);
+			}
+		}
+	}
+}

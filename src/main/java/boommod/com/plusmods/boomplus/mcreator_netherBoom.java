@@ -196,15 +196,11 @@ public class mcreator_netherBoom {
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
-				if (true) {
+				if (!world.isRemote) {
 					world.createExplosion((Entity) null, i, j, k, 2F, true);
-				}
-
-				if (true) {
 					world.setBlock(i, j, k, Blocks.flowing_lava, 0, 2);
 				}
-
-				if (true) {
+				if (!world.isRemote) {
 					Entity sentity = EntityList.createEntityByID(56, world);
 					if (sentity != null) {
 						sentity.setLocationAndAngles(i, j, k,
@@ -214,7 +210,7 @@ public class mcreator_netherBoom {
 					}
 				}
 
-				if (true) {
+				if (!world.isRemote) {
 					Entity sentity = EntityList.createEntityByID(56, world);
 					if (sentity != null) {
 						sentity.setLocationAndAngles(i, j, k,
@@ -224,7 +220,7 @@ public class mcreator_netherBoom {
 					}
 				}
 
-				if (true) {
+				if (!world.isRemote) {
 					Entity sentity = EntityList.createEntityByID(61, world);
 					if (sentity != null) {
 						sentity.setLocationAndAngles(i, j, k,
@@ -234,7 +230,7 @@ public class mcreator_netherBoom {
 					}
 				}
 
-				if (true) {
+				if (!world.isRemote) {
 					Entity sentity = EntityList.createEntityByID(61, world);
 					if (sentity != null) {
 						sentity.setLocationAndAngles(i, j, k,
@@ -244,7 +240,7 @@ public class mcreator_netherBoom {
 					}
 				}
 
-				if (true) {
+				if (!world.isRemote) {
 					Entity sentity = EntityList.createEntityByID(61, world);
 					if (sentity != null) {
 						sentity.setLocationAndAngles(i, j, k,

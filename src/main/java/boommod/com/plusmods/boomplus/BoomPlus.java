@@ -125,11 +125,13 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 	mcreator_boomJacket mcreator_14 = new mcreator_boomJacket();
 	mcreator_detonator mcreator_15 = new mcreator_detonator();
 	mcreator_nuclearAchievement mcreator_16 = new mcreator_nuclearAchievement();
-	mcreator_sneakyBoomCoal mcreator_17 = new mcreator_sneakyBoomCoal();
+	mcreator_sneakyBoomIron mcreator_17 = new mcreator_sneakyBoomIron();
 	mcreator_sneakyBoomGold mcreator_18 = new mcreator_sneakyBoomGold();
 	mcreator_sneakyBoomDiamond mcreator_19 = new mcreator_sneakyBoomDiamond();
 	mcreator_welcomeGUI mcreator_20 = new mcreator_welcomeGUI();
 	mcreator_welcome mcreator_21 = new mcreator_welcome();
+	mcreator_guideBook mcreator_22 = new mcreator_guideBook();
+	mcreator_orisitAchievement mcreator_23 = new mcreator_orisitAchievement();
 
 	@Override
 	public int getBurnTime(ItemStack fuel) {
@@ -306,7 +308,8 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_19.load();
 		mcreator_20.load();
 		mcreator_21.load();
-
+		mcreator_22.load();
+		mcreator_23.load();
 	}
 
 	@EventHandler
@@ -333,6 +336,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_19.serverLoad(event);
 		mcreator_20.serverLoad(event);
 		mcreator_21.serverLoad(event);
+		mcreator_22.serverLoad(event);
 	}
 
 	@EventHandler
@@ -359,6 +363,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_19.instance = this.instance;
 		mcreator_20.instance = this.instance;
 		mcreator_21.instance = this.instance;
+		mcreator_22.instance = this.instance;
 		mcreator_0.preInit(event);
 		mcreator_1.preInit(event);
 		mcreator_2.preInit(event);
@@ -381,7 +386,12 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_19.preInit(event);
 		mcreator_20.preInit(event);
 		mcreator_21.preInit(event);
+		mcreator_22.preInit(event);
 		proxy.registerRenderers(this);
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		MinecraftForge.EVENT_BUS.register(new BoomSpawn());
+		MinecraftForge.EVENT_BUS.register(new mcreator_sneakyBoom());
 	}
 
 	public static class GuiHandler implements IGuiHandler {

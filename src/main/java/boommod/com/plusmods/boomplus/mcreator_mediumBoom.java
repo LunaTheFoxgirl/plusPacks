@@ -230,7 +230,7 @@ public class mcreator_mediumBoom {
 				int k, Explosion e) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-			if (true) {
+			if (!world.isRemote) {
 				world.createExplosion((Entity) null, i, j, k, 6F, true);
 			}
 
