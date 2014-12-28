@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -43,7 +44,7 @@ public class OresPlus {
 		public static Item theisIngot;
 		
 	//Tools
-		public static ItemTool jadePickaxe;
+		public static Item jadePickaxe;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -64,7 +65,7 @@ public class OresPlus {
 				jadeStone.setHarvestLevel("pickaxe", 2);
 				
 			//JadePickaxe
-				jadePickaxe = new JadePickaxe(5002).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("jade_pickaxe");
+				//jadePickaxe = new ItemJadePickaxe(2.0f, ToolMaterial.IRON).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("jade_pickaxe");
 			
 			//TheisIngot
 				theisIngot = new TheisIngot(5102).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:theis_ingot");
@@ -89,7 +90,8 @@ public class OresPlus {
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");
-		
+				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
+				
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 7);
 				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);
