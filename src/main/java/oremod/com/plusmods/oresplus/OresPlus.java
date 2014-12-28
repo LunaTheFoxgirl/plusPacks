@@ -86,6 +86,9 @@ public class OresPlus {
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 7);
 				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);
+				
+			//Smeling Recipe
+				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot), 10.0f);
 	}
 
 
