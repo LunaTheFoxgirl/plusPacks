@@ -4,7 +4,7 @@ fov:0.0
 gamma:0.0
 saturation:0.0
 renderDistance:4
-guiScale:3
+guiScale:0
 particles:0
 bobView:true
 anaglyph3d:false
@@ -86,7 +86,7 @@ key_key.hotbar.7:8
 key_key.hotbar.8:9
 key_key.hotbar.9:10
 key_key.tut_inventory.desc:45
-soundCategory_master:1.0
+soundCategory_master:0.15231788
 soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0

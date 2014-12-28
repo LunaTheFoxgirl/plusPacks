@@ -273,12 +273,12 @@ public class mcreator_detonator {
 				{
 					if (!world.isRemote) {
 						System.out.println("Tried to explode.");
-						world.createExplosion((Entity) null, i, j, k, 4F, true);
+						world.createExplosion((Entity) null, mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, 5F, true);
 						doesClick = true;
 						/*((EntityPlayer) entity).inventory
 							.consumeInventoryItem(mcreator_boomJacket.block);*/
 					}
-					if (entity instanceof EntityPlayer)
+					if (entity instanceof EntityPlayer && mc.thePlayer.capabilities.isCreativeMode == false)
 						((EntityPlayer)entity).inventory.armorInventory[2] = null;
 				}
 			}
@@ -316,13 +316,13 @@ public class mcreator_detonator {
 				{
 					if (!world.isRemote) {
 						System.out.println("Tried to explode.");
-						world.createExplosion((Entity) null, i, j, k, 4F, true);
+						world.createExplosion((Entity) null, mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, 5F, true);
 						doesClick = true;
 						/*((EntityPlayer) entity).inventory
 							.consumeInventoryItem(mcreator_boomJacket.block);*/
 						
 					}
-					if (entity instanceof EntityPlayer)
+					if (entity instanceof EntityPlayer && mc.thePlayer.capabilities.isCreativeMode == false)
 						((EntityPlayer)entity).inventory.armorInventory[2] = null;
 				}
 			}
