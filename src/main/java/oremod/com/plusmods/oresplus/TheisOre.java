@@ -16,7 +16,7 @@ public class TheisOre extends Block {
 	@Override
 	public int quantityDropped(int meta, int fortune, Random random) {
 		// TODO Auto-generated method stub
-		return 1000; //Code to troll Dan
+		return 1; //Bad Zak.
 	}
 	
 	

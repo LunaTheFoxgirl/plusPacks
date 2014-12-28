@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -33,13 +34,16 @@ public class OresPlus {
 	
 	
 	//Blocks
-	public static Block jadeStone;
-	public static Block theisOre;
+		public static Block jadeStone;
+		public static Block theisOre;
 
 	
 	//Items
-	public static Item jade;
-	public static Item theisIngot;
+		public static Item jade;
+		public static Item theisIngot;
+		
+	//Tools
+		public static ItemTool jadePickaxe;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -58,9 +62,12 @@ public class OresPlus {
 				jadeStone = new BlockJadeStone(5001).setBlockName("JadeStone").setHardness(2.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
 				jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				jadeStone.setHarvestLevel("pickaxe", 2);
+				
+			//JadePickaxe
+				jadePickaxe = new JadePickaxe(5002).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("jade_pickaxe");
 			
 			//TheisIngot
-				theisIngot = new TheisIngot(5002).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:theis_ingot");
+				theisIngot = new TheisIngot(5102).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:theis_ingot");
 			
 			
 			//TheisOre
@@ -88,7 +95,7 @@ public class OresPlus {
 				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);
 				
 			//Smeling Recipe
-				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot), 10.0f);
+				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
 	}
 
 
