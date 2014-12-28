@@ -312,6 +312,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_21.load();
 		mcreator_22.load();
 		mcreator_23.load();
+		mcreator_24.load();
 	}
 
 	@EventHandler
