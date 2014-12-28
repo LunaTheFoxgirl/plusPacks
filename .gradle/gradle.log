@@ -84,6 +84,7 @@ Note: Some messages have been simplified; recompile with -Xdiags:verbose to get 
 FAILURE: Build failed with an exception.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 * What went wrong:
 Execution failed for task ':compileJava'.
 > Compilation failed; see the compiler error output for details.
@@ -94,6 +95,9 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
 BUILD FAILED
 
 Total time: 15.589 secs
+=======
+Total time: 17.701 secs
+>>>>>>> origin/master
 =======
 Total time: 17.701 secs
 >>>>>>> origin/master
