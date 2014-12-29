@@ -3,13 +3,13 @@
     "modlist": [{
         "modid": "OresPlus",
         "name": "Ores+",
-        "description": "Ores+ is an enhancment to the original ores, in Minecraft.",
+        "description": "Ores+ is an enhancement to the original ores in Minecraft.",
         "version": "${version}",
         "mcversion": "${mcversion}",
         "url": "",
         "updateUrl": "",
-        "authorList": ["Member1221"],
-        "credits": "Member1221",
+        "authorList": ["Member1221, ZakDoesGaming, 0Danomaster0"],
+        "credits": "PlusMods Team",
         "logoFile": "",
         "screenshots": [],
         "dependencies": []
@@ -17,13 +17,13 @@
     {
         "modid": "BoomPlus",
         "name": "Boom+",
-        "description": "Boom+ adds a new array of Explosives, to Minecraft.",
+        "description": "Boom+ adds a new array of Explosives to Minecraft.",
         "version": "${version}",
         "mcversion": "${mcversion}",
         "url": "",
         "updateUrl": "",
-        "authorList": ["Member1221", "ZakDoesGaming"],
-        "credits": "Member1221 and ZakDoesGaming",
+        "authorList": ["ZakDoesGaming, Member1221"],
+        "credits": "PlusMods Team",
         "logoFile": "",
         "screenshots": [],
         "dependencies": []
