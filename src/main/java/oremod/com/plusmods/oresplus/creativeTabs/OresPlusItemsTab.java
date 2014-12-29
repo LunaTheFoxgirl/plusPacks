@@ -1,4 +1,4 @@
-package com.plusmods.oresplus.creativeTabs;
+package com.plusmods.oresplus.creativetabs;
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
