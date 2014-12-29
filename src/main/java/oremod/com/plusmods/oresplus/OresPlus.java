@@ -176,6 +176,7 @@ public class OresPlus {
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(amethyst, "Amethyst");
 				GameRegistry.registerItem(citrine, "Citrine");
+				GameRegistry.registerItem(sapphire, "Sapphire");
 				
 			//Crafting Recipe
 				//JadePickaxe
