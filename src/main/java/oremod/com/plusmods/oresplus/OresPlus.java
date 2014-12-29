@@ -111,9 +111,15 @@ public class OresPlus {
 				GameRegistry.registerItem(ruby, "Ruby");
 				
 			//Crafting Recipe
-				GameRegistry.addRecipe(new ItemStack(jadePickaxe), "XXX", " I ", " I ", 
-						'X', new ItemStack(ruby),
-						'I', new ItemStack(Items.stick));
+				//JadePickaxe
+					GameRegistry.addRecipe(new ItemStack(jadePickaxe), "XXX", " I ", " I ", 
+							'X', new ItemStack(jade),
+							'I', new ItemStack(Items.stick));
+				//RubyPickaxe
+					GameRegistry.addRecipe(new ItemStack(rubyPickaxe), "XXX", " I ", " I ",
+							'X', new ItemStack(ruby),
+							'I', new ItemStack(Items.stick));
+				
 				
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 3);
