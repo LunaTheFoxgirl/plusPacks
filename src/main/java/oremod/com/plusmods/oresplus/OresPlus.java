@@ -76,9 +76,13 @@ public class OresPlus {
 		public static Item jadePickaxe;
 		public static Item jadeSpade;
 		public static Item rubyPickaxe;
+		public static Item rubySpade;
 		public static Item sapphirePickaxe;
+		public static Item sapphireSpade;
 		public static Item citrinePickaxe;
+		public static Item citrineSpade;
 		public static Item amethystPickaxe;
+		public static Item amethystSpade;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -156,7 +160,20 @@ public class OresPlus {
 				
 			
 			//JadeSpade
-				jadeSpade = new ItemJadeSpade(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeSpade").setTextureName("oresplus:jade_spade");
+				jadeSpade = new ItemJadeSpade(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeSpade").setTextureName("oresplus:jade_shovel");
+				
+			//RubySpade
+				rubySpade = new ItemRubySpade(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubySpade").setTextureName("oresplus:ruby_shovel");
+				
+			//SapphireSpade
+				sapphireSpade = new ItemSapphireSpade(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("SapphireSpade").setTextureName("oresplus:sapphire_shovel");
+				
+			//CitrineSpade
+				citrineSpade = new ItemCitrineSpade(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrineSpade").setTextureName("oresplus:citrine_shovel");
+				
+			//AmethystSpade
+				amethystSpade = new ItemAmethystSpade(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystSpade").setTextureName("oresplus:amethyst_shovel");	
+				
 				
 				
 				
