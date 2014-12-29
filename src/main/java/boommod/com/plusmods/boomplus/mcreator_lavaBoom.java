@@ -143,7 +143,7 @@ public class mcreator_lavaBoom {
 		block = (BlockLavaBoom) (new BlockLavaBoom().setHardness(1.0F)
 				.setResistance(0.0F).setLightLevel(0.0F)
 				.setBlockName("LavaBoom")
-				.setBlockTextureName("boomplus:lavaBoomtexture")
+				.setBlockTextureName("boomplus:lava_boom_texture")
 				.setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
 				.setCreativeTab(CreativeTabs.tabBlock));
@@ -165,10 +165,6 @@ public class mcreator_lavaBoom {
 
 	static class BlockLavaBoom extends Block {
 
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
 
 		boolean red = false;
 
@@ -605,43 +601,6 @@ public class mcreator_lavaBoom {
 
 		}
 
-		@SideOnly(Side.CLIENT)
-		@Override
-		public IIcon getIcon(int i, int par2) {
-
-			if (i == 0)
-				return gor;
-
-			else if (i == 1)
-				return dol;
-
-			else if (i == 2)
-				return st1;
-
-			else if (i == 3)
-				return st2;
-
-			else if (i == 4)
-				return st4;
-
-			else if (i == 5)
-				return st3;
-
-			else
-				return gor;
-
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public void registerBlockIcons(IIconRegister reg) {
-			this.gor = reg.registerIcon("lavaBoomtexture");
-			this.dol = reg.registerIcon("lavaBoomtexture");
-			this.st1 = reg.registerIcon("lavaBoomtexture");
-			this.st2 = reg.registerIcon("lavaBoomtexture");
-			this.st3 = reg.registerIcon("lavaBoomtexture");
-			this.st4 = reg.registerIcon("lavaBoomtexture");
-		}
 
 		public int getRenderType() {
 			return 0;

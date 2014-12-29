@@ -164,11 +164,6 @@ public class mcreator_enderBoom {
 
 	static class BlockEnderBoom extends Block {
 
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
-
 		boolean red = false;
 		
 		boolean firstExplosion = false;
@@ -216,7 +211,9 @@ public class mcreator_enderBoom {
 						}
 				
 				firstExplosion = true;
-
+				if (!world.isRemote)
+					world.createExplosion((Entity) null, i, j, k, 1.0f, false);
+				
 				if (true) {
 					Entity sentity = EntityList.createEntityByID(58, world);
 					if (sentity != null) {
@@ -350,43 +347,6 @@ public class mcreator_enderBoom {
 
 		}
 
-		@SideOnly(Side.CLIENT)
-		@Override
-		public IIcon getIcon(int i, int par2) {
-
-			if (i == 0)
-				return gor;
-
-			else if (i == 1)
-				return dol;
-
-			else if (i == 2)
-				return st1;
-
-			else if (i == 3)
-				return st2;
-
-			else if (i == 4)
-				return st4;
-
-			else if (i == 5)
-				return st3;
-
-			else
-				return gor;
-
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public void registerBlockIcons(IIconRegister reg) {
-			this.gor = reg.registerIcon("enderBoomtexture");
-			this.dol = reg.registerIcon("enderBoomtexture");
-			this.st1 = reg.registerIcon("enderBoomtexture");
-			this.st2 = reg.registerIcon("enderBoomtexture");
-			this.st3 = reg.registerIcon("enderBoomtexture");
-			this.st4 = reg.registerIcon("enderBoomtexture");
-		}
 
 		public int getRenderType() {
 			return 0;
