@@ -77,6 +77,7 @@ public class OresPlus {
 		public static Item rubyPickaxe;
 		public static Item sapphirePickaxe;
 		public static Item citrinePickaxe;
+		public static Item amethystPickaxe;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -148,7 +149,12 @@ public class OresPlus {
 				
 			//CitrinePickaxe
 				citrinePickaxe = new ItemCitrinePickaxe(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrinePickaxe").setTextureName("oresplus:citrine_pickaxe");
-	
+			
+			//AmethystPickaxe
+				amethystPickaxe = new ItemAmethystPickaxe(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystPickaxe").setTextureName("oresplus:amethyst_pickaxe");
+				
+				
+				
 	
 	}
 	
@@ -173,6 +179,7 @@ public class OresPlus {
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
 				GameRegistry.registerItem(amethyst, "Amethyst");
+				GameRegistry.registerItem(amethystPickaxe, "AmethystPickaxe");
 				GameRegistry.registerItem(citrine, "Citrine");
 				GameRegistry.registerItem(citrinePickaxe, "CitrinePickaxe");
 				GameRegistry.registerItem(sapphire, "Sapphire");
@@ -191,6 +198,15 @@ public class OresPlus {
 					GameRegistry.addRecipe(new ItemStack(sapphirePickaxe), "XXX", " I ", " I ",
 							'X', new ItemStack(sapphire),
 							'I', new ItemStack(Items.stick));
+				//CitrinePickaxe
+					GameRegistry.addRecipe(new ItemStack(citrinePickaxe), "XXX", " I ", " I ",
+							'X', new ItemStack(citrine),
+							'I', new ItemStack(Items.stick));
+				//CitrinePickaxe
+					GameRegistry.addRecipe(new ItemStack(amethystPickaxe), "XXX", " I ", " I ",
+							'X', new ItemStack(amethyst),
+							'I', new ItemStack(Items.stick));
+					
 				
 				
 			//IWorldGenerator		

@@ -17,6 +17,8 @@ item.Sapphire.name=Sapphire
 item.JadePickaxe.name=Jade Pickaxe
 item.RubyPickaxe.name=Ruby Pickaxe
 item.SapphirePickaxe.name=Sapphire Pickaxe
+item.CitrinePickaxe.name=Citrine Pickaxe
+item.AmethystPickaxe.name=Amethyst Pickaxe
 
 
 itemGroup.tabOresPlus=Ores+
