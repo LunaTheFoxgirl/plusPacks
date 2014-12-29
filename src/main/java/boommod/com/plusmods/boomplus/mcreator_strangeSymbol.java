@@ -130,15 +130,31 @@ public class mcreator_strangeSymbol {
 	public void registerRenderers() {
 	}
 
+	
+	public static final Item.ToolMaterial symbol = EnumHelper.addToolMaterial("symbolMaterial", 12, 2000, 6, 120000000000000000.0f, 0);
+	
 	static {
-		block = (new ItemstrangeSymbol(424));
+		block = (new ItemstrangeSymbol(symbol));
 		Item.itemRegistry.addObject(424, "StrangeSymbol", block);
 
 	}
 
-	static class ItemstrangeSymbol extends Item {
+	static class ItemstrangeSymbol extends ItemSword {
 
-		public ItemstrangeSymbol(int par1) {
+		
+		
+		
+		/*public ItemstrangeSymbol(int par1) {
+			setMaxDamage(0);
+			maxStackSize = 1;
+			setUnlocalizedName("StrangeSymbol");
+			setTextureName("boomplus:oreisit");
+			setCreativeTab(mcreator_boomPlusTab.tab);
+		}*/
+
+		public ItemstrangeSymbol(ToolMaterial p_i45356_1_) {
+			super(p_i45356_1_);
+			// TODO Auto-generated constructor stub
 			setMaxDamage(0);
 			maxStackSize = 1;
 			setUnlocalizedName("StrangeSymbol");
