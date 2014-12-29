@@ -94,38 +94,73 @@ import java.util.Random;
 
 public class mcreator_sneakyBoomEdible {
 
-public mcreator_sneakyBoomEdible(){}
+	public mcreator_sneakyBoomEdible() {
+	}
 
-public static Item block;public static Object instance;public void load(){
-GameRegistry.addRecipe(new ItemStack(block, 1), new Object[]{
-	"X1X", "345", "X7X", Character.valueOf('1'), new ItemStack(Items.cooked_beef, 1), Character.valueOf('3'), new ItemStack(Items.cooked_beef, 1), Character.valueOf('4'), new ItemStack(Blocks.tnt, 1), Character.valueOf('5'), new ItemStack(Items.cooked_beef, 1), Character.valueOf('7'), new ItemStack(Items.cooked_beef, 1), 
-});}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-public void registerRenderers(){}
+	public static Item block;
+	public static Object instance;
 
+	public void load() {
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "X1X",
+				"345", "X7X", Character.valueOf('1'),
+				new ItemStack(Items.cooked_beef, 1), Character.valueOf('3'),
+				new ItemStack(Items.cooked_beef, 1), Character.valueOf('4'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
+				new ItemStack(Items.cooked_beef, 1), Character.valueOf('7'),
+				new ItemStack(Items.cooked_beef, 1), });
+	}
 
-static{
-block = (Item)(new BlockCustomFood(4, 0.3F, false));block = ((BlockCustomFood)block).setUnlocalizedName("SneakyBoomEdible").setTextureName("sneakyBoomedibletexture");
-block.setMaxStackSize(64);
-Item.itemRegistry.addObject(423, "SneakyBoomEdible", block);
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
-}
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
-public static class BlockCustomFood extends ItemFood{public BlockCustomFood(int par2, float par3, boolean par4){super(par2, par3, par4);}
-protected void onFoodEaten(ItemStack itemStack, World world, EntityPlayer entity){
-super.onFoodEaten(itemStack, world, entity);float var4 = 1.0F;
-int i = (int)(entity.prevPosX + (entity.posX - entity.prevPosX) * (double)var4);
-int j = (int)(entity.prevPosY + (entity.posY - entity.prevPosY) * (double)var4 + 1.62D - (double)entity.yOffset);
-int k = (int)(entity.prevPosZ + (entity.posZ - entity.prevPosZ) * (double)var4);
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
 
-if(true){
-world.createExplosion((Entity)null, i, j, k, 4F, true);
-}
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
 
-}
-}
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
+	}
+
+	static {
+		block = (Item) (new BlockCustomFood(4, 0.3F, false));
+		block = ((BlockCustomFood) block)
+				.setUnlocalizedName("SneakyBoomEdible")
+				.setTextureName("boomplus:sneakyBoomedibletexture");
+		block.setMaxStackSize(64);
+		Item.itemRegistry.addObject(423, "SneakyBoomEdible", block);
+
+	}
+
+	public static class BlockCustomFood extends ItemFood {
+		public BlockCustomFood(int par2, float par3, boolean par4) {
+			super(par2, par3, par4);
+		}
+
+		protected void onFoodEaten(ItemStack itemStack, World world,
+				EntityPlayer entity) {
+			super.onFoodEaten(itemStack, world, entity);
+			float var4 = 1.0F;
+			int i = (int) (entity.prevPosX + (entity.posX - entity.prevPosX)
+					* (double) var4);
+			int j = (int) (entity.prevPosY + (entity.posY - entity.prevPosY)
+					* (double) var4 + 1.62D - (double) entity.yOffset);
+			int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
+					* (double) var4);
+
+			if (!world.isRemote) {
+				world.createExplosion((Entity) null, i, j, k, 4F, true);
+			}
+
+		}
+	}
 }

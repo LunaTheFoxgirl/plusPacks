@@ -65,7 +65,7 @@ public class OresPlus {
 				jadeStone.setHarvestLevel("pickaxe", 2);
 				
 			//JadePickaxe
-				//jadePickaxe = new ItemJadePickaxe(2.0f, ToolMaterial.IRON).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("jade_pickaxe");
+				jadePickaxe = new ItemJadePickaxe(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("oresplus:jade_pickaxe");
 			
 			//TheisIngot
 				theisIngot = new TheisIngot(5102).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:theis_ingot");
@@ -90,7 +90,7 @@ public class OresPlus {
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");
-				//GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
+				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
 				
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 7);

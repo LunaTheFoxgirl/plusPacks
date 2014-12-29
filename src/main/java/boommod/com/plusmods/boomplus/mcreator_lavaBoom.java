@@ -96,343 +96,545 @@ import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 public class mcreator_lavaBoom {
 
-public mcreator_lavaBoom(){}
+	public mcreator_lavaBoom() {
+	}
 
-public static BlockLavaBoom block;
+	public static BlockLavaBoom block;
 
-public static Object instance;public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){
+	public static Object instance;
 
-GameRegistry.registerBlock(block, "LavaBoom");
-}
-public void registerRenderers(){}
-public void load(){
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
 
-GameRegistry.addRecipe(new ItemStack(block, 1), new Object[]{
-	"012", "345", "678", Character.valueOf('0'), new ItemStack(Blocks.cobblestone, 1), Character.valueOf('1'), new ItemStack(Items.lava_bucket, 1), Character.valueOf('2'), new ItemStack(Blocks.cobblestone, 1), Character.valueOf('3'), new ItemStack(Items.lava_bucket, 1), Character.valueOf('4'), new ItemStack(Blocks.tnt, 1), Character.valueOf('5'), new ItemStack(Items.lava_bucket, 1), Character.valueOf('6'), new ItemStack(Blocks.cobblestone, 1), Character.valueOf('7'), new ItemStack(Items.lava_bucket, 1), Character.valueOf('8'), new ItemStack(Blocks.cobblestone, 1), 
-});
-}
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
 
+	public void preInit(FMLPreInitializationEvent event) {
 
-static{
+		GameRegistry.registerBlock(block, "LavaBoom");
+	}
 
-block = (BlockLavaBoom)(new BlockLavaBoom().setHardness(1.0F)
-.setResistance(0.0F)
-.setLightLevel(0.0F)
-.setBlockName("LavaBoom")
-.setBlockTextureName("lavaBoomtexture")
-.setLightOpacity(0)
-.setStepSound(Block.soundTypeGrass)
-.setCreativeTab(CreativeTabs.tabBlock)
-);block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
-Block.blockRegistry.addObject(177, "LavaBoom", block);
-block.setHarvestLevel("pickaxe", 0);
-}
+	public void registerRenderers() {
+	}
 
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-static class BlockLavaBoom extends Block
-{
+	public void load() {
 
-int a1 = 0,a2 = 0,a3 = 0,a4 = 0,a5 = 0,a6 = 0;
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
+				"345", "678", Character.valueOf('0'),
+				new ItemStack(Blocks.cobblestone, 1), Character.valueOf('1'),
+				new ItemStack(Items.lava_bucket, 1), Character.valueOf('2'),
+				new ItemStack(Blocks.cobblestone, 1), Character.valueOf('3'),
+				new ItemStack(Items.lava_bucket, 1), Character.valueOf('4'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
+				new ItemStack(Items.lava_bucket, 1), Character.valueOf('6'),
+				new ItemStack(Blocks.cobblestone, 1), Character.valueOf('7'),
+				new ItemStack(Items.lava_bucket, 1), Character.valueOf('8'),
+				new ItemStack(Blocks.cobblestone, 1), });
+	}
 
-IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null, st4 = null;
+	static {
 
-boolean red = false;
+		block = (BlockLavaBoom) (new BlockLavaBoom().setHardness(1.0F)
+				.setResistance(0.0F).setLightLevel(0.0F)
+				.setBlockName("LavaBoom")
+				.setBlockTextureName("boomplus:lavaBoomtexture").setLightOpacity(0)
+				.setStepSound(Block.soundTypeGrass)
+				.setCreativeTab(CreativeTabs.tabBlock));
+		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		Block.blockRegistry.addObject(177, "LavaBoom", block);
+		block.setHarvestLevel("pickaxe", 0);
+	}
 
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
+	static class BlockLavaBoom extends Block {
 
+		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
 
-protected BlockLavaBoom()
-{
-        super(Material.iron);
+		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
+				st4 = null;
 
-}
+		boolean red = false;
 
+		protected BlockLavaBoom() {
+			super(Material.iron);
 
-public void onBlockAdded(World world, int i, int j, int k){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-if(entity!=null&&world!=null){
-int le = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-world.setBlockMetadataWithNotify(i, j, k, le, 2);
-}
+		}
 
-world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
 
-}
-public int isProvidingStrongPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5){
-return red?1:0;
-}
-public void onNeighborBlockChange(World world, int i, int j, int k, Block l){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k)){
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
 
-if(true){
-world.createExplosion((Entity)null, i, j, k, 0.1F, true);
-}
+		}
 
-if(true){
-boolean place = true;
+		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
+				int par2, int par3, int par4, int par5) {
+			return red ? 1 : 0;
+		}
 
-if(place){
-world.setBlock(i+3, j+0, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+0, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+0, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+0, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+0, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+0, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+0, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+0, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+0, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+0, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+0, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+0, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+0, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+0, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+0, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+0, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+0, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+0, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+0, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+0, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+0, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+0, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+0, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+0, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+0, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+0, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+0, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+0, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+1, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+1, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+1, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+1, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+1, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+1, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+1, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+1, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+1, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+1, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+1, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+1, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+1, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+1, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+1, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+1, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+1, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+1, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+1, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+1, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+1, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+1, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+1, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+1, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+1, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+1, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+1, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+1, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+2, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+2, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+2, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+2, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+2, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+2, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+2, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+2, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+2, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+2, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+2, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+2, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+2, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+2, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+2, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+2, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+2, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+2, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+2, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+2, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+2, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+2, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+2, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+2, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+3, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+3, k+0, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+3, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+3, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+3, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+3, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+3, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+3, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+3, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+3, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+3, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+3, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+0, j+3, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+9, j+3, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+3, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+3, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+3, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+3, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+3, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+3, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+3, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+3, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+3, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+3, k+9, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+4, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+4, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+4, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+4, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+4, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+4, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+4, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+4, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+4, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+4, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+4, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+4, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+4, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+4, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+4, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+4, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+4, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+4, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+4, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+4, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+5, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+5, k+1, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+5, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+5, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+5, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+5, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+5, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+5, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+5, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+5, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+1, j+5, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+8, j+5, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+5, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+5, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+5, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+5, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+5, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+5, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+5, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+5, k+8, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+6, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+6, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+6, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+6, k+2, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+6, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+6, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+6, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+6, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+6, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+6, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+6, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+6, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+2, j+6, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+6, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+6, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+7, j+6, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+6, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+6, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+6, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+6, k+7, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+7, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+7, k+3, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+7, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+7, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+7, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+7, k+4, Block.getBlockById(10), 0, 2);
-world.setBlock(i+3, j+7, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+7, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+7, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+6, j+7, k+5, Block.getBlockById(10), 0, 2);
-world.setBlock(i+4, j+7, k+6, Block.getBlockById(10), 0, 2);
-world.setBlock(i+5, j+7, k+6, Block.getBlockById(10), 0, 2);
-}
-}
+		public void onNeighborBlockChange(World world, int i, int j, int k,
+				Block l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
+					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
-}
-}
-public void randomDisplayTick(World world, int i, int j, int k, Random random){
-EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-		World par1World = world;
-				int par2 = i;
-				int par3 = j;
-				int par4 = k;
-		Random par5Random = random;
-if(true)
-        for (int l = 0; l < 10; ++l)
-        {
-            double d0 = (double)((float)par2 + par5Random.nextFloat());
-            double d1 = (double)((float)par3 + par5Random.nextFloat());
-            double d2 = (double)((float)par4 + par5Random.nextFloat());
-            double d3 = 0.0D;
-            double d4 = 0.0D;
-            double d5 = 0.0D;
-            int i1 = par5Random.nextInt(2) * 2 - 1;
-            d3 = ((double)par5Random.nextFloat() - 0.5D) * 0.49999999850988386D;
-            d4 = ((double)par5Random.nextFloat() - 0.5D) * 0.49999999850988386D;
-            d5 = ((double)par5Random.nextFloat() - 0.5D) * 0.49999999850988386D;
-            par1World.spawnParticle("flame", d0, d1, d2, d3, d4, d5);
-        }
+				if (true) {
+					world.createExplosion((Entity) null, i, j, k, 0.1F, true);
+				}
 
-}
-@SideOnly(Side.CLIENT)
-@Override
-public IIcon getIcon(int i, int par2){
+				if (true) {
+					boolean place = true;
 
-if (i == 0)
-return gor;
+					if (place) {
+						world.setBlock(i + 3, j + 0, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 0, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 0, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 0, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 0, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 0, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 0, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 0, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 0, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 0, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 0, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 0, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 0, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 0, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 0, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 0, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 0, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 0, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 0, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 0, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 0, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 0, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 0, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 0, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 0, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 0, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 0, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 0, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 1, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 1, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 1, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 1, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 1, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 1, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 1, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 1, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 1, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 1, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 1, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 1, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 1, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 1, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 1, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 1, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 1, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 1, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 1, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 1, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 1, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 1, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 1, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 1, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 1, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 1, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 1, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 1, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 2, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 2, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 2, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 2, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 2, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 2, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 2, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 2, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 2, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 2, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 2, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 2, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 2, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 2, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 2, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 2, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 2, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 2, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 2, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 2, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 2, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 2, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 2, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 2, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 3, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 3, k + 0,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 3, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 3, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 3, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 3, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 3, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 3, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 3, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 3, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 3, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 3, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 0, j + 3, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 9, j + 3, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 3, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 3, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 3, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 3, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 3, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 3, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 3, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 3, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 3, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 3, k + 9,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 4, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 4, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 4, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 4, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 4, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 4, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 4, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 4, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 4, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 4, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 4, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 4, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 4, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 4, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 4, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 4, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 4, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 4, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 4, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 4, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 5, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 5, k + 1,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 5, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 5, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 5, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 5, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 5, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 5, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 5, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 5, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 1, j + 5, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 8, j + 5, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 5, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 5, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 5, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 5, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 5, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 5, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 5, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 5, k + 8,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 6, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 6, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 6, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 6, k + 2,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 6, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 6, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 6, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 6, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 6, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 6, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 6, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 6, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 2, j + 6, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 6, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 6, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 7, j + 6, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 6, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 6, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 6, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 6, k + 7,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 7, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 7, k + 3,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 7, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 7, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 7, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 7, k + 4,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 3, j + 7, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 7, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 7, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 6, j + 7, k + 5,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 4, j + 7, k + 6,
+								Block.getBlockById(10), 0, 2);
+						world.setBlock(i + 5, j + 7, k + 6,
+								Block.getBlockById(10), 0, 2);
+					}
+				}
 
-else if (i == 1)
-return dol;
+			}
+		}
 
-else if (i == 2)
-return st1;
+		public void randomDisplayTick(World world, int i, int j, int k,
+				Random random) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			World par1World = world;
+			int par2 = i;
+			int par3 = j;
+			int par4 = k;
+			Random par5Random = random;
+			if (true)
+				for (int l = 0; l < 10; ++l) {
+					double d0 = (double) ((float) par2 + par5Random.nextFloat());
+					double d1 = (double) ((float) par3 + par5Random.nextFloat());
+					double d2 = (double) ((float) par4 + par5Random.nextFloat());
+					double d3 = 0.0D;
+					double d4 = 0.0D;
+					double d5 = 0.0D;
+					int i1 = par5Random.nextInt(2) * 2 - 1;
+					d3 = ((double) par5Random.nextFloat() - 0.5D) * 0.49999999850988386D;
+					d4 = ((double) par5Random.nextFloat() - 0.5D) * 0.49999999850988386D;
+					d5 = ((double) par5Random.nextFloat() - 0.5D) * 0.49999999850988386D;
+					par1World.spawnParticle("flame", d0, d1, d2, d3, d4, d5);
+				}
 
-else if (i == 3)
-return st2;
+		}
 
-else if (i == 4)
-return st4;
+		@SideOnly(Side.CLIENT)
+		@Override
+		public IIcon getIcon(int i, int par2) {
 
-else if (i == 5)
-return st3;
+			if (i == 0)
+				return gor;
 
-else
-return gor;
+			else if (i == 1)
+				return dol;
 
-}
+			else if (i == 2)
+				return st1;
 
-@SideOnly(Side.CLIENT)
-@Override
-public void registerBlockIcons(IIconRegister reg){
-this.gor = reg.registerIcon("lavaBoomtexture");
-this.dol = reg.registerIcon("lavaBoomtexture");
-this.st1 = reg.registerIcon("lavaBoomtexture");
-this.st2 = reg.registerIcon("lavaBoomtexture");
-this.st3 = reg.registerIcon("lavaBoomtexture");
-this.st4 = reg.registerIcon("lavaBoomtexture");
-}
-public int getRenderType(){
-return 0;
-}
-@Override
-public int tickRate(World world)
-{
-    return 10;
-}
+			else if (i == 3)
+				return st2;
 
-public int quantityDropped(Random par1Random){
-return 1;
-}
+			else if (i == 4)
+				return st4;
 
-}
+			else if (i == 5)
+				return st3;
+
+			else
+				return gor;
+
+		}
+
+		@SideOnly(Side.CLIENT)
+		@Override
+		public void registerBlockIcons(IIconRegister reg) {
+			this.gor = reg.registerIcon("lavaBoomtexture");
+			this.dol = reg.registerIcon("lavaBoomtexture");
+			this.st1 = reg.registerIcon("lavaBoomtexture");
+			this.st2 = reg.registerIcon("lavaBoomtexture");
+			this.st3 = reg.registerIcon("lavaBoomtexture");
+			this.st4 = reg.registerIcon("lavaBoomtexture");
+		}
+
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int tickRate(World world) {
+			return 10;
+		}
+
+		public int quantityDropped(Random par1Random) {
+			return 1;
+		}
+
+	}
 }
