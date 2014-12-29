@@ -51,6 +51,7 @@ public class OresPlus {
 	//Tools
 		public static Item jadePickaxe;
 		public static Item rubyPickaxe;
+		public static Item sapphirePickaxe;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -100,6 +101,9 @@ public class OresPlus {
 				
 			//Sapphire
 				sapphire = new ItemSapphire(5004).setUnlocalizedName("Sapphire").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:sapphire");
+				
+			//SapphirePickaxe
+				sapphirePickaxe = new ItemSapphirePickaxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:sapphire_pickaxe");
 	}
 	
 	@EventHandler
@@ -130,6 +134,8 @@ public class OresPlus {
 					GameRegistry.addRecipe(new ItemStack(rubyPickaxe), "XXX", " I ", " I ",
 							'X', new ItemStack(ruby),
 							'I', new ItemStack(Items.stick));
+				//SapphirePickaxe
+					
 				
 				
 			//IWorldGenerator		
