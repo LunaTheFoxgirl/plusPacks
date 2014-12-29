@@ -1,23 +1,21 @@
 tile.JadeStone.name=Jade Ore
 tile.TheisOre.name=Theis Ore
 tile.RubyOre.name=Ruby Ore
+tile.SapphireOre.name=Sapphire Ore
+tile.CitrineOre.name=Citrine Ore
+tile.AmethystOre.name=Amethyst Ore
 
 
 
 item.Jade.name=Jade
-item.JadePickaxe.name=Jade Pickaxe
-
 item.Ruby.name=Ruby
-item.RubyPickaxe.name=Ruby Pickaxe
-
-item.Ruby.name=Amethyst
-tile.AmethystOre.name=Amethyst Ore
-
+item.Ruby.name=Ruby
 item.Citrine.name=Citrine
-item.CitrineOre.name=Citrine Ore
-
 item.TheisIngot.name=Theis Ingot
+item.Amethyst.name=Amethyst
 
+item.JadePickaxe.name=Jade Pickaxe
+item.RubyPickaxe.name=Ruby Pickaxe
 
 
 
