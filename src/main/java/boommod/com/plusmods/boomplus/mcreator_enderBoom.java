@@ -170,6 +170,9 @@ public class mcreator_enderBoom {
 				st4 = null;
 
 		boolean red = false;
+		
+		boolean firstExplosion = false;
+		
 
 		protected BlockEnderBoom() {
 			super(Material.tnt);
@@ -200,141 +203,19 @@ public class mcreator_enderBoom {
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
+				if (!world.isRemote)
+					if(firstExplosion == false)
+						for (int x = i - 7; x < i + 7; x++)
+						{
+							for (int z = k - 7; z < k + 7; z++)
+							{
+								System.out.println("AddingBlockat= " + x + " " + z);
+								world.setBlock(x, j, z, Blocks.end_portal);
+								
+							}
+						}
 				
-				if (true) {
-					world.createExplosion((Entity) null, i, j, k, 2F, true);
-				}
-				
-				if(true){
-					world.setBlock(i + 1, j, k, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i, j, k + 1, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i + 1, j, k + 1, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i + 1, j, k + 2, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i + 2, j, k + 1, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 2, j, k + 2, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 2, j, k + 3, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 3, j, k + 2, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 3, j, k + 3, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 3, j, k + 4, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 4, j, k + 3, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 4, j, k + 4, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 4, j, k + 5, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 5, j, k + 4, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 5, j, k + 5, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 5, j, k + 6, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i - 1, j, k, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i, j, k - 1, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i - 1, j, k - 1, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i - 1, j, k - 2, Blocks.end_portal, 0, 2);
-					}
-				
-				if(true){
-					world.setBlock(i - 2, j, k - 1, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 2, j, k - 2, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 2, j, k - 3, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 3, j, k - 2, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 3, j, k - 3, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 3, j, k - 4, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 4, j, k - 3, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 4, j, k - 4, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 4, j, k - 5, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i - 5, j, k - 4, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 5, j, k + 5, Blocks.end_portal, 0, 2);
-					}
-
-				if(true){
-					world.setBlock(i + 5, j, k + 6, Blocks.end_portal, 0, 2);
-					}
-
-
-
+				firstExplosion = true;
 
 				if (true) {
 					Entity sentity = EntityList.createEntityByID(58, world);

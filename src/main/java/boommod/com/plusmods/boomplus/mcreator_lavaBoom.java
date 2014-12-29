@@ -90,10 +90,12 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -141,7 +143,8 @@ public class mcreator_lavaBoom {
 		block = (BlockLavaBoom) (new BlockLavaBoom().setHardness(1.0F)
 				.setResistance(0.0F).setLightLevel(0.0F)
 				.setBlockName("LavaBoom")
-				.setBlockTextureName("boomplus:lavaBoomtexture").setLightOpacity(0)
+				.setBlockTextureName("boomplus:lavaBoomtexture")
+				.setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
 				.setCreativeTab(CreativeTabs.tabBlock));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
@@ -156,6 +159,9 @@ public class mcreator_lavaBoom {
 	public void generateNether(World world, Random random, int chunkX,
 			int chunkZ) {
 	}
+	
+	
+	
 
 	static class BlockLavaBoom extends Block {
 
@@ -170,6 +176,20 @@ public class mcreator_lavaBoom {
 			super(Material.iron);
 
 		}
+		
+		
+		
+		
+
+		@Override
+		public int quantityDropped(int meta, int fortune, Random random) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+
+
+
 
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
