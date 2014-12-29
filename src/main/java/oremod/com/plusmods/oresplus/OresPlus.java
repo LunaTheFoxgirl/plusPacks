@@ -37,6 +37,7 @@ public class OresPlus {
 	//Blocks
 		public static Block jadeStone;
 		public static Block theisOre;
+		public static Block rubyOre;
 
 	
 	//Items
@@ -75,6 +76,11 @@ public class OresPlus {
 				theisOre = new TheisOre(Material.iron).setBlockName("TheisOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:theis_ore");
 				theisOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				theisOre.setHarvestLevel("pickaxe", 2);
+				
+			//RubyOre
+				rubyOre = new TheisOre(Material.iron).setBlockName("RubyOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:ruby_ore");
+				rubyOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+				rubyOre.setHarvestLevel("pickaxe", 2);
 	}
 	
 	@EventHandler
@@ -86,6 +92,7 @@ public class OresPlus {
 			//Block
 				GameRegistry.registerBlock(jadeStone, "JadeStone");
 				GameRegistry.registerBlock(theisOre, "TheisOre");
+				GameRegistry.registerBlock(rubyOre, "RubyOre");
 		
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
@@ -95,6 +102,7 @@ public class OresPlus {
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 7);
 				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);
+				GameRegistry.registerWorldGenerator(new RubyOreGen(), 4);
 				
 			//Smeling Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
