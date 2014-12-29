@@ -95,53 +95,66 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
-
-
 @SuppressWarnings("unchecked")
-public class mcreator_strangeSymbol{
+public class mcreator_strangeSymbol {
 
-public mcreator_strangeSymbol(){}
+	public mcreator_strangeSymbol() {
+	}
 
-public static Item block;public static Object instance;public void load(){
+	public static Item block;
+	public static Object instance;
+
+	public void load() {
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
+	}
+
+	static {
+		block = (new ItemstrangeSymbol(424));
+		Item.itemRegistry.addObject(424, "StrangeSymbol", block);
+
+	}
+
+	static class ItemstrangeSymbol extends Item {
+
+		public ItemstrangeSymbol(int par1) {
+			setMaxDamage(0);
+			maxStackSize = 64;
+			setUnlocalizedName("StrangeSymbol");
+			setTextureName("boomplus:oreisit");
+			setCreativeTab(mcreator_boomPlusTab.tab);
+		}
+
+		public int getItemEnchantability() {
+			return 0;
+		}
+
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
+		}
+
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
+		}
+
+	}
 }
-public void generateNether(World world, Random random, int chunkX, int chunkZ){}
-public void generateSurface(World world, Random random, int chunkX, int chunkZ){}
-public int addFuel(ItemStack fuel){return 0;}
-public void serverLoad(FMLServerStartingEvent event){}
-public void preInit(FMLPreInitializationEvent event){}
-public void registerRenderers(){
-}
-
-
-static{
-block = (new ItemstrangeSymbol(424));
-Item.itemRegistry.addObject(424, "StrangeSymbol", block);
-
-}
-
-static class ItemstrangeSymbol extends Item{
-
-public ItemstrangeSymbol(int par1){
-setMaxDamage(0);
-maxStackSize = 64;
-setUnlocalizedName("StrangeSymbol");
-setTextureName("oreisit");
-setCreativeTab(CreativeTabs.tabMaterials);
-}
-public int getItemEnchantability()
-{
-    return 0;
-}
-public int getMaxItemUseDuration(ItemStack par1ItemStack)
-{
-    return 0;
-}
-public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
-{
-    return 1.0F;
-}
-
-
-
-
-}}

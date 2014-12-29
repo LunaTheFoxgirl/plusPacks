@@ -100,7 +100,7 @@ public class mcreator_orisitAchievement {
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
 			"achievement.orisitAchievement", "orisitAchievement", 5, 1,
-			mcreator_guideBook.block, (Achievement) null))
+			mcreator_strangeSymbol.block, (Achievement) null))
 			.initIndependentStat();
 
 	public void load() {

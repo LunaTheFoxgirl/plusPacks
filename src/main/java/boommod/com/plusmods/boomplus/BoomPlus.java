@@ -408,7 +408,6 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new BoomSpawn());
-		MinecraftForge.EVENT_BUS.register(new mcreator_sneakyBoom());
 	}
 
 	public static class GuiHandler implements IGuiHandler {

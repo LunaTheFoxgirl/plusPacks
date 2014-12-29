@@ -146,7 +146,7 @@ public class mcreator_enderBoom {
 		block = (BlockEnderBoom) (new BlockEnderBoom().setHardness(1.0F)
 				.setResistance(0.0F).setLightLevel(0.0F)
 				.setBlockName("EnderBoom")
-				.setBlockTextureName("boomplus:enderBoomtexture").setLightOpacity(0)
+				.setBlockTextureName("boomplus:ender_boom_texture").setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
 				.setCreativeTab(mcreator_boomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
@@ -200,6 +200,7 @@ public class mcreator_enderBoom {
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
+				
 				if (true) {
 					world.createExplosion((Entity) null, i, j, k, 2F, true);
 				}
@@ -234,13 +235,28 @@ public class mcreator_enderBoom {
 					}
 				}
 				
-				if (!mc.theWorld.isRemote)
-				{
-					System.out.println("PlayerIs= " + entity.getDisplayName());
-					mc.theWorld.getPlayerEntityByName(entity.getDisplayName()).travelToDimension(1);
-				}
-
 			}
+		}
+		
+		
+		
+
+		@Override
+		public void onBlockDestroyedByExplosion(World p_149723_1_,
+				int p_149723_2_, int p_149723_3_, int p_149723_4_,
+				Explosion p_149723_5_) {
+			// TODO Auto-generated method stub
+			super.onBlockDestroyedByExplosion(p_149723_1_, p_149723_2_, p_149723_3_,
+					p_149723_4_, p_149723_5_);
+			
+			Minecraft mc = Minecraft.getMinecraft();
+			if (!mc.theWorld.isRemote)
+			{
+				System.out.println("PlayerIs= " + mc.thePlayer.getDisplayName());
+				mc.theWorld.getPlayerEntityByName(mc.thePlayer.getDisplayName()).travelToDimension(1);
+			}
+			
+			
 		}
 
 		public void randomDisplayTick(World world, int i, int j, int k,
