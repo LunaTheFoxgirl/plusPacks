@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -108,6 +109,11 @@ public class OresPlus {
 				GameRegistry.registerItem(theisIngot, "TheisIngot");
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
 				GameRegistry.registerItem(ruby, "Ruby");
+				
+			//Crafting Recipe
+				GameRegistry.addRecipe(new ItemStack(jadePickaxe), "XXX", " I ", " I ", 
+						'X', new ItemStack(ruby),
+						'I', new ItemStack(Items.stick));
 				
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 3);
