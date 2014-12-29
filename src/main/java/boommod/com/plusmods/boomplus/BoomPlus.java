@@ -95,7 +95,7 @@ import cpw.mods.fml.relauncher.*;
 public class BoomPlus implements IFuelHandler, IWorldGenerator {
 
 	public static final String MODID = "BoomPlus";
-	public static final String VERSION = "1.1.0";
+	public static final String VERSION = "1.2.0";
 
 	@SidedProxy(clientSide = "com.plusmods.boomplus.ClientProxyBoomPlus", serverSide = "com.plusmods.boomplus.CommonProxyBoomPlus")
 	// @SidedProxy(clientSide="mod.mcreator.ClientProxyBoomPlus",
