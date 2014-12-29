@@ -219,8 +219,10 @@ public class mcreator_welcomeGUI {
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 			int posX = (this.width) / 2;
 			int posY = (this.height) / 2;
+			this.fontRendererObj.drawString("BoomPlus Developers: ZakDoesGaming, Member1221", posX+(-124),
+                    posY+(-40), 0x00ffff);
 			this.fontRendererObj.drawString(
-					"--------------------------------------", posX + (-115),
+					"------------------------------------------", posX + (-128),
 					posY + (-30), 0xffffff);
 			this.fontRendererObj.drawString("Hello!", posX + (-18), posY
 					+ (-20), 0xffffff);
@@ -247,7 +249,7 @@ public class mcreator_welcomeGUI {
 			this.buttonList.clear();
 			int posX = (this.width) / 2;
 			int posY = (this.height) / 2;
-		    this.buttonList.add(new GuiButton(0, posX+(-28), posY+(90), 50, 20, "Close"));
+		    this.buttonList.add(new GuiButton(0, posX+(-28), posY+(85), 50, 20, "Close"));
 		}
 
 		protected void actionPerformed(GuiButton button) {

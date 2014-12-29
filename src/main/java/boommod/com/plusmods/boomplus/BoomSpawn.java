@@ -23,8 +23,6 @@ public class BoomSpawn
 	EntityClientPlayerMP entityPlayer;
 	Minecraft mc = Minecraft.getMinecraft();
 	
-	
-	
 	@SubscribeEvent()
 	public void BoomJoin(EntityJoinWorldEvent event)
 	{

@@ -405,7 +405,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_26.preInit(event);
 		mcreator_27.preInit(event);
 		proxy.registerRenderers(this);
-		
+	
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new BoomSpawn());
 	}
