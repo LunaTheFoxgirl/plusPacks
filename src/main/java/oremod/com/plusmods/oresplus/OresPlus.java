@@ -8,8 +8,8 @@ import com.plusmods.oresplus.blocks.CitrineOre;
 import com.plusmods.oresplus.blocks.RubyOre;
 import com.plusmods.oresplus.blocks.SapphireOre;
 import com.plusmods.oresplus.blocks.TheisOre;
-import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusTab;
+import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusToolsTab;
 import com.plusmods.oresplus.handles.CommonProxy;
 import com.plusmods.oresplus.items.ItemAmethyst;
@@ -94,14 +94,14 @@ public class OresPlus {
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) 
 	{
-			//Jade
-				jade = new ItemJade(5000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
-				
-				
+								
 			//JadeStone
 				jadeStone = new BlockJadeStone(5001).setBlockName("JadeStone").setHardness(2.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
 				jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				jadeStone.setHarvestLevel("pickaxe", 2);
+				
+				//Jade
+				jade = new ItemJade(5000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
 				
 			//JadePickaxe
 				jadePickaxe = new ItemJadePickaxe(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("oresplus:jade_pickaxe");
@@ -177,6 +177,7 @@ public class OresPlus {
 				GameRegistry.registerItem(amethyst, "Amethyst");
 				GameRegistry.registerItem(citrine, "Citrine");
 				GameRegistry.registerItem(sapphire, "Sapphire");
+				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
 				
 			//Crafting Recipe
 				//JadePickaxe

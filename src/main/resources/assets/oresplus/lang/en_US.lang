@@ -13,12 +13,13 @@ item.Ruby.name=Ruby
 item.Citrine.name=Citrine
 item.TheisIngot.name=Theis Ingot
 item.Amethyst.name=Amethyst
+item.Sapphire.name=Sapphire
 
 item.JadePickaxe.name=Jade Pickaxe
 item.RubyPickaxe.name=Ruby Pickaxe
+item.SapphirePickaxe.name=Sapphire Pickaxe
 
 
-
-itemGroup.tabOresPlus=Ores+ Ores
+itemGroup.tabOresPlus=Ores+
 itemGroup.tabOresPlusItems=Ores+ Items
 itemGroup.tabOresPlusTools=Ores+ Tools
