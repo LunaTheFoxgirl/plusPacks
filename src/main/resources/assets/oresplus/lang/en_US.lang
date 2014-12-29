@@ -20,6 +20,12 @@ item.SapphirePickaxe.name=Sapphire Pickaxe
 item.CitrinePickaxe.name=Citrine Pickaxe
 item.AmethystPickaxe.name=Amethyst Pickaxe
 
+item.JadeSpade.name=Jade Shovel
+item.RubySpade.name=Ruby Shovel
+item.SapphireSpade.name=Sapphire Shovel
+item.CitrineSpade.name=Citrine Shovel
+item.AmethystSpade.name=Amethyst Shovel
+
 
 itemGroup.tabOresPlus=Ores+
 itemGroup.tabOresPlusItems=Ores+ Items
