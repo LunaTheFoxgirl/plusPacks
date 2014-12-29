@@ -133,6 +133,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 	mcreator_guideBook mcreator_22 = new mcreator_guideBook();
 	mcreator_orisitAchievement mcreator_23 = new mcreator_orisitAchievement();
 	mcreator_enderBoom mcreator_24 = new mcreator_enderBoom();
+	mcreator_lavaBoom mcreator_25 = new mcreator_lavaBoom();
 
 
 	@Override
@@ -313,6 +314,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_22.load();
 		mcreator_23.load();
 		mcreator_24.load();
+		mcreator_25.load();
 	}
 
 	@EventHandler
@@ -341,6 +343,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_21.serverLoad(event);
 		mcreator_22.serverLoad(event);
 		mcreator_24.serverLoad(event);
+		mcreator_25.serverLoad(event);
 	}
 
 	@EventHandler
@@ -392,6 +395,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_21.preInit(event);
 		mcreator_22.preInit(event);
 		mcreator_24.preInit(event);
+		mcreator_25.preInit(event);
 		proxy.registerRenderers(this);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());

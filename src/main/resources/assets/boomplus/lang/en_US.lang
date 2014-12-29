@@ -35,3 +35,5 @@ item.GuideBook.name=Boom+ Introduction Book
 itemGroup.tabboomPlusTab=Boom+
 achievement.orisitAchievement=Ore is it?!??!
 achievement.orisitAchievement.desc=Break a Diamond Sneaky Boom, ouch.
+tile.EnderBoom.name=Ender Boom
+tile.LavaBoom.name=Lava Boom

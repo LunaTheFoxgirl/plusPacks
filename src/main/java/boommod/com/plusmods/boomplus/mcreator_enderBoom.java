@@ -141,7 +141,7 @@ public class mcreator_enderBoom {
 		block = (BlockEnderBoom) (new BlockEnderBoom().setHardness(1.0F)
 				.setResistance(0.0F).setLightLevel(0.0F)
 				.setBlockName("EnderBoom")
-				.setBlockTextureName("enderBoomtexture").setLightOpacity(0)
+				.setBlockTextureName("boomplus:enderBoomtexture").setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
 				.setCreativeTab(mcreator_boomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
