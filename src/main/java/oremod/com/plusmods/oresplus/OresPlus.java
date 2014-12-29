@@ -8,6 +8,7 @@ import com.plusmods.oresplus.blocks.CitrineOre;
 import com.plusmods.oresplus.blocks.RubyOre;
 import com.plusmods.oresplus.blocks.SapphireOre;
 import com.plusmods.oresplus.blocks.TheisOre;
+import com.plusmods.oresplus.blocks.UraniumOre;
 import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusToolsTab;
@@ -21,6 +22,7 @@ import com.plusmods.oresplus.items.ItemRubyPickaxe;
 import com.plusmods.oresplus.items.ItemSapphire;
 import com.plusmods.oresplus.items.ItemSapphirePickaxe;
 import com.plusmods.oresplus.items.TheisIngot;
+import com.plusmods.oresplus.oreGen.UraniumOreGen;
 import com.plusmods.oresplus.toolMaterials.ToolMaterials;
 
 import net.minecraft.block.Block;
@@ -63,6 +65,7 @@ public class OresPlus {
 		public static Block sapphireOre;
 		public static Block amethystOre;
 		public static Block citrineOre;
+		public static Block uraniumOre;
 	
 	//Items
 		public static Item jade;
@@ -174,7 +177,8 @@ public class OresPlus {
 			//AmethystSpade
 				amethystSpade = new ItemAmethystSpade(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystSpade").setTextureName("oresplus:amethyst_shovel");	
 				
-				
+			//UraniumOre
+				uraniumOre = new UraniumOre(Material.iron).setBlockName("UraniumOre").setLightLevel(10.0F).setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:uranium_ore");
 				
 				
 	
@@ -193,6 +197,7 @@ public class OresPlus {
 				GameRegistry.registerBlock(sapphireOre, "SapphireOre");
 				GameRegistry.registerBlock(amethystOre, "AmethystOre");
 				GameRegistry.registerBlock(citrineOre, "CitrineOre");
+				GameRegistry.registerBlock(uraniumOre, "UraniumOre");
 				
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
@@ -243,6 +248,7 @@ public class OresPlus {
 				GameRegistry.registerWorldGenerator(new AmethystOreGen(), 2);
 				GameRegistry.registerWorldGenerator(new CitrineOreGen(), 3);
 				GameRegistry.registerWorldGenerator(new SapphireOreGen(), 3);
+				GameRegistry.registerWorldGenerator(new UraniumOreGen(), 3);
 				
 			//Smelting Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
