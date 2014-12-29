@@ -2,6 +2,33 @@ package com.plusmods.oresplus;
 
 import java.util.Random;
 
+import com.plusmods.oresplus.blocks.AmethystOre;
+import com.plusmods.oresplus.blocks.BlockJadeStone;
+import com.plusmods.oresplus.blocks.CitrineOre;
+import com.plusmods.oresplus.blocks.RubyOre;
+import com.plusmods.oresplus.blocks.SapphireOre;
+import com.plusmods.oresplus.blocks.TheisOre;
+import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
+import com.plusmods.oresplus.creativeTabs.OresPlusTab;
+import com.plusmods.oresplus.creativeTabs.OresPlusToolsTab;
+import com.plusmods.oresplus.handles.CommonProxy;
+import com.plusmods.oresplus.items.ItemAmethyst;
+import com.plusmods.oresplus.items.ItemCitrine;
+import com.plusmods.oresplus.items.ItemJade;
+import com.plusmods.oresplus.items.ItemJadePickaxe;
+import com.plusmods.oresplus.items.ItemRuby;
+import com.plusmods.oresplus.items.ItemRubyPickaxe;
+import com.plusmods.oresplus.items.ItemSapphire;
+import com.plusmods.oresplus.items.ItemSapphirePickaxe;
+import com.plusmods.oresplus.items.TheisIngot;
+import com.plusmods.oresplus.oregen.AmethystOreGen;
+import com.plusmods.oresplus.oregen.CitrineOreGen;
+import com.plusmods.oresplus.oregen.JadeOreGenerator;
+import com.plusmods.oresplus.oregen.RubyOreGen;
+import com.plusmods.oresplus.oregen.SapphireOreGen;
+import com.plusmods.oresplus.oregen.TheisOreGen;
+import com.plusmods.oresplus.toolMaterials.ToolMaterials;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -120,7 +147,7 @@ public class OresPlus {
 				amethystOre = new AmethystOre(Material.iron).setBlockName("AmethystOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:amethyst_ore");
 			
 			//Amethyst
-				amethyst = new Amethyst(5004).setUnlocalizedName("Amethyst").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:amethyst");
+				amethyst = new ItemAmethyst(5004).setUnlocalizedName("Amethyst").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:amethyst");
 	
 	
 			//SapphirePickaxe
