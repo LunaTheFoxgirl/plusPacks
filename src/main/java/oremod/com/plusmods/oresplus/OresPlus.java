@@ -41,7 +41,7 @@ public class OresPlus {
 		public static Block rubyOre;
 		public static Block sapphireOre;
 		public static Block amethystOre;
-
+		public static Block citrineOre;
 	
 	//Items
 		public static Item jade;
@@ -96,6 +96,10 @@ public class OresPlus {
 			//Citrine
 				citrine = new ItemCitrine(5006).setUnlocalizedName("Citrine").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:citrine");		
 				
+			//CitrineOre	
+				citrineOre = new CitrineOre(Material.iron).setBlockName("SapphireOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:sapphire_ore");
+				citrineOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+				citrineOre.setHarvestLevel("pickaxe", 2);
 				
 			//Ruby
 				ruby = new ItemRuby(5003).setUnlocalizedName("Ruby").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:ruby");
@@ -135,7 +139,8 @@ public class OresPlus {
 				GameRegistry.registerBlock(rubyOre, "RubyOre");
 				GameRegistry.registerBlock(sapphireOre, "SapphireOre");
 				GameRegistry.registerBlock(amethystOre, "AmethystOre");
-		
+				GameRegistry.registerBlock(citrineOre, "CitrineOre");
+				
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");
@@ -143,6 +148,7 @@ public class OresPlus {
 				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(amethyst, "Amethyst");
+				GameRegistry.registerItem(citrine, "Citrine");
 				
 			//Crafting Recipe
 				//JadePickaxe
@@ -161,6 +167,9 @@ public class OresPlus {
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 3);
 				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);
 				GameRegistry.registerWorldGenerator(new RubyOreGen(), 3);
+				GameRegistry.registerWorldGenerator(new AmethystOreGen(), 2);
+				GameRegistry.registerWorldGenerator(new CitrineOreGen(), 3);
+				
 				
 			//Smelting Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
