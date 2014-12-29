@@ -21,12 +21,6 @@ import com.plusmods.oresplus.items.ItemRubyPickaxe;
 import com.plusmods.oresplus.items.ItemSapphire;
 import com.plusmods.oresplus.items.ItemSapphirePickaxe;
 import com.plusmods.oresplus.items.TheisIngot;
-import com.plusmods.oresplus.oregen.AmethystOreGen;
-import com.plusmods.oresplus.oregen.CitrineOreGen;
-import com.plusmods.oresplus.oregen.JadeOreGenerator;
-import com.plusmods.oresplus.oregen.RubyOreGen;
-import com.plusmods.oresplus.oregen.SapphireOreGen;
-import com.plusmods.oresplus.oregen.TheisOreGen;
 import com.plusmods.oresplus.toolMaterials.ToolMaterials;
 
 import net.minecraft.block.Block;
@@ -75,15 +69,14 @@ public class OresPlus {
 		public static Item theisIngot;
 		public static Item ruby;
 		public static Item sapphire;
-		public static Item amethyst;
-		
-		
+		public static Item amethyst;		
 		public static Item citrine;
 		
 	//Tools
 		public static Item jadePickaxe;
 		public static Item rubyPickaxe;
 		public static Item sapphirePickaxe;
+		public static Item citrinePickaxe;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -151,7 +144,12 @@ public class OresPlus {
 	
 	
 			//SapphirePickaxe
-				sapphirePickaxe = new ItemSapphirePickaxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:sapphire_pickaxe");
+				sapphirePickaxe = new ItemSapphirePickaxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("SapphirePickaxe").setTextureName("oresplus:sapphire_pickaxe");
+				
+			//CitrinePickaxe
+				citrinePickaxe = new ItemCitrinePickaxe(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrinePickaxe").setTextureName("oresplus:citrine_pickaxe");
+	
+	
 	}
 	
 	@EventHandler
@@ -170,12 +168,13 @@ public class OresPlus {
 				
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
-				GameRegistry.registerItem(theisIngot, "TheisIngot");
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
-				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
+				GameRegistry.registerItem(theisIngot, "TheisIngot");				
 				GameRegistry.registerItem(ruby, "Ruby");
+				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
 				GameRegistry.registerItem(amethyst, "Amethyst");
 				GameRegistry.registerItem(citrine, "Citrine");
+				GameRegistry.registerItem(citrinePickaxe, "CitrinePickaxe");
 				GameRegistry.registerItem(sapphire, "Sapphire");
 				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
 				

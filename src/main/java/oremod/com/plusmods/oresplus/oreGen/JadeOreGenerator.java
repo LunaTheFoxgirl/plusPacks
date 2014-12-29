@@ -1,4 +1,4 @@
-package com.plusmods.oresplus.oregen;
+package com.plusmods.oresplus.oreGen;
 
 import java.util.Random;
 
