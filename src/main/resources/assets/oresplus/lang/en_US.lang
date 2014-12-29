@@ -19,4 +19,6 @@ item.RubyPickaxe.name=Ruby Pickaxe
 
 
 
-itemGroup.tabOresPlus=Ores+
+itemGroup.tabOresPlus=Ores+ Ores
+itemGroup.tabOresPlusItems=Ores+ Items
+itemGroup.tabOresPlusTools=Ores+ Tools

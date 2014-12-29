@@ -68,7 +68,7 @@ public class OresPlus {
 	public void load(FMLPreInitializationEvent event) 
 	{
 			//Jade
-				jade = new ItemJade(5000).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
+				jade = new ItemJade(5000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
 				
 				
 			//JadeStone
@@ -77,10 +77,10 @@ public class OresPlus {
 				jadeStone.setHarvestLevel("pickaxe", 2);
 				
 			//JadePickaxe
-				jadePickaxe = new ItemJadePickaxe(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("oresplus:jade_pickaxe");
+				jadePickaxe = new ItemJadePickaxe(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("oresplus:jade_pickaxe");
 			
 			//TheisIngot
-				theisIngot = new TheisIngot(5002).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:theis_ingot");
+				theisIngot = new TheisIngot(5002).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:theis_ingot");
 			
 			
 			//TheisOre
@@ -94,7 +94,7 @@ public class OresPlus {
 				rubyOre.setHarvestLevel("pickaxe", 2);
 			
 			//Citrine
-				citrine = new ItemCitrine(5006).setUnlocalizedName("Citrine").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:citrine");		
+				citrine = new ItemCitrine(5006).setUnlocalizedName("Citrine").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:citrine");		
 				
 			//CitrineOre	
 				citrineOre = new CitrineOre(Material.iron).setBlockName("CitrineOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:citrine_ore");
@@ -102,10 +102,10 @@ public class OresPlus {
 				citrineOre.setHarvestLevel("pickaxe", 2);
 				
 			//Ruby
-				ruby = new ItemRuby(5003).setUnlocalizedName("Ruby").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:ruby");
+				ruby = new ItemRuby(5003).setUnlocalizedName("Ruby").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:ruby");
 				
 			//RubyPickaxe
-				rubyPickaxe = new ItemRubyPickaxe(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:ruby_pickaxe");
+				rubyPickaxe = new ItemRubyPickaxe(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:ruby_pickaxe");
 	
 			//SapphireOre
 				sapphireOre = new SapphireOre(Material.iron).setBlockName("SapphireOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:sapphire_ore");
@@ -113,18 +113,18 @@ public class OresPlus {
 				sapphireOre.setHarvestLevel("pickaxe", 2);
 				
 			//Sapphire
-				sapphire = new ItemSapphire(5004).setUnlocalizedName("Sapphire").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:sapphire");
+				sapphire = new ItemSapphire(5004).setUnlocalizedName("Sapphire").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:sapphire");
 				
 
 			//AmethystOre
 				amethystOre = new AmethystOre(Material.iron).setBlockName("AmethystOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:amethyst_ore");
 			
 			//Amethyst
-				amethyst = new Amethyst(5004).setUnlocalizedName("Amethyst").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:amethyst");
+				amethyst = new Amethyst(5004).setUnlocalizedName("Amethyst").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:amethyst");
 	
 	
 			//SapphirePickaxe
-				sapphirePickaxe = new ItemSapphirePickaxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:sapphire_pickaxe");
+				sapphirePickaxe = new ItemSapphirePickaxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:sapphire_pickaxe");
 	}
 	
 	@EventHandler
