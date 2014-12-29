@@ -21,12 +21,6 @@ import com.plusmods.oresplus.items.ItemRubyPickaxe;
 import com.plusmods.oresplus.items.ItemSapphire;
 import com.plusmods.oresplus.items.ItemSapphirePickaxe;
 import com.plusmods.oresplus.items.TheisIngot;
-import com.plusmods.oresplus.oreGen.AmethystOreGen;
-import com.plusmods.oresplus.oreGen.CitrineOreGen;
-import com.plusmods.oresplus.oreGen.JadeOreGenerator;
-import com.plusmods.oresplus.oreGen.RubyOreGen;
-import com.plusmods.oresplus.oreGen.SapphireOreGen;
-import com.plusmods.oresplus.oreGen.TheisOreGen;
 import com.plusmods.oresplus.toolMaterials.ToolMaterials;
 
 import net.minecraft.block.Block;
@@ -75,15 +69,16 @@ public class OresPlus {
 		public static Item theisIngot;
 		public static Item ruby;
 		public static Item sapphire;
-		public static Item amethyst;
-		
-		
+		public static Item amethyst;		
 		public static Item citrine;
 		
 	//Tools
 		public static Item jadePickaxe;
+		public static Item jadeSpade;
 		public static Item rubyPickaxe;
 		public static Item sapphirePickaxe;
+		public static Item citrinePickaxe;
+		public static Item amethystPickaxe;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -151,7 +146,21 @@ public class OresPlus {
 	
 	
 			//SapphirePickaxe
-				sapphirePickaxe = new ItemSapphirePickaxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:sapphire_pickaxe");
+				sapphirePickaxe = new ItemSapphirePickaxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("SapphirePickaxe").setTextureName("oresplus:sapphire_pickaxe");
+				
+			//CitrinePickaxe
+				citrinePickaxe = new ItemCitrinePickaxe(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrinePickaxe").setTextureName("oresplus:citrine_pickaxe");
+			
+			//AmethystPickaxe
+				amethystPickaxe = new ItemAmethystPickaxe(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystPickaxe").setTextureName("oresplus:amethyst_pickaxe");
+				
+			
+			//JadeSpade
+				jadeSpade = new ItemJadeSpade(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeSpade").setTextureName("oresplus:jade_spade");
+				
+				
+				
+	
 	}
 	
 	@EventHandler
@@ -170,12 +179,15 @@ public class OresPlus {
 				
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
-				GameRegistry.registerItem(theisIngot, "TheisIngot");
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
-				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
+				GameRegistry.registerItem(jadeSpade, "JadeSpade");
+				GameRegistry.registerItem(theisIngot, "TheisIngot");				
 				GameRegistry.registerItem(ruby, "Ruby");
+				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
 				GameRegistry.registerItem(amethyst, "Amethyst");
+				GameRegistry.registerItem(amethystPickaxe, "AmethystPickaxe");
 				GameRegistry.registerItem(citrine, "Citrine");
+				GameRegistry.registerItem(citrinePickaxe, "CitrinePickaxe");
 				GameRegistry.registerItem(sapphire, "Sapphire");
 				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
 				
@@ -192,6 +204,15 @@ public class OresPlus {
 					GameRegistry.addRecipe(new ItemStack(sapphirePickaxe), "XXX", " I ", " I ",
 							'X', new ItemStack(sapphire),
 							'I', new ItemStack(Items.stick));
+				//CitrinePickaxe
+					GameRegistry.addRecipe(new ItemStack(citrinePickaxe), "XXX", " I ", " I ",
+							'X', new ItemStack(citrine),
+							'I', new ItemStack(Items.stick));
+				//CitrinePickaxe
+					GameRegistry.addRecipe(new ItemStack(amethystPickaxe), "XXX", " I ", " I ",
+							'X', new ItemStack(amethyst),
+							'I', new ItemStack(Items.stick));
+					
 				
 				
 			//IWorldGenerator		
