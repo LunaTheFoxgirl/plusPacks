@@ -108,6 +108,7 @@ public class OresPlus {
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
+				GameRegistry.registerItem(rubyPickaxe, "JadePickaxe");
 				GameRegistry.registerItem(ruby, "Ruby");
 				
 			//Crafting Recipe
