@@ -79,7 +79,7 @@ public class OresPlus {
 				theisOre.setHarvestLevel("pickaxe", 2);
 				
 			//RubyOre
-				rubyOre = new TheisOre(Material.iron).setBlockName("RubyOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:ruby_ore");
+				rubyOre = new RubyOre(Material.iron).setBlockName("RubyOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:ruby_ore");
 				rubyOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				rubyOre.setHarvestLevel("pickaxe", 2);
 				
@@ -111,17 +111,5 @@ public class OresPlus {
 				
 			//Smeling Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
-	}
-
-
-
-	/*
-	public void generateSurface(World world, Random random, int chunkX, int chunkZ) 
-	{
-		
-	}
-	 */
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
 	}
 }
