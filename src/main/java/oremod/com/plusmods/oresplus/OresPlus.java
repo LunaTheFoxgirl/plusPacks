@@ -39,12 +39,14 @@ public class OresPlus {
 		public static Block jadeStone;
 		public static Block theisOre;
 		public static Block rubyOre;
+		public static Block sapphireOre;
 
 	
 	//Items
 		public static Item jade;
 		public static Item theisIngot;
 		public static Item ruby;
+		public static Item sapphire;
 		
 	//Tools
 		public static Item jadePickaxe;
@@ -91,6 +93,13 @@ public class OresPlus {
 			//RubyPickaxe
 				rubyPickaxe = new ItemRubyPickaxe(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:ruby_pickaxe");
 	
+			//SapphireOre
+				sapphireOre = new SapphireOre(Material.iron).setBlockName("SapphireOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:sapphire_ore");
+				sapphireOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+				sapphireOre.setHarvestLevel("pickaxe", 2);
+				
+			//Sapphire
+				sapphire = new ItemSapphire(5004).setUnlocalizedName("Sapphire").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:sapphire");
 	}
 	
 	@EventHandler
@@ -103,6 +112,7 @@ public class OresPlus {
 				GameRegistry.registerBlock(jadeStone, "JadeStone");
 				GameRegistry.registerBlock(theisOre, "TheisOre");
 				GameRegistry.registerBlock(rubyOre, "RubyOre");
+				GameRegistry.registerBlock(sapphireOre, "SapphireOre");
 		
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
@@ -126,7 +136,7 @@ public class OresPlus {
 				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);
 				GameRegistry.registerWorldGenerator(new RubyOreGen(), 3);
 				
-			//Smeling Recipe
+			//Smelting Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
 	}
 }
