@@ -10,6 +10,10 @@ item.JadePickaxe.name=Jade Pickaxe
 item.Ruby.name=Ruby
 item.RubyPickaxe.name=Ruby Pickaxe
 
+item.Ruby.name=Amethyst
+tile.AmethystOre.name=Amethyst Ore
+
+
 item.TheisIngot.name=Theis Ingot
 
 
