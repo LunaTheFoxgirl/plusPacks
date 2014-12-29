@@ -1,11 +1,25 @@
 tile.JadeStone.name=Jade Ore
 tile.TheisOre.name=Theis Ore
+tile.RubyOre.name=Ruby Ore
+tile.SapphireOre.name=Sapphire Ore
+tile.CitrineOre.name=Citrine Ore
+tile.AmethystOre.name=Amethyst Ore
 
 
 
 item.Jade.name=Jade
+item.Ruby.name=Ruby
+item.Ruby.name=Ruby
+item.Citrine.name=Citrine
 item.TheisIngot.name=Theis Ingot
+item.Amethyst.name=Amethyst
+item.Sapphire.name=Sapphire
 
+item.JadePickaxe.name=Jade Pickaxe
+item.RubyPickaxe.name=Ruby Pickaxe
+item.SapphirePickaxe.name=Sapphire Pickaxe
 
 
 itemGroup.tabOresPlus=Ores+
+itemGroup.tabOresPlusItems=Ores+ Items
+itemGroup.tabOresPlusTools=Ores+ Tools

@@ -1,9 +1,10 @@
-[00:06:37] [main/INFO]: Setting user: Player639
-[00:06:39] [Client thread/INFO]: LWJGL Version: 2.9.1
-[00:06:45] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:OresPlus
-[00:06:46] [Sound Library Loader/INFO]: Sound engine started
-[00:06:47] [Client thread/ERROR]: Using missing texture, unable to load minecraft:textures/blocks/enderBoomtexture.png
-java.io.FileNotFoundException: minecraft:textures/blocks/enderBoomtexture.png
+[19:45:46] [main/INFO]: Setting user: Player456
+[19:45:47] [Client thread/INFO]: LWJGL Version: 2.9.1
+[19:45:51] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:OresPlus
+[19:45:52] [Sound Library Loader/INFO]: Sound engine started
+[19:45:53] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[19:45:53] [Client thread/ERROR]: Using missing texture, unable to load oresplus:textures/items/amethyst.png
+java.io.FileNotFoundException: oresplus:textures/items/amethyst.png
 	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:65) ~[FallbackResourceManager.class:?]
 	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:67) ~[SimpleReloadableResourceManager.class:?]
 	at net.minecraft.client.renderer.texture.TextureMap.loadTextureAtlas(TextureMap.java:126) [TextureMap.class:?]
@@ -11,7 +12,7 @@ java.io.FileNotFoundException: minecraft:textures/blocks/enderBoomtexture.png
 	at net.minecraft.client.renderer.texture.TextureManager.loadTexture(TextureManager.java:89) [TextureManager.class:?]
 	at net.minecraft.client.renderer.texture.TextureManager.loadTickableTexture(TextureManager.java:71) [TextureManager.class:?]
 	at net.minecraft.client.renderer.texture.TextureManager.loadTextureMap(TextureManager.java:58) [TextureManager.class:?]
-	at net.minecraft.client.Minecraft.startGame(Minecraft.java:582) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:583) [Minecraft.class:?]
 	at net.minecraft.client.Minecraft.run(Minecraft.java:931) [Minecraft.class:?]
 	at net.minecraft.client.main.Main.main(Main.java:164) [Main.class:?]
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_71]
@@ -22,12 +23,10 @@ java.io.FileNotFoundException: minecraft:textures/blocks/enderBoomtexture.png
 	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.11.jar:?]
 	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:78) [start/:?]
 	at GradleStart.main(GradleStart.java:45) [start/:?]
-[00:06:48] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[00:06:48] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[00:06:48] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:OresPlus
-[00:06:49] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[00:06:49] [Client thread/ERROR]: Using missing texture, unable to load minecraft:textures/blocks/enderBoomtexture.png
-java.io.FileNotFoundException: minecraft:textures/blocks/enderBoomtexture.png
+[19:45:53] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[19:45:53] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:BoomPlus, FMLFileResourcePack:OresPlus
+[19:45:54] [Client thread/ERROR]: Using missing texture, unable to load oresplus:textures/items/amethyst.png
+java.io.FileNotFoundException: oresplus:textures/items/amethyst.png
 	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:65) ~[FallbackResourceManager.class:?]
 	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:67) ~[SimpleReloadableResourceManager.class:?]
 	at net.minecraft.client.renderer.texture.TextureMap.loadTextureAtlas(TextureMap.java:126) [TextureMap.class:?]
@@ -49,30 +48,63 @@ java.io.FileNotFoundException: minecraft:textures/blocks/enderBoomtexture.png
 	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.11.jar:?]
 	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:78) [start/:?]
 	at GradleStart.main(GradleStart.java:45) [start/:?]
-[00:06:49] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[00:06:50] [Sound Library Loader/INFO]: Sound engine started
-[00:06:56] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[00:06:56] [Server thread/INFO]: Generating keypair
-[00:06:56] [Server thread/INFO]: Preparing start region for level 0
-[00:06:57] [Server thread/INFO]: Preparing spawn area: 53%
-[00:06:58] [Server thread/INFO]: Changing view distance to 8, from 10
-[00:06:58] [Server thread/INFO]: Player639[local:E:65c39127] logged in with entity id 360 at (22.60537367070671, 49.0, 210.30000001192093)
-[00:06:58] [Server thread/INFO]: Player639 joined the game
-[00:07:01] [Server thread/INFO]: Player639 has just earned the achievement [Taking Inventory]
-[00:07:01] [Client thread/INFO]: [CHAT] Player639 has just earned the achievement [Taking Inventory]
-[00:07:50] [Server thread/INFO]: [Player639: Set own game mode to Survival Mode]
-[00:07:50] [Client thread/INFO]: [CHAT] Your game mode has been updated
-[00:07:53] [Client thread/INFO]: Warning: Clientside chunk ticking took 102 ms
-[00:09:05] [Server thread/INFO]: Saving and pausing game...
-[00:09:05] [Server thread/INFO]: Saving chunks for level 'Ores+ T_Ingot T_Ore Jade J_Ore'/Overworld
-[00:09:06] [Server thread/INFO]: Saving chunks for level 'Ores+ T_Ingot T_Ore Jade J_Ore'/Nether
-[00:09:06] [Server thread/INFO]: Saving chunks for level 'Ores+ T_Ingot T_Ore Jade J_Ore'/The End
-[00:09:06] [Client thread/INFO]: Stopping!
-[00:09:06] [Server thread/INFO]: Stopping server
-[00:09:06] [Server thread/INFO]: Saving players
-[00:09:06] [Server thread/INFO]: Saving worlds
-[00:09:06] [Server thread/INFO]: Saving chunks for level 'Ores+ T_Ingot T_Ore Jade J_Ore'/Overworld
-[00:09:06] [Server thread/INFO]: Saving chunks for level 'Ores+ T_Ingot T_Ore Jade J_Ore'/Nether
-[00:09:06] [Server thread/INFO]: Saving chunks for level 'Ores+ T_Ingot T_Ore Jade J_Ore'/The End
-[00:09:07] [Client Shutdown Thread/INFO]: Stopping server
-[00:09:07] [Client Shutdown Thread/INFO]: Saving players
+[19:45:54] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[19:45:54] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[19:45:55] [Sound Library Loader/INFO]: Sound engine started
+[19:46:02] [Client thread/INFO]: Deleting level New World
+[19:46:02] [Client thread/INFO]: Attempt 1...
+[19:46:03] [Client thread/INFO]: Deleting level Ores+ T_Ingot T_Ore Jade J_Ore
+[19:46:03] [Client thread/INFO]: Attempt 1...
+[19:46:07] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[19:46:07] [Server thread/INFO]: Generating keypair
+[19:46:07] [Server thread/INFO]: Converting map!
+[19:46:07] [Server thread/INFO]: Scanning folders...
+[19:46:07] [Server thread/INFO]: Total conversion count is 0
+[19:46:08] [Server thread/INFO]: Preparing start region for level 0
+[19:46:09] [Server thread/INFO]: Preparing spawn area: 9%
+[19:46:10] [Server thread/INFO]: Preparing spawn area: 22%
+[19:46:11] [Server thread/INFO]: Preparing spawn area: 36%
+[19:46:12] [Server thread/INFO]: Preparing spawn area: 51%
+[19:46:13] [Server thread/INFO]: Preparing spawn area: 65%
+[19:46:14] [Server thread/INFO]: Preparing spawn area: 80%
+[19:46:15] [Server thread/INFO]: Preparing spawn area: 94%
+[19:46:15] [Server thread/INFO]: Changing view distance to 8, from 10
+[19:46:16] [Server thread/INFO]: Player456[local:E:05479df5] logged in with entity id 248 at (-4.5, 72.0, 228.5)
+[19:46:16] [Server thread/INFO]: Player456 joined the game
+[19:46:20] [Server thread/INFO]: Player456 has just earned the achievement [Taking Inventory]
+[19:46:20] [Client thread/INFO]: [CHAT] Player456 has just earned the achievement [Taking Inventory]
+[19:46:25] [Server thread/INFO]: <Player456> Whoops! my bad.
+[19:46:25] [Client thread/INFO]: [CHAT] <Player456> Whoops! my bad.
+[19:46:26] [Server thread/INFO]: <Player456> Whoops! my bad.
+[19:46:26] [Client thread/INFO]: [CHAT] <Player456> Whoops! my bad.
+[19:46:27] [Server thread/INFO]: <Player456> Whoops! my bad.
+[19:46:27] [Client thread/INFO]: [CHAT] <Player456> Whoops! my bad.
+[19:47:21] [Server thread/INFO]: Saving and pausing game...
+[19:47:21] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[19:47:21] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[19:47:21] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[19:47:35] [Server thread/INFO]: Saving and pausing game...
+[19:47:35] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[19:47:35] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[19:47:35] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[19:47:49] [Server thread/INFO]: Saving and pausing game...
+[19:47:49] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[19:47:49] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[19:47:49] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[19:49:19] [Server thread/INFO]: <Player456> Whoops! my bad.
+[19:49:19] [Client thread/INFO]: [CHAT] <Player456> Whoops! my bad.
+[19:49:19] [Server thread/INFO]: <Player456> Whoops! my bad.
+[19:49:20] [Client thread/INFO]: [CHAT] <Player456> Whoops! my bad.
+[19:50:09] [Server thread/INFO]: Saving and pausing game...
+[19:50:09] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[19:50:09] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[19:50:09] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[19:50:39] [Server thread/INFO]: Saving and pausing game...
+[19:50:39] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[19:50:39] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[19:50:39] [Server thread/INFO]: Stopping server
+[19:50:39] [Server thread/INFO]: Saving players
+[19:50:39] [Server thread/INFO]: Saving worlds
+[19:50:39] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[19:50:39] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[19:50:41] [Client thread/INFO]: Stopping!
