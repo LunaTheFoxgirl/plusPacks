@@ -169,7 +169,7 @@ public class OresPlus {
 				GameRegistry.registerWorldGenerator(new RubyOreGen(), 3);
 				GameRegistry.registerWorldGenerator(new AmethystOreGen(), 2);
 				GameRegistry.registerWorldGenerator(new CitrineOreGen(), 3);
-				
+				GameRegistry.registerWorldGenerator(new SapphireOreGen(), 3);
 				
 			//Smelting Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
