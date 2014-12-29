@@ -5,8 +5,13 @@ tile.RubyOre.name=Ruby Ore
 
 
 item.Jade.name=Jade
-item.TheisIngot.name=Theis Ingot
+item.JadePickaxe.name=Jade Pickaxe
+
 item.Ruby.name=Ruby
+item.RubyPickaxe.name=Ruby Pickaxe
+
+item.TheisIngot.name=Theis Ingot
+
 
 
 

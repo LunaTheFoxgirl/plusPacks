@@ -24,7 +24,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class OresPlus {
 
 	public static final String MODID = "OresPlus";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.1.0";
 
 	//@SidedProxy(clientSide="com.plusmods.oresplus.ClientProxy", serverSide="com.plusmods.oresplus.CommonProxy")
     //@SidedProxy(clientSide="mod.mcreator.ClientProxyTestEnvironmentMod", serverSide="mod.mcreator.CommonProxyTestEnvironmentMod")
@@ -118,6 +118,7 @@ public class OresPlus {
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
+				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
 				GameRegistry.registerItem(ruby, "Ruby");
 				
 			//Crafting Recipe
