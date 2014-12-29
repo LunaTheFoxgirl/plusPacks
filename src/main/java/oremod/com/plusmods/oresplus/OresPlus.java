@@ -160,7 +160,9 @@ public class OresPlus {
 							'X', new ItemStack(ruby),
 							'I', new ItemStack(Items.stick));
 				//SapphirePickaxe
-					
+					GameRegistry.addRecipe(new ItemStack(sapphirePickaxe), "XXX", " I ", " I ",
+							'X', new ItemStack(sapphire),
+							'I', new ItemStack(Items.stick));
 				
 				
 			//IWorldGenerator		
