@@ -74,6 +74,7 @@ public class OresPlus {
 		
 	//Tools
 		public static Item jadePickaxe;
+		public static Item jadeSpade;
 		public static Item rubyPickaxe;
 		public static Item sapphirePickaxe;
 		public static Item citrinePickaxe;
@@ -153,6 +154,10 @@ public class OresPlus {
 			//AmethystPickaxe
 				amethystPickaxe = new ItemAmethystPickaxe(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystPickaxe").setTextureName("oresplus:amethyst_pickaxe");
 				
+			
+			//JadeSpade
+				jadeSpade = new ItemJadeSpade(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeSpade").setTextureName("oresplus:jade_spade");
+				
 				
 				
 	
@@ -175,6 +180,7 @@ public class OresPlus {
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
+				GameRegistry.registerItem(jadeSpade, "JadeSpade");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");				
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
