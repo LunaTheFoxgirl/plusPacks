@@ -90,10 +90,13 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+
+import java.awt.Dimension;
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
 import net.minecraft.client.renderer.texture.*;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -105,6 +108,8 @@ public class mcreator_enderBoom {
 	public static BlockEnderBoom block;
 
 	public static Object instance;
+	
+	
 
 	public int addFuel(ItemStack fuel) {
 		return 0;
@@ -190,6 +195,7 @@ public class mcreator_enderBoom {
 
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
+			Minecraft mc = Minecraft.getMinecraft();
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
@@ -226,6 +232,12 @@ public class mcreator_enderBoom {
 						world.spawnEntityInWorld(sentity);
 						((EntityLiving) sentity).playLivingSound();
 					}
+				}
+				
+				if (!mc.theWorld.isRemote)
+				{
+					System.out.println("PlayerIs= " + entity.getDisplayName());
+					mc.theWorld.getPlayerEntityByName(entity.getDisplayName()).travelToDimension(1);
 				}
 
 			}
