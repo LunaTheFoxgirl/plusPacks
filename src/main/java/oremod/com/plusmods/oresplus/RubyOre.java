@@ -17,14 +17,10 @@ public class RubyOre extends Block {
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_,
 			int p_149650_3_) {
 		// TODO Auto-generated method stub
-		return OresPlus.jade;
+		return OresPlus.ruby;
 	}
 
-	@Override
-	public int quantityDropped(int meta, int fortune, Random random) {
-		// TODO Auto-generated method stub
-		return 1;
-	}
+	
 	
 	
 

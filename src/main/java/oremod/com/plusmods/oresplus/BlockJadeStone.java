@@ -51,7 +51,7 @@ import net.minecraft.world.World;
 			return OresPlus.jade;
 		}
 		
-		
+		@Override
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}

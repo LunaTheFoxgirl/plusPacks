@@ -1,10 +1,12 @@
 tile.JadeStone.name=Jade Ore
 tile.TheisOre.name=Theis Ore
+tile.RubyOre.name=Ruby Ore
 
 
 
 item.Jade.name=Jade
 item.TheisIngot.name=Theis Ingot
+item.Ruby.name=Ruby
 
 
 

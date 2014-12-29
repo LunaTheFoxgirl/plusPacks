@@ -43,6 +43,7 @@ public class OresPlus {
 	//Items
 		public static Item jade;
 		public static Item theisIngot;
+		public static Item ruby;
 		
 	//Tools
 		public static Item jadePickaxe;
@@ -69,7 +70,7 @@ public class OresPlus {
 				jadePickaxe = new ItemJadePickaxe(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("JadePickaxe").setTextureName("oresplus:jade_pickaxe");
 			
 			//TheisIngot
-				theisIngot = new TheisIngot(5102).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:theis_ingot");
+				theisIngot = new TheisIngot(5002).setUnlocalizedName("TheisIngot").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:theis_ingot");
 			
 			
 			//TheisOre
@@ -81,6 +82,9 @@ public class OresPlus {
 				rubyOre = new TheisOre(Material.iron).setBlockName("RubyOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:ruby_ore");
 				rubyOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				rubyOre.setHarvestLevel("pickaxe", 2);
+				
+			//Ruby
+				ruby = new ItemRuby(5003).setUnlocalizedName("Ruby").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:ruby");
 	}
 	
 	@EventHandler
@@ -98,6 +102,7 @@ public class OresPlus {
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
+				GameRegistry.registerItem(ruby, "Ruby");
 				
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 7);
