@@ -204,6 +204,137 @@ public class mcreator_enderBoom {
 				if (true) {
 					world.createExplosion((Entity) null, i, j, k, 2F, true);
 				}
+				
+				if(true){
+					world.setBlock(i + 1, j, k, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i, j, k + 1, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i + 1, j, k + 1, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i + 1, j, k + 2, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i + 2, j, k + 1, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 2, j, k + 2, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 2, j, k + 3, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 3, j, k + 2, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 3, j, k + 3, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 3, j, k + 4, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 4, j, k + 3, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 4, j, k + 4, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 4, j, k + 5, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 5, j, k + 4, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 5, j, k + 5, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 5, j, k + 6, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i - 1, j, k, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i, j, k - 1, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i - 1, j, k - 1, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i - 1, j, k - 2, Blocks.end_portal, 0, 2);
+					}
+				
+				if(true){
+					world.setBlock(i - 2, j, k - 1, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 2, j, k - 2, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 2, j, k - 3, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 3, j, k - 2, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 3, j, k - 3, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 3, j, k - 4, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 4, j, k - 3, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 4, j, k - 4, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 4, j, k - 5, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i - 5, j, k - 4, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 5, j, k + 5, Blocks.end_portal, 0, 2);
+					}
+
+				if(true){
+					world.setBlock(i + 5, j, k + 6, Blocks.end_portal, 0, 2);
+					}
+
+
+
 
 				if (true) {
 					Entity sentity = EntityList.createEntityByID(58, world);
@@ -234,11 +365,65 @@ public class mcreator_enderBoom {
 						((EntityLiving) sentity).playLivingSound();
 					}
 				}
+				if (true) {
+					Entity sentity = EntityList.createEntityByID(58, world);
+					if (sentity != null) {
+						sentity.setLocationAndAngles(i, j + 2, k,
+								world.rand.nextFloat() * 360F, 0.0F);
+						world.spawnEntityInWorld(sentity);
+						((EntityLiving) sentity).playLivingSound();
+					}
+				}
 				
+				if (true) {
+					Entity sentity = EntityList.createEntityByID(58, world);
+					if (sentity != null) {
+						sentity.setLocationAndAngles(i, j + 2, k,
+								world.rand.nextFloat() * 360F, 0.0F);
+						world.spawnEntityInWorld(sentity);
+						((EntityLiving) sentity).playLivingSound();
+					}
+				}
+				if (true) {
+					Entity sentity = EntityList.createEntityByID(58, world);
+					if (sentity != null) {
+						sentity.setLocationAndAngles(i, j + 2, k,
+								world.rand.nextFloat() * 360F, 0.0F);
+						world.spawnEntityInWorld(sentity);
+						((EntityLiving) sentity).playLivingSound();
+					}
+				}
+				if (true) {
+					Entity sentity = EntityList.createEntityByID(58, world);
+					if (sentity != null) {
+						sentity.setLocationAndAngles(i, j + 2, k,
+								world.rand.nextFloat() * 360F, 0.0F);
+						world.spawnEntityInWorld(sentity);
+						((EntityLiving) sentity).playLivingSound();
+					}
+				}
+				if (true) {
+					Entity sentity = EntityList.createEntityByID(58, world);
+					if (sentity != null) {
+						sentity.setLocationAndAngles(i, j + 2, k,
+								world.rand.nextFloat() * 360F, 0.0F);
+						world.spawnEntityInWorld(sentity);
+						((EntityLiving) sentity).playLivingSound();
+					}
+				}
+				if (true) {
+					Entity sentity = EntityList.createEntityByID(58, world);
+					if (sentity != null) {
+						sentity.setLocationAndAngles(i, j + 2, k,
+								world.rand.nextFloat() * 360F, 0.0F);
+						world.spawnEntityInWorld(sentity);
+						((EntityLiving) sentity).playLivingSound();
+					}
+				}
 			}
 		}
 		
-		
+		       
 		
 
 		@Override
