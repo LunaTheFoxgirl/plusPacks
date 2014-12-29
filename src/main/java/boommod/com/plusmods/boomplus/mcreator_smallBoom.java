@@ -196,7 +196,7 @@ public class mcreator_smallBoom {
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
-				if (true) {
+				if (!world.isRemote) {
 					world.createExplosion((Entity) null, i, j, k, 2F, true);
 				}
 
@@ -207,7 +207,7 @@ public class mcreator_smallBoom {
 				int k, Explosion e) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-			if (true) {
+			if (!world.isRemote) {
 				world.createExplosion((Entity) null, i, j, k, 2F, true);
 			}
 

@@ -195,7 +195,7 @@ public class mcreator_magicBoom {
 							i + 1, j, k + 1));
 				}
 
-				if (true) {
+				if (!world.isRemote) {
 					world.createExplosion((Entity) null, i, j, k, 0.5F, true);
 				}
 
@@ -203,11 +203,11 @@ public class mcreator_magicBoom {
 					entity.attackEntityFrom(DamageSource.generic, 3);
 				}
 
-				if (true) {
+				if (!world.isRemote) {
 					entity.addPotionEffect(new PotionEffect(15, 15, 0));
 				}
 
-				if (true) {
+				if (!world.isRemote) {
 					world.createExplosion((Entity) null, i, j, k, 4F, true);
 				}
 
