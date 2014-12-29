@@ -88,8 +88,11 @@ public class OresPlus {
 				rubyOre.setHarvestLevel("pickaxe", 2);
 			
 			//Citrine
-				citrine = new ItemCitrine(5004).
-	
+				citrine = new ItemCitrine(5006).setUnlocalizedName("Citrine").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:citrine");
+			
+				
+				
+				
 			//Ruby
 				ruby = new ItemRuby(5003).setUnlocalizedName("Ruby").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:ruby");
 				
