@@ -27,7 +27,7 @@ import com.plusmods.oresplus.oregen.JadeOreGenerator;
 import com.plusmods.oresplus.oregen.RubyOreGen;
 import com.plusmods.oresplus.oregen.SapphireOreGen;
 import com.plusmods.oresplus.oregen.TheisOreGen;
-import com.plusmods.oresplus.toolMaterials.ToolMaterials;
+import com.plusmods.oresplus.toolmaterials.ToolMaterials;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
