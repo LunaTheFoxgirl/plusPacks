@@ -51,9 +51,12 @@ public class OresPlus {
 		public static Item amethyst;
 		
 		
+		public static Item citrine;
+		
 	//Tools
 		public static Item jadePickaxe;
 		public static Item rubyPickaxe;
+		public static Item sapphirePickaxe;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -89,6 +92,12 @@ public class OresPlus {
 				rubyOre = new RubyOre(Material.iron).setBlockName("RubyOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:ruby_ore");
 				rubyOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				rubyOre.setHarvestLevel("pickaxe", 2);
+			
+			//Citrine
+				citrine = new ItemCitrine(5006).setUnlocalizedName("Citrine").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:citrine");
+			
+				
+				
 				
 				
 				
@@ -110,6 +119,7 @@ public class OresPlus {
 			//Sapphire
 				sapphire = new ItemSapphire(5004).setUnlocalizedName("Sapphire").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:sapphire");
 				
+<<<<<<< HEAD
 			//AmethystOre
 				amethystOre = new AmethystOre(Material.iron).setBlockName("AmethystOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:amethyst_ore");
 			
@@ -117,6 +127,10 @@ public class OresPlus {
 				amethyst = new Amethyst(5004).setUnlocalizedName("Amethyst").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:amethyst");
 	
 	
+=======
+			//SapphirePickaxe
+				sapphirePickaxe = new ItemSapphirePickaxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:sapphire_pickaxe");
+>>>>>>> 93fe576b51a350eb0eadf92e2d47c8437c4c8981
 	}
 	
 	@EventHandler
@@ -147,6 +161,8 @@ public class OresPlus {
 					GameRegistry.addRecipe(new ItemStack(rubyPickaxe), "XXX", " I ", " I ",
 							'X', new ItemStack(ruby),
 							'I', new ItemStack(Items.stick));
+				//SapphirePickaxe
+					
 				
 				
 			//IWorldGenerator		
