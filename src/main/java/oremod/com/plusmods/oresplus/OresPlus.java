@@ -40,6 +40,7 @@ public class OresPlus {
 		public static Block theisOre;
 		public static Block rubyOre;
 		public static Block sapphireOre;
+		public static Block amethystOre;
 
 	
 	//Items
@@ -47,6 +48,8 @@ public class OresPlus {
 		public static Item theisIngot;
 		public static Item ruby;
 		public static Item sapphire;
+		public static Item amethyst;
+		
 		
 	//Tools
 		public static Item jadePickaxe;
@@ -87,6 +90,12 @@ public class OresPlus {
 				rubyOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				rubyOre.setHarvestLevel("pickaxe", 2);
 				
+				
+				
+				
+				
+				
+				
 			//Ruby
 				ruby = new ItemRuby(5003).setUnlocalizedName("Ruby").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:ruby");
 				
@@ -100,6 +109,14 @@ public class OresPlus {
 				
 			//Sapphire
 				sapphire = new ItemSapphire(5004).setUnlocalizedName("Sapphire").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:sapphire");
+				
+			//AmethystOre
+				amethystOre = new AmethystOre(Material.iron).setBlockName("AmethystOre").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:amethyst_ore");
+			
+			//Amethyst
+				amethyst = new Amethyst(5004).setUnlocalizedName("Amethyst").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:amethyst");
+	
+	
 	}
 	
 	@EventHandler
