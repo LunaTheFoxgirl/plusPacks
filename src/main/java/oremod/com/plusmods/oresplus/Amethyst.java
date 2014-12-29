@@ -1,5 +1,15 @@
-package com.plusmods.oresplus;
+package com.plusmods.oresplus;//based on master condiguration
 
-public class Amethyst {
+import net.minecraft.item.*;
+
+public class Amethyst extends Item 
+{
+	int itemID;
+	
+	public Amethyst(int i) {
+		itemID = i;
+		// TODO Auto-generated constructor stub
+	}
 
 }
+
