@@ -201,12 +201,16 @@ public class OresPlus {
 				GameRegistry.registerItem(theisIngot, "TheisIngot");				
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
+				GameRegistry.registerItem(rubySpade, "RubySpade");
 				GameRegistry.registerItem(amethyst, "Amethyst");
 				GameRegistry.registerItem(amethystPickaxe, "AmethystPickaxe");
+				GameRegistry.registerItem(amethystSpade, "AmethystSpade");
 				GameRegistry.registerItem(citrine, "Citrine");
 				GameRegistry.registerItem(citrinePickaxe, "CitrinePickaxe");
+				GameRegistry.registerItem(citrineSpade, "CitrineSpade");
 				GameRegistry.registerItem(sapphire, "Sapphire");
 				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
+				GameRegistry.registerItem(sapphireSpade, "SapphireSpade");
 				
 			//Crafting Recipe
 				//JadePickaxe
