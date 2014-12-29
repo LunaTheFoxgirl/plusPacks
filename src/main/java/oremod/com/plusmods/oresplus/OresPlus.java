@@ -176,6 +176,7 @@ public class OresPlus {
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(amethyst, "Amethyst");
 				GameRegistry.registerItem(citrine, "Citrine");
+				GameRegistry.registerItem(sapphire, "Sapphire");
 				
 			//Crafting Recipe
 				//JadePickaxe
@@ -187,7 +188,9 @@ public class OresPlus {
 							'X', new ItemStack(ruby),
 							'I', new ItemStack(Items.stick));
 				//SapphirePickaxe
-					
+					GameRegistry.addRecipe(new ItemStack(sapphirePickaxe), "XXX", " I ", " I ",
+							'X', new ItemStack(sapphire),
+							'I', new ItemStack(Items.stick));
 				
 				
 			//IWorldGenerator		
