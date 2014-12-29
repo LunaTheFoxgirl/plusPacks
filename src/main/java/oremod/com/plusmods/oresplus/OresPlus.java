@@ -75,6 +75,8 @@ public class OresPlus {
 		public static Item amethyst;		
 		public static Item citrine;
 		
+		public static Item mixedGem;
+		
 	//Tools
 		public static Item jadePickaxe;
 		public static Item jadeSpade;
@@ -180,7 +182,8 @@ public class OresPlus {
 			//UraniumOre
 				uraniumOre = new UraniumOre(Material.iron).setBlockName("UraniumOre").setLightLevel(10.0F).setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:uranium_ore");
 				
-				
+			//MixedGem
+				mixedGem = new ItemMixedGem(6000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("MixedGem").setTextureName("oresplus:jade");
 	
 	}
 	
@@ -216,6 +219,8 @@ public class OresPlus {
 				GameRegistry.registerItem(sapphire, "Sapphire");
 				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
 				GameRegistry.registerItem(sapphireSpade, "SapphireSpade");
+				
+				GameRegistry.registerItem(mixedGem, "MixedGem");
 				
 			//Crafting Recipe
 				//JadePickaxe
