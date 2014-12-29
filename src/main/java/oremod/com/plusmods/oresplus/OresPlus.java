@@ -47,6 +47,7 @@ public class OresPlus {
 		
 	//Tools
 		public static Item jadePickaxe;
+		public static Item rubyPickaxe;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -85,6 +86,10 @@ public class OresPlus {
 				
 			//Ruby
 				ruby = new ItemRuby(5003).setUnlocalizedName("Ruby").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:ruby");
+				
+			//RubyPickaxe
+				rubyPickaxe = new ItemRubyPickaxe(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusTab.tab).setUnlocalizedName("RubyPickaxe").setTextureName("oresplus:ruby_pickaxe");
+	
 	}
 	
 	@EventHandler
@@ -105,9 +110,9 @@ public class OresPlus {
 				GameRegistry.registerItem(ruby, "Ruby");
 				
 			//IWorldGenerator		
-				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 7);
+				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 3);
 				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);
-				GameRegistry.registerWorldGenerator(new RubyOreGen(), 4);
+				GameRegistry.registerWorldGenerator(new RubyOreGen(), 3);
 				
 			//Smeling Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
