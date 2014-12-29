@@ -94,15 +94,7 @@ public class OresPlus {
 				rubyOre.setHarvestLevel("pickaxe", 2);
 			
 			//Citrine
-				citrine = new ItemCitrine(5006).setUnlocalizedName("Citrine").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:citrine");
-			
-				
-				
-				
-				
-				
-				
-				
+				citrine = new ItemCitrine(5006).setUnlocalizedName("Citrine").setCreativeTab(OresPlusTab.tab).setTextureName("oresplus:citrine");		
 				
 				
 			//Ruby
@@ -142,6 +134,7 @@ public class OresPlus {
 				GameRegistry.registerBlock(theisOre, "TheisOre");
 				GameRegistry.registerBlock(rubyOre, "RubyOre");
 				GameRegistry.registerBlock(sapphireOre, "SapphireOre");
+				GameRegistry.registerBlock(amethystOre, "AmethystOre");
 		
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
@@ -149,6 +142,7 @@ public class OresPlus {
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
 				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
 				GameRegistry.registerItem(ruby, "Ruby");
+				GameRegistry.registerItem(amethyst, "Amethyst");
 				
 			//Crafting Recipe
 				//JadePickaxe
