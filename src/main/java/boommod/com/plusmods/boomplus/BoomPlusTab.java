@@ -92,7 +92,7 @@ import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 import java.util.Random;
 
-public class mcreator_boomPlusTab {
+public class BoomPlusTab {
 
 	public Object instance;
 
@@ -103,7 +103,7 @@ public class mcreator_boomPlusTab {
 		}
 	};
 
-	public mcreator_boomPlusTab() {
+	public BoomPlusTab() {
 	}
 
 	public void load() {

@@ -131,7 +131,7 @@ public class mcreator_radOre {
 				.setBlockName("RadOre")
 				.setBlockTextureName("boomplus:radioactiveOretexture")
 				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(185, "RadOre", block);
 		block.setHarvestLevel("pickaxe", 2);

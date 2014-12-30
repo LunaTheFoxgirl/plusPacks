@@ -148,7 +148,7 @@ public class mcreator_enderBoom {
 				.setBlockName("EnderBoom")
 				.setBlockTextureName("boomplus:ender_boom_texture").setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(176, "EnderBoom", block);
 		block.setHarvestLevel("pickaxe", 0);

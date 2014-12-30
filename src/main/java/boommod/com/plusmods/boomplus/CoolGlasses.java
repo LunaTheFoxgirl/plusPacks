@@ -99,9 +99,9 @@ import net.minecraftforge.common.util.*;
 import org.lwjgl.opengl.GL11;
 
 @SuppressWarnings("unchecked")
-public class mcreator_coolGuyGlasses {
+public class CoolGlasses {
 
-	public mcreator_coolGuyGlasses() {
+	public CoolGlasses() {
 	}
 
 	public static Item block;
@@ -155,7 +155,7 @@ public class mcreator_coolGuyGlasses {
 			maxStackSize = 1;
 			setUnlocalizedName("CoolGuyGlasses");
 			setTextureName("boomplus:coolGuystexture");
-			setCreativeTab(mcreator_boomPlusTab.tab);
+			setCreativeTab(BoomPlusTab.tab);
 		}
 
 		
@@ -191,7 +191,7 @@ public class mcreator_coolGuyGlasses {
 				ItemStack Armor = new ItemStack(mcreator_coolGuyGlasses.block);
 				if (armorInvHelmet != null)
 					if (armorInvHelmet.getDisplayName().startsWith(Armor.getDisplayName())) {*/
-						world.getPlayerEntityByName(((EntityPlayer) entity).getDisplayName()).addStat(mcreator_coolAchievement.achievement, 1);
+						world.getPlayerEntityByName(((EntityPlayer) entity).getDisplayName()).addStat(CoolAchievement.achievement, 1);
 				//}
 			}
 		}

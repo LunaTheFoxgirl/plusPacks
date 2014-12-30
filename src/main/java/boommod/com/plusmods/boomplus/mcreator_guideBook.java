@@ -156,7 +156,7 @@ public class mcreator_guideBook {
                         maxStackSize = 1;
                         setUnlocalizedName("GuideBook");
                         setTextureName("boomplus:guideBook");
-                        setCreativeTab(mcreator_boomPlusTab.tab);
+                        setCreativeTab(BoomPlusTab.tab);
                 }
  
                

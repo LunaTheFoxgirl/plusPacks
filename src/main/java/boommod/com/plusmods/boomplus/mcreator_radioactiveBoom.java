@@ -149,7 +149,7 @@ public class mcreator_radioactiveBoom {
 				.setBlockName("RadioactiveBoom")
 				.setBlockTextureName("boomplus:radioactiveBoomtexture")
 				.setLightOpacity(0).setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(186, "RadioactiveBoom", block);
 		block.setHarvestLevel("pickaxe", 0);

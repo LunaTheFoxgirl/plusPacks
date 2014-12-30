@@ -145,7 +145,7 @@ public class mcreator_magicBoom {
 				.setBlockName("MagicBoom")
 				.setBlockTextureName("boomplus:magicBoomtexture").setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(180, "MagicBoom", block);
 		block.setHarvestLevel("pickaxe", 0);
