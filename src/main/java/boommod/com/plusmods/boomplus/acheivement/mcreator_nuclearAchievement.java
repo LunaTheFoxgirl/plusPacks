@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.acheivement;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -93,17 +93,17 @@ import net.minecraft.init.*;
 
 import java.util.Random;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import com.plusmods.boomplus.items.mcreator_radGunpowder;
 
-public class CoolAchievement {
+public class mcreator_nuclearAchievement {
 
-	public CoolAchievement() {
+	public mcreator_nuclearAchievement() {
 	}
 
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
+			"achievement.nuclearAchievement", "nuclearAchievement", 5, 5,
+			mcreator_radGunpowder.block, (Achievement) null))
 			.initIndependentStat();
 
 	public void load() {

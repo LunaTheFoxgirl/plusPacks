@@ -1,0 +1,161 @@
+package com.plusmods.boomplus.entities;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class FireworkPrimed extends Entity
+{
+    /** How long the fuse is */
+    public int fuse;
+    private EntityLivingBase tntPlacedBy;
+    private static final String __OBFID = "CL_00001681";
+
+    public FireworkPrimed(World p_i1729_1_)
+    {
+        super(p_i1729_1_);
+        this.preventEntitySpawning = true;
+        this.setSize(0.98F, 0.98F);
+        this.yOffset = this.height / 2.0F;
+    }
+
+    public FireworkPrimed(World p_i1730_1_, double p_i1730_2_, double p_i1730_4_, double p_i1730_6_, EntityLivingBase p_i1730_8_)
+    {
+        this(p_i1730_1_);
+        this.setPosition(p_i1730_2_, p_i1730_4_, p_i1730_6_);
+        float f = (float)(Math.random() * Math.PI * 2.0D);
+        this.motionX = (double)(-((float)Math.sin((double)f)) * 0.02F);
+        this.motionY = 0.20000000298023224D;
+        this.motionZ = (double)(-((float)Math.cos((double)f)) * 0.02F);
+        this.fuse = 80;
+        this.prevPosX = p_i1730_2_;
+        this.prevPosY = p_i1730_4_;
+        this.prevPosZ = p_i1730_6_;
+        this.tntPlacedBy = p_i1730_8_;
+    }
+    
+    public void pushFirework(double mX, double mY, double mZ)
+    {
+    	this.motionX = mX;
+        this.motionY = mY;
+        this.motionZ = mZ;
+    }
+
+    protected void entityInit() {}
+
+    /**
+     * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
+     * prevent them from trampling crops
+     */
+    protected boolean canTriggerWalking()
+    {
+        return false;
+    }
+
+    /**
+     * Returns true if other Entities should be prevented from moving through this Entity.
+     */
+    public boolean canBeCollidedWith()
+    {
+        return !this.isDead;
+    }
+
+    /**
+     * Called to update the entity's position/logic.
+     */
+    public void onUpdate()
+    {
+        this.prevPosX = this.posX;
+        this.prevPosY = this.posY;
+        this.prevPosZ = this.posZ;
+        this.motionY -= 0.03999999910593033D;
+        this.moveEntity(this.motionX, this.motionY, this.motionZ);
+        this.motionX *= 0.9800000190734863D;
+        this.motionY *= 0.9800000190734863D;
+        this.motionZ *= 0.9800000190734863D;
+
+        if (this.onGround)
+        {
+            this.motionX *= 0.699999988079071D;
+            this.motionZ *= 0.699999988079071D;
+            this.motionY *= -0.5D;
+        }
+
+        if (this.fuse-- <= 0)
+        {
+            this.setDead();
+
+            if (!this.worldObj.isRemote)
+            {
+                
+                EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(this.worldObj, (double)((float)posX + 0.5F), (double)((float)posY + 0.5F), (double)((float)posZ + 0.5F), this.tntPlacedBy);
+                entitytntprimed.fuse = 10;
+                this.worldObj.spawnEntityInWorld(entitytntprimed);this.worldObj.spawnEntityInWorld(entitytntprimed);
+                this.worldObj.spawnEntityInWorld(entitytntprimed);this.worldObj.spawnEntityInWorld(entitytntprimed);
+                this.worldObj.spawnEntityInWorld(entitytntprimed);this.worldObj.spawnEntityInWorld(entitytntprimed);
+                this.worldObj.spawnEntityInWorld(entitytntprimed);this.worldObj.spawnEntityInWorld(entitytntprimed);
+                this.worldObj.spawnEntityInWorld(entitytntprimed);this.worldObj.spawnEntityInWorld(entitytntprimed);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                this.worldObj.spawnParticle("fireworksSpark", this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+                
+                this.explode();
+                
+            }
+        }
+        else
+        {
+            this.worldObj.spawnParticle("smoke", this.posX, this.posY - 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
+            this.worldObj.spawnParticle("smoke", this.posX, this.posY - 0.7D, this.posZ, 0.0D, 0.0D, 0.0D);
+            this.worldObj.spawnParticle("smoke", this.posX, this.posY - 1.5D, this.posZ, 0.0D, 0.0D, 0.0D);
+            this.worldObj.spawnParticle("smoke", this.posX, this.posY - 0.8D, this.posZ, 0.0D, 0.0D, 0.0D);
+            this.pushFirework(posX, 20.0d, posZ);
+        }
+    }
+
+    private void explode()
+    {
+        float f = 4.0F;
+        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, f, true);
+    }
+
+    /**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    protected void writeEntityToNBT(NBTTagCompound p_70014_1_)
+    {
+        p_70014_1_.setByte("Fuse", (byte)this.fuse);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    protected void readEntityFromNBT(NBTTagCompound p_70037_1_)
+    {
+        this.fuse = p_70037_1_.getByte("Fuse");
+    }
+
+    @SideOnly(Side.CLIENT)
+    public float getShadowSize()
+    {
+        return 1.0F;
+    }
+
+    /**
+     * returns null or the entityliving it was placed or ignited by
+     */
+    public EntityLivingBase getTntPlacedBy()
+    {
+        return this.tntPlacedBy;
+    }
+}

@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -47,6 +47,7 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -91,23 +92,34 @@ import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 
-import java.util.Random;
+import java.util.*;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import net.minecraftforge.common.util.*;
 
-public class CoolAchievement {
+import org.lwjgl.opengl.GL11;
 
-	public CoolAchievement() {
+import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.CoolAchievement;
+
+@SuppressWarnings("unchecked")
+public class CoolGlasses {
+
+	public CoolGlasses() {
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
-			.initIndependentStat();
+	public static Item block;
+	public static Object instance;
 
 	public void load() {
-		achievement.registerStat();
+
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "XXX",
+				"345", "XXX", Character.valueOf('3'),
+				new ItemStack(Blocks.wool, 1, 15), Character.valueOf('4'),
+				new ItemStack(Blocks.glass, 1), Character.valueOf('5'),
+				new ItemStack(Blocks.wool, 1, 15), });
+		new ChestGenHooks("dungeonChest")
+				.addItem(new WeightedRandomChestContent(new ItemStack(block),
+						1, 1, 10));
 	}
 
 	public void generateNether(World world, Random random, int chunkX,
@@ -129,5 +141,63 @@ public class CoolAchievement {
 	}
 
 	public void registerRenderers() {
+	}
+
+	static {
+		block = (new ItemcoolGuyGlasses(ArmorMaterial.DIAMOND, 1, 0));
+		Item.itemRegistry.addObject(425, "CoolGuyGlasses", block);
+
+	}
+
+	static class ItemcoolGuyGlasses extends ItemArmor {
+
+		public ItemcoolGuyGlasses(ArmorMaterial armor, int par1, int par2)
+		{
+			super(armor, 1, par2);
+			setMaxDamage(1);
+			maxStackSize = 1;
+			setUnlocalizedName("CoolGuyGlasses");
+			setTextureName("boomplus:coolGuystexture");
+			setCreativeTab(BoomPlusTab.tab);
+		}
+
+		
+		
+		
+		@Override
+		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+		{
+			return "boomplus:textures/armor/coolGlasses.png";
+		}
+
+		public int getItemEnchantability() {
+			return 0;
+		}
+
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
+		}
+
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
+		}
+
+		public void onUpdate(ItemStack itemstack, World world, Entity entity,
+				int par4, boolean par5) {
+			int i = (int) entity.posX;
+			int j = (int) entity.posY;
+			int k = (int) entity.posZ;
+
+			if (entity instanceof EntityPlayer)
+			{
+				/*ItemStack armorInvHelmet = ((EntityPlayer)entity).inventory.armorInventory[0];
+				ItemStack Armor = new ItemStack(mcreator_coolGuyGlasses.block);
+				if (armorInvHelmet != null)
+					if (armorInvHelmet.getDisplayName().startsWith(Armor.getDisplayName())) {*/
+						world.getPlayerEntityByName(((EntityPlayer) entity).getDisplayName()).addStat(CoolAchievement.achievement, 1);
+				//}
+			}
+		}
+
 	}
 }

@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.gui;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -90,24 +90,20 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
-
+import org.lwjgl.input.Keyboard;
 import java.util.Random;
+import cpw.mods.fml.common.eventhandler.*;
+import cpw.mods.fml.common.gameevent.*;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+public class mcreator_welcome {
 
-public class CoolAchievement {
+	public static Object instance;
 
-	public CoolAchievement() {
+	public mcreator_welcome() {
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
-			.initIndependentStat();
-
 	public void load() {
-		achievement.registerStat();
+		FMLCommonHandler.instance().bus().register(new KeyHandlerClass());
 	}
 
 	public void generateNether(World world, Random random, int chunkX,
@@ -116,6 +112,9 @@ public class CoolAchievement {
 
 	public void generateSurface(World world, Random random, int chunkX,
 			int chunkZ) {
+	}
+
+	public void registerRenderers() {
 	}
 
 	public int addFuel(ItemStack fuel) {
@@ -128,6 +127,53 @@ public class CoolAchievement {
 	public void preInit(FMLPreInitializationEvent event) {
 	}
 
-	public void registerRenderers() {
+	public class KeyHandlerClass {
+
+		private static final String desc = "key.tut_inventory.desc";
+		private static final int keyValues = Keyboard.KEY_X;
+		private final KeyBinding keys;
+
+		public KeyHandlerClass() {
+			keys = new KeyBinding(desc, keyValues, "key.tutorial.category");
+			ClientRegistry.registerKeyBinding(keys);
+		}
+
+		@SubscribeEvent
+		public void onKeyInput(InputEvent.KeyInputEvent event) {
+			if (!FMLClientHandler.instance().isGUIOpen(GuiChat.class)) {
+				if (keys.isPressed()) {
+					EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+					int i = (int) entity.posX;
+					int j = (int) entity.posY;
+					int k = (int) entity.posZ;
+					/*
+					 * World world = null; WorldServer[] list =
+					 * MinecraftServer.getServer().worldServers; for(WorldServer
+					 * ins : list){
+					 * if(ins.provider.dimensionId==entity.worldObj.
+					 * provider.dimensionId) world = ins; } if(world==null)
+					 * world = list[0];
+					 */
+					MinecraftServer server = FMLCommonHandler.instance()
+							.getMinecraftServerInstance();
+					World world = server.worldServers[0];
+
+					if (true) {
+						if (true) {
+
+							if (true) {
+								if (entity instanceof EntityPlayer)
+									((EntityPlayer) entity).openGui(instance,
+											mcreator_welcomeGUI.GUIID, world,
+											i, j, k);
+							}
+
+						}
+					}
+
+				}
+			}
+		}
 	}
+
 }

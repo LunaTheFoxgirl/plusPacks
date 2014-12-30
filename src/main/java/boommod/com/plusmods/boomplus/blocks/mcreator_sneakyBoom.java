@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.blocks;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -8,6 +8,7 @@ import cpw.mods.fml.common.asm.transformers.*;
 import cpw.mods.fml.common.discovery.*;
 import cpw.mods.fml.common.discovery.asm.*;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.functions.*;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
@@ -91,32 +92,24 @@ import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 
-import java.util.Random;
+import java.util.*;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import net.minecraftforge.common.util.*;
+import net.minecraft.client.renderer.texture.*;
 
-public class CoolAchievement {
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
-	public CoolAchievement() {
+import com.plusmods.boomplus.BoomPlusTab;
+
+public class mcreator_sneakyBoom {
+
+	public mcreator_sneakyBoom() {
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
-			.initIndependentStat();
+	public static BlockSneakyBoom block;
 
-	public void load() {
-		achievement.registerStat();
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
+	public static Object instance;
 
 	public int addFuel(ItemStack fuel) {
 		return 0;
@@ -126,8 +119,115 @@ public class CoolAchievement {
 	}
 
 	public void preInit(FMLPreInitializationEvent event) {
+
+		GameRegistry.registerBlock(block, "SneakyBoom");
 	}
 
 	public void registerRenderers() {
+	}
+
+	public void load() {
+
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
+				"345", "678", Character.valueOf('0'),
+				new ItemStack(Blocks.stone, 1), Character.valueOf('1'),
+				new ItemStack(Blocks.stone, 1), Character.valueOf('2'),
+				new ItemStack(Blocks.stone, 1), Character.valueOf('3'),
+				new ItemStack(Blocks.stone, 1), Character.valueOf('4'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
+				new ItemStack(Blocks.stone, 1), Character.valueOf('6'),
+				new ItemStack(Blocks.stone, 1), Character.valueOf('7'),
+				new ItemStack(Blocks.stone, 1), Character.valueOf('8'),
+				new ItemStack(Blocks.stone, 1), });
+	}
+
+	static {
+
+		Random xRandom;
+		
+		block = (BlockSneakyBoom) (new BlockSneakyBoom().setHardness(2.0F)
+				.setResistance(10.0F).setLightLevel(0.0F)
+				.setBlockName("SneakyBoom")
+				.setBlockTextureName("boomplus:sneakyBoomtexture").setLightOpacity(0)
+				.setStepSound(Block.soundTypeStone)
+				.setCreativeTab(BoomPlusTab.tab));
+				
+		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		Block.blockRegistry.addObject(190, "SneakyBoom", block);
+		block.setHarvestLevel("pickaxe", 1);
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	static class BlockSneakyBoom extends Block {
+
+		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
+
+		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
+				st4 = null;
+
+		boolean red = false;
+
+		protected BlockSneakyBoom() {
+			super(Material.ground);
+
+		}
+
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
+
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+
+		}
+
+		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
+				int par2, int par3, int par4, int par5) {
+			return red ? 1 : 0;
+		}
+
+		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
+				int l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			
+			if (!world.isRemote) {
+				world.createExplosion((Entity) null, i, j, k, 2F, true);
+			}
+
+		}
+
+		@SideOnly(Side.CLIENT)
+
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int tickRate(World world) {
+			return 10;
+		}
+		
+		@Override
+		public Item getItemDropped(int metaData, Random random, int fortune)
+		{
+			return Item.getItemById(1);
+		}
+		
+		
+		@Override
+		public int quantityDropped(Random par1Random) {
+			return 1;
+		}
+
 	}
 }

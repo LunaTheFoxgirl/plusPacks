@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.blocks;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -90,24 +90,24 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
-
 import java.util.Random;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+public class mcreator_sneakyBoomEdible {
 
-public class CoolAchievement {
-
-	public CoolAchievement() {
+	public mcreator_sneakyBoomEdible() {
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
-			.initIndependentStat();
+	public static Item block;
+	public static Object instance;
 
 	public void load() {
-		achievement.registerStat();
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "X1X",
+				"345", "X7X", Character.valueOf('1'),
+				new ItemStack(Items.cooked_beef, 1), Character.valueOf('3'),
+				new ItemStack(Items.cooked_beef, 1), Character.valueOf('4'),
+				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
+				new ItemStack(Items.cooked_beef, 1), Character.valueOf('7'),
+				new ItemStack(Items.cooked_beef, 1), });
 	}
 
 	public void generateNether(World world, Random random, int chunkX,
@@ -129,5 +129,38 @@ public class CoolAchievement {
 	}
 
 	public void registerRenderers() {
+	}
+
+	static {
+		block = (Item) (new BlockCustomFood(4, 0.3F, false));
+		block = ((BlockCustomFood) block)
+				.setUnlocalizedName("SneakyBoomEdible")
+				.setTextureName("boomplus:sneakyBoomedibletexture");
+		block.setMaxStackSize(64);
+		Item.itemRegistry.addObject(423, "SneakyBoomEdible", block);
+
+	}
+
+	public static class BlockCustomFood extends ItemFood {
+		public BlockCustomFood(int par2, float par3, boolean par4) {
+			super(par2, par3, par4);
+		}
+
+		protected void onFoodEaten(ItemStack itemStack, World world,
+				EntityPlayer entity) {
+			super.onFoodEaten(itemStack, world, entity);
+			float var4 = 1.0F;
+			int i = (int) (entity.prevPosX + (entity.posX - entity.prevPosX)
+					* (double) var4);
+			int j = (int) (entity.prevPosY + (entity.posY - entity.prevPosY)
+					* (double) var4 + 1.62D - (double) entity.yOffset);
+			int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
+					* (double) var4);
+
+			if (!world.isRemote) {
+				world.createExplosion((Entity) null, i, j, k, 4F, true);
+			}
+
+		}
 	}
 }

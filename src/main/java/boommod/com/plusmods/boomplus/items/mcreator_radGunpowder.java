@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -91,23 +91,27 @@ import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 
-import java.util.Random;
+import java.util.*;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import net.minecraftforge.common.util.*;
 
-public class CoolAchievement {
+import org.lwjgl.opengl.GL11;
 
-	public CoolAchievement() {
+import com.plusmods.boomplus.BoomPlusTab;
+
+@SuppressWarnings("unchecked")
+public class mcreator_radGunpowder {
+
+	public mcreator_radGunpowder() {
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
-			.initIndependentStat();
+	public static Item block;
+	public static Object instance;
 
 	public void load() {
-		achievement.registerStat();
+		new ChestGenHooks("dungeonChest")
+				.addItem(new WeightedRandomChestContent(new ItemStack(block),
+						1, 6, 6));
 	}
 
 	public void generateNether(World world, Random random, int chunkX,
@@ -129,5 +133,35 @@ public class CoolAchievement {
 	}
 
 	public void registerRenderers() {
+	}
+
+	static {
+		block = (new ItemradGunpowder(424));
+		Item.itemRegistry.addObject(424, "RadGunpowder", block);
+
+	}
+
+	static class ItemradGunpowder extends Item {
+
+		public ItemradGunpowder(int par1) {
+			setMaxDamage(0);
+			maxStackSize = 64;
+			setUnlocalizedName("RadGunpowder");
+			setTextureName("boomplus:radioactiveGunpowdertexture");
+			setCreativeTab(BoomPlusTab.tab);
+		}
+
+		public int getItemEnchantability() {
+			return 0;
+		}
+
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
+		}
+
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
+		}
+
 	}
 }

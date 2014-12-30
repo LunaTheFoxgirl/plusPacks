@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.blocks;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -91,32 +91,24 @@ import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 
-import java.util.Random;
+import java.util.*;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import net.minecraftforge.common.util.*;
+import net.minecraft.client.renderer.texture.*;
 
-public class CoolAchievement {
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
-	public CoolAchievement() {
+import com.plusmods.boomplus.BoomPlusTab;
+
+public class mcreator_massiveBoom {
+
+	public mcreator_massiveBoom() {
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
-			.initIndependentStat();
+	public static BlockMassiveBoom block;
 
-	public void load() {
-		achievement.registerStat();
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
+	public static Object instance;
 
 	public int addFuel(ItemStack fuel) {
 		return 0;
@@ -126,8 +118,110 @@ public class CoolAchievement {
 	}
 
 	public void preInit(FMLPreInitializationEvent event) {
+
+		GameRegistry.registerBlock(block, "MassiveBoom");
 	}
 
 	public void registerRenderers() {
+	}
+
+	public void load() {
+
+		GameRegistry.addRecipe(
+				new ItemStack(block, 1),
+				new Object[] { "012", "345", "678", Character.valueOf('0'),
+						new ItemStack(Blocks.wool, 1, 4),
+						Character.valueOf('1'),
+						new ItemStack(mcreator_mediumBoom.block, 1),
+						Character.valueOf('2'),
+						new ItemStack(Blocks.wool, 1, 4),
+						Character.valueOf('3'),
+						new ItemStack(mcreator_mediumBoom.block, 1),
+						Character.valueOf('4'),
+						new ItemStack(mcreator_largeBoom.block, 1),
+						Character.valueOf('5'),
+						new ItemStack(mcreator_mediumBoom.block, 1),
+						Character.valueOf('6'),
+						new ItemStack(Blocks.wool, 1, 4),
+						Character.valueOf('7'),
+						new ItemStack(mcreator_mediumBoom.block, 1),
+						Character.valueOf('8'),
+						new ItemStack(Blocks.wool, 1, 4), });
+	}
+
+	static {
+
+		block = (BlockMassiveBoom) (new BlockMassiveBoom(Material.iron).setHardness(2.0F)
+				.setResistance(0.0F).setLightLevel(0.0F)
+				.setBlockName("MassiveBoom")
+				.setBlockTextureName("boomplus:massiveBoomtexture").setLightOpacity(0)
+				.setStepSound(Block.soundTypeGrass)
+				.setCreativeTab(BoomPlusTab.tab));
+		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		Block.blockRegistry.addObject(191, "MassiveBoom", block);
+		block.setHarvestLevel("pickaxe", 0);
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	static class BlockMassiveBoom extends Block {
+
+		boolean red = false;
+
+		public BlockMassiveBoom(Material blockMaterial) 
+		{
+			super(blockMaterial);
+		}
+
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
+
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+
+		}
+
+		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
+				int par2, int par3, int par4, int par5) {
+			return red ? 1 : 0;
+		}
+
+		public void onNeighborBlockChange(World world, int i, int j, int k,
+				Block l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
+					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
+
+				if (!world.isRemote) {
+					world.createExplosion((Entity) null, i, j, k, 60F, true);
+				}
+
+			}
+		}
+
+		@SideOnly(Side.CLIENT)
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int tickRate(World world) {
+			return 10;
+		}
+
+		public int quantityDropped(Random par1Random) {
+			return 1;
+		}
+
 	}
 }

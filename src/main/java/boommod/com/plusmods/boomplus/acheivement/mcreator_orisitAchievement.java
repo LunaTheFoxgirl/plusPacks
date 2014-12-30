@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.acheivement;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -93,17 +93,17 @@ import net.minecraft.init.*;
 
 import java.util.Random;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import com.plusmods.boomplus.items.mcreator_strangeSymbol;
 
-public class CoolAchievement {
+public class mcreator_orisitAchievement {
 
-	public CoolAchievement() {
+	public mcreator_orisitAchievement() {
 	}
 
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
+			"achievement.orisitAchievement", "orisitAchievement", 5, 1,
+			mcreator_strangeSymbol.block, (Achievement) null))
 			.initIndependentStat();
 
 	public void load() {

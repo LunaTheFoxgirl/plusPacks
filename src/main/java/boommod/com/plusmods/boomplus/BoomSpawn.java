@@ -1,5 +1,7 @@
 package com.plusmods.boomplus;
 
+import com.plusmods.boomplus.items.mcreator_guideBook;
+
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.EventPriority;

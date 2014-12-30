@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.blocks;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -91,32 +91,25 @@ import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 
-import java.util.Random;
+import java.util.*;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import net.minecraftforge.common.util.*;
+import net.minecraft.client.renderer.texture.*;
 
-public class CoolAchievement {
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
-	public CoolAchievement() {
+import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.items.mcreator_radGunpowder;
+
+public class mcreator_radOre {
+
+	public mcreator_radOre() {
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
-			.initIndependentStat();
+	public static BlockRadOre block;
 
-	public void load() {
-		achievement.registerStat();
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
+	public static Object instance;
 
 	public int addFuel(ItemStack fuel) {
 		return 0;
@@ -126,8 +119,116 @@ public class CoolAchievement {
 	}
 
 	public void preInit(FMLPreInitializationEvent event) {
+
+		GameRegistry.registerBlock(block, "RadOre");
 	}
 
 	public void registerRenderers() {
+	}
+
+	public void load() {
+	}
+
+	static {
+
+		block = (BlockRadOre) (new BlockRadOre().setHardness(6.0F)
+				.setResistance(10.0F).setLightLevel(0.0F)
+				.setBlockName("RadOre")
+				.setBlockTextureName("boomplus:radioactiveOretexture")
+				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
+				.setCreativeTab(BoomPlusTab.tab));
+		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		Block.blockRegistry.addObject(185, "RadOre", block);
+		block.setHarvestLevel("pickaxe", 2);
+	}
+
+	public void generateSurface(World world, java.util.Random rand, int chunkX,
+			int chunkZ) {
+		for (int i = 0; i < 5; i++) {
+			int randPosX = chunkX + rand.nextInt(16);
+			int randPosY = rand.nextInt(14) + 20;
+			int randPosZ = chunkZ + rand.nextInt(16);
+			(new WorldGenMinable(mcreator_radOre.block, 7)).generate(world,
+					rand, randPosX, randPosY, randPosZ);
+		}
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	static class BlockRadOre extends Block {
+
+		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
+
+		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
+				st4 = null;
+
+		boolean red = false;
+
+		protected BlockRadOre() {
+			super(Material.iron);
+
+		}
+
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
+
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+
+		}
+
+		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
+				int par2, int par3, int par4, int par5) {
+			return red ? 1 : 0;
+		}
+
+		public void randomDisplayTick(World world, int i, int j, int k,
+				Random random) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			World par1World = world;
+			int par2 = i;
+			int par3 = j;
+			int par4 = k;
+			Random par5Random = random;
+			if (true)
+				for (int l = 0; l < 15; ++l) {
+					double d0 = (double) ((float) par2 + par5Random.nextFloat());
+					double d1 = (double) ((float) par3 + par5Random.nextFloat());
+					double d2 = (double) ((float) par4 + par5Random.nextFloat());
+					double d3 = 0.0D;
+					double d4 = 0.0D;
+					double d5 = 0.0D;
+					int i1 = par5Random.nextInt(2) * 2 - 1;
+					d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
+					d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
+					d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
+					par1World.spawnParticle("mobSpellAmbient", d0, d1, d2, d3,
+							d4, d5);
+				}
+
+		}
+
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int tickRate(World world) {
+			return 10;
+		}
+
+		public int quantityDropped(Random par1Random) {
+			return 2;
+		}
+
+		public Item getItemDropped(int par1, Random par2Random, int par3) {
+			return mcreator_radGunpowder.block;
+		}
 	}
 }

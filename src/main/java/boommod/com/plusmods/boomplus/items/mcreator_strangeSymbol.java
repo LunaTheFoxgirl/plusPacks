@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -91,23 +91,24 @@ import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 
-import java.util.Random;
+import java.util.*;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import net.minecraftforge.common.util.*;
 
-public class CoolAchievement {
+import org.lwjgl.opengl.GL11;
 
-	public CoolAchievement() {
+import com.plusmods.boomplus.BoomPlusTab;
+
+@SuppressWarnings("unchecked")
+public class mcreator_strangeSymbol {
+
+	public mcreator_strangeSymbol() {
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
-			.initIndependentStat();
+	public static Item block;
+	public static Object instance;
 
 	public void load() {
-		achievement.registerStat();
 	}
 
 	public void generateNether(World world, Random random, int chunkX,
@@ -129,5 +130,75 @@ public class CoolAchievement {
 	}
 
 	public void registerRenderers() {
+	}
+
+	
+	public static final Item.ToolMaterial symbol = EnumHelper.addToolMaterial("symbolMaterial", 12, 2000, 6, 120000000000000000.0f, 0);
+	
+	static {
+		block = (new ItemstrangeSymbol(symbol));
+		Item.itemRegistry.addObject(424, "StrangeSymbol", block);
+
+	}
+
+	static class ItemstrangeSymbol extends ItemSword {
+
+		
+		
+		
+		/*public ItemstrangeSymbol(int par1) {
+			setMaxDamage(0);
+			maxStackSize = 1;
+			setUnlocalizedName("StrangeSymbol");
+			setTextureName("boomplus:oreisit");
+			setCreativeTab(mcreator_boomPlusTab.tab);
+		}*/
+
+		public ItemstrangeSymbol(ToolMaterial p_i45356_1_) {
+			super(p_i45356_1_);
+			// TODO Auto-generated constructor stub
+			setMaxDamage(0);
+			maxStackSize = 1;
+			setUnlocalizedName("StrangeSymbol");
+			setTextureName("boomplus:oreisit");
+			setCreativeTab(BoomPlusTab.tab);
+		}
+
+		public int getItemEnchantability() {
+			return 0;
+		}
+
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
+		}
+		
+		
+		
+
+		@Override
+		public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer player, World world, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+			/*if (world.isRemote)
+				((EntityClientPlayerMP) player).sendChatMessage("Whoops! my bad.");
+			if (!world.isRemote)
+				((EntityPlayer) player).inventory.consumeInventoryItem(mcreator_strangeSymbol.block);*/
+			
+			return super.onItemUse(p_77648_1_, player, world, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_);
+		}
+
+		@Override
+		public ItemStack onItemRightClick(ItemStack p_77659_1_,
+				World world, EntityPlayer player) {
+			if (world.isRemote)
+				((EntityClientPlayerMP) player).sendChatMessage("Whoops! my bad.");
+			if (!world.isRemote)
+				((EntityPlayer) player).inventory.consumeInventoryItem(mcreator_strangeSymbol.block);
+			// TODO Auto-generated method stub
+			return super.onItemRightClick(p_77659_1_, world, player);
+		}
+
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
+		}
+
 	}
 }
