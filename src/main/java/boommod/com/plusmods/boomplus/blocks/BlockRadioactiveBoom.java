@@ -100,81 +100,17 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.items.ItemRadioactivePowder;
 
-public class mcreator_smallBoom {
+public class BlockRadioactiveBoom extends Block {
 
-	public mcreator_smallBoom() {
-	}
-
-	public static BlockSmallBoom block;
-
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "SmallBoom");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-				"345", "678", Character.valueOf('0'),
-				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('1'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('2'),
-				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('3'),
-				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('4'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
-				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('6'),
-				new ItemStack(Blocks.wool, 1, 4), Character.valueOf('7'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('8'),
-				new ItemStack(Blocks.wool, 1, 4), });
-	}
-
-	static {
-
-		block = (BlockSmallBoom) (new BlockSmallBoom(Material.iron).setHardness(2.0F)
-				.setResistance(0.0F).setLightLevel(0.0F)
-				.setBlockName("SmallBoom")
-				.setBlockTextureName("boomplus:smallBoomtexture").setLightOpacity(0)
-				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(176, "SmallBoom", block);
-		block.setHarvestLevel("pickaxe", 0);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockSmallBoom extends Block {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
-
-		boolean red = false;
-
-		public BlockSmallBoom(Material blockMaterial) 
+		public BlockRadioactiveBoom(Material blockMaterial) 
 		{
 			super(blockMaterial);
 		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (entity != null && world != null) {
@@ -187,47 +123,78 @@ public class mcreator_smallBoom {
 
 		}
 
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
-
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
-				if (!world.isRemote) {
-					world.createExplosion((Entity) null, i, j, k, 2F, true);
+				if (true) {
+					world.createExplosion((Entity) null, i, j, k, 120F, true);
+				}
+
+				if (true) {
+					world.setBlock(i, j, k, Blocks.flowing_lava, 0, 2);
+				}
+
+				if (true) {
+					entity.addPotionEffect(new PotionEffect(15, 30, 2));
+				}
+
+				if (true) {
+					world.setBlock(i + 1, j, k, Blocks.flowing_lava, 0, 2);
+				}
+
+				if (true) {
+					world.setBlock(i, j, k + 2, Blocks.flowing_lava, 0, 2);
+				}
+				if (true)
+				{
+					//dqwdqwdqwd
 				}
 
 			}
 		}
 
-		public void onBlockDestroyedByExplosion(World world, int i, int j,
-				int k, Explosion e) {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void randomDisplayTick(World world, int i, int j, int k,
+				Random random) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-
-			if (!world.isRemote) {
-				world.createExplosion((Entity) null, i, j, k, 2F, true);
-			}
+			World par1World = world;
+			int par2 = i;
+			int par3 = j;
+			int par4 = k;
+			Random par5Random = random;
+			if (true)
+				for (int l = 0; l < 30; ++l) {
+					double d0 = (double) ((float) par2 + par5Random.nextFloat());
+					double d1 = (double) ((float) par3 + par5Random.nextFloat());
+					double d2 = (double) ((float) par4 + par5Random.nextFloat());
+					double d3 = 0.0D;
+					double d4 = 0.0D;
+					double d5 = 0.0D;
+					int i1 = par5Random.nextInt(2) * 2 - 1;
+					d3 = ((double) par5Random.nextFloat() - 0.5D) * 2.0D;
+					d4 = ((double) par5Random.nextFloat() - 0.5D) * 2.0D;
+					d5 = ((double) par5Random.nextFloat() - 0.5D) * 2.0D;
+					par1World.spawnParticle("portal", d0, d1, d2, d3, d4, d5);
+				}
 
 		}
+
 		
+		@Override
 		@SideOnly(Side.CLIENT)
 		public int getRenderType() {
 			return 0;
 		}
 
 		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}
 
 	}
-}

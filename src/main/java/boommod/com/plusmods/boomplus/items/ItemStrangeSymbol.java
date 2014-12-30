@@ -100,9 +100,9 @@ import org.lwjgl.opengl.GL11;
 import com.plusmods.boomplus.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
-public class mcreator_strangeSymbol {
+public class ItemStrangeSymbol {
 
-	public mcreator_strangeSymbol() {
+	public ItemStrangeSymbol() {
 	}
 
 	public static Item block;
@@ -191,7 +191,7 @@ public class mcreator_strangeSymbol {
 			if (world.isRemote)
 				((EntityClientPlayerMP) player).sendChatMessage("Whoops! my bad.");
 			if (!world.isRemote)
-				((EntityPlayer) player).inventory.consumeInventoryItem(mcreator_strangeSymbol.block);
+				((EntityPlayer) player).inventory.consumeInventoryItem(ItemStrangeSymbol.block);
 			// TODO Auto-generated method stub
 			return super.onItemRightClick(p_77659_1_, world, player);
 		}

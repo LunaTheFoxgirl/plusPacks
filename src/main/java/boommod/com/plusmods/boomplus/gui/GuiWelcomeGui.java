@@ -98,13 +98,13 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 @SuppressWarnings("unchecked")
-public class mcreator_welcomeGUI {
+public class GuiWelcomeGui {
 
 	public static Object instance;
 
 	public static int GUIID = 1;
 
-	public mcreator_welcomeGUI() {
+	public GuiWelcomeGui() {
 	}
 
 	public void load() {
@@ -136,13 +136,13 @@ public class mcreator_welcomeGUI {
 		@Override
 		public Object getServerGuiElement(int id, EntityPlayer player,
 				World world, int x, int y, int z) {
-			return new mcreator_welcomeGUI.GuiContainerMod(player);
+			return new GuiWelcomeGui.GuiContainerMod(player);
 		}
 
 		@Override
 		public Object getClientGuiElement(int id, EntityPlayer player,
 				World world, int x, int y, int z) {
-			return new mcreator_welcomeGUI.GuiWindow(world, x, y, z, player);
+			return new GuiWelcomeGui.GuiWindow(world, x, y, z, player);
 		}
 	}
 

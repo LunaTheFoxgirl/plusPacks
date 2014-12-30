@@ -102,97 +102,16 @@ import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
 
-public class mcreator_enderBoom {
-
-	public mcreator_enderBoom() {
-	}
-
-	public static BlockEnderBoom block;
-
-	public static Object instance;
+public class BlockEnderBoom extends Block {
 	
-	
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "EnderBoom");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-				"345", "678", Character.valueOf('0'),
-				new ItemStack(Blocks.end_stone, 1), Character.valueOf('1'),
-				new ItemStack(Items.ender_pearl, 1), Character.valueOf('2'),
-				new ItemStack(Blocks.end_stone, 1), Character.valueOf('3'),
-				new ItemStack(Items.ender_pearl, 1), Character.valueOf('4'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
-				new ItemStack(Items.ender_pearl, 1), Character.valueOf('6'),
-				new ItemStack(Blocks.end_stone, 1), Character.valueOf('7'),
-				new ItemStack(Items.ender_pearl, 1), Character.valueOf('8'),
-				new ItemStack(Blocks.end_stone, 1), });
-	}
-
-	static {
-
-		block = (BlockEnderBoom) (new BlockEnderBoom().setHardness(1.0F)
-				.setResistance(0.0F).setLightLevel(0.0F)
-				.setBlockName("EnderBoom")
-				.setBlockTextureName("boomplus:ender_boom_texture").setLightOpacity(0)
-				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(176, "EnderBoom", block);
-		block.setHarvestLevel("pickaxe", 0);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockEnderBoom extends Block {
-
-		boolean red = false;
+		protected BlockEnderBoom(Material p_i45394_1_) 
+		{
+		super(p_i45394_1_);
 		
-		boolean firstExplosion = false;
+		}
 		
-
-		protected BlockEnderBoom() {
-			super(Material.tnt);
-
-		}
-
-		public void onBlockAdded(World world, int i, int j, int k) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (entity != null && world != null) {
-				int le = MathHelper
-						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				world.setBlockMetadataWithNotify(i, j, k, le, 2);
-			}
-
-			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
-
-		}
-
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
-
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
 			Minecraft mc = Minecraft.getMinecraft();
@@ -200,8 +119,9 @@ public class mcreator_enderBoom {
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
+				boolean firstExplosion = false;
 				if (!world.isRemote)
-					if(firstExplosion == false)
+					if(firstExplosion  == false)
 						for (int x = i - 7; x < i + 7; x++)
 						{
 							for (int z = k - 7; z < k + 7; z++)
@@ -307,6 +227,7 @@ public class mcreator_enderBoom {
 		
 
 		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockDestroyedByExplosion(World p_149723_1_,
 				int p_149723_2_, int p_149723_3_, int p_149723_4_,
 				Explosion p_149723_5_) {
@@ -323,7 +244,9 @@ public class mcreator_enderBoom {
 			
 			
 		}
-
+		
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void randomDisplayTick(World world, int i, int j, int k,
 				Random random) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
@@ -350,18 +273,15 @@ public class mcreator_enderBoom {
 		}
 
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public int getRenderType() {
 			return 0;
 		}
 
 		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}
 
 	}
-}

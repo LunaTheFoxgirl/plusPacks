@@ -101,94 +101,16 @@ import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
 
-public class mcreator_lavaBoom {
+public class BlockLavaBoom extends Block {
 
-	public mcreator_lavaBoom() {
-	}
-
-	public static BlockLavaBoom block;
-
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "LavaBoom");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-				"345", "678", Character.valueOf('0'),
-				new ItemStack(Blocks.cobblestone, 1), Character.valueOf('1'),
-				new ItemStack(Items.lava_bucket, 1), Character.valueOf('2'),
-				new ItemStack(Blocks.cobblestone, 1), Character.valueOf('3'),
-				new ItemStack(Items.lava_bucket, 1), Character.valueOf('4'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
-				new ItemStack(Items.lava_bucket, 1), Character.valueOf('6'),
-				new ItemStack(Blocks.cobblestone, 1), Character.valueOf('7'),
-				new ItemStack(Items.lava_bucket, 1), Character.valueOf('8'),
-				new ItemStack(Blocks.cobblestone, 1), });
-	}
-
-	static {
-
-		block = (BlockLavaBoom) (new BlockLavaBoom().setHardness(1.0F)
-				.setResistance(0.0F).setLightLevel(0.0F)
-				.setBlockName("LavaBoom")
-				.setBlockTextureName("boomplus:lava_boom_texture")
-				.setLightOpacity(0)
-				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(177, "LavaBoom", block);
-		block.setHarvestLevel("pickaxe", 0);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-	
-	
-	
-
-	static class BlockLavaBoom extends Block {
-
-
-		boolean red = false;
 
 		protected BlockLavaBoom() {
 			super(Material.iron);
 
 		}
-		
-		
-		
-		
 
 		@Override
-		public int quantityDropped(int meta, int fortune, Random random) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-
-
-
-
+		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (entity != null && world != null) {
@@ -200,12 +122,9 @@ public class mcreator_lavaBoom {
 			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
 
 		}
-
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
-
+		
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
@@ -578,6 +497,8 @@ public class mcreator_lavaBoom {
 			}
 		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void randomDisplayTick(World world, int i, int j, int k,
 				Random random) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
@@ -604,18 +525,15 @@ public class mcreator_lavaBoom {
 		}
 
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public int getRenderType() {
 			return 0;
 		}
 
 		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}
 
 	}
-}

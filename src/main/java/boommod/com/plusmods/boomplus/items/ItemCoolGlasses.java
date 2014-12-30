@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.blocks;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -47,6 +47,7 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -94,21 +95,40 @@ import net.minecraft.init.*;
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
-import net.minecraft.client.renderer.texture.*;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.CoolAchievement;
 
-public class mcreator_sneakyBoomGold {
+@SuppressWarnings("unchecked")
+public class ItemCoolGlasses {
 
-	public mcreator_sneakyBoomGold() {
+	public ItemCoolGlasses() {
 	}
 
-	public static BlockSneakyBoomGold block;
-
+	public static Item block;
 	public static Object instance;
+
+	public void load() {
+
+		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "XXX",
+				"345", "XXX", Character.valueOf('3'),
+				new ItemStack(Blocks.wool, 1, 15), Character.valueOf('4'),
+				new ItemStack(Blocks.glass, 1), Character.valueOf('5'),
+				new ItemStack(Blocks.wool, 1, 15), });
+		new ChestGenHooks("dungeonChest")
+				.addItem(new WeightedRandomChestContent(new ItemStack(block),
+						1, 1, 10));
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
 
 	public int addFuel(ItemStack fuel) {
 		return 0;
@@ -118,110 +138,65 @@ public class mcreator_sneakyBoomGold {
 	}
 
 	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "SneakyBoomGold");
 	}
 
 	public void registerRenderers() {
 	}
 
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-				"345", "678", Character.valueOf('0'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('1'),
-				new ItemStack(Item.getItemById(69), 1), Character.valueOf('2'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('3'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('4'),
-				new ItemStack(Items.redstone, 1), Character.valueOf('5'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('6'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('7'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('8'),
-				new ItemStack(Items.gold_ingot, 1), });
-	}
-
 	static {
+		block = (new ItemcoolGuyGlasses(ArmorMaterial.DIAMOND, 1, 0));
+		Item.itemRegistry.addObject(425, "CoolGuyGlasses", block);
 
-		block = (BlockSneakyBoomGold) (new BlockSneakyBoomGold()
-				.setHardness(2.0F).setResistance(10.0F).setLightLevel(0.0F)
-				.setBlockName("SneakyBoomGold")
-				.setBlockTextureName("boomplus:sneakyBoomgoldtexture")
-				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(193, "SneakyBoomGold", block);
-		block.setHarvestLevel("pickaxe", 2);
 	}
 
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
+	static class ItemcoolGuyGlasses extends ItemArmor {
 
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockSneakyBoomGold extends Block {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
-
-		boolean red = false;
-
-		protected BlockSneakyBoomGold() {
-			super(Material.iron);
-
+		public ItemcoolGuyGlasses(ArmorMaterial armor, int par1, int par2)
+		{
+			super(armor, 1, par2);
+			setMaxDamage(1);
+			maxStackSize = 1;
+			setUnlocalizedName("CoolGuyGlasses");
+			setTextureName("boomplus:coolGuystexture");
+			setCreativeTab(BoomPlusTab.tab);
 		}
 
-		public void onBlockAdded(World world, int i, int j, int k) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (entity != null && world != null) {
-				int le = MathHelper
-						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				world.setBlockMetadataWithNotify(i, j, k, le, 2);
-			}
-
-			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
-
+		
+		
+		
+		@Override
+		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+		{
+			return "boomplus:textures/armor/coolGlasses.png";
 		}
 
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
-
-		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
-				int l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-
-			if (!world.isRemote) {
-				world.createExplosion((Entity) null, i, j, k, 4F, true);
-			}
-
-		}
-
-		@SideOnly(Side.CLIENT)
-
-		public int getRenderType() {
+		public int getItemEnchantability() {
 			return 0;
 		}
 
-		@Override
-		public int tickRate(World world) {
-			return 10;
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
 		}
 
-		@Override
-		public Item getItemDropped(int metaData, Random random, int fortune)
-		{
-			return Item.getItemById(266);
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
 		}
-		
-		@Override
-		public int quantityDropped(Random par1Random) {
-			return 1;
+
+		public void onUpdate(ItemStack itemstack, World world, Entity entity,
+				int par4, boolean par5) {
+			int i = (int) entity.posX;
+			int j = (int) entity.posY;
+			int k = (int) entity.posZ;
+
+			if (entity instanceof EntityPlayer)
+			{
+				/*ItemStack armorInvHelmet = ((EntityPlayer)entity).inventory.armorInventory[0];
+				ItemStack Armor = new ItemStack(mcreator_coolGuyGlasses.block);
+				if (armorInvHelmet != null)
+					if (armorInvHelmet.getDisplayName().startsWith(Armor.getDisplayName())) {*/
+						world.getPlayerEntityByName(((EntityPlayer) entity).getDisplayName()).addStat(CoolAchievement.achievement, 1);
+				//}
+			}
 		}
 
 	}

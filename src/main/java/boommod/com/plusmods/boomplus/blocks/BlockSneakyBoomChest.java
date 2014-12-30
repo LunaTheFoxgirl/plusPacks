@@ -39,7 +39,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
-public class mcreator_sneakyBoomChest extends BlockChest
+public class BlockSneakyBoomChest extends BlockChest
 {
     private final Random field_149955_b = new Random();
     public final int field_149956_a;
@@ -50,7 +50,7 @@ public class mcreator_sneakyBoomChest extends BlockChest
     protected boolean isArmed;
     
     
-    public mcreator_sneakyBoomChest(int p_i45397_1_)
+    public BlockSneakyBoomChest(int p_i45397_1_)
     {
         super(p_i45397_1_);
         this.isArmed = false;

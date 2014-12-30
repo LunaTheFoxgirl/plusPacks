@@ -1,14 +1,17 @@
-package com.plusmods.boomplus.acheivement;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
 import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.asm.*;
 import cpw.mods.fml.common.asm.transformers.*;
 import cpw.mods.fml.common.discovery.*;
 import cpw.mods.fml.common.discovery.asm.*;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.functions.*;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
 import cpw.mods.fml.common.toposort.*;
@@ -91,43 +94,17 @@ import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 
-import java.util.Random;
+import java.util.*;
 
-import com.plusmods.boomplus.items.mcreator_strangeSymbol;
+import net.minecraftforge.common.util.*;
 
-public class mcreator_orisitAchievement {
+import org.lwjgl.opengl.GL11;
 
-	public mcreator_orisitAchievement() {
-	}
+import com.plusmods.boomplus.BoomPlusTab;
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.orisitAchievement", "orisitAchievement", 5, 1,
-			mcreator_strangeSymbol.block, (Achievement) null))
-			.initIndependentStat();
+@SuppressWarnings("unchecked")
+public class ItemLens extends Item
+{
+	
 
-	public void load() {
-		achievement.registerStat();
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
 }

@@ -103,9 +103,9 @@ import org.lwjgl.opengl.GL11;
 import com.plusmods.boomplus.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
-public class mcreator_detonator {
+public class ItemDetonator {
 
-	public mcreator_detonator() {
+	public ItemDetonator() {
 	}
 
 	public static Item block;
@@ -268,7 +268,7 @@ public class mcreator_detonator {
 						world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
 			}*/
 			ItemStack armorInvChestPlate = ((EntityPlayer)entity).inventory.armorInventory[2];
-			ItemStack Armor = new ItemStack(BoomJacket.block);
+			ItemStack Armor = new ItemStack(ItemBoomJacket.block);
 			if(armorInvChestPlate != null)
 			{
 				if (armorInvChestPlate.getDisplayName().startsWith(Armor.getDisplayName()) || mc.thePlayer.capabilities.isCreativeMode == true) 
@@ -311,7 +311,7 @@ public class mcreator_detonator {
 			
 
 			ItemStack armorInvChestPlate = ((EntityPlayer)entity).inventory.armorInventory[2];
-			ItemStack Armor = new ItemStack(BoomJacket.block);
+			ItemStack Armor = new ItemStack(ItemBoomJacket.block);
 			if(armorInvChestPlate != null)
 			{
 				if (armorInvChestPlate.getDisplayName().startsWith(Armor.getDisplayName()) || mc.thePlayer.capabilities.isCreativeMode == true) 

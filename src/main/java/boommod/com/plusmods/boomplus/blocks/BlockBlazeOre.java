@@ -90,77 +90,121 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
-import java.util.Random;
 
-public class mcreator_sneakyBoomEdible {
+import java.util.*;
 
-	public mcreator_sneakyBoomEdible() {
-	}
+import net.minecraftforge.common.util.*;
+import net.minecraft.client.renderer.texture.*;
 
-	public static Item block;
-	public static Object instance;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
-	public void load() {
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "X1X",
-				"345", "X7X", Character.valueOf('1'),
-				new ItemStack(Items.cooked_beef, 1), Character.valueOf('3'),
-				new ItemStack(Items.cooked_beef, 1), Character.valueOf('4'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
-				new ItemStack(Items.cooked_beef, 1), Character.valueOf('7'),
-				new ItemStack(Items.cooked_beef, 1), });
-	}
+import com.plusmods.boomplus.BoomPlusTab;
 
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
+public class BlockBlazeOre extends Block {
 
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
+		protected BlockBlazeOre() {
+			super(Material.ground);
 
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	static {
-		block = (Item) (new BlockCustomFood(4, 0.3F, false));
-		block = ((BlockCustomFood) block)
-				.setUnlocalizedName("SneakyBoomEdible")
-				.setTextureName("boomplus:sneakyBoomedibletexture");
-		block.setMaxStackSize(64);
-		Item.itemRegistry.addObject(423, "SneakyBoomEdible", block);
-
-	}
-
-	public static class BlockCustomFood extends ItemFood {
-		public BlockCustomFood(int par2, float par3, boolean par4) {
-			super(par2, par3, par4);
 		}
 
-		protected void onFoodEaten(ItemStack itemStack, World world,
-				EntityPlayer entity) {
-			super.onFoodEaten(itemStack, world, entity);
-			float var4 = 1.0F;
-			int i = (int) (entity.prevPosX + (entity.posX - entity.prevPosX)
-					* (double) var4);
-			int j = (int) (entity.prevPosY + (entity.posY - entity.prevPosY)
-					* (double) var4 + 1.62D - (double) entity.yOffset);
-			int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
-					* (double) var4);
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
 
-			if (!world.isRemote) {
-				world.createExplosion((Entity) null, i, j, k, 4F, true);
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+
+		}
+
+		
+		
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void randomDisplayTick(World world, int i, int j, int k,
+				Random random) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			World par1World = world;
+			int par2 = i;
+			int par3 = j;
+			int par4 = k;
+			Random par5Random = random;
+			if (true)
+				for (int l = 0; l < 10; ++l) {
+					double d0 = (double) ((float) par2 + par5Random.nextFloat());
+					double d1 = (double) ((float) par3 + par5Random.nextFloat());
+					double d2 = (double) ((float) par4 + par5Random.nextFloat());
+					double d3 = 0.0D;
+					double d4 = 0.0D;
+					double d5 = 0.0D;
+					int i1 = par5Random.nextInt(2) * 2 - 1;
+					d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.000000001490116D;
+					d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.000000001490116D;
+					d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.000000001490116D;
+					par1World.spawnParticle("flame", d0, d1, d2, d3, d4, d5);
+				}
+
+		}
+		
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
+				int l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+
+			if (!world.isRemote)
+				if (true) {
+					Entity sentity = EntityList.createEntityByID(61, world);
+					if (sentity != null) {
+						sentity.setLocationAndAngles(i, j, k,
+							world.rand.nextFloat() * 360F, 0.0F);
+						world.spawnEntityInWorld(sentity);
+					((EntityLiving) sentity).playLivingSound();
+				}
 			}
 
 		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockDestroyedByExplosion(World world, int i, int j,
+				int k, Explosion e) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+
+			if (true) {
+				Entity sentity = EntityList.createEntityByID(61, world);
+				if (sentity != null) {
+					sentity.setLocationAndAngles(i, j, k,
+							world.rand.nextFloat() * 360F, 0.0F);
+					world.spawnEntityInWorld(sentity);
+					((EntityLiving) sentity).playLivingSound();
+				}
+			}
+
+		}
+
+
+
+		@SideOnly(Side.CLIENT)
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int tickRate(World world) {
+			return 10;
+		}
+
+		public int quantityDropped(Random par1Random) {
+			return 3;
+		}
+
+		public Item getItemDropped(int par1, Random par2Random, int par3) {
+			return Items.blaze_powder;
+		}
 	}
-}

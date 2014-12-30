@@ -102,12 +102,12 @@ import org.lwjgl.opengl.GL11;
 
 import com.plusmods.boomplus.BoomPlus;
 import com.plusmods.boomplus.BoomPlusTab;
-import com.plusmods.boomplus.gui.mcreator_welcomeGUI;
+import com.plusmods.boomplus.gui.GuiWelcomeGui;
  
 @SuppressWarnings("unchecked")
-public class mcreator_guideBook {
+public class ItemGuideBook {
  
-        public mcreator_guideBook() {
+        public ItemGuideBook() {
         }
  
         public static Item block;
@@ -211,11 +211,11 @@ public class mcreator_guideBook {
                         float var4 = 1.0F;
                        
                                
-                        mc.thePlayer.openGui(BoomPlus.instance, mcreator_welcomeGUI.GUIID, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ);
+                        mc.thePlayer.openGui(BoomPlus.instance, GuiWelcomeGui.GUIID, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ);
                         if (true) {
                                 if (entity instanceof EntityPlayer)
                                                 ((EntityPlayer) entity).inventory
-                                                        .consumeInventoryItem(mcreator_guideBook.block);
+                                                        .consumeInventoryItem(ItemGuideBook.block);
                         }
                                
  

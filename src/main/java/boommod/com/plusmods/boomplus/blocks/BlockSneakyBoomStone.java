@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.items;//based on master condiguration
+package com.plusmods.boomplus.blocks;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -8,6 +8,7 @@ import cpw.mods.fml.common.asm.transformers.*;
 import cpw.mods.fml.common.discovery.*;
 import cpw.mods.fml.common.discovery.asm.*;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.functions.*;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
@@ -94,74 +95,67 @@ import net.minecraft.init.*;
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
+import net.minecraft.client.renderer.texture.*;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
 
-@SuppressWarnings("unchecked")
-public class mcreator_radGunpowder {
+public class BlockSneakyBoomStone extends Block {
 
-	public mcreator_radGunpowder() {
-	}
+		protected BlockSneakyBoomStone() {
+			super(Material.ground);
 
-	public static Item block;
-	public static Object instance;
-
-	public void load() {
-		new ChestGenHooks("dungeonChest")
-				.addItem(new WeightedRandomChestContent(new ItemStack(block),
-						1, 6, 6));
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	static {
-		block = (new ItemradGunpowder(424));
-		Item.itemRegistry.addObject(424, "RadGunpowder", block);
-
-	}
-
-	static class ItemradGunpowder extends Item {
-
-		public ItemradGunpowder(int par1) {
-			setMaxDamage(0);
-			maxStackSize = 64;
-			setUnlocalizedName("RadGunpowder");
-			setTextureName("boomplus:radioactiveGunpowdertexture");
-			setCreativeTab(BoomPlusTab.tab);
 		}
 
-		public int getItemEnchantability() {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
+
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+
+		}
+
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
+				int l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			
+			if (!world.isRemote) {
+				world.createExplosion((Entity) null, i, j, k, 2F, true);
+			}
+
+		}
+
+		
+		@Override
+		@SideOnly(Side.CLIENT)
+		public int getRenderType() {
 			return 0;
 		}
 
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 0;
-		}
 
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
+		
+		@Override
+		public Item getItemDropped(int metaData, Random random, int fortune)
+		{
+			return Item.getItemById(1);
+		}
+		
+		
+		@Override
+		public int quantityDropped(Random par1Random) {
+			return 1;
 		}
 
 	}
-}
+

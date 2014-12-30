@@ -95,11 +95,11 @@ import java.util.Random;
 import cpw.mods.fml.common.eventhandler.*;
 import cpw.mods.fml.common.gameevent.*;
 
-public class mcreator_welcome {
+public class GuiBeginnerWelcomeGUI {
 
 	public static Object instance;
 
-	public mcreator_welcome() {
+	public GuiBeginnerWelcomeGUI() {
 	}
 
 	public void load() {
@@ -164,7 +164,7 @@ public class mcreator_welcome {
 							if (true) {
 								if (entity instanceof EntityPlayer)
 									((EntityPlayer) entity).openGui(instance,
-											mcreator_welcomeGUI.GUIID, world,
+											GuiWelcomeGui.GUIID, world,
 											i, j, k);
 							}
 

@@ -101,79 +101,15 @@ import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
 
-public class mcreator_largeBoom {
+public class BlockMagicBoom extends Block {
 
-	public mcreator_largeBoom() {
-	}
-
-	public static BlockLargeBoom block;
-
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "LargeBoom");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-				"345", "678", Character.valueOf('0'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('1'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('2'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('3'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('4'),
-				new ItemStack(Blocks.wool, 1, 10), Character.valueOf('5'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('6'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('7'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('8'),
-				new ItemStack(Blocks.tnt, 1), });
-	}
-
-	static {
-
-		block = (BlockLargeBoom) (new BlockLargeBoom(Material.iron).setHardness(2.0F)
-				.setResistance(0.0F).setLightLevel(0.0F)
-				.setBlockName("LargeBoom")
-				.setBlockTextureName("boomplus:largeBoomtexture")
-				.setLightOpacity(0)
-				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(178, "LargeBoom", block);
-		block.setHarvestLevel("pickaxe", 0);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockLargeBoom extends Block {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-
-		boolean red = false;
-
-		public BlockLargeBoom(Material blockMaterial) 
+		public BlockMagicBoom(Material blockMaterial) 
 		{
 			super(blockMaterial);
 		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (entity != null && world != null) {
@@ -186,49 +122,88 @@ public class mcreator_largeBoom {
 
 		}
 
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
-					&& world.isBlockIndirectlyGettingPowered(i, j, k)) 
-			{
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k) || Block.getIdFromBlock(l) > 0 && l.canProvidePower()) {
+
+				if (true) {
+					world.spawnEntityInWorld(new EntityLightningBolt(world,
+							i + 1, j, k + 1));
+				}
 
 				if (!world.isRemote) {
-					world.createExplosion((Entity) null, i, j, k, 10F, true);
+					world.createExplosion((Entity) null, i, j, k, 0.5F, true);
+				}
+
+				if (true) {
+					entity.attackEntityFrom(DamageSource.generic, 3);
+				}
+
+				if (!world.isRemote) {
+					entity.addPotionEffect(new PotionEffect(15, 15, 0));
+				}
+
+				if (!world.isRemote) {
+					world.createExplosion((Entity) null, i, j, k, 4F, true);
 				}
 
 			}
 		}
 
 		@Override
+		@SideOnly(Side.CLIENT)
+		public void randomDisplayTick(World world, int i, int j, int k,
+				Random random) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			World par1World = world;
+			int par2 = i;
+			int par3 = j;
+			int par4 = k;
+			Random par5Random = random;
+			if (true)
+				for (int l = 0; l < 30; ++l) {
+					double d0 = (double) ((float) par2 + par5Random.nextFloat());
+					double d1 = (double) ((float) par3 + par5Random.nextFloat());
+					double d2 = (double) ((float) par4 + par5Random.nextFloat());
+					double d3 = 0.0D;
+					double d4 = 0.0D;
+					double d5 = 0.0D;
+					int i1 = par5Random.nextInt(2) * 2 - 1;
+					d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.500000001490116D;
+					d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.500000001490116D;
+					d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.500000001490116D;
+					par1World.spawnParticle("instantSpell", d0, d1, d2, d3, d4,
+							d5);
+				}
+
+		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockDestroyedByExplosion(World world, int i, int j,
 				int k, Explosion e) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
 			if (!world.isRemote) {
-				world.createExplosion((Entity) null, i, j, k, 10F, true);
+				world.spawnEntityInWorld(new EntityLightningBolt(world, i, j, k));
+				world.createExplosion((Entity) null, i, j, k, 4F, true);
 			}
 
 		}
 
+		@Override
 		@SideOnly(Side.CLIENT)
 		public int getRenderType() {
 			return 0;
 		}
 
 		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}
 
 	}
-}
