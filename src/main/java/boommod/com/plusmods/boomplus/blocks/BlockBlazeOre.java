@@ -99,7 +99,7 @@ import net.minecraft.client.renderer.texture.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 public class BlockBlazeOre extends Block {
 

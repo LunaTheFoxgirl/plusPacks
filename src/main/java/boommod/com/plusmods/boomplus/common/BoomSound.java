@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;
+package com.plusmods.boomplus.common;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;

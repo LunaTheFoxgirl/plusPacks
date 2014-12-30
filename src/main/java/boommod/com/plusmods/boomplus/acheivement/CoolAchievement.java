@@ -1,5 +1,20 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.acheivement;//based on master condiguration
 
+import cpw.mods.fml.client.*;
+import cpw.mods.fml.client.registry.*;
+import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.asm.*;
+import cpw.mods.fml.common.asm.transformers.*;
+import cpw.mods.fml.common.discovery.*;
+import cpw.mods.fml.common.discovery.asm.*;
+import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.functions.*;
+import cpw.mods.fml.common.network.*;
+import cpw.mods.fml.common.registry.*;
+import cpw.mods.fml.common.toposort.*;
+import cpw.mods.fml.common.versioning.*;
+import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.server.*;
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
 import net.minecraft.client.*;
@@ -74,44 +89,45 @@ import net.minecraftforge.event.terraingen.*;
 import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
-import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.registry.*;
-import cpw.mods.fml.common.network.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.minecraft.init.*;
+
 import java.util.Random;
-import java.util.Map;
 
-import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
+import com.plusmods.boomplus.items.ItemCoolGlasses;
 
-public class ChannelHandlerBoomPlus extends
-		FMLIndexedMessageToMessageCodec<IPacketBoomPlus> {
+public class CoolAchievement {
 
-	@Override
-	public void encodeInto(ChannelHandlerContext ctx, IPacketBoomPlus packet,
-			ByteBuf data) throws Exception {
-		packet.writeBytes(data);
+	public CoolAchievement() {
 	}
 
-	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf data,
-			IPacketBoomPlus packet) {
-		packet.readBytes(data);
-		switch (FMLCommonHandler.instance().getEffectiveSide()) {
-		case CLIENT:
-			packet.executeClient(Minecraft.getMinecraft().thePlayer);
-			break;
-		case SERVER:
-			INetHandler netHandler = ctx.channel()
-					.attr(NetworkRegistry.NET_HANDLER).get();
-			packet.executeServer(((NetHandlerPlayServer) netHandler).playerEntity);
-			break;
-		}
+	public Object instance;
+	public static Achievement achievement = (new Achievement(
+			"achievement.coolAchievement", "coolAchievement", 5, 0,
+			ItemCoolGlasses.block, (Achievement) null))
+			.initIndependentStat();
+
+	public void load() {
+		achievement.registerStat();
 	}
 
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
+	}
 }

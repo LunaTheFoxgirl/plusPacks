@@ -6,7 +6,8 @@ import java.util.Random;
 
 
 
-import com.plusmods.boomplus.BoomPlus.GuiHandler;
+
+import com.plusmods.boomplus.common.BoomPlus.GuiHandler;
 import com.plusmods.boomplus.gui.GuiWelcomeGui;
 import com.plusmods.oresplus.blocks.AmethystBlock;
 import com.plusmods.oresplus.blocks.AmethystOre;

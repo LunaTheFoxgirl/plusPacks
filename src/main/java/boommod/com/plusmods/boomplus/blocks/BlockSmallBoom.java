@@ -2,7 +2,7 @@ package com.plusmods.boomplus.blocks;//based on master condiguration
 
 import java.util.Random;
 
-import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

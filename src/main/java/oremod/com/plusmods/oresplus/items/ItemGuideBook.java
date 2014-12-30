@@ -100,7 +100,7 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
-import com.plusmods.boomplus.BoomPlus;
+import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.oresplus.OresPlus;
 import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
 import com.plusmods.oresplus.gui.GuiWelcomeGui;

@@ -105,29 +105,4 @@ public class AchievementOreIsIt {
 			"achievement.orisitAchievement", "orisitAchievement", 5, 1,
 			ItemStrangeSymbol.block, (Achievement) null))
 			.initIndependentStat();
-
-	public void load() {
-		achievement.registerStat();
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
 }

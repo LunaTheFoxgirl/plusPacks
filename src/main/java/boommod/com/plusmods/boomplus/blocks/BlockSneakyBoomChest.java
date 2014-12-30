@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 import com.plusmods.boomplus.entities.TileEntityChestValues;
 
 import net.minecraft.block.Block;

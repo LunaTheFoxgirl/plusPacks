@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;
+package com.plusmods.boomplus.common;
 
 import com.plusmods.boomplus.items.ItemGuideBook;
 

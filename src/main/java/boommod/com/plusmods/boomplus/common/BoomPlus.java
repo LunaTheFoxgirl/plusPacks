@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;
+package com.plusmods.boomplus.common;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
@@ -129,19 +129,13 @@ public class BoomPlus{
 	public static final String VERSION = "1.2.0";
 
 	@SidedProxy(clientSide = "com.plusmods.boomplus.ClientProxyBoomPlus", serverSide = "com.plusmods.boomplus.CommonProxyBoomPlus")
-	// @SidedProxy(clientSide="mod.mcreator.ClientProxyBoomPlus",
-	// serverSide="mod.mcreator.CommonProxyBoomPlus")
 	public static CommonProxyBoomPlus proxy;
-	// public static EnumMap<Side, FMLEmbeddedChannel> channels =
-	// NetworkRegistry.INSTANCE.newChannel("MCRBUS", new
-	// ChannelHandlerBoomPlus());
 
 	@Instance(MODID)
 	public static BoomPlus instance;
 
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(new mcreator_GlobalEventsBoomPlus());
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
 

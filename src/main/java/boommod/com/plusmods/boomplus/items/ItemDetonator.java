@@ -100,7 +100,7 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
-import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
 public class ItemDetonator extends Item {
