@@ -4,6 +4,8 @@ import java.util.Random;
 
 import com.plusmods.oresplus.OresPlus;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -17,22 +19,9 @@ import net.minecraft.world.World;
 
 		int id;
 		
-		public BlockJadeStone(int i)
+		public BlockJadeStone(Material id)
 		{
-			super(Material.ground);
-			this.id = i;
-
-		}
-
-		public void onBlockAdded(World world, int i, int j, int k) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (entity != null && world != null) {
-				int le = MathHelper
-						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				world.setBlockMetadataWithNotify(i, j, k, le, 2);
-			}
-
-			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+			super(id);
 
 		}
 		

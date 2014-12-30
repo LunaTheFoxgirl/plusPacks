@@ -1,10 +1,10 @@
-package com.plusmods.oresplus;
+package com.plusmods.oresplus.items;
 
 import net.minecraft.item.ItemAxe;
 
 public class ItemJadeAxe extends ItemAxe{
 
-	protected ItemJadeAxe(ToolMaterial p_i45327_1_) {
+	public ItemJadeAxe(ToolMaterial p_i45327_1_) {
 		super(p_i45327_1_);
 		// TODO Auto-generated constructor stub
 	}

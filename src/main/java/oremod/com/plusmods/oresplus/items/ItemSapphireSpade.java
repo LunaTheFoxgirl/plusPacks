@@ -1,4 +1,4 @@
-package com.plusmods.oresplus;
+package com.plusmods.oresplus.items;
 
 import net.minecraft.item.ItemSpade;
 

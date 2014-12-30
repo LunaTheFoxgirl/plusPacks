@@ -1,4 +1,4 @@
-package com.plusmods.oresplus;
+package com.plusmods.oresplus.items;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import net.minecraft.item.ItemTool;
 
 public class ItemCitrinePickaxe extends ItemPickaxe {
 
-	protected ItemCitrinePickaxe(ToolMaterial p_i45347_1_) {
+	public ItemCitrinePickaxe(ToolMaterial p_i45347_1_) {
 		super(p_i45347_1_);
 		// TODO Auto-generated constructor stub
 	}

@@ -4,6 +4,8 @@ import java.util.Random;
 
 
 
+
+
 import com.plusmods.boomplus.BoomPlus.GuiHandler;
 import com.plusmods.boomplus.gui.mcreator_welcomeGUI;
 import com.plusmods.oresplus.blocks.AmethystBlock;
@@ -25,14 +27,32 @@ import com.plusmods.oresplus.creativeTabs.OresPlusToolsTab;
 import com.plusmods.oresplus.gui.GuiWelcomeGui;
 import com.plusmods.oresplus.handles.CommonProxy;
 import com.plusmods.oresplus.items.ItemAmethyst;
+import com.plusmods.oresplus.items.ItemAmethystAxe;
+import com.plusmods.oresplus.items.ItemAmethystPickaxe;
+import com.plusmods.oresplus.items.ItemAmethystSpade;
+import com.plusmods.oresplus.items.ItemAmethystSword;
 import com.plusmods.oresplus.items.ItemCitrine;
+import com.plusmods.oresplus.items.ItemCitrineAxe;
+import com.plusmods.oresplus.items.ItemCitrinePickaxe;
+import com.plusmods.oresplus.items.ItemCitrineSpade;
+import com.plusmods.oresplus.items.ItemCitrineSword;
 import com.plusmods.oresplus.items.ItemGuideBook;
 import com.plusmods.oresplus.items.ItemJade;
+import com.plusmods.oresplus.items.ItemJadeAxe;
 import com.plusmods.oresplus.items.ItemJadePickaxe;
+import com.plusmods.oresplus.items.ItemJadeSpade;
+import com.plusmods.oresplus.items.ItemJadeSword;
+import com.plusmods.oresplus.items.ItemMixedGem;
 import com.plusmods.oresplus.items.ItemRuby;
+import com.plusmods.oresplus.items.ItemRubyAxe;
 import com.plusmods.oresplus.items.ItemRubyPickaxe;
+import com.plusmods.oresplus.items.ItemRubySpade;
+import com.plusmods.oresplus.items.ItemRubySword;
 import com.plusmods.oresplus.items.ItemSapphire;
+import com.plusmods.oresplus.items.ItemSapphireAxe;
 import com.plusmods.oresplus.items.ItemSapphirePickaxe;
+import com.plusmods.oresplus.items.ItemSapphireSpade;
+import com.plusmods.oresplus.items.ItemSapphireSword;
 import com.plusmods.oresplus.items.ItemUranium;
 import com.plusmods.oresplus.items.TheisIngot;
 import com.plusmods.oresplus.oreGen.UraniumOreGen;
@@ -57,6 +77,8 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 @Mod(modid = OresPlus.MODID, version = OresPlus.VERSION)
@@ -79,7 +101,7 @@ public class OresPlus {
 	//Blocks
 		public static Block jadeStone;
 		public static Block theisOre;
-		public static Block rubyOre;
+		public static Block rubyOre = new RubyOre(Material.iron);
 		public static Block sapphireOre;
 		public static Block amethystOre;
 		public static Block citrineOre;
@@ -127,12 +149,6 @@ public class OresPlus {
 		public static Item amethystAxe;
 		public static Item amethystSword;
 		
-
-
-	public void serverLoad(FMLServerStartingEvent event) 
-	{
-		
-	}
 	
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) 
@@ -141,7 +157,7 @@ public class OresPlus {
 				guideBook = new ItemGuideBook(5000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("GuideBook").setTextureName("oresplus:guideBook"); 
 		
 			//JadeStone
-				jadeStone = new BlockJadeStone(5001).setBlockName("JadeStone").setHardness(2.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
+				jadeStone = new BlockJadeStone(Material.iron).setBlockName("JadeStone").setHardness(2.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
 				jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				jadeStone.setHarvestLevel("pickaxe", 2);
 				
@@ -246,11 +262,11 @@ public class OresPlus {
 			//SapphireAxe
 				sapphireSword = new ItemSapphireAxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("SapphireAxe").setTextureName("oresplus:sapphire_axe");
 				
-			//CitrineAxe
-				citrineSword = new ItemCitrineAxe(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrineAxe").setTextureName("oresplus:citrine_axe");
+			//CitrineSword
+				citrineSword = new ItemCitrineSword(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrineAxe").setTextureName("oresplus:citrine_axe");
 				
-			//AmethystAxe
-				amethystSword = new ItemAmethystAxe(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystAxe").setTextureName("oresplus:amethyst_axe");
+			//AmethystSword
+				amethystSword = new ItemAmethystSword(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystAxe").setTextureName("oresplus:amethyst_axe");
 				
 				
 			//JadeSword

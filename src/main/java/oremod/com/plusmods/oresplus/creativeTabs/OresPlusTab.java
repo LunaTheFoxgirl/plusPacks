@@ -105,32 +105,4 @@ public class OresPlusTab {
 			return Item.getItemFromBlock(OresPlus.rubyOre);
 		}
 	};
-
-	public OresPlusTab() {
-	}
-
-	public void load() {
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
 }

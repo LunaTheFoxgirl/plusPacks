@@ -1,4 +1,4 @@
-package com.plusmods.oresplus;
+package com.plusmods.oresplus.items;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import net.minecraft.item.ItemTool;
 
 public class ItemAmethystPickaxe extends ItemPickaxe {
 
-	protected ItemAmethystPickaxe(ToolMaterial p_i45347_1_) {
+	public ItemAmethystPickaxe(ToolMaterial p_i45347_1_) {
 		super(p_i45347_1_);
 		// TODO Auto-generated constructor stub
 	}

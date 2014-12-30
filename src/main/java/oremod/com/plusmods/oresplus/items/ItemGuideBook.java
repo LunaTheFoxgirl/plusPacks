@@ -110,8 +110,9 @@ public class ItemGuideBook extends Item {
  
                 public int clickProgression = 0;
                 public boolean doesClick;
-               
-                private Minecraft mc = Minecraft.getMinecraft();
+                
+                
+                
                
                 public ItemGuideBook(int par1) {
                         setMaxDamage(0);
@@ -155,12 +156,13 @@ public class ItemGuideBook extends Item {
                                         * (double) var4);
                         return itemstack;
                 }
- 
+                
+                @SideOnly(Side.CLIENT)
                 public boolean onItemUse(ItemStack itemStack, EntityPlayer entity,
                                 World world, int i, int j, int k, int l, float a, float b,
                                 float c) {
                         float var4 = 1.0F;
-                       
+                        Minecraft mc = Minecraft.getMinecraft();
                                
                         mc.thePlayer.openGui(OresPlus.instance, GuiWelcomeGui.GUIID, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ);
                         if (true) {

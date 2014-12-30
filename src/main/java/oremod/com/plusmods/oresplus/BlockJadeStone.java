@@ -2,6 +2,8 @@ package com.plusmods.oresplus;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -22,6 +24,7 @@ import net.minecraft.world.World;
 
 		}
 
+		@SideOnly(Side.SERVER)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (entity != null && world != null) {
@@ -32,17 +35,6 @@ import net.minecraft.world.World;
 
 			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
 
-		}
-		
-
-		
-		public int getRenderType() {
-			return 0;
-		}
-
-		@Override
-		public int tickRate(World world) {
-			return 10;
 		}
 
 		@Override
