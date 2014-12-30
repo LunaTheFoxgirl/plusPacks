@@ -24,7 +24,7 @@ public class RubyOreGen implements IWorldGenerator {
 			int x = chunkX + random.nextInt(16);
 			int y = random.nextInt(70);
 			int z = chunkZ + random.nextInt(5);
-			(new WorldGenMinable(OresPlus.rubyOre, 10)).generate(world, random, x, y, z);
+			(new WorldGenMinable(OresPlus.blockRubyOre, 10)).generate(world, random, x, y, z);
 			
 		}
 		

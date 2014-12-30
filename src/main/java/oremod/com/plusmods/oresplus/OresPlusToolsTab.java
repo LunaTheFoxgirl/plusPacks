@@ -99,7 +99,7 @@ public class OresPlusToolsTab {
 	public static CreativeTabs tab = new CreativeTabs("tabOresPlusTools") {
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem() {
-			return OresPlus.rubyPickaxe;
+			return OresPlus.itemRubyPickaxe;
 		}
 	};
 

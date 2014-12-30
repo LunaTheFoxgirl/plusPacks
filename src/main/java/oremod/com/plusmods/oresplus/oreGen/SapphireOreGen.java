@@ -26,7 +26,7 @@ public class SapphireOreGen implements IWorldGenerator {
 			int x = chunkX + random.nextInt(16);
 			int y = random.nextInt(70);
 			int z = chunkZ + random.nextInt(5);
-			(new WorldGenMinable(OresPlus.sapphireOre, 10)).generate(world, random, x, y, z);
+			(new WorldGenMinable(OresPlus.blockSapphireOre, 10)).generate(world, random, x, y, z);
 			
 		}
 		
