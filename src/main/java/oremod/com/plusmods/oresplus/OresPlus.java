@@ -2,12 +2,18 @@ package com.plusmods.oresplus;
 
 import java.util.Random;
 
+import com.plusmods.oresplus.blocks.AmethystBlock;
 import com.plusmods.oresplus.blocks.AmethystOre;
 import com.plusmods.oresplus.blocks.BlockJadeStone;
+import com.plusmods.oresplus.blocks.CitrineBlock;
 import com.plusmods.oresplus.blocks.CitrineOre;
+import com.plusmods.oresplus.blocks.JadeBlock;
+import com.plusmods.oresplus.blocks.RubyBlock;
 import com.plusmods.oresplus.blocks.RubyOre;
+import com.plusmods.oresplus.blocks.SapphireBlock;
 import com.plusmods.oresplus.blocks.SapphireOre;
 import com.plusmods.oresplus.blocks.TheisOre;
+import com.plusmods.oresplus.blocks.UraniumBlock;
 import com.plusmods.oresplus.blocks.UraniumOre;
 import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusTab;
@@ -21,6 +27,7 @@ import com.plusmods.oresplus.items.ItemRuby;
 import com.plusmods.oresplus.items.ItemRubyPickaxe;
 import com.plusmods.oresplus.items.ItemSapphire;
 import com.plusmods.oresplus.items.ItemSapphirePickaxe;
+import com.plusmods.oresplus.items.ItemUranium;
 import com.plusmods.oresplus.items.TheisIngot;
 import com.plusmods.oresplus.oreGen.UraniumOreGen;
 import com.plusmods.oresplus.toolMaterials.ToolMaterials;
@@ -47,7 +54,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class OresPlus {
 
 	public static final String MODID = "OresPlus";
-    public static final String VERSION = "1.1.0";
+    public static final String VERSION = "1.0.0";
 
 	//@SidedProxy(clientSide="com.plusmods.oresplus.ClientProxy", serverSide="com.plusmods.oresplus.CommonProxy")
     //@SidedProxy(clientSide="mod.mcreator.ClientProxyTestEnvironmentMod", serverSide="mod.mcreator.CommonProxyTestEnvironmentMod")
@@ -66,6 +73,12 @@ public class OresPlus {
 		public static Block amethystOre;
 		public static Block citrineOre;
 		public static Block uraniumOre;
+		public static Block jadeBlock;
+		public static Block rubyBlock;
+		public static Block sapphireBlock;
+		public static Block uraniumBlock;
+		public static Block citrineBlock;
+		public static Block amethystBlock;
 	
 	//Items
 		public static Item jade;
@@ -74,7 +87,7 @@ public class OresPlus {
 		public static Item sapphire;
 		public static Item amethyst;		
 		public static Item citrine;
-		
+		public static Item uranium;
 		public static Item mixedGem;
 		
 	//Tools
@@ -185,6 +198,26 @@ public class OresPlus {
 			//MixedGem
 				mixedGem = new ItemMixedGem(6000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("MixedGem").setTextureName("oresplus:jade");
 	
+			//JadeBlock
+				jadeBlock = new JadeBlock(Material.iron).setBlockName("JadeBlock").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_block");
+			
+			//RubyBlock
+				rubyBlock = new RubyBlock(Material.iron).setBlockName("RubyBlock").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:ruby_block");
+				
+			//SapphireBlock
+				sapphireBlock = new SapphireBlock(Material.iron).setBlockName("SapphireBlock").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:sapphire_block");
+				
+			//UraniumBlock
+		        uraniumBlock = new UraniumBlock(Material.iron).setBlockName("UraniumBlock").setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:uranium_block");
+		        
+		    //Uranium
+		        uranium = new ItemUranium(5005).setUnlocalizedName("Uranium").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:uranium");
+		        
+		    //CitrineBlock
+		        citrineBlock = new CitrineBlock(Material.iron).setBlockName("CitrineBlock").setCreativeTab(OresPlusTab.tab).setHardness(3.0f).setBlockTextureName("oresplus:citrine_block");
+		        
+		      //CitrineBlock
+		        amethystBlock = new AmethystBlock(Material.iron).setBlockName("AmethystBlock").setCreativeTab(OresPlusTab.tab).setHardness(3.0f).setBlockTextureName("oresplus:amethyst_block");
 	}
 	
 	@EventHandler
@@ -201,6 +234,12 @@ public class OresPlus {
 				GameRegistry.registerBlock(amethystOre, "AmethystOre");
 				GameRegistry.registerBlock(citrineOre, "CitrineOre");
 				GameRegistry.registerBlock(uraniumOre, "UraniumOre");
+				GameRegistry.registerBlock(jadeBlock, "JadeBlock");
+				GameRegistry.registerBlock(rubyBlock, "RubyBlock");
+				GameRegistry.registerBlock(sapphireBlock, "SapphireBlock");		
+				GameRegistry.registerBlock(uraniumBlock, "UraniumBlock");
+				GameRegistry.registerBlock(citrineBlock, "CitrineBlock");
+				GameRegistry.registerBlock(amethystBlock, "AmethystBlock");
 				
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
@@ -243,9 +282,29 @@ public class OresPlus {
 					GameRegistry.addRecipe(new ItemStack(amethystPickaxe), "XXX", " I ", " I ",
 							'X', new ItemStack(amethyst),
 							'I', new ItemStack(Items.stick));
+				//JadeBlock
+					GameRegistry.addRecipe(new ItemStack(jadeBlock), "XXX", "XXX", "XXX",
+							'X', new ItemStack(jade));
 					
+				//RubyBlock
+					GameRegistry.addRecipe(new ItemStack(rubyBlock), "XXX", "XXX", "XXX",
+							'X', new ItemStack(ruby));
+					
+				//SapphireBlock
+					GameRegistry.addRecipe(new ItemStack(sapphireBlock), "XXX", "XXX", "XXX",
+							'X', new ItemStack(sapphire));
 				
+				//UraniumBlock
+					GameRegistry.addRecipe(new ItemStack(uraniumBlock), "XXX", "XXX", "XXX",
+							'X', new ItemStack(uranium));
+					
+				//CitrineBlock
+					GameRegistry.addRecipe(new ItemStack(citrineBlock), "XXX", "XXX", "XXX",
+							'X', new ItemStack(citrine));
 				
+				//AmethystBlock
+					GameRegistry.addRecipe(new ItemStack(amethystBlock), "XXX", "XXX", "XXX",
+							'X', new ItemStack(amethyst));
 			//IWorldGenerator		
 				GameRegistry.registerWorldGenerator(new JadeOreGenerator(), 3);
 				GameRegistry.registerWorldGenerator(new TheisOreGen(), 6);

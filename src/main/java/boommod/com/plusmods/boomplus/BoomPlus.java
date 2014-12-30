@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
@@ -111,17 +111,17 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 	mcreator_smallBoom mcreator_0 = new mcreator_smallBoom();
 	mcreator_mediumBoom mcreator_1 = new mcreator_mediumBoom();
 	mcreator_largeBoom mcreator_2 = new mcreator_largeBoom();
-	mcreator_boomPlusTab mcreator_3 = new mcreator_boomPlusTab();
-	mcreator_magicBoom mcreator_4 = new mcreator_magicBoom();
-	mcreator_radGunpowder mcreator_5 = new mcreator_radGunpowder();
-	mcreator_radOre mcreator_6 = new mcreator_radOre();
-	mcreator_radioactiveBoom mcreator_7 = new mcreator_radioactiveBoom();
-	mcreator_netherBoom mcreator_8 = new mcreator_netherBoom();
-	mcreator_blazeOre mcreator_9 = new mcreator_blazeOre();
-	mcreator_coolGuyGlasses mcreator_10 = new mcreator_coolGuyGlasses();
-	mcreator_coolAchievement mcreator_11 = new mcreator_coolAchievement();
-	mcreator_sneakyBoom mcreator_12 = new mcreator_sneakyBoom();
-	mcreator_massiveBoom mcreator_13 = new mcreator_massiveBoom();
+	mcreator_massiveBoom mcreator_3 = new mcreator_massiveBoom();
+	mcreator_boomPlusTab mcreator_4 = new mcreator_boomPlusTab();
+	mcreator_magicBoom mcreator_5 = new mcreator_magicBoom();
+	mcreator_radGunpowder mcreator_6 = new mcreator_radGunpowder();
+	mcreator_radOre mcreator_7 = new mcreator_radOre();
+	mcreator_radioactiveBoom mcreator_8 = new mcreator_radioactiveBoom();
+	mcreator_netherBoom mcreator_9 = new mcreator_netherBoom();
+	mcreator_blazeOre mcreator_10 = new mcreator_blazeOre();
+	mcreator_coolGuyGlasses mcreator_11 = new mcreator_coolGuyGlasses();
+	mcreator_coolAchievement mcreator_12 = new mcreator_coolAchievement();
+	mcreator_sneakyBoom mcreator_13 = new mcreator_sneakyBoom();
 	mcreator_boomJacket mcreator_14 = new mcreator_boomJacket();
 	mcreator_detonator mcreator_15 = new mcreator_detonator();
 	mcreator_nuclearAchievement mcreator_16 = new mcreator_nuclearAchievement();
@@ -406,14 +406,10 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_26.preInit(event);
 		mcreator_27.preInit(event);
 		proxy.registerRenderers(this);
-<<<<<<< HEAD
 		
 		GameRegistry.registerBlock(mcreator_28, "SneakyBoomChest");
 		GameRegistry.registerTileEntity(TileEntityChestValues.class, "isArmed");
 		
-=======
-	
->>>>>>> acad4925384641453ec80bff4ed6e29596841d64
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new BoomSpawn());
 	}
