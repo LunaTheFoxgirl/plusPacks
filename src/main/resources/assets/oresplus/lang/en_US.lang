@@ -4,8 +4,13 @@ tile.RubyOre.name=Ruby Ore
 tile.SapphireOre.name=Sapphire Ore
 tile.CitrineOre.name=Citrine Ore
 tile.AmethystOre.name=Amethyst Ore
-
-
+tile.JadeBlock.name=Jade Block
+tile.RubyBlock.name=Ruby Block
+tile.SapphireBlock.name=Sapphire Block
+tile.UraniumBlock.name=Uranium Block
+tile.UraniumOre.name=Uranium Ore
+tile.CitrineBlock.name=Citrine Block
+tile.AmethystBlock.name=Amethyst Block
 
 item.Jade.name=Jade
 item.Ruby.name=Ruby
@@ -13,6 +18,7 @@ item.Citrine.name=Citrine
 item.TheisIngot.name=Theis Ingot
 item.Amethyst.name=Amethyst
 item.Sapphire.name=Sapphire
+item.Uranium.name=Uranium
 
 item.JadePickaxe.name=Jade Pickaxe
 item.RubyPickaxe.name=Ruby Pickaxe
