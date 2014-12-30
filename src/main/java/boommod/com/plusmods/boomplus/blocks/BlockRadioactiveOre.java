@@ -99,13 +99,14 @@ import net.minecraft.client.renderer.texture.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 import com.plusmods.boomplus.items.ItemRadioactivePowder;
 
 public class BlockRadioactiveOre extends Block {
 
 
-		protected BlockRadioactiveOre() {
+		public BlockRadioactiveOre() {
 			super(Material.iron);
 
 		}
@@ -167,6 +168,6 @@ public class BlockRadioactiveOre extends Block {
 
 		@Override
 		public Item getItemDropped(int par1, Random par2Random, int par3) {
-			return ItemRadioactivePowder.block;
+			return BoomPlus.radioactivePowder;
 		}
 	}

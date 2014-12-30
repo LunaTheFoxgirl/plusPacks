@@ -35,8 +35,8 @@ public class BoomSpawn
 						{
 							
 							System.out.println("Running gui..., giving book to: " + mc.thePlayer.getGameProfile().getName() + " entpl is: " + entityPlayer.getGameProfile().getName());
-							boolean accepted = ((EntityPlayer)entityPlayer).inventory.addItemStackToInventory(new ItemStack(ItemGuideBook.block, 1, 1));
-							event.world.getPlayerEntityByName(entityPlayer.getDisplayName()).inventory.setInventorySlotContents(1, new ItemStack(ItemGuideBook.block, 1, 1));
+							boolean accepted = ((EntityPlayer)entityPlayer).inventory.addItemStackToInventory(new ItemStack(BoomPlus.guideBook, 1, 1));
+							event.world.getPlayerEntityByName(entityPlayer.getDisplayName()).inventory.setInventorySlotContents(1, new ItemStack(BoomPlus.guideBook, 1, 1));
 							System.out.println("AcceptStatus = " + accepted);
 							//entityPlayer.openGui(BoomPlus.class, mcreator_welcomeGUI.GUIID, event.world, (int) entityPlayer.posX, (int) entityPlayer.posY, (int) entityPlayer.posZ);
 							

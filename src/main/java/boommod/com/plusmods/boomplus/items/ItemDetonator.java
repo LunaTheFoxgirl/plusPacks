@@ -100,6 +100,7 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
+import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
@@ -155,7 +156,7 @@ public class ItemDetonator extends Item {
 
 		}
 		ItemStack armorInvChestPlate = ((EntityPlayer) entity).inventory.armorInventory[2];
-		ItemStack Armor = new ItemStack(ItemBoomJacket);
+		ItemStack Armor = new ItemStack(BoomPlus.detonator);
 		if (armorInvChestPlate != null) {
 			if (armorInvChestPlate.getDisplayName().startsWith(
 					Armor.getDisplayName())
@@ -201,7 +202,7 @@ public class ItemDetonator extends Item {
 		}
 
 		ItemStack armorInvChestPlate = ((EntityPlayer) entity).inventory.armorInventory[2];
-		ItemStack Armor = new ItemStack(ItemBoomJacket.block);
+		ItemStack Armor = new ItemStack(BoomPlus.boomJacket);
 		if (armorInvChestPlate != null) {
 			if (armorInvChestPlate.getDisplayName().startsWith(
 					Armor.getDisplayName())

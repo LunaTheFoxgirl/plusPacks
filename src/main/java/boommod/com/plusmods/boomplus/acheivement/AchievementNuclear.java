@@ -93,6 +93,7 @@ import net.minecraft.init.*;
 
 import java.util.Random;
 
+import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.items.ItemRadioactivePowder;
 
 public class AchievementNuclear {
@@ -103,6 +104,6 @@ public class AchievementNuclear {
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
 			"achievement.nuclearAchievement", "nuclearAchievement", 5, 5,
-			ItemRadioactivePowder.block, (Achievement) null))
+			BoomPlus.radioactiveOre, (Achievement) null))
 			.initIndependentStat();
 }

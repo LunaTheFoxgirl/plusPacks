@@ -21,9 +21,9 @@ public class UraniumOreGen implements IWorldGenerator {
 	
 	public void generateSurface(World world, Random random, int chunkX, int chunkZ)
 	{
-		for(int gen = 0; gen < 50; gen++)
+		for(int gen = 0; gen < 10; gen++)
 		{
-			int x = chunkX + random.nextInt(16);
+			int x = chunkX + random.nextInt(5);
 			int y = random.nextInt(70);
 			int z = chunkZ + random.nextInt(5);
 			(new WorldGenMinable(OresPlus.blockUraniumOre, 10)).generate(world, random, x, y, z);

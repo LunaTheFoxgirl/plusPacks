@@ -32,6 +32,8 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -123,26 +125,112 @@ import io.netty.channel.ChannelHandlerContext;
 import cpw.mods.fml.relauncher.*;
 
 @Mod(modid = BoomPlus.MODID, version = BoomPlus.VERSION)
-public class BoomPlus{
+public class BoomPlus
+{
 
-	public static final String MODID = "BoomPlus";
-	public static final String VERSION = "1.2.0";
+	//Mod id information
+		public static final String MODID = "BoomPlus";
+		public static final String VERSION = "1.3.0";
+	
+	//Items
+		public static Item boomJacket;
+		public static Item detonator;
+		public static Item guideBook;
+		public static Item coolGlasses;
+		public static Item strangeSymbol;
+		public static Item sneakyBoomEdible;
+		public static Item radioactivePowder;
+		
+	//Blocks
+		
+		//Ores
+			public static Block blazeOre;
+			public static Block radioactiveOre;
+			
+		//Booms
+			public static Block enderBoom;
+			public static Block largeBoom;
+			public static Block lavaBoom;
+			public static Block magicBoom;
+			public static Block massiveBoom;
+			public static Block mediumBoom;
+			public static Block netherBoom;
+			public static Block radioactiveBoom;
+			public static Block smallBoom;
+			public static Block sneakyBoomChest, sneakyBoomDiamond, sneakyBoomGold, sneakyBoomIron, sneakyBoomStone;
+			
+	
+	
+	
+	
+	
+	
+	
 
-	@SidedProxy(clientSide = "com.plusmods.boomplus.ClientProxyBoomPlus", serverSide = "com.plusmods.boomplus.CommonProxyBoomPlus")
-	public static CommonProxyBoomPlus proxy;
+	//@SidedProxy(clientSide = "com.plusmods.boomplus.ClientProxyBoomPlus", serverSide = "com.plusmods.boomplus.CommonProxyBoomPlus")
 
 	@Instance(MODID)
 	public static BoomPlus instance;
 
 	@EventHandler
-	public void load(FMLInitializationEvent event) {
+	public void load(FMLInitializationEvent event) 
+	{
+		//Items
+			//BoomJacket
+				boomJacket = new ItemBoomJacket(ArmorMaterial.CLOTH, 0, 0).setUnlocalizedName("BoomJacket").setTextureName("boomplus:boom_jacket");
+				
+			//RadioactivePower
+				radioactivePowder = new ItemRadioactivePowder(0).setUnlocalizedName("RadioactivePowder").setTextureName("boomplus:radioactive_powder");
+			
+			//Detonator
+				detonator = new ItemDetonator(2013).setUnlocalizedName("Detonator").setTextureName("boomplus:detonator");
+			
+			//GuideBook
+				guideBook = new ItemGuideBook(1).setUnlocalizedName("GuideBook").setTextureName("boomplus:guide_book");
+			
+			//CoolGlasses
+				coolGlasses = new ItemCoolGlasses(ArmorMaterial.CLOTH, 0, 0).setUnlocalizedName("CoolGlasses").setTextureName("boomplus:cool_glasses");
+			
+			//StrangeSymbol
+				strangeSymbol = new ItemStrangeSymbol(ToolMaterial.EMERALD).setUnlocalizedName("StrangeSymbol").setTextureName("boomplus:strangeSymbol");
+		
+			//SneakyBoomEdible
+				sneakyBoomEdible = new ItemSneakyBoomEdible(2, 1.0f, true).setUnlocalizedName("SneakyBoomEdible").setTextureName("boomplus:sneaky_boom_edible");
+			
+		//Blocks
+				
+			//Ores
+				
+				//BlazeOre
+					Block blazeOre = new BlockBlazeOre().setBlockName("BlazeOre").setBlockTextureName("boomplus:blaze_ore");
+					
+				//RadioactiveOre
+					Block radioactiveOre = new BlockRadioactiveOre().setBlockName("RadioactiveOre").setBlockTextureName("boomplus:radioactive_ore");
+				
+			//Booms
+					
+					
+					
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
 
-	@EventHandler
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
+	
+	
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
 	{

@@ -93,6 +93,7 @@ import net.minecraft.init.*;
 
 import java.util.Random;
 
+import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.items.ItemStrangeSymbol;
 
 public class AchievementOreIsIt {
@@ -103,6 +104,6 @@ public class AchievementOreIsIt {
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
 			"achievement.orisitAchievement", "orisitAchievement", 5, 1,
-			ItemStrangeSymbol.block, (Achievement) null))
+			BoomPlus.strangeSymbol, (Achievement) null))
 			.initIndependentStat();
 }

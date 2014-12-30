@@ -97,67 +97,67 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
+import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
 public class ItemStrangeSymbol extends ItemSword {
 
-		
-		
-		
-		/*public ItemstrangeSymbol(int par1) {
-			setMaxDamage(0);
-			maxStackSize = 1;
-			setUnlocalizedName("StrangeSymbol");
-			setTextureName("boomplus:oreisit");
-			setCreativeTab(mcreator_boomPlusTab.tab);
-		}*/
+	/*
+	 * public ItemstrangeSymbol(int par1) { setMaxDamage(0); maxStackSize = 1;
+	 * setUnlocalizedName("StrangeSymbol"); setTextureName("boomplus:oreisit");
+	 * setCreativeTab(mcreator_boomPlusTab.tab); }
+	 */
 
-		public ItemStrangeSymbol(ToolMaterial p_i45356_1_) {
-			super(p_i45356_1_);
-			// TODO Auto-generated constructor stub
-			setMaxDamage(0);
-			maxStackSize = 1;
-			setUnlocalizedName("StrangeSymbol");
-			setTextureName("boomplus:oreisit");
-			setCreativeTab(BoomPlusTab.tab);
-		}
-
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 0;
-		}
-		
-		
-		
-
-		@Override
-		public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer player, World world, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-			/*if (world.isRemote)
-				((EntityClientPlayerMP) player).sendChatMessage("Whoops! my bad.");
-			if (!world.isRemote)
-				((EntityPlayer) player).inventory.consumeInventoryItem(mcreator_strangeSymbol.block);*/
-			
-			return super.onItemUse(p_77648_1_, player, world, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_);
-		}
-
-		@Override
-		public ItemStack onItemRightClick(ItemStack p_77659_1_,
-				World world, EntityPlayer player) {
-			if (world.isRemote)
-				((EntityClientPlayerMP) player).sendChatMessage("Whoops! my bad.");
-			if (!world.isRemote)
-				((EntityPlayer) player).inventory.consumeInventoryItem(ItemStrangeSymbol.block);
-			// TODO Auto-generated method stub
-			return super.onItemRightClick(p_77659_1_, world, player);
-		}
-
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
-
+	public ItemStrangeSymbol(ToolMaterial p_i45356_1_) {
+		super(p_i45356_1_);
+		// TODO Auto-generated constructor stub
+		setMaxDamage(0);
+		maxStackSize = 1;
+		setUnlocalizedName("StrangeSymbol");
+		setTextureName("boomplus:oreisit");
+		setCreativeTab(BoomPlusTab.tab);
 	}
+
+	public int getItemEnchantability() {
+		return 0;
+	}
+
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		return 0;
+	}
+
+	@Override
+	public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer player,
+			World world, int p_77648_4_, int p_77648_5_, int p_77648_6_,
+			int p_77648_7_, float p_77648_8_, float p_77648_9_,
+			float p_77648_10_) {
+		/*
+		 * if (world.isRemote) ((EntityClientPlayerMP)
+		 * player).sendChatMessage("Whoops! my bad."); if (!world.isRemote)
+		 * ((EntityPlayer)
+		 * player).inventory.consumeInventoryItem(mcreator_strangeSymbol.block);
+		 */
+
+		return super.onItemUse(p_77648_1_, player, world, p_77648_4_,
+				p_77648_5_, p_77648_6_, p_77648_7_, p_77648_8_, p_77648_9_,
+				p_77648_10_);
+	}
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack p_77659_1_, World world,
+			EntityPlayer player) {
+		if (world.isRemote)
+			((EntityClientPlayerMP) player).sendChatMessage("Whoops! my bad.");
+		if (!world.isRemote)
+			((EntityPlayer) player).inventory
+					.consumeInventoryItem(BoomPlus.strangeSymbol);
+		// TODO Auto-generated method stub
+		return super.onItemRightClick(p_77659_1_, world, player);
+	}
+
+	public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+		return 1.0F;
+	}
+
 }

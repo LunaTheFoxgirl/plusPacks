@@ -103,7 +103,7 @@ import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 public class BlockBlazeOre extends Block {
 
-		protected BlockBlazeOre() {
+		public BlockBlazeOre() {
 			super(Material.ground);
 
 		}

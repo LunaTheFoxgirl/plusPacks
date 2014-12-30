@@ -103,6 +103,7 @@ import org.lwjgl.opengl.GL11;
 import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 import com.plusmods.boomplus.gui.GuiWelcomeGui;
+import com.plusmods.oresplus.common.OresPlus;
 
 @SuppressWarnings("unchecked")
 public class ItemGuideBook extends Item {
@@ -162,7 +163,7 @@ public class ItemGuideBook extends Item {
 		if (true) {
 			if (entity instanceof EntityPlayer)
 				((EntityPlayer) entity).inventory
-						.consumeInventoryItem(ItemGuideBook.block);
+						.consumeInventoryItem(OresPlus.itemGuideBook);
 		}
 
 		return true;
