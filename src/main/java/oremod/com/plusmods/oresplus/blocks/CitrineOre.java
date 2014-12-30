@@ -3,7 +3,7 @@ package com.plusmods.oresplus.blocks;
 
 import java.util.Random;
 
-import com.plusmods.oresplus.OresPlus;
+import com.plusmods.oresplus.common.OresPlus;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

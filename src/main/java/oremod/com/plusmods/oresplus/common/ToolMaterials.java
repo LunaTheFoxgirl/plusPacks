@@ -1,4 +1,4 @@
-package com.plusmods.oresplus;
+package com.plusmods.oresplus.common;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.common.util.EnumHelper;

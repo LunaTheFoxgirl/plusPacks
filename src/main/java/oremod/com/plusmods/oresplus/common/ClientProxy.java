@@ -1,20 +1,5 @@
-package com.plusmods.oresplus;
+package com.plusmods.oresplus.common;//based on master condiguration
 
-import cpw.mods.fml.client.*;
-import cpw.mods.fml.client.registry.*;
-import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.asm.*;
-import cpw.mods.fml.common.asm.transformers.*;
-import cpw.mods.fml.common.discovery.*;
-import cpw.mods.fml.common.discovery.asm.*;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.functions.*;
-import cpw.mods.fml.common.network.*;
-import cpw.mods.fml.common.registry.*;
-import cpw.mods.fml.common.toposort.*;
-import cpw.mods.fml.common.versioning.*;
-import cpw.mods.fml.relauncher.*;
-import cpw.mods.fml.server.*;
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
 import net.minecraft.client.*;
@@ -89,45 +74,26 @@ import net.minecraftforge.event.terraingen.*;
 import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
-import net.minecraft.init.*;
+import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.registry.*;
+import cpw.mods.fml.common.network.*;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Random;
+import java.util.Map;
 
-public class OresPlusTab {
+import cpw.mods.fml.relauncher.*;
 
-	public Object instance;
+public class ClientProxy extends CommonProxy{
 
-	public static CreativeTabs tab = new CreativeTabs("tabOresPlus") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {
-			return OresPlus.itemRuby;
-		}
-	};
+	@Override
+	public void registerRenderers(OresPlus ins) {
 
-	public OresPlusTab() {
+
 	}
-
-	public void load() {
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
 }

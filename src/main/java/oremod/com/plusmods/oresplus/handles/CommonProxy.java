@@ -84,7 +84,7 @@ import cpw.mods.fml.common.network.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.plusmods.oresplus.OresPlus;
+import com.plusmods.oresplus.common.OresPlus;
 
 import java.util.Random;
 import java.util.Map;

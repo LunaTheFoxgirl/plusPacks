@@ -1,6 +1,12 @@
-package com.plusmods.oresplus;
+package com.plusmods.oresplus.common;
 
 import java.util.Random;
+
+
+
+
+
+
 
 
 
@@ -55,6 +61,11 @@ import com.plusmods.oresplus.items.ItemSapphireSpade;
 import com.plusmods.oresplus.items.ItemSapphireSword;
 import com.plusmods.oresplus.items.ItemUranium;
 import com.plusmods.oresplus.items.TheisIngot;
+import com.plusmods.oresplus.oreGen.AmethystOreGen;
+import com.plusmods.oresplus.oreGen.CitrineOreGen;
+import com.plusmods.oresplus.oreGen.JadeOreGenerator;
+import com.plusmods.oresplus.oreGen.RubyOreGen;
+import com.plusmods.oresplus.oreGen.SapphireOreGen;
 import com.plusmods.oresplus.oreGen.UraniumOreGen;
 import com.plusmods.oresplus.toolMaterials.ToolMaterials;
 

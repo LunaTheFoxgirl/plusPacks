@@ -2,7 +2,7 @@ package com.plusmods.oresplus.blocks;
 
 import java.util.Random;
 
-import com.plusmods.oresplus.OresPlus;
+import com.plusmods.oresplus.common.OresPlus;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

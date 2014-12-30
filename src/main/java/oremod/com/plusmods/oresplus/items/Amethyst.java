@@ -1,4 +1,4 @@
-package com.plusmods.oresplus;//based on master condiguration
+package com.plusmods.oresplus.items;//based on master condiguration
 
 import net.minecraft.item.*;
 

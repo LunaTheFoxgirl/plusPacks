@@ -2,7 +2,7 @@ package com.plusmods.oresplus.oreGen;
 
 import java.util.Random;
 
-import com.plusmods.oresplus.OresPlus;
+import com.plusmods.oresplus.common.OresPlus;
 
 import net.minecraft.world.*;
 import net.minecraft.world.chunk.IChunkProvider;

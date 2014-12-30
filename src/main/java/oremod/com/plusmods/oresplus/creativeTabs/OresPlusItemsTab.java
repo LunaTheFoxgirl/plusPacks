@@ -93,7 +93,7 @@ import net.minecraft.init.*;
 
 import java.util.Random;
 
-import com.plusmods.oresplus.OresPlus;
+import com.plusmods.oresplus.common.OresPlus;
 
 public class OresPlusItemsTab {
 

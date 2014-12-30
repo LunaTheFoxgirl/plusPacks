@@ -1,4 +1,4 @@
-package com.plusmods.oresplus;//based on master condiguration
+package com.plusmods.oresplus.common;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
