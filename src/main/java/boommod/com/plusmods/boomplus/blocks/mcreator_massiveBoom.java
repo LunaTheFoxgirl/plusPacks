@@ -170,10 +170,17 @@ public class mcreator_massiveBoom {
 			int chunkZ) {
 	}
 
+	
+	
+	
 	static class BlockMassiveBoom extends Block {
 
 		boolean red = false;
 
+		
+		
+		
+		
 		public BlockMassiveBoom(Material blockMaterial) 
 		{
 			super(blockMaterial);
@@ -194,6 +201,16 @@ public class mcreator_massiveBoom {
 		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
 				int par2, int par3, int par4, int par5) {
 			return red ? 1 : 0;
+		}
+
+		
+		
+		
+		@Override
+		public void onBlockDestroyedByExplosion(World p_149723_1_, int p_149723_2_, int p_149723_3_, int p_149723_4_, Explosion p_149723_5_) {
+			
+			
+			super.onBlockDestroyedByExplosion(p_149723_1_, p_149723_2_, p_149723_3_, p_149723_4_, p_149723_5_);
 		}
 
 		public void onNeighborBlockChange(World world, int i, int j, int k,

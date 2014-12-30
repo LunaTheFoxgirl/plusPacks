@@ -205,6 +205,7 @@ public class mcreator_largeBoom {
 			}
 		}
 
+		@Override
 		public void onBlockDestroyedByExplosion(World world, int i, int j,
 				int k, Explosion e) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;

@@ -50,7 +50,7 @@ public class mcreator_sneakyBoomChest extends BlockChest
     protected boolean isArmed;
     
     
-    protected mcreator_sneakyBoomChest(int p_i45397_1_)
+    public mcreator_sneakyBoomChest(int p_i45397_1_)
     {
         super(p_i45397_1_);
         this.isArmed = false;
