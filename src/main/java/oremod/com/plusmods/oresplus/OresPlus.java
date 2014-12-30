@@ -2,7 +2,12 @@ package com.plusmods.oresplus;
 
 import java.util.Random;
 
+<<<<<<< HEAD
+import com.plusmods.boomplus.mcreator_welcomeGUI;
+import com.plusmods.boomplus.BoomPlus.GuiHandler;
+=======
 import com.plusmods.oresplus.blocks.AmethystBlock;
+>>>>>>> bfd5eea4aa666be6118dc71b9dce970bd6359e20
 import com.plusmods.oresplus.blocks.AmethystOre;
 import com.plusmods.oresplus.blocks.BlockJadeStone;
 import com.plusmods.oresplus.blocks.CitrineBlock;
@@ -18,9 +23,11 @@ import com.plusmods.oresplus.blocks.UraniumOre;
 import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusToolsTab;
+import com.plusmods.oresplus.gui.GuiWelcomeGui;
 import com.plusmods.oresplus.handles.CommonProxy;
 import com.plusmods.oresplus.items.ItemAmethyst;
 import com.plusmods.oresplus.items.ItemCitrine;
+import com.plusmods.oresplus.items.ItemGuideBook;
 import com.plusmods.oresplus.items.ItemJade;
 import com.plusmods.oresplus.items.ItemJadePickaxe;
 import com.plusmods.oresplus.items.ItemRuby;
@@ -35,6 +42,7 @@ import com.plusmods.oresplus.toolMaterials.ToolMaterials;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -47,6 +55,8 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 
@@ -54,7 +64,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class OresPlus {
 
 	public static final String MODID = "OresPlus";
+<<<<<<< HEAD
+    public static final String VERSION = "1.2.0";
+=======
     public static final String VERSION = "1.0.0";
+>>>>>>> bfd5eea4aa666be6118dc71b9dce970bd6359e20
 
 	//@SidedProxy(clientSide="com.plusmods.oresplus.ClientProxy", serverSide="com.plusmods.oresplus.CommonProxy")
     //@SidedProxy(clientSide="mod.mcreator.ClientProxyTestEnvironmentMod", serverSide="mod.mcreator.CommonProxyTestEnvironmentMod")
@@ -109,9 +123,14 @@ public class OresPlus {
 		public static Item citrineSword;
 		public static Item amethystPickaxe;		
 		public static Item amethystSpade;
+<<<<<<< HEAD
+		public static Item guideBook;
+
+=======
 		public static Item amethystAxe;
 		public static Item amethystSword;
 		
+>>>>>>> bfd5eea4aa666be6118dc71b9dce970bd6359e20
 
 	public void serverLoad(FMLServerStartingEvent event) 
 	{
@@ -121,7 +140,9 @@ public class OresPlus {
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) 
 	{
-								
+						
+				guideBook = new ItemGuideBook(5000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("GuideBook").setTextureName("oresplus:guideBook"); 
+		
 			//JadeStone
 				jadeStone = new BlockJadeStone(5001).setBlockName("JadeStone").setHardness(2.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:jade_ore");
 				jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
@@ -311,8 +332,12 @@ public class OresPlus {
 				GameRegistry.registerItem(sapphire, "Sapphire");
 				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
 				GameRegistry.registerItem(sapphireSpade, "SapphireSpade");
+<<<<<<< HEAD
+				GameRegistry.registerItem(guideBook, "ItemGuideBook");
+=======
 				GameRegistry.registerItem(sapphireAxe, "SapphireAxe");
 				
+>>>>>>> bfd5eea4aa666be6118dc71b9dce970bd6359e20
 				GameRegistry.registerItem(mixedGem, "MixedGem");
 				
 			//Crafting Recipe
@@ -370,5 +395,27 @@ public class OresPlus {
 				
 			//Smelting Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
+				
+				
+			//GUI
+				NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+	}
+	//Gui Handlers
+	public static class GuiHandler implements IGuiHandler {
+		@Override
+		public Object getServerGuiElement(int id, EntityPlayer player,
+				World world, int x, int y, int z) {
+			if (id == GuiWelcomeGui.GUIID)
+				return new GuiWelcomeGui.GuiContainerMod(player);
+			return null;
+		}
+
+		@Override
+		public Object getClientGuiElement(int id, EntityPlayer player,
+				World world, int x, int y, int z) {
+			if (id == GuiWelcomeGui.GUIID)
+				return new GuiWelcomeGui.GuiWindow(world, x, y, z, player);
+			return null;
+		}
 	}
 }

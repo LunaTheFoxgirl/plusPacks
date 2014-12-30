@@ -7,7 +7,6 @@
 <fullyQualifiedTypeName name="net.minecraft.item.Item"/>
 <fullyQualifiedTypeName name="com.jcraft.jorbis.Block"/>
 <fullyQualifiedTypeName name="com.plusmods.oresplus.OresPlus"/>
-<fullyQualifiedTypeName name="net.minecraft.init.Blocks"/>
 <fullyQualifiedTypeName name="net.minecraft.block.BlockContainer"/>
 <fullyQualifiedTypeName name="net.minecraft.block.Block"/>
 <fullyQualifiedTypeName name="com.plusmods.boomplus.mcreator_boomPlusTab"/>
@@ -16,6 +15,10 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="net.minecraft.client.entity.EntityClientPlayerMP"/>
 <fullyQualifiedTypeName name="net.minecraft.entity.player.EntityPlayerMP"/>
-<fullyQualifiedTypeName name="net.minecraft.tileentity.TileEntity"/>
 <fullyQualifiedTypeName name="net.minecraft.world.World"/>
+<fullyQualifiedTypeName name="net.minecraft.tileentity.TileEntity"/>
+<fullyQualifiedTypeName name="net.minecraft.util.IIcon"/>
+<fullyQualifiedTypeName name="net.minecraft.init.Blocks"/>
+<fullyQualifiedTypeName name="net.minecraft.tileentity.TileEntityChest"/>
+<fullyQualifiedTypeName name="net.minecraft.block.BlockChest"/>
 </qualifiedTypeNameHistroy>
