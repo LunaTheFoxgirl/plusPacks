@@ -100,68 +100,24 @@ import org.lwjgl.opengl.GL11;
 import com.plusmods.boomplus.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
-public class ItemRadioactivePowder {
+public class ItemRadioactivePowder extends Item {
 
-	public ItemRadioactivePowder() {
+	public ItemRadioactivePowder(int par1) {
+		setMaxDamage(0);
+		maxStackSize = 64;
+		setUnlocalizedName("RadGunpowder");
+		setTextureName("boomplus:radioactiveGunpowdertexture");
+		setCreativeTab(BoomPlusTab.tab);
 	}
 
-	public static Item block;
-	public static Object instance;
-
-	public void load() {
-		new ChestGenHooks("dungeonChest")
-				.addItem(new WeightedRandomChestContent(new ItemStack(block),
-						1, 6, 6));
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
+	@Override
+	public int getItemEnchantability() {
 		return 0;
 	}
 
-	public void serverLoad(FMLServerStartingEvent event) {
+	@Override
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		return 0;
 	}
 
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	static {
-		block = (new ItemradGunpowder(424));
-		Item.itemRegistry.addObject(424, "RadGunpowder", block);
-
-	}
-
-	static class ItemradGunpowder extends Item {
-
-		public ItemradGunpowder(int par1) {
-			setMaxDamage(0);
-			maxStackSize = 64;
-			setUnlocalizedName("RadGunpowder");
-			setTextureName("boomplus:radioactiveGunpowdertexture");
-			setCreativeTab(BoomPlusTab.tab);
-		}
-
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 0;
-		}
-
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
-
-	}
 }

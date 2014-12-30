@@ -102,102 +102,55 @@ import com.plusmods.boomplus.BoomPlusTab;
 import com.plusmods.boomplus.CoolAchievement;
 
 @SuppressWarnings("unchecked")
-public class ItemCoolGlasses {
+public class ItemCoolGlasses extends ItemArmor {
 
-	public ItemCoolGlasses() {
+	public ItemCoolGlasses(ArmorMaterial armor, int par1, int par2) {
+		super(armor, 1, par2);
+		setMaxDamage(1);
+		maxStackSize = 1;
+		setUnlocalizedName("CoolGuyGlasses");
+		setTextureName("boomplus:coolGuystexture");
+		setCreativeTab(BoomPlusTab.tab);
 	}
 
-	public static Item block;
-	public static Object instance;
-
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "XXX",
-				"345", "XXX", Character.valueOf('3'),
-				new ItemStack(Blocks.wool, 1, 15), Character.valueOf('4'),
-				new ItemStack(Blocks.glass, 1), Character.valueOf('5'),
-				new ItemStack(Blocks.wool, 1, 15), });
-		new ChestGenHooks("dungeonChest")
-				.addItem(new WeightedRandomChestContent(new ItemStack(block),
-						1, 1, 10));
+	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
+			String type) {
+		return "boomplus:textures/armor/coolGlasses.png";
 	}
 
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
+	@Override
+	public int getItemEnchantability() {
 		return 0;
 	}
 
-	public void serverLoad(FMLServerStartingEvent event) {
+	@Override
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		return 100;
 	}
 
-	public void preInit(FMLPreInitializationEvent event) {
+	@Override
+	public void onUpdate(ItemStack itemstack, World world, Entity entity,
+			int par4, boolean par5) {
+		int i = (int) entity.posX;
+		int j = (int) entity.posY;
+		int k = (int) entity.posZ;
+
+		if (entity instanceof EntityPlayer) {
+			/*
+			 * ItemStack armorInvHelmet =
+			 * ((EntityPlayer)entity).inventory.armorInventory[0]; ItemStack
+			 * Armor = new ItemStack(mcreator_coolGuyGlasses.block); if
+			 * (armorInvHelmet != null) if
+			 * (armorInvHelmet.getDisplayName().startsWith
+			 * (Armor.getDisplayName())) {
+			 */
+			world.getPlayerEntityByName(
+					((EntityPlayer) entity).getDisplayName()).addStat(
+					CoolAchievement.achievement, 1);
+			// }
+		}
 	}
 
-	public void registerRenderers() {
-	}
-
-	static {
-		block = (new ItemcoolGuyGlasses(ArmorMaterial.DIAMOND, 1, 0));
-		Item.itemRegistry.addObject(425, "CoolGuyGlasses", block);
-
-	}
-
-	static class ItemcoolGuyGlasses extends ItemArmor {
-
-		public ItemcoolGuyGlasses(ArmorMaterial armor, int par1, int par2)
-		{
-			super(armor, 1, par2);
-			setMaxDamage(1);
-			maxStackSize = 1;
-			setUnlocalizedName("CoolGuyGlasses");
-			setTextureName("boomplus:coolGuystexture");
-			setCreativeTab(BoomPlusTab.tab);
-		}
-
-		
-		
-		
-		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-		{
-			return "boomplus:textures/armor/coolGlasses.png";
-		}
-
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 0;
-		}
-
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
-
-		public void onUpdate(ItemStack itemstack, World world, Entity entity,
-				int par4, boolean par5) {
-			int i = (int) entity.posX;
-			int j = (int) entity.posY;
-			int k = (int) entity.posZ;
-
-			if (entity instanceof EntityPlayer)
-			{
-				/*ItemStack armorInvHelmet = ((EntityPlayer)entity).inventory.armorInventory[0];
-				ItemStack Armor = new ItemStack(mcreator_coolGuyGlasses.block);
-				if (armorInvHelmet != null)
-					if (armorInvHelmet.getDisplayName().startsWith(Armor.getDisplayName())) {*/
-						world.getPlayerEntityByName(((EntityPlayer) entity).getDisplayName()).addStat(CoolAchievement.achievement, 1);
-				//}
-			}
-		}
-
-	}
 }

@@ -159,10 +159,65 @@ public class BoomPlus{
 	
 	
 	
-	public void replaceCrafting()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void replaceCraftingItem(ItemStack itemStack, Item itemCraftingToReplace, Object... addition)
 	{
 		
 	}
+	
+	public void replaceCraftingBlock(ItemStack itemStack, Block blockCraftingToReplace, Object... addition)
+	{
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

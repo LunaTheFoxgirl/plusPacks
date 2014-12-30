@@ -100,48 +100,7 @@ import org.lwjgl.opengl.GL11;
 import com.plusmods.boomplus.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
-public class ItemStrangeSymbol {
-
-	public ItemStrangeSymbol() {
-	}
-
-	public static Item block;
-	public static Object instance;
-
-	public void load() {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	
-	public static final Item.ToolMaterial symbol = EnumHelper.addToolMaterial("symbolMaterial", 12, 2000, 6, 120000000000000000.0f, 0);
-	
-	static {
-		block = (new ItemstrangeSymbol(symbol));
-		Item.itemRegistry.addObject(424, "StrangeSymbol", block);
-
-	}
-
-	static class ItemstrangeSymbol extends ItemSword {
+public class ItemStrangeSymbol extends ItemSword {
 
 		
 		
@@ -154,7 +113,7 @@ public class ItemStrangeSymbol {
 			setCreativeTab(mcreator_boomPlusTab.tab);
 		}*/
 
-		public ItemstrangeSymbol(ToolMaterial p_i45356_1_) {
+		public ItemStrangeSymbol(ToolMaterial p_i45356_1_) {
 			super(p_i45356_1_);
 			// TODO Auto-generated constructor stub
 			setMaxDamage(0);

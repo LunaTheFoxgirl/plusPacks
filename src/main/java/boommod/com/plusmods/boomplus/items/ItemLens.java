@@ -102,7 +102,6 @@ import org.lwjgl.opengl.GL11;
 
 import com.plusmods.boomplus.BoomPlusTab;
 
-@SuppressWarnings("unchecked")
 public class ItemLens extends Item
 {
 	

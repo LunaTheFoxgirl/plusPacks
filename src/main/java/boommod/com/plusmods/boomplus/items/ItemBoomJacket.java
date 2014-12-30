@@ -101,97 +101,31 @@ import org.lwjgl.opengl.GL11;
 import com.plusmods.boomplus.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
-public class ItemBoomJacket {
+public class ItemBoomJacket extends ItemArmor {
 
-	public ItemBoomJacket() {
+	public ItemBoomJacket(ArmorMaterial armor, int par1, int par2) {
+		super(armor, 1, par2);
+		setMaxDamage(1);
+		maxStackSize = 1;
+		setUnlocalizedName("BoomJacket");
+		setTextureName("boomplus:boomJackettexture");
+		setCreativeTab(BoomPlusTab.tab);
 	}
 
-	public static Item block;
-	public static Object instance;
-
-	public void load() {
-
-		GameRegistry.addRecipe(
-				new ItemStack(block, 1),
-				new Object[] { "012", "345", "678", Character.valueOf('0'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('1'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('2'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('3'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('4'),
-						new ItemStack(Items.diamond_chestplate, 1),
-						Character.valueOf('5'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('6'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('7'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('8'),
-						new ItemStack(Items.iron_ingot, 1), });
-		new ChestGenHooks("dungeonChest")
-				.addItem(new WeightedRandomChestContent(new ItemStack(block),
-						1, 1, 5));
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
+			String type) {
+		return "boomplus:textures/armor/BoomJacket.png";
 	}
 
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
+	@Override
+	public int getItemEnchantability() {
 		return 0;
 	}
 
-	public void serverLoad(FMLServerStartingEvent event) {
+	@Override
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		return 1;
 	}
 
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	static {
-		block = (new ItemboomJacket(ArmorMaterial.CLOTH, 430, 1));
-		Item.itemRegistry.addObject(430, "BoomJacket", block);
-
-	}
-
-	static class ItemboomJacket extends ItemArmor {
-
-		public ItemboomJacket(ArmorMaterial armor, int par1, int par2)
-		{
-			super(armor, 1, par2);
-			setMaxDamage(1);
-			maxStackSize = 1;
-			setUnlocalizedName("BoomJacket");
-			setTextureName("boomplus:boomJackettexture");
-			setCreativeTab(BoomPlusTab.tab);
-		}
-
-		
-		
-		
-		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-		{
-			return "boomplus:textures/armor/BoomJacket.png";
-		}
-		
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		@Override
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 1;
-		}
-
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
-
-	}
 }
