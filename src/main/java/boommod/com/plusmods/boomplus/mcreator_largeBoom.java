@@ -146,7 +146,7 @@ public class mcreator_largeBoom {
 				.setBlockTextureName("boomplus:largeBoomtexture")
 				.setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(178, "LargeBoom", block);
 		block.setHarvestLevel("pickaxe", 0);

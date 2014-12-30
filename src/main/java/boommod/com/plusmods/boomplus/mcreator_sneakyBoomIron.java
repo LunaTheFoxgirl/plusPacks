@@ -145,7 +145,7 @@ public class mcreator_sneakyBoomIron {
 				.setBlockName("SneakyBoomIron")
 				.setBlockTextureName("boomplus:sneakyBoomirontexture")
 				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(192, "SneakyBoomCoal", block);
 		block.setHarvestLevel("pickaxe", 1);

@@ -145,7 +145,7 @@ public class mcreator_smallBoom {
 				.setBlockName("SmallBoom")
 				.setBlockTextureName("boomplus:smallBoomtexture").setLightOpacity(0)
 				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(176, "SmallBoom", block);
 		block.setHarvestLevel("pickaxe", 0);

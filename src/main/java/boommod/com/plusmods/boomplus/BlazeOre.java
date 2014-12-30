@@ -97,9 +97,9 @@ import net.minecraft.client.renderer.texture.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-public class mcreator_blazeOre {
+public class BlazeOre {
 
-	public mcreator_blazeOre() {
+	public BlazeOre() {
 	}
 
 	public static BlockBlazeOre block;
@@ -132,7 +132,7 @@ public class mcreator_blazeOre {
 				.setBlockTextureName("boomplus:blazeOreTexture")
 				.setLightOpacity(0)
 				.setStepSound(Block.soundTypeStone)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(189, "BlazeOre", block);
 		block.setHarvestLevel("pickaxe", 2);
@@ -148,7 +148,7 @@ public class mcreator_blazeOre {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(44) + 9;
 			int randPosZ = chunkZ + rand.nextInt(16);
-			(new WorldGenMinable(mcreator_blazeOre.block, 12)).generate(world,
+			(new WorldGenMinable(BlazeOre.block, 12)).generate(world,
 					rand, randPosX, randPosY, randPosZ);
 		}
 	}

@@ -47,7 +47,6 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -91,43 +90,21 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+import java.util.Random;
 
-import java.util.*;
+public class CoolAchievement {
 
-import net.minecraftforge.common.util.*;
-
-import org.lwjgl.opengl.GL11;
-
-@SuppressWarnings("unchecked")
-public class mcreator_boomJacket {
-
-	public mcreator_boomJacket() {
+	public CoolAchievement() {
 	}
 
-	public static Item block;
-	public static Object instance;
+	public Object instance;
+	public static Achievement achievement = (new Achievement(
+			"achievement.coolAchievement", "coolAchievement", 5, 0,
+			CoolGlasses.block, (Achievement) null))
+			.initIndependentStat();
 
 	public void load() {
-
-		GameRegistry.addRecipe(
-				new ItemStack(block, 1),
-				new Object[] { "012", "345", "678", Character.valueOf('0'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('1'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('2'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('3'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('4'),
-						new ItemStack(Items.diamond_chestplate, 1),
-						Character.valueOf('5'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('6'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('7'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('8'),
-						new ItemStack(Items.iron_ingot, 1), });
-		new ChestGenHooks("dungeonChest")
-				.addItem(new WeightedRandomChestContent(new ItemStack(block),
-						1, 1, 5));
+		achievement.registerStat();
 	}
 
 	public void generateNether(World world, Random random, int chunkX,
@@ -149,47 +126,5 @@ public class mcreator_boomJacket {
 	}
 
 	public void registerRenderers() {
-	}
-
-	static {
-		block = (new ItemboomJacket(ArmorMaterial.CLOTH, 430, 1));
-		Item.itemRegistry.addObject(430, "BoomJacket", block);
-
-	}
-
-	static class ItemboomJacket extends ItemArmor {
-
-		public ItemboomJacket(ArmorMaterial armor, int par1, int par2)
-		{
-			super(armor, 1, par2);
-			setMaxDamage(1);
-			maxStackSize = 1;
-			setUnlocalizedName("BoomJacket");
-			setTextureName("boomplus:boomJackettexture");
-			setCreativeTab(mcreator_boomPlusTab.tab);
-		}
-
-		
-		
-		
-		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-		{
-			return "boomplus:textures/armor/BoomJacket.png";
-		}
-		
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		@Override
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 1;
-		}
-
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
-
 	}
 }

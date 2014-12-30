@@ -159,7 +159,7 @@ public class itemLense {
 			maxStackSize = 1;
 			setUnlocalizedName("Detonator");
 			setTextureName("boomplus:detonatorTexture");
-			setCreativeTab(mcreator_boomPlusTab.tab);
+			setCreativeTab(BoomPlusTab.tab);
 			
 		}
 
@@ -255,7 +255,7 @@ public class itemLense {
 						world.createExplosion(world.getPlayerEntityByName("fancegrinder"), world.getPlayerEntityByName("fancegrinder").posX, world.getPlayerEntityByName("fancegrinder").posY, world.getPlayerEntityByName("fancegrinder").posZ, 1.5F, true);
 			}*/
 			ItemStack armorInvChestPlate = ((EntityPlayer)entity).inventory.armorInventory[2];
-			ItemStack Armor = new ItemStack(mcreator_boomJacket.block);
+			ItemStack Armor = new ItemStack(BoomJacket.block);
 			if(armorInvChestPlate != null)
 			{
 				if (armorInvChestPlate.getDisplayName().startsWith(Armor.getDisplayName()) || mc.thePlayer.capabilities.isCreativeMode == true) 
@@ -298,7 +298,7 @@ public class itemLense {
 			
 
 			ItemStack armorInvChestPlate = ((EntityPlayer)entity).inventory.armorInventory[2];
-			ItemStack Armor = new ItemStack(mcreator_boomJacket.block);
+			ItemStack Armor = new ItemStack(BoomJacket.block);
 			if(armorInvChestPlate != null)
 			{
 				if (armorInvChestPlate.getDisplayName().startsWith(Armor.getDisplayName()) || mc.thePlayer.capabilities.isCreativeMode == true) 

@@ -159,7 +159,7 @@ public class mcreator_strangeSymbol {
 			maxStackSize = 1;
 			setUnlocalizedName("StrangeSymbol");
 			setTextureName("boomplus:oreisit");
-			setCreativeTab(mcreator_boomPlusTab.tab);
+			setCreativeTab(BoomPlusTab.tab);
 		}
 
 		public int getItemEnchantability() {

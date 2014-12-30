@@ -145,7 +145,7 @@ public class mcreator_sneakyBoomDiamond {
 				.setBlockName("SneakyBoomDiamond")
 				.setBlockTextureName("boomplus:sneakyBoomdiamondtexture")
 				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(194, "SneakyBoomDiamond", block);
 		block.setHarvestLevel("pickaxe", 2);

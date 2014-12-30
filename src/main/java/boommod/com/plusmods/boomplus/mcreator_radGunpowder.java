@@ -144,7 +144,7 @@ public class mcreator_radGunpowder {
 			maxStackSize = 64;
 			setUnlocalizedName("RadGunpowder");
 			setTextureName("boomplus:radioactiveGunpowdertexture");
-			setCreativeTab(mcreator_boomPlusTab.tab);
+			setCreativeTab(BoomPlusTab.tab);
 		}
 
 		public int getItemEnchantability() {
