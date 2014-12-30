@@ -2,12 +2,10 @@ package com.plusmods.oresplus;
 
 import java.util.Random;
 
-<<<<<<< HEAD
+
 import com.plusmods.boomplus.mcreator_welcomeGUI;
 import com.plusmods.boomplus.BoomPlus.GuiHandler;
-=======
 import com.plusmods.oresplus.blocks.AmethystBlock;
->>>>>>> bfd5eea4aa666be6118dc71b9dce970bd6359e20
 import com.plusmods.oresplus.blocks.AmethystOre;
 import com.plusmods.oresplus.blocks.BlockJadeStone;
 import com.plusmods.oresplus.blocks.CitrineBlock;
@@ -64,11 +62,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class OresPlus {
 
 	public static final String MODID = "OresPlus";
-<<<<<<< HEAD
     public static final String VERSION = "1.2.0";
-=======
-    public static final String VERSION = "1.0.0";
->>>>>>> bfd5eea4aa666be6118dc71b9dce970bd6359e20
+
+
 
 	//@SidedProxy(clientSide="com.plusmods.oresplus.ClientProxy", serverSide="com.plusmods.oresplus.CommonProxy")
     //@SidedProxy(clientSide="mod.mcreator.ClientProxyTestEnvironmentMod", serverSide="mod.mcreator.CommonProxyTestEnvironmentMod")
@@ -123,14 +119,14 @@ public class OresPlus {
 		public static Item citrineSword;
 		public static Item amethystPickaxe;		
 		public static Item amethystSpade;
-<<<<<<< HEAD
+
 		public static Item guideBook;
 
-=======
+
 		public static Item amethystAxe;
 		public static Item amethystSword;
 		
->>>>>>> bfd5eea4aa666be6118dc71b9dce970bd6359e20
+
 
 	public void serverLoad(FMLServerStartingEvent event) 
 	{
@@ -256,6 +252,22 @@ public class OresPlus {
 				amethystSword = new ItemAmethystAxe(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystAxe").setTextureName("oresplus:amethyst_axe");
 				
 				
+			//JadeSword
+				jadeSword = new ItemJadeSword(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeSword").setTextureName("oresplus:jade_sword");
+				
+			//RubySword
+				rubySword = new ItemRubySword(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubySword").setTextureName("oresplus:ruby_sword");
+				
+			//SapphireSword
+				sapphireSword = new ItemSapphireSword(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("SapphireSword").setTextureName("oresplus:sapphire_sword");
+				
+			//CitrineSword
+				citrineSword = new ItemCitrineSword(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrineSword").setTextureName("oresplus:citrine_sword");
+				
+			//AmethystSword
+				amethystSword = new ItemAmethystSword(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystSword").setTextureName("oresplus:amethyst_sword");
+				
+				
 					
 				
 				
@@ -316,28 +328,31 @@ public class OresPlus {
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
 				GameRegistry.registerItem(jadeSpade, "JadeSpade");
 				GameRegistry.registerItem(jadeAxe, "JadeAxe");
+				GameRegistry.registerItem(jadeSword, "JadeSword");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");				
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
 				GameRegistry.registerItem(rubySpade, "RubySpade");
-				GameRegistry.registerItem(rubyAxe, "RubyAxe");
+				GameRegistry.registerItem(rubyAxe, "RubyAxe");;
+				GameRegistry.registerItem(rubySword, "RubySword");
 				GameRegistry.registerItem(amethyst, "Amethyst");
 				GameRegistry.registerItem(amethystPickaxe, "AmethystPickaxe");
 				GameRegistry.registerItem(amethystSpade, "AmethystSpade");
 				GameRegistry.registerItem(amethystAxe, "AmethystAxe");
+				GameRegistry.registerItem(amethystSword, "AmethystSword");
 				GameRegistry.registerItem(citrine, "Citrine");
 				GameRegistry.registerItem(citrinePickaxe, "CitrinePickaxe");
 				GameRegistry.registerItem(citrineSpade, "CitrineSpade");
 				GameRegistry.registerItem(citrineAxe, "CitrineAxe");
+				GameRegistry.registerItem(citrineSword, "CitrineSword");
 				GameRegistry.registerItem(sapphire, "Sapphire");
 				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
 				GameRegistry.registerItem(sapphireSpade, "SapphireSpade");
-<<<<<<< HEAD
-				GameRegistry.registerItem(guideBook, "ItemGuideBook");
-=======
 				GameRegistry.registerItem(sapphireAxe, "SapphireAxe");
+				GameRegistry.registerItem(sapphireSword, "SapphireSword");
+				GameRegistry.registerItem(guideBook, "ItemGuideBook");
 				
->>>>>>> bfd5eea4aa666be6118dc71b9dce970bd6359e20
+				GameRegistry.registerItem(sapphireAxe, "SapphireAxe");				
 				GameRegistry.registerItem(mixedGem, "MixedGem");
 				
 			//Crafting Recipe
