@@ -354,6 +354,7 @@ public class OresPlus {
 				
 				GameRegistry.registerItem(guideBook, "ItemGuideBook");			
 				GameRegistry.registerItem(mixedGem, "MixedGem");
+				GameRegistry.registerItem(uranium, "Uranium");
 				
 			//Crafting Recipe
 				//JadePickaxe
