@@ -53,7 +53,7 @@ public class mcreator_sneakyBoomChest extends BlockChest
         this.isArmed = false;
         this.field_149956_a = p_i45397_1_;
         this.setBlockName("SneakyBoomChest");
-        this.setCreativeTab(mcreator_boomPlusTab.tab);
+        this.setCreativeTab(BoomPlusTab.tab);
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
     }
 

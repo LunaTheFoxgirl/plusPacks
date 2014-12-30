@@ -32,6 +32,17 @@ item.SapphireSpade.name=Sapphire Shovel
 item.CitrineSpade.name=Citrine Shovel
 item.AmethystSpade.name=Amethyst Shovel
 
+item.JadeAxe.name=Jade Axe
+item.RubyAxe.name=Ruby Axe
+item.SapphireAxe.name=Sapphire Axe
+item.CitrineAxe.name=Citrine Axe
+item.AmethystAxe.name=Amethyst Axe
+
+item.JadeSword.name=Jade Sword
+item.RubySword.name=Ruby Sword
+item.SapphireSword.name=Sapphire Sword
+item.CitrineSword.name=Citrine Sword
+item.AmethystSword.name=Amethyst Sword
 
 itemGroup.tabOresPlus=Ores+
 itemGroup.tabOresPlusItems=Ores+ Items

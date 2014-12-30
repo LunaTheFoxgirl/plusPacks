@@ -148,7 +148,7 @@ public class mcreator_sneakyBoom {
 				.setBlockName("SneakyBoom")
 				.setBlockTextureName("boomplus:sneakyBoomtexture").setLightOpacity(0)
 				.setStepSound(Block.soundTypeStone)
-				.setCreativeTab(mcreator_boomPlusTab.tab));
+				.setCreativeTab(BoomPlusTab.tab));
 				
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		Block.blockRegistry.addObject(190, "SneakyBoom", block);
