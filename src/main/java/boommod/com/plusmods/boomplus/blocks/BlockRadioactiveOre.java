@@ -100,77 +100,18 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.items.ItemRadioactivePowder;
 
-public class BlazeOre {
+public class BlockRadioactiveOre extends Block {
 
-	public BlazeOre() {
-	}
 
-	public static BlockBlazeOre block;
-
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "BlazeOre");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-	}
-
-	static {
-
-		block = (BlockBlazeOre) (new BlockBlazeOre().setHardness(6.0F)
-				.setResistance(15.0F).setLightLevel(0.0F)
-				.setBlockName("BlazeOre")
-				.setBlockTextureName("boomplus:blazeOreTexture")
-				.setLightOpacity(0)
-				.setStepSound(Block.soundTypeStone)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(189, "BlazeOre", block);
-		block.setHarvestLevel("pickaxe", 2);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, java.util.Random rand, int chunkX,
-			int chunkZ) {
-		for (int i = 0; i < 6; i++) {
-			int randPosX = chunkX + rand.nextInt(16);
-			int randPosY = rand.nextInt(44) + 9;
-			int randPosZ = chunkZ + rand.nextInt(16);
-			(new WorldGenMinable(BlazeOre.block, 12)).generate(world,
-					rand, randPosX, randPosY, randPosZ);
-		}
-	}
-
-	static class BlockBlazeOre extends Block {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
-
-		boolean red = false;
-
-		protected BlockBlazeOre() {
-			super(Material.ground);
+		protected BlockRadioactiveOre() {
+			super(Material.iron);
 
 		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (entity != null && world != null) {
@@ -183,11 +124,9 @@ public class BlazeOre {
 
 		}
 
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void randomDisplayTick(World world, int i, int j, int k,
 				Random random) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
@@ -197,7 +136,7 @@ public class BlazeOre {
 			int par4 = k;
 			Random par5Random = random;
 			if (true)
-				for (int l = 0; l < 10; ++l) {
+				for (int l = 0; l < 15; ++l) {
 					double d0 = (double) ((float) par2 + par5Random.nextFloat());
 					double d1 = (double) ((float) par3 + par5Random.nextFloat());
 					double d2 = (double) ((float) par4 + par5Random.nextFloat());
@@ -205,65 +144,29 @@ public class BlazeOre {
 					double d4 = 0.0D;
 					double d5 = 0.0D;
 					int i1 = par5Random.nextInt(2) * 2 - 1;
-					d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.000000001490116D;
-					d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.000000001490116D;
-					d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.000000001490116D;
-					par1World.spawnParticle("flame", d0, d1, d2, d3, d4, d5);
+					d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
+					d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
+					d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
+					par1World.spawnParticle("mobSpellAmbient", d0, d1, d2, d3,
+							d4, d5);
 				}
 
 		}
 
-		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
-				int l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-
-			if (!world.isRemote)
-				if (true) {
-					Entity sentity = EntityList.createEntityByID(61, world);
-					if (sentity != null) {
-						sentity.setLocationAndAngles(i, j, k,
-							world.rand.nextFloat() * 360F, 0.0F);
-						world.spawnEntityInWorld(sentity);
-					((EntityLiving) sentity).playLivingSound();
-				}
-			}
-
-		}
-
-		public void onBlockDestroyedByExplosion(World world, int i, int j,
-				int k, Explosion e) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-
-			if (true) {
-				Entity sentity = EntityList.createEntityByID(61, world);
-				if (sentity != null) {
-					sentity.setLocationAndAngles(i, j, k,
-							world.rand.nextFloat() * 360F, 0.0F);
-					world.spawnEntityInWorld(sentity);
-					((EntityLiving) sentity).playLivingSound();
-				}
-			}
-
-		}
-
-
-
+		@Override
 		@SideOnly(Side.CLIENT)
 		public int getRenderType() {
 			return 0;
 		}
 
+
 		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
 		public int quantityDropped(Random par1Random) {
-			return 3;
+			return 2;
 		}
 
+		@Override
 		public Item getItemDropped(int par1, Random par2Random, int par3) {
-			return Items.blaze_powder;
+			return ItemRadioactivePowder.block;
 		}
 	}
-}

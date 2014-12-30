@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.blocks;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -47,6 +47,7 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -94,141 +95,62 @@ import net.minecraft.init.*;
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
-import net.minecraft.client.renderer.texture.*;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.CoolAchievement;
 
-public class mcreator_sneakyBoomIron {
+@SuppressWarnings("unchecked")
+public class ItemCoolGlasses extends ItemArmor {
 
-	public mcreator_sneakyBoomIron() {
+	public ItemCoolGlasses(ArmorMaterial armor, int par1, int par2) {
+		super(armor, 1, par2);
+		setMaxDamage(1);
+		maxStackSize = 1;
+		setUnlocalizedName("CoolGuyGlasses");
+		setTextureName("boomplus:coolGuystexture");
+		setCreativeTab(BoomPlusTab.tab);
 	}
 
-	public static BlockSneakyBoomIron block;
+	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
+			String type) {
+		return "boomplus:textures/armor/coolGlasses.png";
+	}
 
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
+	@Override
+	public int getItemEnchantability() {
 		return 0;
 	}
 
-	public void serverLoad(FMLServerStartingEvent event) {
+	@Override
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		return 100;
 	}
 
-	public void preInit(FMLPreInitializationEvent event) {
+	@Override
+	public void onUpdate(ItemStack itemstack, World world, Entity entity,
+			int par4, boolean par5) {
+		int i = (int) entity.posX;
+		int j = (int) entity.posY;
+		int k = (int) entity.posZ;
 
-		GameRegistry.registerBlock(block, "SneakyBoomCoal");
+		if (entity instanceof EntityPlayer) {
+			/*
+			 * ItemStack armorInvHelmet =
+			 * ((EntityPlayer)entity).inventory.armorInventory[0]; ItemStack
+			 * Armor = new ItemStack(mcreator_coolGuyGlasses.block); if
+			 * (armorInvHelmet != null) if
+			 * (armorInvHelmet.getDisplayName().startsWith
+			 * (Armor.getDisplayName())) {
+			 */
+			world.getPlayerEntityByName(
+					((EntityPlayer) entity).getDisplayName()).addStat(
+					CoolAchievement.achievement, 1);
+			// }
+		}
 	}
 
-	public void registerRenderers() {
-	}
-
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-				"345", "678", Character.valueOf('0'),
-				new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'),
-				new ItemStack(Items.iron_ingot, 1), Character.valueOf('2'),
-				new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'),
-				new ItemStack(Items.iron_ingot, 1), Character.valueOf('4'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('5'),
-				new ItemStack(Items.iron_ingot, 1), Character.valueOf('6'),
-				new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'),
-				new ItemStack(Items.iron_ingot, 1), Character.valueOf('8'),
-				new ItemStack(Items.iron_ingot, 1), });
-	}
-
-	static {
-
-		block = (BlockSneakyBoomIron) (new BlockSneakyBoomIron()
-				.setHardness(2.0F).setResistance(10.0F).setLightLevel(0.0F)
-				.setBlockName("SneakyBoomIron")
-				.setBlockTextureName("boomplus:sneakyBoomirontexture")
-				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(192, "SneakyBoomCoal", block);
-		block.setHarvestLevel("pickaxe", 1);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockSneakyBoomIron extends Block {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
-
-		boolean red = false;
-
-		protected BlockSneakyBoomIron() {
-			super(Material.iron);
-
-		}
-
-		public void onBlockAdded(World world, int i, int j, int k) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (entity != null && world != null) {
-				int le = MathHelper
-						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				world.setBlockMetadataWithNotify(i, j, k, le, 2);
-			}
-
-			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
-
-		}
-
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
-
-		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
-				int l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-
-			if (!world.isRemote) {
-				world.createExplosion((Entity) null, i, j, k, 4F, true);
-			}
-
-		}
-
-		@SideOnly(Side.CLIENT)
-		public int getRenderType() {
-			return 0;
-		}
-
-		
-		@Override
-		public Item getItemDropped(int metaData, Random random, int fortune)
-		{
-			return Item.getItemById(263);
-		}
-		
-		public int idDropped(int part1, Random par2Random, int par3)
-		{
-			return 265;
-		}
-		
-		
-		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
-		@Override
-		public int quantityDropped(Random par1Random) {
-			return 1;
-		}
-
-	}
 }

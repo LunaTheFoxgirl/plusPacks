@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.items;//based on master condiguration
+package com.plusmods.boomplus.blocks;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -47,7 +47,6 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -95,109 +94,116 @@ import net.minecraft.init.*;
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
+import net.minecraft.client.renderer.texture.*;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
-import com.plusmods.boomplus.CoolAchievement;
 
-@SuppressWarnings("unchecked")
-public class CoolGlasses {
+public class BlockMagicBoom extends Block {
 
-	public CoolGlasses() {
-	}
-
-	public static Item block;
-	public static Object instance;
-
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "XXX",
-				"345", "XXX", Character.valueOf('3'),
-				new ItemStack(Blocks.wool, 1, 15), Character.valueOf('4'),
-				new ItemStack(Blocks.glass, 1), Character.valueOf('5'),
-				new ItemStack(Blocks.wool, 1, 15), });
-		new ChestGenHooks("dungeonChest")
-				.addItem(new WeightedRandomChestContent(new ItemStack(block),
-						1, 1, 10));
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	static {
-		block = (new ItemcoolGuyGlasses(ArmorMaterial.DIAMOND, 1, 0));
-		Item.itemRegistry.addObject(425, "CoolGuyGlasses", block);
-
-	}
-
-	static class ItemcoolGuyGlasses extends ItemArmor {
-
-		public ItemcoolGuyGlasses(ArmorMaterial armor, int par1, int par2)
+		public BlockMagicBoom(Material blockMaterial) 
 		{
-			super(armor, 1, par2);
-			setMaxDamage(1);
-			maxStackSize = 1;
-			setUnlocalizedName("CoolGuyGlasses");
-			setTextureName("boomplus:coolGuystexture");
-			setCreativeTab(BoomPlusTab.tab);
+			super(blockMaterial);
 		}
 
-		
-		
-		
 		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-		{
-			return "boomplus:textures/armor/coolGlasses.png";
+		@SideOnly(Side.CLIENT)
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
+
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+
 		}
 
-		public int getItemEnchantability() {
-			return 0;
-		}
 
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 0;
-		}
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onNeighborBlockChange(World world, int i, int j, int k,
+				Block l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k) || Block.getIdFromBlock(l) > 0 && l.canProvidePower()) {
 
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
+				if (true) {
+					world.spawnEntityInWorld(new EntityLightningBolt(world,
+							i + 1, j, k + 1));
+				}
 
-		public void onUpdate(ItemStack itemstack, World world, Entity entity,
-				int par4, boolean par5) {
-			int i = (int) entity.posX;
-			int j = (int) entity.posY;
-			int k = (int) entity.posZ;
+				if (!world.isRemote) {
+					world.createExplosion((Entity) null, i, j, k, 0.5F, true);
+				}
 
-			if (entity instanceof EntityPlayer)
-			{
-				/*ItemStack armorInvHelmet = ((EntityPlayer)entity).inventory.armorInventory[0];
-				ItemStack Armor = new ItemStack(mcreator_coolGuyGlasses.block);
-				if (armorInvHelmet != null)
-					if (armorInvHelmet.getDisplayName().startsWith(Armor.getDisplayName())) {*/
-						world.getPlayerEntityByName(((EntityPlayer) entity).getDisplayName()).addStat(CoolAchievement.achievement, 1);
-				//}
+				if (true) {
+					entity.attackEntityFrom(DamageSource.generic, 3);
+				}
+
+				if (!world.isRemote) {
+					entity.addPotionEffect(new PotionEffect(15, 15, 0));
+				}
+
+				if (!world.isRemote) {
+					world.createExplosion((Entity) null, i, j, k, 4F, true);
+				}
+
 			}
 		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void randomDisplayTick(World world, int i, int j, int k,
+				Random random) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			World par1World = world;
+			int par2 = i;
+			int par3 = j;
+			int par4 = k;
+			Random par5Random = random;
+			if (true)
+				for (int l = 0; l < 30; ++l) {
+					double d0 = (double) ((float) par2 + par5Random.nextFloat());
+					double d1 = (double) ((float) par3 + par5Random.nextFloat());
+					double d2 = (double) ((float) par4 + par5Random.nextFloat());
+					double d3 = 0.0D;
+					double d4 = 0.0D;
+					double d5 = 0.0D;
+					int i1 = par5Random.nextInt(2) * 2 - 1;
+					d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.500000001490116D;
+					d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.500000001490116D;
+					d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.500000001490116D;
+					par1World.spawnParticle("instantSpell", d0, d1, d2, d3, d4,
+							d5);
+				}
+
+		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockDestroyedByExplosion(World world, int i, int j,
+				int k, Explosion e) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+
+			if (!world.isRemote) {
+				world.spawnEntityInWorld(new EntityLightningBolt(world, i, j, k));
+				world.createExplosion((Entity) null, i, j, k, 4F, true);
+			}
+
+		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public int getRenderType() {
+			return 0;
+		}
+
+		@Override
+		public int quantityDropped(Random par1Random) {
+			return 1;
+		}
+
 	}
-}

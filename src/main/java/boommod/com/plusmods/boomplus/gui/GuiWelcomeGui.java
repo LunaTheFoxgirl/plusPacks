@@ -98,13 +98,13 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 @SuppressWarnings("unchecked")
-public class mcreator_welcomeGUI {
+public class GuiWelcomeGui {
 
 	public static Object instance;
 
 	public static int GUIID = 1;
 
-	public mcreator_welcomeGUI() {
+	public GuiWelcomeGui() {
 	}
 
 	public void load() {
@@ -136,13 +136,13 @@ public class mcreator_welcomeGUI {
 		@Override
 		public Object getServerGuiElement(int id, EntityPlayer player,
 				World world, int x, int y, int z) {
-			return new mcreator_welcomeGUI.GuiContainerMod(player);
+			return new GuiWelcomeGui.GuiContainerMod(player);
 		}
 
 		@Override
 		public Object getClientGuiElement(int id, EntityPlayer player,
 				World world, int x, int y, int z) {
-			return new mcreator_welcomeGUI.GuiWindow(world, x, y, z, player);
+			return new GuiWelcomeGui.GuiWindow(world, x, y, z, player);
 		}
 	}
 
@@ -189,17 +189,16 @@ public class mcreator_welcomeGUI {
 			int posY = (this.height) / 2;
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-			/*this.mc.renderEngine.bindTexture(texture);
-			this.xSize = 225;
-			this.ySize = 127;
-			int k = (this.width - this.xSize) / 2;
-			int l = (this.height - this.ySize) / 2;
-			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);*/
+			/*
+			 * this.mc.renderEngine.bindTexture(texture); this.xSize = 225;
+			 * this.ySize = 127; int k = (this.width - this.xSize) / 2; int l =
+			 * (this.height - this.ySize) / 2; this.drawTexturedModalRect(k, l,
+			 * 0, 0, this.xSize, this.ySize);
+			 */
 
 			zLevel = 100.0F;
 
-			this.mc.renderEngine
-					.bindTexture(new ResourceLocation("booml.png"));
+			this.mc.renderEngine.bindTexture(new ResourceLocation("booml.png"));
 			this.drawTexturedModalRect(posX + (-130), posY + (-199), 0, 0, 256,
 					256);
 
@@ -219,11 +218,12 @@ public class mcreator_welcomeGUI {
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 			int posX = (this.width) / 2;
 			int posY = (this.height) / 2;
-			this.fontRendererObj.drawString("BoomPlus Developers: ZakDoesGaming, Member1221", posX+(-124),
-                    posY+(-40), 0x00ffff);
 			this.fontRendererObj.drawString(
-					"------------------------------------------", posX + (-128),
-					posY + (-30), 0xffffff);
+					"BoomPlus Developers: ZakDoesGaming, Member1221", posX
+							+ (-124), posY + (-40), 0x00ffff);
+			this.fontRendererObj.drawString(
+					"------------------------------------------",
+					posX + (-128), posY + (-30), 0xffffff);
 			this.fontRendererObj.drawString("Hello!", posX + (-18), posY
 					+ (-20), 0xffffff);
 			this.fontRendererObj.drawString("Thanks for playing with Boom+",
@@ -249,7 +249,8 @@ public class mcreator_welcomeGUI {
 			this.buttonList.clear();
 			int posX = (this.width) / 2;
 			int posY = (this.height) / 2;
-		    this.buttonList.add(new GuiButton(0, posX+(-28), posY+(85), 50, 20, "Close"));
+			this.buttonList.add(new GuiButton(0, posX + (-28), posY + (85), 50,
+					20, "Close"));
 		}
 
 		protected void actionPerformed(GuiButton button) {
@@ -257,22 +258,22 @@ public class mcreator_welcomeGUI {
 					.getMinecraftServerInstance();
 			World world = server.worldServers[0];
 			EntityLiving living;
-			
-			if (button.id == 0){
-				if(true){
-							mc.thePlayer.setHealth(40.0f);
-							this.mc.displayGuiScreen((GuiScreen) null);
-							
-					}
-					//boom
-				}
 
+			if (button.id == 0) {
+				if (true) {
+					mc.thePlayer.setHealth(40.0f);
+					this.mc.displayGuiScreen((GuiScreen) null);
+
+				}
+				// boom
 			}
 
 		}
 
-		public boolean doesGuiPauseGame() {
-			return false;
-		}
-
 	}
+
+	public boolean doesGuiPauseGame() {
+		return false;
+	}
+
+}

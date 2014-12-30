@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.gui;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -90,90 +90,27 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
-import org.lwjgl.input.Keyboard;
 import java.util.Random;
-import cpw.mods.fml.common.eventhandler.*;
-import cpw.mods.fml.common.gameevent.*;
 
-public class mcreator_welcome {
-
-	public static Object instance;
-
-	public mcreator_welcome() {
+public class ItemSneakyBoomEdible extends ItemFood {
+	public ItemSneakyBoomEdible(int par2, float par3, boolean par4) {
+		super(par2, par3, par4);
 	}
 
-	public void load() {
-		FMLCommonHandler.instance().bus().register(new KeyHandlerClass());
-	}
+	protected void onFoodEaten(ItemStack itemStack, World world,
+			EntityPlayer entity) {
+		super.onFoodEaten(itemStack, world, entity);
+		float var4 = 1.0F;
+		int i = (int) (entity.prevPosX + (entity.posX - entity.prevPosX)
+				* (double) var4);
+		int j = (int) (entity.prevPosY + (entity.posY - entity.prevPosY)
+				* (double) var4 + 1.62D - (double) entity.yOffset);
+		int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
+				* (double) var4);
 
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public class KeyHandlerClass {
-
-		private static final String desc = "key.tut_inventory.desc";
-		private static final int keyValues = Keyboard.KEY_X;
-		private final KeyBinding keys;
-
-		public KeyHandlerClass() {
-			keys = new KeyBinding(desc, keyValues, "key.tutorial.category");
-			ClientRegistry.registerKeyBinding(keys);
+		if (!world.isRemote) {
+			world.createExplosion((Entity) null, i, j, k, 4F, true);
 		}
 
-		@SubscribeEvent
-		public void onKeyInput(InputEvent.KeyInputEvent event) {
-			if (!FMLClientHandler.instance().isGUIOpen(GuiChat.class)) {
-				if (keys.isPressed()) {
-					EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-					int i = (int) entity.posX;
-					int j = (int) entity.posY;
-					int k = (int) entity.posZ;
-					/*
-					 * World world = null; WorldServer[] list =
-					 * MinecraftServer.getServer().worldServers; for(WorldServer
-					 * ins : list){
-					 * if(ins.provider.dimensionId==entity.worldObj.
-					 * provider.dimensionId) world = ins; } if(world==null)
-					 * world = list[0];
-					 */
-					MinecraftServer server = FMLCommonHandler.instance()
-							.getMinecraftServerInstance();
-					World world = server.worldServers[0];
-
-					if (true) {
-						if (true) {
-
-							if (true) {
-								if (entity instanceof EntityPlayer)
-									((EntityPlayer) entity).openGui(instance,
-											mcreator_welcomeGUI.GUIID, world,
-											i, j, k);
-							}
-
-						}
-					}
-
-				}
-			}
-		}
 	}
-
 }

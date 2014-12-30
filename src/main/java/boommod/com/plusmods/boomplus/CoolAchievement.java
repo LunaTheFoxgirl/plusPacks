@@ -93,7 +93,7 @@ import net.minecraft.init.*;
 
 import java.util.Random;
 
-import com.plusmods.boomplus.items.CoolGlasses;
+import com.plusmods.boomplus.items.ItemCoolGlasses;
 
 public class CoolAchievement {
 
@@ -103,7 +103,7 @@ public class CoolAchievement {
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
 			"achievement.coolAchievement", "coolAchievement", 5, 0,
-			CoolGlasses.block, (Achievement) null))
+			ItemCoolGlasses.block, (Achievement) null))
 			.initIndependentStat();
 
 	public void load() {

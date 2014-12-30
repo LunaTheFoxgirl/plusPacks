@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.acheivement;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -47,6 +47,7 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -91,43 +92,40 @@ import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
 
-import java.util.Random;
+import java.util.*;
 
-import com.plusmods.boomplus.items.mcreator_strangeSymbol;
+import net.minecraftforge.common.util.*;
 
-public class mcreator_orisitAchievement {
+import org.lwjgl.opengl.GL11;
 
-	public mcreator_orisitAchievement() {
+import com.plusmods.boomplus.BoomPlusTab;
+
+@SuppressWarnings("unchecked")
+public class ItemBoomJacket extends ItemArmor {
+
+	public ItemBoomJacket(ArmorMaterial armor, int par1, int par2) {
+		super(armor, 1, par2);
+		setMaxDamage(1);
+		maxStackSize = 1;
+		setUnlocalizedName("BoomJacket");
+		setTextureName("boomplus:boomJackettexture");
+		setCreativeTab(BoomPlusTab.tab);
 	}
 
-	public Object instance;
-	public static Achievement achievement = (new Achievement(
-			"achievement.orisitAchievement", "orisitAchievement", 5, 1,
-			mcreator_strangeSymbol.block, (Achievement) null))
-			.initIndependentStat();
-
-	public void load() {
-		achievement.registerStat();
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
+			String type) {
+		return "boomplus:textures/armor/BoomJacket.png";
 	}
 
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
+	@Override
+	public int getItemEnchantability() {
 		return 0;
 	}
 
-	public void serverLoad(FMLServerStartingEvent event) {
+	@Override
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		return 1;
 	}
 
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
 }

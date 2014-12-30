@@ -93,17 +93,17 @@ import net.minecraft.init.*;
 
 import java.util.Random;
 
-import com.plusmods.boomplus.items.mcreator_radGunpowder;
+import com.plusmods.boomplus.items.ItemRadioactivePowder;
 
-public class mcreator_nuclearAchievement {
+public class AchievementNuclear {
 
-	public mcreator_nuclearAchievement() {
+	public AchievementNuclear() {
 	}
 
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
 			"achievement.nuclearAchievement", "nuclearAchievement", 5, 5,
-			mcreator_radGunpowder.block, (Achievement) null))
+			ItemRadioactivePowder.block, (Achievement) null))
 			.initIndependentStat();
 
 	public void load() {

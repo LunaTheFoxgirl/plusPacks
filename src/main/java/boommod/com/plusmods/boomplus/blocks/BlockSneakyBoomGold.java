@@ -100,82 +100,17 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
-import com.plusmods.boomplus.acheivement.mcreator_orisitAchievement;
 
-public class mcreator_sneakyBoomDiamond {
+public class BlockSneakyBoomGold extends Block {
 
-	public mcreator_sneakyBoomDiamond() {
-	}
 
-	public static BlockSneakyBoomDiamond block;
-
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "SneakyBoomDiamond");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-				"345", "678", Character.valueOf('0'),
-				new ItemStack(Items.diamond, 1), Character.valueOf('1'),
-				new ItemStack(Item.getItemById(69), 1), Character.valueOf('2'),
-				new ItemStack(Items.diamond, 1), Character.valueOf('3'),
-				new ItemStack(Items.diamond, 1), Character.valueOf('4'),
-				new ItemStack(Items.redstone, 1), Character.valueOf('5'),
-				new ItemStack(Items.diamond, 1), Character.valueOf('6'),
-				new ItemStack(Items.diamond, 1), Character.valueOf('7'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('8'),
-				new ItemStack(Items.diamond, 1), });
-	}
-
-	static {
-
-		block = (BlockSneakyBoomDiamond) (new BlockSneakyBoomDiamond()
-				.setHardness(2.0F).setResistance(10.0F).setLightLevel(0.0F)
-				.setBlockName("SneakyBoomDiamond")
-				.setBlockTextureName("boomplus:sneakyBoomdiamondtexture")
-				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(194, "SneakyBoomDiamond", block);
-		block.setHarvestLevel("pickaxe", 2);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockSneakyBoomDiamond extends Block {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
-
-		boolean red = false;
-
-		protected BlockSneakyBoomDiamond() {
+		protected BlockSneakyBoomGold() {
 			super(Material.iron);
 
 		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (entity != null && world != null) {
@@ -188,53 +123,37 @@ public class mcreator_sneakyBoomDiamond {
 
 		}
 
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
 
-		public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l) 
-		{
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
+				int l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
-			if (!world.isRemote) 
-			{
-				if (!((EntityClientPlayerMP)entity).getStatFileWriter().hasAchievementUnlocked(mcreator_orisitAchievement.achievement))
-				{
-					world.getPlayerEntityByName(entity.getDisplayName()).addStat(mcreator_orisitAchievement.achievement, 1);
-				}
+			if (!world.isRemote) {
 				world.createExplosion((Entity) null, i, j, k, 4F, true);
 			}
-			else
-			{
-				if (!((EntityClientPlayerMP)entity).getStatFileWriter().hasAchievementUnlocked(mcreator_orisitAchievement.achievement))
-				{
-					((EntityPlayer) entity).playSound("boomplus:orIsIt", 0.5f, 1);
-				}
-			}
+
 		}
 
+		
+		@Override
 		@SideOnly(Side.CLIENT)
 		public int getRenderType() {
 			return 0;
 		}
-		
+
+
 		@Override
 		public Item getItemDropped(int metaData, Random random, int fortune)
 		{
-			return Item.getItemById(264);
+			return Item.getItemById(266);
 		}
 		
-
-		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
 		@Override
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}
 
 	}
-}
+

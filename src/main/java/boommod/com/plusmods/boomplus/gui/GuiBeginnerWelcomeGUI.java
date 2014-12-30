@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.blocks;//based on master condiguration
+package com.plusmods.boomplus.gui;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -90,25 +90,32 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
+import org.lwjgl.input.Keyboard;
+import java.util.Random;
+import cpw.mods.fml.common.eventhandler.*;
+import cpw.mods.fml.common.gameevent.*;
 
-import java.util.*;
-
-import net.minecraftforge.common.util.*;
-import net.minecraft.client.renderer.texture.*;
-
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import com.plusmods.boomplus.BoomPlusTab;
-
-public class mcreator_sneakyBoomGold {
-
-	public mcreator_sneakyBoomGold() {
-	}
-
-	public static BlockSneakyBoomGold block;
+public class GuiBeginnerWelcomeGUI {
 
 	public static Object instance;
+
+	public GuiBeginnerWelcomeGUI() {
+	}
+
+	public void load() {
+		FMLCommonHandler.instance().bus().register(new KeyHandlerClass());
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void registerRenderers() {
+	}
 
 	public int addFuel(ItemStack fuel) {
 		return 0;
@@ -118,111 +125,55 @@ public class mcreator_sneakyBoomGold {
 	}
 
 	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "SneakyBoomGold");
 	}
 
-	public void registerRenderers() {
-	}
+	public class KeyHandlerClass {
 
-	public void load() {
+		private static final String desc = "key.tut_inventory.desc";
+		private static final int keyValues = Keyboard.KEY_X;
+		private final KeyBinding keys;
 
-		GameRegistry.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-				"345", "678", Character.valueOf('0'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('1'),
-				new ItemStack(Item.getItemById(69), 1), Character.valueOf('2'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('3'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('4'),
-				new ItemStack(Items.redstone, 1), Character.valueOf('5'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('6'),
-				new ItemStack(Items.gold_ingot, 1), Character.valueOf('7'),
-				new ItemStack(Blocks.tnt, 1), Character.valueOf('8'),
-				new ItemStack(Items.gold_ingot, 1), });
-	}
-
-	static {
-
-		block = (BlockSneakyBoomGold) (new BlockSneakyBoomGold()
-				.setHardness(2.0F).setResistance(10.0F).setLightLevel(0.0F)
-				.setBlockName("SneakyBoomGold")
-				.setBlockTextureName("boomplus:sneakyBoomgoldtexture")
-				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(193, "SneakyBoomGold", block);
-		block.setHarvestLevel("pickaxe", 2);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockSneakyBoomGold extends Block {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
-
-		boolean red = false;
-
-		protected BlockSneakyBoomGold() {
-			super(Material.iron);
-
+		public KeyHandlerClass() {
+			keys = new KeyBinding(desc, keyValues, "key.tutorial.category");
+			ClientRegistry.registerKeyBinding(keys);
 		}
 
-		public void onBlockAdded(World world, int i, int j, int k) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (entity != null && world != null) {
-				int le = MathHelper
-						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+		@SubscribeEvent
+		public void onKeyInput(InputEvent.KeyInputEvent event) {
+			if (!FMLClientHandler.instance().isGUIOpen(GuiChat.class)) {
+				if (keys.isPressed()) {
+					EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+					int i = (int) entity.posX;
+					int j = (int) entity.posY;
+					int k = (int) entity.posZ;
+					/*
+					 * World world = null; WorldServer[] list =
+					 * MinecraftServer.getServer().worldServers; for(WorldServer
+					 * ins : list){
+					 * if(ins.provider.dimensionId==entity.worldObj.
+					 * provider.dimensionId) world = ins; } if(world==null)
+					 * world = list[0];
+					 */
+					MinecraftServer server = FMLCommonHandler.instance()
+							.getMinecraftServerInstance();
+					World world = server.worldServers[0];
+
+					if (true) {
+						if (true) {
+
+							if (true) {
+								if (entity instanceof EntityPlayer)
+									((EntityPlayer) entity).openGui(instance,
+											GuiWelcomeGui.GUIID, world,
+											i, j, k);
+							}
+
+						}
+					}
+
+				}
 			}
-
-			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
-
 		}
-
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
-
-		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
-				int l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-
-			if (!world.isRemote) {
-				world.createExplosion((Entity) null, i, j, k, 4F, true);
-			}
-
-		}
-
-		@SideOnly(Side.CLIENT)
-
-		public int getRenderType() {
-			return 0;
-		}
-
-		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
-		@Override
-		public Item getItemDropped(int metaData, Random random, int fortune)
-		{
-			return Item.getItemById(266);
-		}
-		
-		@Override
-		public int quantityDropped(Random par1Random) {
-			return 1;
-		}
-
 	}
+
 }

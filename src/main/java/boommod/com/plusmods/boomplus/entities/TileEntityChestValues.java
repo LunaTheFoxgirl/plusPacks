@@ -6,7 +6,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Iterator;
 import java.util.List;
 
-import com.plusmods.boomplus.blocks.mcreator_sneakyBoomChest;
+import com.plusmods.boomplus.blocks.BlockSneakyBoomChest;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -363,7 +363,7 @@ public class TileEntityChestValues extends TileEntityChest implements IInventory
         else
         {
             Block block = this.worldObj.getBlock(p_145977_1_, p_145977_2_, p_145977_3_);
-            return block instanceof mcreator_sneakyBoomChest && ((mcreator_sneakyBoomChest)block).field_149956_a == this.func_145980_j();
+            return block instanceof BlockSneakyBoomChest && ((BlockSneakyBoomChest)block).field_149956_a == this.func_145980_j();
         }
     }
 

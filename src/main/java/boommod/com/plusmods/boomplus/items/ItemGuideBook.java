@@ -1,14 +1,17 @@
-package com.plusmods.boomplus.items;//based on master condiguration
+package com.plusmods.boomplus.items;
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
 import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.asm.*;
 import cpw.mods.fml.common.asm.transformers.*;
 import cpw.mods.fml.common.discovery.*;
 import cpw.mods.fml.common.discovery.asm.*;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.functions.*;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
 import cpw.mods.fml.common.toposort.*;
@@ -97,71 +100,72 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
+import com.plusmods.boomplus.BoomPlus;
 import com.plusmods.boomplus.BoomPlusTab;
+import com.plusmods.boomplus.gui.GuiWelcomeGui;
 
 @SuppressWarnings("unchecked")
-public class mcreator_radGunpowder {
+public class ItemGuideBook extends Item {
 
-	public mcreator_radGunpowder() {
+	public int clickProgression = 0;
+	public boolean doesClick;
+
+	public ItemGuideBook(int par1) {
+		setMaxDamage(0);
+		maxStackSize = 1;
+		setUnlocalizedName("GuideBook");
+		setTextureName("boomplus:guideBook");
+		setCreativeTab(BoomPlusTab.tab);
 	}
 
-	public static Item block;
-	public static Object instance;
+	@Override
+	public void onUpdate(ItemStack p_77663_1_, World p_77663_2_,
+			Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
+		super.onUpdate(p_77663_1_, p_77663_2_, p_77663_3_, p_77663_4_,
+				p_77663_5_);
 
-	public void load() {
-		new ChestGenHooks("dungeonChest")
-				.addItem(new WeightedRandomChestContent(new ItemStack(block),
-						1, 6, 6));
 	}
 
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
+	@Override
+	public int getItemEnchantability() {
 		return 0;
 	}
 
-	public void serverLoad(FMLServerStartingEvent event) {
+	@Override
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		return 0;
 	}
 
-	public void preInit(FMLPreInitializationEvent event) {
+	@Override
+	public ItemStack onItemRightClick(ItemStack itemstack, World world,
+			EntityPlayer entity) {
+		float var4 = 1.0F;
+		int i = (int) (entity.prevPosX + (entity.posX - entity.prevPosX)
+				* (double) var4);
+		int j = (int) (entity.prevPosY + (entity.posY - entity.prevPosY)
+				* (double) var4 + 1.62D - (double) entity.yOffset);
+		int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
+				* (double) var4);
+
+		return itemstack;
 	}
 
-	public void registerRenderers() {
-	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean onItemUse(ItemStack itemStack, EntityPlayer entity,
+			World world, int i, int j, int k, int l, float a, float b, float c) {
+		float var4 = 1.0F;
 
-	static {
-		block = (new ItemradGunpowder(424));
-		Item.itemRegistry.addObject(424, "RadGunpowder", block);
-
-	}
-
-	static class ItemradGunpowder extends Item {
-
-		public ItemradGunpowder(int par1) {
-			setMaxDamage(0);
-			maxStackSize = 64;
-			setUnlocalizedName("RadGunpowder");
-			setTextureName("boomplus:radioactiveGunpowdertexture");
-			setCreativeTab(BoomPlusTab.tab);
+		Minecraft mc = Minecraft.getMinecraft();
+		mc.thePlayer.openGui(BoomPlus.instance, GuiWelcomeGui.GUIID, world,
+				(int) entity.posX, (int) entity.posY, (int) entity.posZ);
+		if (true) {
+			if (entity instanceof EntityPlayer)
+				((EntityPlayer) entity).inventory
+						.consumeInventoryItem(ItemGuideBook.block);
 		}
 
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 0;
-		}
-
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
-
+		return true;
 	}
+
 }

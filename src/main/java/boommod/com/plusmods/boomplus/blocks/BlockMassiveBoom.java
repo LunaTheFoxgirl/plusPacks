@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.items;//based on master condiguration
+package com.plusmods.boomplus.blocks;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -47,7 +47,6 @@ import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.crafting.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.*;
@@ -95,103 +94,69 @@ import net.minecraft.init.*;
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
+import net.minecraft.client.renderer.texture.*;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
 
-@SuppressWarnings("unchecked")
-public class BoomJacket {
-
-	public BoomJacket() {
-	}
-
-	public static Item block;
-	public static Object instance;
-
-	public void load() {
-
-		GameRegistry.addRecipe(
-				new ItemStack(block, 1),
-				new Object[] { "012", "345", "678", Character.valueOf('0'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('1'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('2'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('3'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('4'),
-						new ItemStack(Items.diamond_chestplate, 1),
-						Character.valueOf('5'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('6'),
-						new ItemStack(Items.iron_ingot, 1),
-						Character.valueOf('7'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('8'),
-						new ItemStack(Items.iron_ingot, 1), });
-		new ChestGenHooks("dungeonChest")
-				.addItem(new WeightedRandomChestContent(new ItemStack(block),
-						1, 1, 5));
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	static {
-		block = (new ItemboomJacket(ArmorMaterial.CLOTH, 430, 1));
-		Item.itemRegistry.addObject(430, "BoomJacket", block);
-
-	}
-
-	static class ItemboomJacket extends ItemArmor {
-
-		public ItemboomJacket(ArmorMaterial armor, int par1, int par2)
+public class BlockMassiveBoom extends Block {
+		
+		public BlockMassiveBoom(Material blockMaterial) 
 		{
-			super(armor, 1, par2);
-			setMaxDamage(1);
-			maxStackSize = 1;
-			setUnlocalizedName("BoomJacket");
-			setTextureName("boomplus:boomJackettexture");
-			setCreativeTab(BoomPlusTab.tab);
+			super(blockMaterial);
+		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockAdded(World world, int i, int j, int k) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (entity != null && world != null) {
+				int le = MathHelper
+						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				world.setBlockMetadataWithNotify(i, j, k, le, 2);
+			}
+
+			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
+
 		}
 
 		
 		
 		
 		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+		public void onBlockDestroyedByExplosion(World p_149723_1_, int p_149723_2_, int p_149723_3_, int p_149723_4_, Explosion p_149723_5_) 
 		{
-			return "boomplus:textures/armor/BoomJacket.png";
+			p_149723_1_.createExplosion((Entity) null, p_149723_2_, p_149723_3_, p_149723_4_, 60F, true);
+			super.onBlockDestroyedByExplosion(p_149723_1_, p_149723_2_, p_149723_3_, p_149723_4_, p_149723_5_);
 		}
 		
-		public int getItemEnchantability() {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onNeighborBlockChange(World world, int i, int j, int k,
+				Block l) {
+			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
+					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
+
+				if (!world.isRemote) {
+					world.createExplosion((Entity) null, i, j, k, 60F, true);
+				}
+
+			}
+		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public int getRenderType() {
 			return 0;
 		}
 
+
 		@Override
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		public int quantityDropped(Random par1Random) {
 			return 1;
 		}
 
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
-
 	}
-}

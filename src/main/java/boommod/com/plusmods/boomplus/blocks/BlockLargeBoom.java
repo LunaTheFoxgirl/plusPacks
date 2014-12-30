@@ -100,81 +100,16 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
-import com.plusmods.boomplus.items.mcreator_radGunpowder;
 
-public class mcreator_radioactiveBoom {
-
-	public mcreator_radioactiveBoom() {
-	}
-
-	public static BlockRadioactiveBoom block;
-
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "RadioactiveBoom");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-
-		GameRegistry
-				.addRecipe(new ItemStack(block, 1), new Object[] { "012",
-						"345", "678", Character.valueOf('0'),
-						new ItemStack(Blocks.tnt, 1), Character.valueOf('1'),
-						new ItemStack(mcreator_radGunpowder.block, 1),
-						Character.valueOf('2'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('3'),
-						new ItemStack(mcreator_radGunpowder.block, 1),
-						Character.valueOf('4'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('5'),
-						new ItemStack(mcreator_radGunpowder.block, 1),
-						Character.valueOf('6'), new ItemStack(Blocks.tnt, 1),
-						Character.valueOf('7'),
-						new ItemStack(mcreator_radGunpowder.block, 1),
-						Character.valueOf('8'), new ItemStack(Blocks.tnt, 1), });
-	}
-
-	static {
-
-		block = (BlockRadioactiveBoom) (new BlockRadioactiveBoom(Material.iron)
-				.setHardness(2.0F).setResistance(0.0F).setLightLevel(0.0F)
-				.setBlockName("RadioactiveBoom")
-				.setBlockTextureName("boomplus:radioactiveBoomtexture")
-				.setLightOpacity(0).setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(186, "RadioactiveBoom", block);
-		block.setHarvestLevel("pickaxe", 0);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockRadioactiveBoom extends Block {
-
-		boolean red = false;
-
-		public BlockRadioactiveBoom(Material blockMaterial) 
+public class BlockLargeBoom extends Block {
+	
+		public BlockLargeBoom(Material blockMaterial) 
 		{
 			super(blockMaterial);
 		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (entity != null && world != null) {
@@ -187,83 +122,40 @@ public class mcreator_radioactiveBoom {
 
 		}
 
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
-
-		public void onNeighborBlockChange(World world, int i, int j, int k,
-				Block l) {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onNeighborBlockChange(World world, int i, int j, int k, Block l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
-					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
+					&& world.isBlockIndirectlyGettingPowered(i, j, k)) 
+			{
 
-				if (true) {
-					world.createExplosion((Entity) null, i, j, k, 120F, true);
-				}
-
-				if (true) {
-					world.setBlock(i, j, k, Blocks.flowing_lava, 0, 2);
-				}
-
-				if (true) {
-					entity.addPotionEffect(new PotionEffect(15, 30, 2));
-				}
-
-				if (true) {
-					world.setBlock(i + 1, j, k, Blocks.flowing_lava, 0, 2);
-				}
-
-				if (true) {
-					world.setBlock(i, j, k + 2, Blocks.flowing_lava, 0, 2);
-				}
-				if (true)
-				{
-					//dqwdqwdqwd
+				if (!world.isRemote) {
+					world.createExplosion((Entity) null, i, j, k, 10F, true);
 				}
 
 			}
 		}
 
-		public void randomDisplayTick(World world, int i, int j, int k,
-				Random random) {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockDestroyedByExplosion(World world, int i, int j, int k, Explosion e) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			World par1World = world;
-			int par2 = i;
-			int par3 = j;
-			int par4 = k;
-			Random par5Random = random;
-			if (true)
-				for (int l = 0; l < 30; ++l) {
-					double d0 = (double) ((float) par2 + par5Random.nextFloat());
-					double d1 = (double) ((float) par3 + par5Random.nextFloat());
-					double d2 = (double) ((float) par4 + par5Random.nextFloat());
-					double d3 = 0.0D;
-					double d4 = 0.0D;
-					double d5 = 0.0D;
-					int i1 = par5Random.nextInt(2) * 2 - 1;
-					d3 = ((double) par5Random.nextFloat() - 0.5D) * 2.0D;
-					d4 = ((double) par5Random.nextFloat() - 0.5D) * 2.0D;
-					d5 = ((double) par5Random.nextFloat() - 0.5D) * 2.0D;
-					par1World.spawnParticle("portal", d0, d1, d2, d3, d4, d5);
-				}
+
+			if (!world.isRemote) {
+				world.createExplosion((Entity) null, i, j, k, 10F, true);
+			}
 
 		}
 
 		@SideOnly(Side.CLIENT)
-
 		public int getRenderType() {
 			return 0;
 		}
-
+		
 		@Override
-		public int tickRate(World world) {
-			return 10;
-		}
-
 		public int quantityDropped(Random par1Random) {
 			return 1;
 		}
 
 	}
-}

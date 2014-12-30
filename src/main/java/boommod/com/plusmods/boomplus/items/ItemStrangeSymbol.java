@@ -1,4 +1,4 @@
-package com.plusmods.boomplus.blocks;//based on master condiguration
+package com.plusmods.boomplus.items;//based on master condiguration
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -94,150 +94,69 @@ import net.minecraft.init.*;
 import java.util.*;
 
 import net.minecraftforge.common.util.*;
-import net.minecraft.client.renderer.texture.*;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
 
-public class mcreator_massiveBoom {
-
-	public mcreator_massiveBoom() {
-	}
-
-	public static BlockMassiveBoom block;
-
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "MassiveBoom");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-
-		GameRegistry.addRecipe(
-				new ItemStack(block, 1),
-				new Object[] { "012", "345", "678", Character.valueOf('0'),
-						new ItemStack(Blocks.wool, 1, 4),
-						Character.valueOf('1'),
-						new ItemStack(mcreator_mediumBoom.block, 1),
-						Character.valueOf('2'),
-						new ItemStack(Blocks.wool, 1, 4),
-						Character.valueOf('3'),
-						new ItemStack(mcreator_mediumBoom.block, 1),
-						Character.valueOf('4'),
-						new ItemStack(mcreator_largeBoom.block, 1),
-						Character.valueOf('5'),
-						new ItemStack(mcreator_mediumBoom.block, 1),
-						Character.valueOf('6'),
-						new ItemStack(Blocks.wool, 1, 4),
-						Character.valueOf('7'),
-						new ItemStack(mcreator_mediumBoom.block, 1),
-						Character.valueOf('8'),
-						new ItemStack(Blocks.wool, 1, 4), });
-	}
-
-	static {
-
-		block = (BlockMassiveBoom) (new BlockMassiveBoom(Material.iron).setHardness(2.0F)
-				.setResistance(0.0F).setLightLevel(0.0F)
-				.setBlockName("MassiveBoom")
-				.setBlockTextureName("boomplus:massiveBoomtexture").setLightOpacity(0)
-				.setStepSound(Block.soundTypeGrass)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(191, "MassiveBoom", block);
-		block.setHarvestLevel("pickaxe", 0);
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	
-	
-	
-	static class BlockMassiveBoom extends Block {
-
-		boolean red = false;
+@SuppressWarnings("unchecked")
+public class ItemStrangeSymbol extends ItemSword {
 
 		
 		
 		
-		
-		public BlockMassiveBoom(Material blockMaterial) 
-		{
-			super(blockMaterial);
+		/*public ItemstrangeSymbol(int par1) {
+			setMaxDamage(0);
+			maxStackSize = 1;
+			setUnlocalizedName("StrangeSymbol");
+			setTextureName("boomplus:oreisit");
+			setCreativeTab(mcreator_boomPlusTab.tab);
+		}*/
+
+		public ItemStrangeSymbol(ToolMaterial p_i45356_1_) {
+			super(p_i45356_1_);
+			// TODO Auto-generated constructor stub
+			setMaxDamage(0);
+			maxStackSize = 1;
+			setUnlocalizedName("StrangeSymbol");
+			setTextureName("boomplus:oreisit");
+			setCreativeTab(BoomPlusTab.tab);
 		}
 
-		public void onBlockAdded(World world, int i, int j, int k) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (entity != null && world != null) {
-				int le = MathHelper
-						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				world.setBlockMetadataWithNotify(i, j, k, le, 2);
-			}
-
-			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
-
-		}
-
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
-
-		
-		
-		
-		@Override
-		public void onBlockDestroyedByExplosion(World p_149723_1_, int p_149723_2_, int p_149723_3_, int p_149723_4_, Explosion p_149723_5_) {
-			
-			
-			super.onBlockDestroyedByExplosion(p_149723_1_, p_149723_2_, p_149723_3_, p_149723_4_, p_149723_5_);
-		}
-
-		public void onNeighborBlockChange(World world, int i, int j, int k,
-				Block l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
-					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
-
-				if (!world.isRemote) {
-					world.createExplosion((Entity) null, i, j, k, 60F, true);
-				}
-
-			}
-		}
-
-		@SideOnly(Side.CLIENT)
-		public int getRenderType() {
+		public int getItemEnchantability() {
 			return 0;
 		}
 
+		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+			return 0;
+		}
+		
+		
+		
+
 		@Override
-		public int tickRate(World world) {
-			return 10;
+		public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer player, World world, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+			/*if (world.isRemote)
+				((EntityClientPlayerMP) player).sendChatMessage("Whoops! my bad.");
+			if (!world.isRemote)
+				((EntityPlayer) player).inventory.consumeInventoryItem(mcreator_strangeSymbol.block);*/
+			
+			return super.onItemUse(p_77648_1_, player, world, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_);
 		}
 
-		public int quantityDropped(Random par1Random) {
-			return 1;
+		@Override
+		public ItemStack onItemRightClick(ItemStack p_77659_1_,
+				World world, EntityPlayer player) {
+			if (world.isRemote)
+				((EntityClientPlayerMP) player).sendChatMessage("Whoops! my bad.");
+			if (!world.isRemote)
+				((EntityPlayer) player).inventory.consumeInventoryItem(ItemStrangeSymbol.block);
+			// TODO Auto-generated method stub
+			return super.onItemRightClick(p_77659_1_, world, player);
+		}
+
+		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+			return 1.0F;
 		}
 
 	}

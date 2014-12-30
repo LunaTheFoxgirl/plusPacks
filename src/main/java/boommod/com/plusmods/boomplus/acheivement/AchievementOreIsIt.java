@@ -1,5 +1,20 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus.acheivement;//based on master condiguration
 
+import cpw.mods.fml.client.*;
+import cpw.mods.fml.client.registry.*;
+import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.asm.*;
+import cpw.mods.fml.common.asm.transformers.*;
+import cpw.mods.fml.common.discovery.*;
+import cpw.mods.fml.common.discovery.asm.*;
+import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.functions.*;
+import cpw.mods.fml.common.network.*;
+import cpw.mods.fml.common.registry.*;
+import cpw.mods.fml.common.toposort.*;
+import cpw.mods.fml.common.versioning.*;
+import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.server.*;
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
 import net.minecraft.client.*;
@@ -74,23 +89,45 @@ import net.minecraftforge.event.terraingen.*;
 import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
-import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.registry.*;
-import cpw.mods.fml.common.network.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.minecraft.init.*;
+
 import java.util.Random;
-import java.util.Map;
-import cpw.mods.fml.relauncher.*;
 
-public class ClientProxyBoomPlus extends CommonProxyBoomPlus {
+import com.plusmods.boomplus.items.ItemStrangeSymbol;
 
-	@Override
-	public void registerRenderers(BoomPlus ins) {
+public class AchievementOreIsIt {
 
+	public AchievementOreIsIt() {
+	}
 
+	public Object instance;
+	public static Achievement achievement = (new Achievement(
+			"achievement.orisitAchievement", "orisitAchievement", 5, 1,
+			ItemStrangeSymbol.block, (Achievement) null))
+			.initIndependentStat();
+
+	public void load() {
+		achievement.registerStat();
+	}
+
+	public void generateNether(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public void generateSurface(World world, Random random, int chunkX,
+			int chunkZ) {
+	}
+
+	public int addFuel(ItemStack fuel) {
+		return 0;
+	}
+
+	public void serverLoad(FMLServerStartingEvent event) {
+	}
+
+	public void preInit(FMLPreInitializationEvent event) {
+	}
+
+	public void registerRenderers() {
 	}
 }

@@ -8,6 +8,7 @@ import cpw.mods.fml.common.asm.transformers.*;
 import cpw.mods.fml.common.discovery.*;
 import cpw.mods.fml.common.discovery.asm.*;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.functions.*;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
@@ -100,77 +101,16 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.BoomPlusTab;
-import com.plusmods.boomplus.items.mcreator_radGunpowder;
 
-public class mcreator_radOre {
+public class BlockSneakyBoomStone extends Block {
 
-	public mcreator_radOre() {
-	}
-
-	public static BlockRadOre block;
-
-	public static Object instance;
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-
-		GameRegistry.registerBlock(block, "RadOre");
-	}
-
-	public void registerRenderers() {
-	}
-
-	public void load() {
-	}
-
-	static {
-
-		block = (BlockRadOre) (new BlockRadOre().setHardness(6.0F)
-				.setResistance(10.0F).setLightLevel(0.0F)
-				.setBlockName("RadOre")
-				.setBlockTextureName("boomplus:radioactiveOretexture")
-				.setLightOpacity(0).setStepSound(Block.soundTypeStone)
-				.setCreativeTab(BoomPlusTab.tab));
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Block.blockRegistry.addObject(185, "RadOre", block);
-		block.setHarvestLevel("pickaxe", 2);
-	}
-
-	public void generateSurface(World world, java.util.Random rand, int chunkX,
-			int chunkZ) {
-		for (int i = 0; i < 5; i++) {
-			int randPosX = chunkX + rand.nextInt(16);
-			int randPosY = rand.nextInt(14) + 20;
-			int randPosZ = chunkZ + rand.nextInt(16);
-			(new WorldGenMinable(mcreator_radOre.block, 7)).generate(world,
-					rand, randPosX, randPosY, randPosZ);
-		}
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	static class BlockRadOre extends Block {
-
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
-
-		IIcon gor = null, dol = null, st1 = null, st2 = null, st3 = null,
-				st4 = null;
-
-		boolean red = false;
-
-		protected BlockRadOre() {
-			super(Material.iron);
+		protected BlockSneakyBoomStone() {
+			super(Material.ground);
 
 		}
 
+		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (entity != null && world != null) {
@@ -183,52 +123,39 @@ public class mcreator_radOre {
 
 		}
 
-		public int isProvidingStrongPower(IBlockAccess par1IBlockAccess,
-				int par2, int par3, int par4, int par5) {
-			return red ? 1 : 0;
-		}
 
-		public void randomDisplayTick(World world, int i, int j, int k,
-				Random random) {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
+				int l) {
 			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			World par1World = world;
-			int par2 = i;
-			int par3 = j;
-			int par4 = k;
-			Random par5Random = random;
-			if (true)
-				for (int l = 0; l < 15; ++l) {
-					double d0 = (double) ((float) par2 + par5Random.nextFloat());
-					double d1 = (double) ((float) par3 + par5Random.nextFloat());
-					double d2 = (double) ((float) par4 + par5Random.nextFloat());
-					double d3 = 0.0D;
-					double d4 = 0.0D;
-					double d5 = 0.0D;
-					int i1 = par5Random.nextInt(2) * 2 - 1;
-					d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
-					d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
-					d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.499999998509884D;
-					par1World.spawnParticle("mobSpellAmbient", d0, d1, d2, d3,
-							d4, d5);
-				}
+			
+			if (!world.isRemote) {
+				world.createExplosion((Entity) null, i, j, k, 2F, true);
+			}
 
 		}
 
+		
+		@Override
+		@SideOnly(Side.CLIENT)
 		public int getRenderType() {
 			return 0;
 		}
 
+
+		
 		@Override
-		public int tickRate(World world) {
-			return 10;
+		public Item getItemDropped(int metaData, Random random, int fortune)
+		{
+			return Item.getItemById(1);
 		}
-
+		
+		
+		@Override
 		public int quantityDropped(Random par1Random) {
-			return 2;
+			return 1;
 		}
 
-		public Item getItemDropped(int par1, Random par2Random, int par3) {
-			return mcreator_radGunpowder.block;
-		}
 	}
-}
+
