@@ -102,7 +102,7 @@ public class OresPlusItemsTab {
 	public static CreativeTabs tab = new CreativeTabs("tabOresPlusItems") {
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem() {
-			return OresPlus.ruby;
+			return OresPlus.itemRuby;
 		}
 	};
 }

@@ -40,7 +40,7 @@ import net.minecraft.world.World;
 		@Override
 		public Item getItemDropped(int metaData, Random random, int fortune)
 		{
-			return OresPlus.jade;
+			return OresPlus.itemJade;
 		}
 		
 		@Override

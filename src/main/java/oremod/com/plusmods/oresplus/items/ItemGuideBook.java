@@ -168,7 +168,7 @@ public class ItemGuideBook extends Item {
                         if (true) {
                                 if (entity instanceof EntityPlayer)
                                                 ((EntityPlayer) entity).inventory
-                                                        .consumeInventoryItem(OresPlus.guideBook);
+                                                        .consumeInventoryItem(OresPlus.itemGuideBook);
                         }
                                
  

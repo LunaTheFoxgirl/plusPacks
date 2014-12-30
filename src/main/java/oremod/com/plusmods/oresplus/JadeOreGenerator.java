@@ -22,7 +22,7 @@ public class JadeOreGenerator implements IWorldGenerator {
 			int x = chunkX + random.nextInt(16);
 			int y = random.nextInt(80);
 			int z = chunkZ + random.nextInt(5);
-			(new WorldGenMinable(OresPlus.jadeStone, 10)).generate(world, random, x, y, z);
+			(new WorldGenMinable(OresPlus.blockJadeOre, 10)).generate(world, random, x, y, z);
 		}
 	}
 
