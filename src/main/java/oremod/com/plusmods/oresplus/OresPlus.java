@@ -209,6 +209,9 @@ public class OresPlus {
 			
 			//Amethyst
 				amethyst = new ItemAmethyst(5004).setUnlocalizedName("Amethyst").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:amethyst");
+				
+			//Amethyst
+				uranium = new ItemAmethyst(5005).setUnlocalizedName("Uranium").setCreativeTab(OresPlusItemsTab.tab).setTextureName("oresplus:uranium");
 	
 	
 			//SapphirePickaxe
