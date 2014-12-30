@@ -93,15 +93,25 @@ public class OresPlus {
 	//Tools
 		public static Item jadePickaxe;
 		public static Item jadeSpade;
+		public static Item jadeAxe;
+		public static Item jadeSword;
 		public static Item rubyPickaxe;
 		public static Item rubySpade;
+		public static Item rubyAxe;
+		public static Item rubySword;
 		public static Item sapphirePickaxe;
 		public static Item sapphireSpade;
+		public static Item sapphireAxe;
+		public static Item sapphireSword;
 		public static Item citrinePickaxe;
 		public static Item citrineSpade;
-		public static Item amethystPickaxe;
+		public static Item citrineAxe;
+		public static Item citrineSword;
+		public static Item amethystPickaxe;		
 		public static Item amethystSpade;
-
+		public static Item amethystAxe;
+		public static Item amethystSword;
+		
 
 	public void serverLoad(FMLServerStartingEvent event) 
 	{
@@ -117,7 +127,7 @@ public class OresPlus {
 				jadeStone.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 				jadeStone.setHarvestLevel("pickaxe", 2);
 				
-				//Jade
+			//Jade
 				jade = new ItemJade(5000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("Jade").setTextureName("oresplus:jade");
 				
 			//JadePickaxe
@@ -192,6 +202,45 @@ public class OresPlus {
 			//AmethystSpade
 				amethystSpade = new ItemAmethystSpade(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystSpade").setTextureName("oresplus:amethyst_shovel");	
 				
+				
+			//JadeAxe
+				jadeAxe = new ItemJadeAxe(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeAxe").setTextureName("oresplus:jade_axe");
+				
+			//RubyAxe
+				rubyAxe = new ItemRubyAxe(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubyAxe").setTextureName("oresplus:ruby_axe");
+				
+			//SapphireAxe
+				sapphireAxe = new ItemSapphireAxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("SapphireAxe").setTextureName("oresplus:sapphire_axe");
+				
+			//CitrineAxe
+				citrineAxe = new ItemCitrineAxe(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrineAxe").setTextureName("oresplus:citrine_axe");
+				
+			//AmethystAxe
+				amethystAxe = new ItemAmethystAxe(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystAxe").setTextureName("oresplus:amethyst_axe");
+				
+				
+			//JadeAxe
+				jadeSword = new ItemJadeAxe(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeAxe").setTextureName("oresplus:jade_axe");
+				
+			//RubyAxe
+				rubySword = new ItemRubyAxe(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubyAxe").setTextureName("oresplus:ruby_axe");
+				
+			//SapphireAxe
+				sapphireSword = new ItemSapphireAxe(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("SapphireAxe").setTextureName("oresplus:sapphire_axe");
+				
+			//CitrineAxe
+				citrineSword = new ItemCitrineAxe(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrineAxe").setTextureName("oresplus:citrine_axe");
+				
+			//AmethystAxe
+				amethystSword = new ItemAmethystAxe(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystAxe").setTextureName("oresplus:amethyst_axe");
+				
+				
+					
+				
+				
+				
+				
+				
 			//UraniumOre
 				uraniumOre = new UraniumOre(Material.iron).setBlockName("UraniumOre").setLightLevel(10.0F).setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:uranium_ore");
 				
@@ -245,19 +294,24 @@ public class OresPlus {
 				GameRegistry.registerItem(jade, "Jade");
 				GameRegistry.registerItem(jadePickaxe, "JadePickaxe");
 				GameRegistry.registerItem(jadeSpade, "JadeSpade");
+				GameRegistry.registerItem(jadeAxe, "JadeAxe");
 				GameRegistry.registerItem(theisIngot, "TheisIngot");				
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
 				GameRegistry.registerItem(rubySpade, "RubySpade");
+				GameRegistry.registerItem(rubyAxe, "RubyAxe");
 				GameRegistry.registerItem(amethyst, "Amethyst");
 				GameRegistry.registerItem(amethystPickaxe, "AmethystPickaxe");
 				GameRegistry.registerItem(amethystSpade, "AmethystSpade");
+				GameRegistry.registerItem(amethystAxe, "AmethystAxe");
 				GameRegistry.registerItem(citrine, "Citrine");
 				GameRegistry.registerItem(citrinePickaxe, "CitrinePickaxe");
 				GameRegistry.registerItem(citrineSpade, "CitrineSpade");
+				GameRegistry.registerItem(citrineAxe, "CitrineAxe");
 				GameRegistry.registerItem(sapphire, "Sapphire");
 				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
 				GameRegistry.registerItem(sapphireSpade, "SapphireSpade");
+				GameRegistry.registerItem(sapphireAxe, "SapphireAxe");
 				
 				GameRegistry.registerItem(mixedGem, "MixedGem");
 				
