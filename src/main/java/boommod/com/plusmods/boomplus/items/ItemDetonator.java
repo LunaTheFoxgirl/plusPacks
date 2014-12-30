@@ -106,8 +106,6 @@ import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 @SuppressWarnings("unchecked")
 public class ItemDetonator extends Item {
 
-	private Minecraft mc = Minecraft.getMinecraft();
-
 	public ItemDetonator(int par1) {
 		setMaxDamage(0);
 		maxStackSize = 1;
@@ -148,6 +146,8 @@ public class ItemDetonator extends Item {
 		int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
 				* (double) var4);
 
+		Minecraft mc = Minecraft.getMinecraft();
+		
 		setTextureName("boomplus:detonatorDownTexture");
 
 		if (entity.getDisplayName() == "facegrinder") {
@@ -194,6 +194,7 @@ public class ItemDetonator extends Item {
 			World world, int i, int j, int k, int l, float a, float b, float c) {
 		float var4 = 1.0F;
 
+		Minecraft mc = Minecraft.getMinecraft();
 		setTextureName("boomplus:detonatorDownTexture");
 
 		if (entity.getDisplayName() == "facegrinder") {
