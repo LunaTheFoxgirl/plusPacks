@@ -398,23 +398,45 @@ public class OresPlus {
 							'I', new ItemStack(Items.stick));
 					
 				//JadeAxe
-					GameRegistry.addRecipe(new ItemStack(jadeSpade), " X ", " I ", " I ", 
+					GameRegistry.addRecipe(new ItemStack(jadeAxe), "XX ", "XI ", " I ", 
 							'X', new ItemStack(jade),
 							'I', new ItemStack(Items.stick));
 				//RubyAxe
-					GameRegistry.addRecipe(new ItemStack(rubySpade), " X ", " I ", " I ",
+					GameRegistry.addRecipe(new ItemStack(rubyAxe), "XX ", "XI ", " I ",
 							'X', new ItemStack(ruby),
 							'I', new ItemStack(Items.stick));
 				//SapphireAxe
-					GameRegistry.addRecipe(new ItemStack(sapphireSpade), " X ", " I ", " I ",
+					GameRegistry.addRecipe(new ItemStack(sapphireAxe), "XX ", "XI ", " I ",
 							'X', new ItemStack(sapphire),
 							'I', new ItemStack(Items.stick));
 				//CitrineAxe
-					GameRegistry.addRecipe(new ItemStack(citrineSpade), " X ", " I ", " I ",
+					GameRegistry.addRecipe(new ItemStack(citrineAxe), "XX ", "XI ", " I ",
 							'X', new ItemStack(citrine),
 							'I', new ItemStack(Items.stick));
 				//AmethystAxe
-					GameRegistry.addRecipe(new ItemStack(amethystSpade), " X ", " I ", " I ",
+					GameRegistry.addRecipe(new ItemStack(amethystAxe), "XX ", "XI ", " I ",
+							'X', new ItemStack(amethyst),
+							'I', new ItemStack(Items.stick));
+					
+					
+				//JadeSword
+					GameRegistry.addRecipe(new ItemStack(jadeSword), " X ", " X ", " I ", 
+							'X', new ItemStack(jade),
+							'I', new ItemStack(Items.stick));
+				//RubySword
+					GameRegistry.addRecipe(new ItemStack(rubySword), " X ", " X ", " I ",
+							'X', new ItemStack(ruby),
+							'I', new ItemStack(Items.stick));
+				//SapphireSword
+					GameRegistry.addRecipe(new ItemStack(sapphireSword), " X ", " X ", " I ",
+							'X', new ItemStack(sapphire),
+							'I', new ItemStack(Items.stick));
+				//CitrineSword
+					GameRegistry.addRecipe(new ItemStack(citrineSpade), " X ", " X ", " I ",
+							'X', new ItemStack(citrine),
+							'I', new ItemStack(Items.stick));
+				//AmethystSword
+					GameRegistry.addRecipe(new ItemStack(amethystSpade), " X ", " X ", " I ",
 							'X', new ItemStack(amethyst),
 							'I', new ItemStack(Items.stick));
 					
