@@ -1,4 +1,4 @@
-package com.plusmods.boomplus;//based on master condiguration
+package com.plusmods.boomplus;
 
 import cpw.mods.fml.client.*;
 import cpw.mods.fml.client.registry.*;
@@ -93,130 +93,130 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
 import net.minecraft.init.*;
-
+ 
 import java.util.*;
-
+ 
 import net.minecraftforge.common.util.*;
-
+ 
 import org.lwjgl.opengl.GL11;
-
+ 
 @SuppressWarnings("unchecked")
 public class mcreator_guideBook {
-
-	public mcreator_guideBook() {
-	}
-
-	public static Item block;
-	public static Object instance;
-	
-	
-
-	
-	public void load() {
-
-	}
-
-	public void generateNether(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public void generateSurface(World world, Random random, int chunkX,
-			int chunkZ) {
-	}
-
-	public int addFuel(ItemStack fuel) {
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event) {
-	}
-
-	public void preInit(FMLPreInitializationEvent event) {
-	}
-
-	public void registerRenderers() {
-	}
-
-	static {
-		block = (new ItemGuideBook(5000));
-		Item.itemRegistry.addObject(5000, "GuideBook", block);
-
-	}
-	
-
-	static class ItemGuideBook extends Item {
-
-		public int clickProgression = 0;
-		public boolean doesClick;
-		
-		private Minecraft mc = Minecraft.getMinecraft();
-		
-		public ItemGuideBook(int par1) {
-			setMaxDamage(0);
-			maxStackSize = 1;
-			setUnlocalizedName("GuideBook");
-			setTextureName("boomplus:guideBook");
-			setCreativeTab(mcreator_boomPlusTab.tab);
-		}
-
-		
-		
-		@Override
-		public void onUpdate(ItemStack p_77663_1_, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
-			super.onUpdate(p_77663_1_, p_77663_2_, p_77663_3_, p_77663_4_, p_77663_5_);
-			
-		}
-
-
-		
-
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-			return 0;
-		}
-
-		public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-			return 1.0F;
-		}
-
-		public ItemStack onItemRightClick(ItemStack itemstack, World world,
-				EntityPlayer entity) {
-			float var4 = 1.0F;
-			int i = (int) (entity.prevPosX + (entity.posX - entity.prevPosX)
-					* (double) var4);
-			int j = (int) (entity.prevPosY + (entity.posY - entity.prevPosY)
-					* (double) var4 + 1.62D - (double) entity.yOffset);
-			int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
-					* (double) var4);
-
-			
-			
-			
-
-			
-
-			return itemstack;
-		}
-
-		public boolean onItemUse(ItemStack itemStack, EntityPlayer entity,
-				World world, int i, int j, int k, int l, float a, float b,
-				float c) {
-			float var4 = 1.0F;
-			
-				
-			mc.thePlayer.openGui(BoomPlus.instance, mcreator_welcomeGUI.GUIID, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ);
-			if (true) {
-				if (entity instanceof EntityPlayer)
-						((EntityPlayer) entity).inventory
-							.consumeInventoryItem(mcreator_guideBook.block);
-			}
-				
-
-			return true;
-		}
-
-	}
+ 
+        public mcreator_guideBook() {
+        }
+ 
+        public static Item block;
+        public static Object instance;
+       
+       
+ 
+       
+        public void load() {
+ 
+        }
+ 
+        public void generateNether(World world, Random random, int chunkX,
+                        int chunkZ) {
+        }
+ 
+        public void generateSurface(World world, Random random, int chunkX,
+                        int chunkZ) {
+        }
+ 
+        public int addFuel(ItemStack fuel) {
+                return 0;
+        }
+ 
+        public void serverLoad(FMLServerStartingEvent event) {
+        }
+ 
+        public void preInit(FMLPreInitializationEvent event) {
+        }
+ 
+        public void registerRenderers() {
+        }
+ 
+        static {
+                block = (new ItemGuideBook(5000));
+                Item.itemRegistry.addObject(5000, "GuideBook", block);
+ 
+        }
+       
+ 
+        static class ItemGuideBook extends Item {
+ 
+                public int clickProgression = 0;
+                public boolean doesClick;
+               
+                private Minecraft mc = Minecraft.getMinecraft();
+               
+                public ItemGuideBook(int par1) {
+                        setMaxDamage(0);
+                        maxStackSize = 1;
+                        setUnlocalizedName("GuideBook");
+                        setTextureName("boomplus:guideBook");
+                        setCreativeTab(mcreator_boomPlusTab.tab);
+                }
+ 
+               
+               
+                @Override
+                public void onUpdate(ItemStack p_77663_1_, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
+                        super.onUpdate(p_77663_1_, p_77663_2_, p_77663_3_, p_77663_4_, p_77663_5_);
+                       
+                }
+ 
+ 
+               
+ 
+                public int getItemEnchantability() {
+                        return 0;
+                }
+ 
+                public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+                        return 0;
+                }
+ 
+                public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+                        return 1.0F;
+                }
+ 
+                public ItemStack onItemRightClick(ItemStack itemstack, World world,
+                                EntityPlayer entity) {
+                        float var4 = 1.0F;
+                        int i = (int) (entity.prevPosX + (entity.posX - entity.prevPosX)
+                                        * (double) var4);
+                        int j = (int) (entity.prevPosY + (entity.posY - entity.prevPosY)
+                                        * (double) var4 + 1.62D - (double) entity.yOffset);
+                        int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
+                                        * (double) var4);
+ 
+                       
+                       
+                       
+ 
+                       
+ 
+                        return itemstack;
+                }
+ 
+                public boolean onItemUse(ItemStack itemStack, EntityPlayer entity,
+                                World world, int i, int j, int k, int l, float a, float b,
+                                float c) {
+                        float var4 = 1.0F;
+                       
+                               
+                        mc.thePlayer.openGui(BoomPlus.instance, mcreator_welcomeGUI.GUIID, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ);
+                        if (true) {
+                                if (entity instanceof EntityPlayer)
+                                                ((EntityPlayer) entity).inventory
+                                                        .consumeInventoryItem(mcreator_guideBook.block);
+                        }
+                               
+ 
+                        return true;
+                }
+ 
+        }
 }

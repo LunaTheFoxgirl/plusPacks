@@ -406,10 +406,14 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		mcreator_26.preInit(event);
 		mcreator_27.preInit(event);
 		proxy.registerRenderers(this);
+<<<<<<< HEAD
 		
 		GameRegistry.registerBlock(mcreator_28, "SneakyBoomChest");
 		GameRegistry.registerTileEntity(TileEntityChestValues.class, "isArmed");
 		
+=======
+	
+>>>>>>> acad4925384641453ec80bff4ed6e29596841d64
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new BoomSpawn());
 	}

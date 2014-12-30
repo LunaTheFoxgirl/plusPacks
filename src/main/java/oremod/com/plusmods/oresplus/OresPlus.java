@@ -8,6 +8,7 @@ import com.plusmods.oresplus.blocks.CitrineOre;
 import com.plusmods.oresplus.blocks.RubyOre;
 import com.plusmods.oresplus.blocks.SapphireOre;
 import com.plusmods.oresplus.blocks.TheisOre;
+import com.plusmods.oresplus.blocks.UraniumOre;
 import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusToolsTab;
@@ -21,6 +22,7 @@ import com.plusmods.oresplus.items.ItemRubyPickaxe;
 import com.plusmods.oresplus.items.ItemSapphire;
 import com.plusmods.oresplus.items.ItemSapphirePickaxe;
 import com.plusmods.oresplus.items.TheisIngot;
+import com.plusmods.oresplus.oreGen.UraniumOreGen;
 import com.plusmods.oresplus.toolMaterials.ToolMaterials;
 
 import net.minecraft.block.Block;
@@ -63,6 +65,7 @@ public class OresPlus {
 		public static Block sapphireOre;
 		public static Block amethystOre;
 		public static Block citrineOre;
+		public static Block uraniumOre;
 	
 	//Items
 		public static Item jade;
@@ -72,13 +75,19 @@ public class OresPlus {
 		public static Item amethyst;		
 		public static Item citrine;
 		
+		public static Item mixedGem;
+		
 	//Tools
 		public static Item jadePickaxe;
 		public static Item jadeSpade;
 		public static Item rubyPickaxe;
+		public static Item rubySpade;
 		public static Item sapphirePickaxe;
+		public static Item sapphireSpade;
 		public static Item citrinePickaxe;
+		public static Item citrineSpade;
 		public static Item amethystPickaxe;
+		public static Item amethystSpade;
 
 
 	public void serverLoad(FMLServerStartingEvent event) 
@@ -156,10 +165,25 @@ public class OresPlus {
 				
 			
 			//JadeSpade
-				jadeSpade = new ItemJadeSpade(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeSpade").setTextureName("oresplus:jade_spade");
+				jadeSpade = new ItemJadeSpade(ToolMaterials.jadeMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("JadeSpade").setTextureName("oresplus:jade_shovel");
 				
+			//RubySpade
+				rubySpade = new ItemRubySpade(ToolMaterials.rubyMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("RubySpade").setTextureName("oresplus:ruby_shovel");
 				
+			//SapphireSpade
+				sapphireSpade = new ItemSapphireSpade(ToolMaterials.sapphireMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("SapphireSpade").setTextureName("oresplus:sapphire_shovel");
 				
+			//CitrineSpade
+				citrineSpade = new ItemCitrineSpade(ToolMaterials.citrineMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("CitrineSpade").setTextureName("oresplus:citrine_shovel");
+				
+			//AmethystSpade
+				amethystSpade = new ItemAmethystSpade(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystSpade").setTextureName("oresplus:amethyst_shovel");	
+				
+			//UraniumOre
+				uraniumOre = new UraniumOre(Material.iron).setBlockName("UraniumOre").setLightLevel(10.0F).setHardness(3.0f).setCreativeTab(OresPlusTab.tab).setBlockTextureName("oresplus:uranium_ore");
+				
+			//MixedGem
+				mixedGem = new ItemMixedGem(6000).setCreativeTab(OresPlusItemsTab.tab).setUnlocalizedName("MixedGem").setTextureName("oresplus:jade");
 	
 	}
 	
@@ -176,6 +200,7 @@ public class OresPlus {
 				GameRegistry.registerBlock(sapphireOre, "SapphireOre");
 				GameRegistry.registerBlock(amethystOre, "AmethystOre");
 				GameRegistry.registerBlock(citrineOre, "CitrineOre");
+				GameRegistry.registerBlock(uraniumOre, "UraniumOre");
 				
 			//Item
 				GameRegistry.registerItem(jade, "Jade");
@@ -184,12 +209,18 @@ public class OresPlus {
 				GameRegistry.registerItem(theisIngot, "TheisIngot");				
 				GameRegistry.registerItem(ruby, "Ruby");
 				GameRegistry.registerItem(rubyPickaxe, "RubyPickaxe");
+				GameRegistry.registerItem(rubySpade, "RubySpade");
 				GameRegistry.registerItem(amethyst, "Amethyst");
 				GameRegistry.registerItem(amethystPickaxe, "AmethystPickaxe");
+				GameRegistry.registerItem(amethystSpade, "AmethystSpade");
 				GameRegistry.registerItem(citrine, "Citrine");
 				GameRegistry.registerItem(citrinePickaxe, "CitrinePickaxe");
+				GameRegistry.registerItem(citrineSpade, "CitrineSpade");
 				GameRegistry.registerItem(sapphire, "Sapphire");
 				GameRegistry.registerItem(sapphirePickaxe, "SapphirePickaxe");
+				GameRegistry.registerItem(sapphireSpade, "SapphireSpade");
+				
+				GameRegistry.registerItem(mixedGem, "MixedGem");
 				
 			//Crafting Recipe
 				//JadePickaxe
@@ -222,6 +253,7 @@ public class OresPlus {
 				GameRegistry.registerWorldGenerator(new AmethystOreGen(), 2);
 				GameRegistry.registerWorldGenerator(new CitrineOreGen(), 3);
 				GameRegistry.registerWorldGenerator(new SapphireOreGen(), 3);
+				GameRegistry.registerWorldGenerator(new UraniumOreGen(), 3);
 				
 			//Smelting Recipe
 				GameRegistry.addSmelting(theisOre, new ItemStack(theisIngot, 2), 10.0f);
