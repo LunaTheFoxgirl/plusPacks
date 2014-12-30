@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -20,21 +21,22 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
-public class mcreator_sneakyboomchest extends BlockContainer
+public class mcreator_sneakyBoomChest extends BlockChest
 {
     private final Random field_149955_b = new Random();
     public final int field_149956_a;
@@ -45,10 +47,9 @@ public class mcreator_sneakyboomchest extends BlockContainer
     protected boolean isArmed;
     
     
-    
-    protected mcreator_sneakyboomchest(int p_i45397_1_)
+    protected mcreator_sneakyBoomChest(int p_i45397_1_)
     {
-        super(Material.wood);
+        super(p_i45397_1_);
         this.isArmed = false;
         this.field_149956_a = p_i45397_1_;
         this.setBlockName("SneakyBoomChest");
@@ -56,6 +57,14 @@ public class mcreator_sneakyboomchest extends BlockContainer
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
     }
 
+    
+    
+    public TileEntity createTileEntity(World world, int metadata)
+	{
+	   return new TileEntityChestValues();
+	}
+    
+    
     /**
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
      * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
@@ -210,7 +219,7 @@ public class mcreator_sneakyboomchest extends BlockContainer
 
         if (p_149689_6_.hasDisplayName())
         {
-            ((TileEntityChest)p_149689_1_.getTileEntity(p_149689_2_, p_149689_3_, p_149689_4_)).func_145976_a(p_149689_6_.getDisplayName());
+            ((TileEntityChestValues)p_149689_1_.getTileEntity(p_149689_2_, p_149689_3_, p_149689_4_)).func_145976_a(p_149689_6_.getDisplayName());
         }
     }
 
@@ -371,23 +380,23 @@ public class mcreator_sneakyboomchest extends BlockContainer
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
     {
         super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
-        TileEntityChest tileentitychest = (TileEntityChest)p_149695_1_.getTileEntity(p_149695_2_, p_149695_3_, p_149695_4_);
+        TileEntityChestValues TileEntityChestValues = (TileEntityChestValues)p_149695_1_.getTileEntity(p_149695_2_, p_149695_3_, p_149695_4_);
 
-        if (tileentitychest != null)
+        if (TileEntityChestValues != null)
         {
-            tileentitychest.updateContainingBlockInfo();
+            TileEntityChestValues.updateContainingBlockInfo();
         }
     }
 
     public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
     {
-        TileEntityChest tileentitychest = (TileEntityChest)p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
+        TileEntityChestValues TileEntityChestValues = (TileEntityChestValues)p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
 
-        if (tileentitychest != null)
+        if (TileEntityChestValues != null)
         {
-            for (int i1 = 0; i1 < tileentitychest.getSizeInventory(); ++i1)
+            for (int i1 = 0; i1 < TileEntityChestValues.getSizeInventory(); ++i1)
             {
-                ItemStack itemstack = tileentitychest.getStackInSlot(i1);
+                ItemStack itemstack = TileEntityChestValues.getStackInSlot(i1);
 
                 if (itemstack != null)
                 {
@@ -440,7 +449,9 @@ public class mcreator_sneakyboomchest extends BlockContainer
      */
     public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
-    	if (!this.isArmed && !mc.thePlayer.isSneaking())
+    	TileEntityChestValues val = ((TileEntityChestValues)p_149727_1_.getTileEntity(p_149727_2_, p_149727_3_, p_149727_4_));
+    	
+    	if (!val.getArmedStatus() && !mc.thePlayer.isSneaking())
     	{
     		if (p_149727_1_.isRemote)
     		{
@@ -459,9 +470,9 @@ public class mcreator_sneakyboomchest extends BlockContainer
     
     		}
     	}
-    	else if (!p_149727_1_.isRemote && !this.isArmed && mc.thePlayer.isSneaking())
+    	else if (!p_149727_1_.isRemote && !val.getArmedStatus() && mc.thePlayer.isSneaking())
     	{
-    		this.isArmed = true;
+    		val.setArmedStatus(true);
     		((EntityClientPlayerMP) mc.thePlayer).sendChatMessage("The chest is armed!");
     	}
     	else
@@ -469,7 +480,7 @@ public class mcreator_sneakyboomchest extends BlockContainer
     			if(!p_149727_1_.isRemote)
     			{
     				p_149727_1_.createExplosion((Entity) null, p_149727_2_, p_149727_3_, p_149727_4_, 5.0f, true);
-    				isArmed = false;
+    				val.setArmedStatus(false);
     			}
     	}
     	return true;
@@ -480,7 +491,7 @@ public class mcreator_sneakyboomchest extends BlockContainer
     
 	public IInventory func_149951_m(World p_149951_1_, int p_149951_2_, int p_149951_3_, int p_149951_4_)
     {
-        Object object = (TileEntityChest)p_149951_1_.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_);
+        Object object = (TileEntityChestValues)p_149951_1_.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_);
 
         if (object == null)
         {
@@ -521,10 +532,12 @@ public class mcreator_sneakyboomchest extends BlockContainer
      */
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
     {
-        TileEntityChest tileentitychest = new TileEntityChest();
-        return tileentitychest;
+        TileEntityChestValues TileEntityChestValues = new TileEntityChestValues();
+        return TileEntityChestValues;
     }
-
+ 
+    
+    
     /**
      * Can this block provide power. Only wire currently seems to have this change based on its state.
      */
@@ -541,7 +554,7 @@ public class mcreator_sneakyboomchest extends BlockContainer
         }
         else
         {
-            int i1 = ((TileEntityChest)p_149709_1_.getTileEntity(p_149709_2_, p_149709_3_, p_149709_4_)).numPlayersUsing;
+            int i1 = ((TileEntityChestValues)p_149709_1_.getTileEntity(p_149709_2_, p_149709_3_, p_149709_4_)).numPlayersUsing;
             return MathHelper.clamp_int(i1, 0, 15);
         }
     }
@@ -571,6 +584,31 @@ public class mcreator_sneakyboomchest extends BlockContainer
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
+    private IIcon[] icons;
+
+    @SideOnly(Side.CLIENT)
+    public void makeIcons(IIconRegister par1IconRegister)
+    {
+            icons = new IIcon[3];
+            int i = 0;
+            for (String s : sideNames)
+            {
+                icons[i++] = par1IconRegister.registerIcon(String.format("boomplus:normal_" + s));
+            }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side)
+    {
+
+        return icons[sideMapping[side]];
+    }
+
+    private static String[] sideNames = { "top", "front", "side" };
+    private static int[] sideMapping = { 0, 0, 2, 1, 2, 2, 2 };
+    
+    
     /**
      * If this returns true, then comparators facing away from this block will use the value from
      * getComparatorInputOverride instead of the actual redstone signal strength.
@@ -592,6 +630,6 @@ public class mcreator_sneakyboomchest extends BlockContainer
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
-        this.blockIcon = p_149651_1_.registerIcon("planks_oak");
+    	this.blockIcon = p_149651_1_.registerIcon("planks_oak");
     }
 }

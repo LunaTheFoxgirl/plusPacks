@@ -136,7 +136,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 	mcreator_lavaBoom mcreator_25 = new mcreator_lavaBoom();
 	mcreator_sneakyBoomEdible mcreator_26 = new mcreator_sneakyBoomEdible();
 	mcreator_strangeSymbol mcreator_27 = new mcreator_strangeSymbol();
-	mcreator_sneakyboomchest mcreator_28 = new mcreator_sneakyboomchest(203);
+	mcreator_sneakyBoomChest mcreator_28 = new mcreator_sneakyBoomChest(203);
 
 
 	@Override
@@ -408,6 +408,7 @@ public class BoomPlus implements IFuelHandler, IWorldGenerator {
 		proxy.registerRenderers(this);
 		
 		GameRegistry.registerBlock(mcreator_28, "SneakyBoomChest");
+		GameRegistry.registerTileEntity(TileEntityChestValues.class, "isArmed");
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new BoomSpawn());
