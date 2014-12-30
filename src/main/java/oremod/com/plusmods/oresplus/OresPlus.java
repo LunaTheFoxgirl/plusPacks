@@ -25,7 +25,6 @@ import com.plusmods.oresplus.blocks.UraniumOre;
 import com.plusmods.oresplus.creativeTabs.OresPlusItemsTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusTab;
 import com.plusmods.oresplus.creativeTabs.OresPlusToolsTab;
-import com.plusmods.oresplus.gui.GuiWelcomeGui;
 import com.plusmods.oresplus.handles.CommonProxy;
 import com.plusmods.oresplus.items.ItemAmethyst;
 import com.plusmods.oresplus.items.ItemAmethystAxe;
