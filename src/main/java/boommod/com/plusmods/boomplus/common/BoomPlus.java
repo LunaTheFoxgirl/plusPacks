@@ -92,6 +92,7 @@ import com.plusmods.boomplus.acheivement.AchievementOreIsIt;
 import com.plusmods.boomplus.blocks.BlockBlazeOre;
 import com.plusmods.boomplus.blocks.BlockCrashyBoom;
 import com.plusmods.boomplus.blocks.BlockEnderBoom;
+import com.plusmods.boomplus.blocks.BlockInstaBoom;
 import com.plusmods.boomplus.blocks.BlockLargeBoom;
 import com.plusmods.boomplus.blocks.BlockLavaBoom;
 import com.plusmods.boomplus.blocks.BlockMagicBoom;
@@ -163,6 +164,7 @@ public class BoomPlus
 			public static Block smallBoom;
 			public static Block sneakyBoomChest, sneakyBoomDiamond, sneakyBoomGold, sneakyBoomIron, sneakyBoomStone;
 			public static Block crashyBoom;
+			public static Block instaBoom;
 			
 	
 	
@@ -205,6 +207,12 @@ public class BoomPlus
 			//CrashyBoom
 			    crashyBoom = new BlockCrashyBoom(Material.tnt).setBlockName("CrashyBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:radioactive_boom");
 			
+			//InstaBoom
+			    instaBoom = new BlockInstaBoom().setBlockName("InstaBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:instant_boom");
+			
+			    
+			    
+			    
 		//Blocks
 				
 			//Ores
@@ -216,7 +224,12 @@ public class BoomPlus
 					Block radioactiveOre = new BlockRadioactiveOre().setBlockName("RadioactiveOre").setBlockTextureName("boomplus:radioactive_ore");
 				
 		//Booms
-		GameRegistry.registerBlock(crashyBoom, crashyBoom.getUnlocalizedName().substring(5));	
+				//CrashyBoom
+					GameRegistry.registerBlock(crashyBoom, crashyBoom.getUnlocalizedName().substring(5));	
+					
+				//InstaBoom
+					GameRegistry.registerBlock(instaBoom, instaBoom.getUnlocalizedName().substring(5));	
+					
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
