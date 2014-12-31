@@ -324,17 +324,6 @@ public class OresPlus {
 				
 			//AmethystSword
 				itemAmethystSword = new ItemAmethystSword(ToolMaterials.amethystMaterial).setCreativeTab(OresPlusToolsTab.tab).setUnlocalizedName("AmethystSword").setTextureName("oresplus:amethyst_sword");
-				
-				
-					
-				
-				
-				
-			
-			
-			
-	
-	
 	
 	}
 	
@@ -385,7 +374,7 @@ public class OresPlus {
 				GameRegistry.registerItem(itemSapphireAxe, itemSapphireAxe.getUnlocalizedName().substring(5));
 				GameRegistry.registerItem(itemSapphireSword, itemSapphireSword.getUnlocalizedName().substring(5));
 				
-				GameRegistry.registerItem(itemGuideBook, "ItemGuideBook");			
+				//GameRegistry.registerItem(itemGuideBook, "ItemGuideBook");			
 				GameRegistry.registerItem(itemMixedGem, "MixedGem");
 				GameRegistry.registerItem(itemUranium, "Uranium");
 				
