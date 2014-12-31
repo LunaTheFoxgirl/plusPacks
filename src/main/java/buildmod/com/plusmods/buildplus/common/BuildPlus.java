@@ -152,6 +152,7 @@ public class BuildPlus {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		System.out.println("BuildPlus Initialized");
 		// Register Blocks
 		// RedStoneBrick
 		redStoneBrick = new BlockStoneBrickRed(Material.iron)
@@ -184,7 +185,8 @@ public class BuildPlus {
 				.setBlockTextureName("buildplus:stone_brick_purple");
 		purpleStoneBrick.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		purpleStoneBrick.setHarvestLevel("pickaxe", 1);
-	}
+		System.out.println("Blocks Loaded");
+		}
 
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
@@ -194,6 +196,7 @@ public class BuildPlus {
 		GameRegistry.registerBlock(yellowStoneBrick, "YellowStoneBrick");
 		GameRegistry.registerBlock(purpleStoneBrick, "PurpleStoneBrick");
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		System.out.println("Blocks Registered");
 	}
 
 	public void replaceCraftingItem(ItemStack itemStack,

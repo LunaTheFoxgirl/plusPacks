@@ -90,6 +90,7 @@ import org.apache.logging.log4j.Logger;
 import com.plusmods.boomplus.acheivement.AchievementNuclear;
 import com.plusmods.boomplus.acheivement.AchievementOreIsIt;
 import com.plusmods.boomplus.blocks.BlockBlazeOre;
+import com.plusmods.boomplus.blocks.BlockCrashyBoom;
 import com.plusmods.boomplus.blocks.BlockEnderBoom;
 import com.plusmods.boomplus.blocks.BlockLargeBoom;
 import com.plusmods.boomplus.blocks.BlockLavaBoom;
@@ -105,6 +106,7 @@ import com.plusmods.boomplus.blocks.BlockSneakyBoomChest;
 import com.plusmods.boomplus.blocks.BlockSneakyBoomDiamond;
 import com.plusmods.boomplus.blocks.BlockSneakyBoomGold;
 import com.plusmods.boomplus.blocks.BlockSneakyBoomIron;
+import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 import com.plusmods.boomplus.entities.TileEntityChestValues;
 import com.plusmods.boomplus.gui.GuiBeginnerWelcomeGUI;
 import com.plusmods.boomplus.gui.GuiWelcomeGui;
@@ -115,6 +117,8 @@ import com.plusmods.boomplus.items.ItemDetonator;
 import com.plusmods.boomplus.items.ItemGuideBook;
 import com.plusmods.boomplus.items.ItemRadioactivePowder;
 import com.plusmods.boomplus.items.ItemStrangeSymbol;
+import com.plusmods.oresplus.blocks.UraniumBlock;
+import com.plusmods.oresplus.creativeTabs.OresPlusTab;
 
 import java.util.*;
 
@@ -158,6 +162,7 @@ public class BoomPlus
 			public static Block radioactiveBoom;
 			public static Block smallBoom;
 			public static Block sneakyBoomChest, sneakyBoomDiamond, sneakyBoomGold, sneakyBoomIron, sneakyBoomStone;
+			public static Block crashyBoom;
 			
 	
 	
@@ -196,6 +201,9 @@ public class BoomPlus
 		
 			//SneakyBoomEdible
 				sneakyBoomEdible = new ItemSneakyBoomEdible(2, 1.0f, true).setUnlocalizedName("SneakyBoomEdible").setTextureName("boomplus:sneaky_boom_edible");
+				
+			//CrashyBoom
+			    crashyBoom = new BlockCrashyBoom(Material.tnt).setBlockName("CrashyBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:radioactive_boom");
 			
 		//Blocks
 				
@@ -207,23 +215,8 @@ public class BoomPlus
 				//RadioactiveOre
 					Block radioactiveOre = new BlockRadioactiveOre().setBlockName("RadioactiveOre").setBlockTextureName("boomplus:radioactive_ore");
 				
-			//Booms
-					
-					
-					
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		//Booms
+		GameRegistry.registerBlock(crashyBoom, crashyBoom.getUnlocalizedName().substring(5));	
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
@@ -234,7 +227,7 @@ public class BoomPlus
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
 	{
-		//Tile Entityies
+		//Tile Entities
 		GameRegistry.registerTileEntity(TileEntityChestValues.class, "isArmed");
 	}
 
