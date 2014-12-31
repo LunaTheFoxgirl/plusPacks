@@ -1,0 +1,6 @@
+tile.StoneBrickRed.name=Stone Brick (Red)
+tile.StoneBrickBlue.name=Stone Brick (Blue)
+tile.StoneBrickPurple.name=Stone Brick (Purple)
+tile.StoneBrickYellow.name=Stone Brick (Yellow)
+
+itemGroup.buildPlusTab=Build+
