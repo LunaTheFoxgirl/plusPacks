@@ -113,6 +113,8 @@ import com.plusmods.boomplus.blocks.BlockSneakyBoomGold;
 import com.plusmods.boomplus.blocks.BlockSneakyBoomIron;
 import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 import com.plusmods.boomplus.entities.TileEntityChestValues;
+import com.plusmods.boomplus.events.BoomCraftEvent;
+import com.plusmods.boomplus.events.BoomSpawn;
 import com.plusmods.boomplus.gui.GuiBeginnerWelcomeGUI;
 import com.plusmods.boomplus.gui.GuiWelcomeGui;
 import com.plusmods.boomplus.items.ItemBoomJacket;
@@ -136,7 +138,7 @@ import cpw.mods.fml.relauncher.*;
 /*
  * Author: Member1221
  * Boom+ creators: ZakDoesGaming, Member1221.
- * Code rewritten for multiplayer, and non mcreator sloppyness by: Member1221.
+ * Code rewritten for Multiplayer, and non MCreator sloppy-ness by: Member1221.
  */
 
 @Mod(modid = BoomPlus.MODID, version = BoomPlus.VERSION)
@@ -239,9 +241,6 @@ public class BoomPlus
 			//CrashyBoom
 				crashyBoom = new BlockCrashyBoom(Material.tnt).setBlockName("CrashyBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:radioactive_boom");
 		
-			//InstaBoom
-				instaBoom = new BlockInstaBoom().setBlockName("InstantBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:instant_boom");
-		
 			//EnderBoom
 				enderBoom = new BlockEnderBoom(Material.rock).setBlockName("EnderBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:ender_boom");
 			
@@ -284,6 +283,9 @@ public class BoomPlus
 			//MagicBoom
 				magicBoom = new BlockMagicBoom(Material.tnt).setBlockName("MagicBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:magic_boom");
 				
+			//InstaBoom
+				instaBoom = new BlockInstaBoom().setBlockName("InstantBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:instant_boom");
+		
 	//Achievements
 				
 			//OreIsIt
@@ -346,9 +348,6 @@ public class BoomPlus
 					GameRegistry.registerBlock(radioactiveOre, "RadioactiveOre");
 					
 			//Booms
-				
-				//InstaBoom
-					GameRegistry.registerBlock(instaBoom, "InstantBoom");	
 					
 				//CrashyBoom
 					GameRegistry.registerBlock(crashyBoom, "CrashyBoom");
@@ -394,6 +393,9 @@ public class BoomPlus
 					
 				//MagicBoom
 					GameRegistry.registerBlock(magicBoom, "MagicBoom");
+					
+				//InstaBoom
+					GameRegistry.registerBlock(instaBoom, "InstantBoom");	//Last register needed.
 					
 					
 		//AchievementPages
@@ -566,34 +568,26 @@ public class BoomPlus
 				
 				
 				
+					
+					
 		//GUIHandlers
+					
 				//GuideBook
+					
 					NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+					
+					
+		//Event
+					
+			//Bus
+					
+				//BoomSpawn
+					MinecraftForge.EVENT_BUS.register(new BoomSpawn());
+					
+				//BoomCraftEvent
+					FMLCommonHandler.instance().bus().register(new BoomCraftEvent());
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	public void replaceCraftingItem(ItemStack itemStack, Item itemCraftingToReplace, Object... addition)
@@ -605,37 +599,6 @@ public class BoomPlus
 	{
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//Gui Handler
 	public static class GuiHandler implements IGuiHandler {

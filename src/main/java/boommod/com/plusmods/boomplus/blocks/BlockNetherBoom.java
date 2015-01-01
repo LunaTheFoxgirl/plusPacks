@@ -124,7 +124,6 @@ public class BlockNetherBoom extends Block {
 
 
 		@Override
-		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()

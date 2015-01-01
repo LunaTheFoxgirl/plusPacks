@@ -135,7 +135,6 @@ public class ItemDetonator extends Item {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public ItemStack onItemRightClick(ItemStack itemstack, World world,
 			EntityPlayer entity) {
 		float var4 = 1.0F;
@@ -145,8 +144,6 @@ public class ItemDetonator extends Item {
 				* (double) var4 + 1.62D - (double) entity.yOffset);
 		int k = (int) (entity.prevPosZ + (entity.posZ - entity.prevPosZ)
 				* (double) var4);
-
-		Minecraft mc = Minecraft.getMinecraft();
 		
 		setTextureName("boomplus:detonatorDownTexture");
 
@@ -160,18 +157,18 @@ public class ItemDetonator extends Item {
 		if (armorInvChestPlate != null) {
 			if (armorInvChestPlate.getDisplayName().startsWith(
 					Armor.getDisplayName())
-					|| mc.thePlayer.capabilities.isCreativeMode == true) {
+					|| entity.capabilities.isCreativeMode == true) {
 				if (!world.isRemote) {
 					System.out.println("Tried to explode.");
-					world.createExplosion((Entity) null, mc.thePlayer.posX,
-							mc.thePlayer.posY, mc.thePlayer.posZ, 5F, true);
+					world.createExplosion((Entity) null, entity.posX,
+							entity.posY, entity.posZ, 5F, true);
 					/*
 					 * ((EntityPlayer) entity).inventory
 					 * .consumeInventoryItem(mcreator_boomJacket.block);
 					 */
 				}
 				if (entity instanceof EntityPlayer
-						&& mc.thePlayer.capabilities.isCreativeMode == false)
+						&& entity.capabilities.isCreativeMode == false)
 					((EntityPlayer) entity).inventory.armorInventory[2] = null;
 			}
 		} else {
@@ -189,7 +186,6 @@ public class ItemDetonator extends Item {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public boolean onItemUse(ItemStack itemStack, EntityPlayer entity,
 			World world, int i, int j, int k, int l, float a, float b, float c) {
 		float var4 = 1.0F;
@@ -203,23 +199,22 @@ public class ItemDetonator extends Item {
 		}
 
 		ItemStack armorInvChestPlate = ((EntityPlayer) entity).inventory.armorInventory[2];
-		ItemStack Armor = new ItemStack(BoomPlus.boomJacket);
+		ItemStack Armor = new ItemStack(BoomPlus.detonator);
 		if (armorInvChestPlate != null) {
 			if (armorInvChestPlate.getDisplayName().startsWith(
 					Armor.getDisplayName())
-					|| mc.thePlayer.capabilities.isCreativeMode == true) {
+					|| entity.capabilities.isCreativeMode == true) {
 				if (!world.isRemote) {
 					System.out.println("Tried to explode.");
-					world.createExplosion((Entity) null, mc.thePlayer.posX,
-							mc.thePlayer.posY, mc.thePlayer.posZ, 5F, true);
+					world.createExplosion((Entity) null, entity.posX,
+							entity.posY, entity.posZ, 5F, true);
 					/*
 					 * ((EntityPlayer) entity).inventory
 					 * .consumeInventoryItem(mcreator_boomJacket.block);
 					 */
-
 				}
 				if (entity instanceof EntityPlayer
-						&& mc.thePlayer.capabilities.isCreativeMode == false)
+						&& entity.capabilities.isCreativeMode == false)
 					((EntityPlayer) entity).inventory.armorInventory[2] = null;
 			}
 		} else {

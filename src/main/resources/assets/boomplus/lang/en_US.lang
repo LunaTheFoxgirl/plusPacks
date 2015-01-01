@@ -37,6 +37,7 @@ itemGroup.tabboomPlusTab=Boom+
 achievement.orisitAchievement=Ore is it?!??!
 achievement.orisitAchievement.desc=Break a Diamond Sneaky Boom, ouch.
 tile.EnderBoom.name=Ender Boom
+tile.InstantBoom.name=Mining Boom
 tile.LavaBoom.name=Lava Boom
 item.SneakyBoomEdible.name=Sneaky Boom (Beef)
 item.StrangeSymbol.name=Strange Symbol

@@ -109,6 +109,7 @@ public class BlockMagicBoom extends Block {
 		}
 
 		@Override
+		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
 			String playerName = Minecraft.getMinecraft().thePlayer.getDisplayName();
 			if (world.getPlayerEntityByName(playerName) != null && world != null) {
@@ -140,11 +141,11 @@ public class BlockMagicBoom extends Block {
 					world.createExplosion((Entity) null, i, j, k, 0.5F, true);
 				}
 
-				if (true) {
+				if (world.isRemote) {
 					world.getPlayerEntityByName(playerName).attackEntityFrom(DamageSource.generic, 3);
 				}
 
-				if (!world.isRemote) {
+				if (world.isRemote) {
 					world.getPlayerEntityByName(playerName).addPotionEffect(new PotionEffect(15, 15, 0));
 				}
 

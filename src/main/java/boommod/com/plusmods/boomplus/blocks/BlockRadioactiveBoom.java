@@ -136,34 +136,20 @@ public class BlockRadioactiveBoom extends Block {
 		
 		@Override
 		public void onNeighborBlockChange(World world, int i, int j, int k, Block l) {
-			String playerName = Minecraft.getMinecraft().thePlayer.getDisplayName();
+			//String playerName = Minecraft.getMinecraft().thePlayer.getDisplayName();
+			
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
-
-				if (true) {
+				if (!world.isRemote) {
 					world.createExplosion((Entity) null, i, j, k, 120F, true);
-				}
-
-				if (true) {
 					world.setBlock(i, j, k, Blocks.flowing_lava, 0, 2);
-				}
-
-				if (true) {
-					world.getPlayerEntityByName(playerName).addPotionEffect(new PotionEffect(15, 30, 2));
-				}
-
-				if (true) {
 					world.setBlock(i + 1, j, k, Blocks.flowing_lava, 0, 2);
-				}
-
-				if (true) {
 					world.setBlock(i, j, k + 2, Blocks.flowing_lava, 0, 2);
 				}
-				if (true)
-				{
-					//dqwdqwdqwd
-				}
-
+				/*if (world.isRemote) {
+					world.getPlayerEntityByName(playerName).addPotionEffect(new PotionEffect(15, 30, 2)); //TODO: Find a replacement for this.
+				}*/
+				
 			}
 		}
 
