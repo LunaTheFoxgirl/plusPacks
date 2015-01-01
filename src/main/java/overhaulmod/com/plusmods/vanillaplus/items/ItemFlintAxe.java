@@ -1,17 +1,20 @@
-package com.plusmods.vanillaplus.items;
+package com.plusmods.vanillaplus.items;//based on master condiguration
 
-import java.util.Set;
+import net.minecraft.item.*;
+import net.minecraft.item.Item.ToolMaterial;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
-
-public class ItemFlintAxe extends ItemPickaxe {
-
-	public ItemFlintAxe(ToolMaterial p_i45347_1_) {
-		super(p_i45347_1_);
+public class ItemFlintAxe extends Item 
+{
+	int itemID;
+	
+	public ItemFlintAxe(int i) {
+		itemID = i;
 		// TODO Auto-generated constructor stub
 	}
+
+	public ItemFlintAxe(ToolMaterial stone) {
+		// TODO Auto-generated constructor stub
+	}
+
 }
+

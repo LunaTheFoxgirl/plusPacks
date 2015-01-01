@@ -1,17 +1,20 @@
-package com.plusmods.vanillaplus.items;
+package com.plusmods.vanillaplus.items;//based on master condiguration
 
-import java.util.Set;
+import net.minecraft.item.*;
+import net.minecraft.item.Item.ToolMaterial;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
-
-public class ItemCopperShovel extends ItemPickaxe {
-
-	public ItemCopperShovel(ToolMaterial p_i45347_1_) {
-		super(p_i45347_1_);
+public class ItemCopperShovel extends Item 
+{
+	int itemID;
+	
+	public ItemCopperShovel(int i) {
+		itemID = i;
 		// TODO Auto-generated constructor stub
 	}
+
+	public ItemCopperShovel(ToolMaterial stone) {
+		// TODO Auto-generated constructor stub
+	}
+
 }
+
