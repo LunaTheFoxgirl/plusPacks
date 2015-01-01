@@ -91,16 +91,20 @@ import org.apache.logging.log4j.Logger;
 import com.plusmods.oresplus.oreGen.JadeOreGenerator;
 import com.plusmods.vanillaplus.blocks.CopperOre;
 import com.plusmods.vanillaplus.blocks.InfusedOre;
-import com.plusmods.vanillaplus.creativeTab.VanillaPlusTab;
+import com.plusmods.vanillaplus.creativeTab.VanillaPlusItemsTab;
+import com.plusmods.vanillaplus.creativeTab.VanillaPlusOresTab;
+import com.plusmods.vanillaplus.creativeTab.VanillaPlusToolsTab;
+import com.plusmods.vanillaplus.items.ItemCopperAxe;
 import com.plusmods.vanillaplus.items.ItemCopperChunk;
 import com.plusmods.vanillaplus.items.ItemCopperIngot;
 import com.plusmods.vanillaplus.items.ItemCopperPickaxe;
+import com.plusmods.vanillaplus.items.ItemCopperShovel;
 import com.plusmods.vanillaplus.items.ItemCopperSword;
 import com.plusmods.vanillaplus.items.ItemFlintAxe;
 import com.plusmods.vanillaplus.items.ItemFlintPickaxe;
 import com.plusmods.vanillaplus.items.ItemFlintShovel;
 import com.plusmods.vanillaplus.items.ItemFlintSword;
-import com.plusmods.vanillaplus.items.ItemInfusedDust;
+import com.plusmods.vanillaplus.items.ItemInfusedEssence;
 import com.plusmods.vanillaplus.oreGen.CopperOreGen;
 import com.plusmods.vanillaplus.oreGen.InfusedOreGen;
 import com.plusmods.vanillaplus.oreGen.PlatinumOreGen;
@@ -128,7 +132,7 @@ public class VanillaPlus {
 	public static Block platinumOre;
 	
 	//Items
-	public static Item infusedDust;
+	public static Item infusedEssence;
 	public static Item copperIngot;
 	public static Item silverIngot;
 	public static Item platinumIngot;
@@ -156,24 +160,26 @@ public class VanillaPlus {
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println("VanillaPlus Initialized");
 		//Register Blocks
-		infusedOre = new InfusedOre(Material.iron).setBlockName("InfusedOre").setHardness(2.0f).setCreativeTab(VanillaPlusTab.tab).setBlockTextureName("vanillaplus:infused_ore");
+		infusedOre = new InfusedOre(Material.iron).setBlockName("InfusedOre").setHardness(2.0f).setCreativeTab(VanillaPlusOresTab.tab).setBlockTextureName("vanillaplus:infused_ore");
 		infusedOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		infusedOre.setHarvestLevel("pickaxe", 2);
-		copperOre = new CopperOre(Material.iron).setBlockName("CopperOre").setHardness(2.0f).setCreativeTab(VanillaPlusTab.tab).setBlockTextureName("vanillaplus:copper_ore");
+		copperOre = new CopperOre(Material.iron).setBlockName("CopperOre").setHardness(2.0f).setCreativeTab(VanillaPlusOresTab.tab).setBlockTextureName("vanillaplus:copper_ore");
 		copperOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		copperOre.setHarvestLevel("pickaxe", 2);
 		System.out.println("Blocks Loaded");
 		
 		//Register Items
-		infusedDust = new ItemInfusedDust(5000).setUnlocalizedName("InfusedDust").setCreativeTab(VanillaPlusTab.tab).setTextureName("vanillaplus:infused_dust");
-		copperIngot = new ItemCopperIngot(5001).setUnlocalizedName("CopperIngot").setCreativeTab(VanillaPlusTab.tab).setTextureName("vanillaplus:copper_ingot");
-		copperChunk = new ItemCopperChunk(5002).setUnlocalizedName("CopperChunk").setCreativeTab(VanillaPlusTab.tab).setTextureName("vanillaplus:copper_chunk");
-		flintPickaxe = new ItemFlintPickaxe(ToolMaterial.STONE).setUnlocalizedName("FlintPickaxe").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:flint_pickaxe");
-		flintSword = new ItemFlintSword(ToolMaterial.STONE).setUnlocalizedName("FlintSword").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:flint_sword");
-		flintAxe = new ItemFlintAxe(ToolMaterial.STONE).setUnlocalizedName("FlintAxe").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:flint_axe");
-		flintShovel = new ItemFlintShovel(ToolMaterial.STONE).setUnlocalizedName("FlintShovel").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:flint_shovel");
-		copperPickaxe = new ItemCopperPickaxe(ToolMaterial.STONE).setUnlocalizedName("CopperPickaxe").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:copper_pickaxe");
-		copperSword = new ItemCopperSword(ToolMaterial.STONE).setUnlocalizedName("CopperSword").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:copper_sword");
+		infusedEssence = new ItemInfusedEssence(5000).setUnlocalizedName("InfusedEssence").setCreativeTab(VanillaPlusItemsTab.tab).setTextureName("vanillaplus:infused_essence");
+		copperIngot = new ItemCopperIngot(5001).setUnlocalizedName("CopperIngot").setCreativeTab(VanillaPlusItemsTab.tab).setTextureName("vanillaplus:copper_ingot");
+		copperChunk = new ItemCopperChunk(5002).setUnlocalizedName("CopperChunk").setCreativeTab(VanillaPlusItemsTab.tab).setTextureName("vanillaplus:copper_chunk");
+		flintPickaxe = new ItemFlintPickaxe(ToolMaterial.STONE).setUnlocalizedName("FlintPickaxe").setCreativeTab(VanillaPlusToolsTab.tab).setTextureName("vanillaplus:flint_pickaxe");
+		flintSword = new ItemFlintSword(ToolMaterial.STONE).setUnlocalizedName("FlintSword").setCreativeTab(VanillaPlusToolsTab.tab).setTextureName("vanillaplus:flint_sword");
+		flintAxe = new ItemFlintAxe(ToolMaterial.STONE).setUnlocalizedName("FlintAxe").setCreativeTab(VanillaPlusToolsTab.tab).setTextureName("vanillaplus:flint_axe");
+		flintShovel = new ItemFlintShovel(ToolMaterial.STONE).setUnlocalizedName("FlintShovel").setCreativeTab(VanillaPlusToolsTab.tab).setTextureName("vanillaplus:flint_shovel");
+		copperPickaxe = new ItemCopperPickaxe(ToolMaterial.STONE).setUnlocalizedName("CopperPickaxe").setCreativeTab(VanillaPlusToolsTab.tab).setTextureName("vanillaplus:copper_pickaxe");
+		copperSword = new ItemCopperSword(ToolMaterial.STONE).setUnlocalizedName("CopperSword").setCreativeTab(VanillaPlusToolsTab.tab).setTextureName("vanillaplus:copper_sword");
+		copperAxe = new ItemCopperAxe(ToolMaterial.STONE).setUnlocalizedName("CopperAxe").setCreativeTab(VanillaPlusToolsTab.tab).setTextureName("vanillaplus:copper_axe");
+		copperShovel = new ItemCopperShovel(ToolMaterial.STONE).setUnlocalizedName("CopperShovel").setCreativeTab(VanillaPlusToolsTab.tab).setTextureName("vanillaplus:copper_shovel");
 		System.out.println("Items Loaded");
 		
 		//Register Mobs
@@ -183,7 +189,7 @@ public class VanillaPlus {
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
 		//GameRegister Items
-		GameRegistry.registerItem(infusedDust, "InfusedDust");
+		GameRegistry.registerItem(infusedEssence, "InfusedEssence");
 		GameRegistry.registerItem(copperChunk, "CopperChunk");
 		GameRegistry.registerItem(copperIngot, "CopperIngot");
 		System.out.println("Items Registered");
@@ -196,6 +202,9 @@ public class VanillaPlus {
 		GameRegistry.registerItem(flintAxe, "FlintAxe");
 		GameRegistry.registerItem(flintShovel, "FlintShovel");
 		GameRegistry.registerItem(copperPickaxe, "CopperPickaxe");
+		GameRegistry.registerItem(copperSword, "CopperSword");
+		GameRegistry.registerItem(copperAxe, "CopperAxe");
+		GameRegistry.registerItem(copperShovel, "CopperShovel");
 		System.out.println("Tools Registered");
 		//GameRegister Recipes
 		//FlintPickaxe
@@ -214,7 +223,20 @@ public class VanillaPlus {
 		GameRegistry.addRecipe(new ItemStack(flintShovel), " X ", " I ", " I ",  
 				'X', new ItemStack(Items.flint),
 				'I', new ItemStack(Items.stick));
-		GameRegistry.addRecipe(new ItemStack(copperPickaxe), " X ", " I ", " I ",
+		//CopperPickaxe
+		GameRegistry.addRecipe(new ItemStack(copperPickaxe), "XXX", " I ", " I ",
+				'X', new ItemStack(VanillaPlus.copperIngot),
+				'I', new ItemStack(Items.stick));
+		//CopperSword
+		GameRegistry.addRecipe(new ItemStack(copperSword), " X ", " X ", " I ",
+				'X', new ItemStack(VanillaPlus.copperIngot),
+				'I', new ItemStack(Items.stick));
+		//CopperAxe
+		GameRegistry.addRecipe(new ItemStack(copperAxe), " XX", " IX", " I ",
+				'X', new ItemStack(VanillaPlus.copperIngot),
+				'I', new ItemStack(Items.stick));
+		//CopperShovel
+		GameRegistry.addRecipe(new ItemStack(copperShovel), " X ", " I ", " I ",
 				'X', new ItemStack(VanillaPlus.copperIngot),
 				'I', new ItemStack(Items.stick));
 		System.out.println("Recipes Registered");

@@ -1,6 +1,6 @@
 tile.InfusedOre.name=Infused Ore
 
-item.InfusedDust.name=Infused Dust
+item.InfusedEssence.name=Infused Essence
 item.FlintPickaxe.name=Flint Pickaxe
 item.FlintSword.name=Flint Sword
 item.FlintAxe.name=Flint Axe
@@ -9,4 +9,5 @@ item.CopperChunk.name=Copper Chunk
 item.CopperIngot.name=Copper Ingot
 item.CopperPickaxe.name=Copper Pickaxe
 
-itemGroup.tabVanillaPlus=Vanilla+
+itemGroup.tabVanillaPlusItems=Vanilla+ Items
+itemGroup.
