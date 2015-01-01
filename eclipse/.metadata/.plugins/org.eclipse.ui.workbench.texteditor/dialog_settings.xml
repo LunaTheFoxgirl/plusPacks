@@ -2,22 +2,24 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="register" key="selection"/>
+		<item value="uranium" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Uranium"/>
+			<item value="Furnace"/>
+			<item value="BlockFurnace"/>
 			<item value="register"/>
 			<item value="Chest"/>
 			<item value="Render"/>
 			<item value="texture"/>
 			<item value="TileEntityChest"/>
-			<item value="TileEntity"/>
-			<item value="getMaxHealth"/>
-			<item value="setMaxHealth"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Refinery"/>
+			<item value="BlockRefinery"/>
 			<item value="TileEntityChestValues"/>
 			<item value=""/>
 		</list>
