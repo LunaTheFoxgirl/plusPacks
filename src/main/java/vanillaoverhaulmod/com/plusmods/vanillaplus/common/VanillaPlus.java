@@ -89,8 +89,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.plusmods.oresplus.oreGen.JadeOreGenerator;
-import com.plusmods.vanillaplus.blocks.CopperOre;
-import com.plusmods.vanillaplus.blocks.InfusedOre;
+import com.plusmods.vanillaplus.blocks.BlockCopperOre;
+import com.plusmods.vanillaplus.blocks.BlockInfusedOre;
 import com.plusmods.vanillaplus.creativeTab.VanillaPlusItemsTab;
 import com.plusmods.vanillaplus.creativeTab.VanillaPlusOresTab;
 import com.plusmods.vanillaplus.creativeTab.VanillaPlusToolsTab;
@@ -160,10 +160,10 @@ public class VanillaPlus {
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println("VanillaPlus Initialized");
 		//Register Blocks
-		infusedOre = new InfusedOre(Material.iron).setBlockName("InfusedOre").setHardness(2.0f).setCreativeTab(VanillaPlusOresTab.tab).setBlockTextureName("vanillaplus:infused_ore");
+		infusedOre = new BlockInfusedOre(Material.iron).setBlockName("InfusedOre").setHardness(2.0f).setCreativeTab(VanillaPlusOresTab.tab).setBlockTextureName("vanillaplus:infused_ore");
 		infusedOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		infusedOre.setHarvestLevel("pickaxe", 2);
-		copperOre = new CopperOre(Material.iron).setBlockName("CopperOre").setHardness(2.0f).setCreativeTab(VanillaPlusOresTab.tab).setBlockTextureName("vanillaplus:copper_ore");
+		copperOre = new BlockCopperOre(Material.iron).setBlockName("CopperOre").setHardness(2.0f).setCreativeTab(VanillaPlusOresTab.tab).setBlockTextureName("vanillaplus:copper_ore");
 		copperOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		copperOre.setHarvestLevel("pickaxe", 2);
 		System.out.println("Blocks Loaded");

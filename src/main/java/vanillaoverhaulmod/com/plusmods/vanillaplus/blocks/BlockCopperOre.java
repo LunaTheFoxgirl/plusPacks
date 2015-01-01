@@ -9,9 +9,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 
-public class PlatinumOre extends Block {
+public class BlockCopperOre extends Block {
 
-	public PlatinumOre(Material p_i45394_1_) {
+	public BlockCopperOre(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		// TODO Auto-generated constructor stub
 	}
@@ -19,7 +19,7 @@ public class PlatinumOre extends Block {
 	/*@Override
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
 		// TODO Auto-generated method stub
-		return VanillaPlus.infusedDust;
+		return VanillaPlus.infusedEssence;
 	}*/
 
 	

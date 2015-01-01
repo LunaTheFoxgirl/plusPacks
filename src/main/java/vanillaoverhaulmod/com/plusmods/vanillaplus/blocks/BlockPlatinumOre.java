@@ -9,9 +9,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 
-public class SilverOre extends Block {
+public class BlockPlatinumOre extends Block {
 
-	public SilverOre(Material p_i45394_1_) {
+	public BlockPlatinumOre(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		// TODO Auto-generated constructor stub
 	}
