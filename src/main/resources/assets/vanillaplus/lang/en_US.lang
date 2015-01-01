@@ -1,3 +1,12 @@
 tile.InfusedOre.name=Infused Ore
 
 item.InfusedDust.name=Infused Dust
+item.FlintPickaxe.name=Flint Pickaxe
+item.FlintSword.name=Flint Sword
+item.FlintAxe.name=Flint Axe
+item.FlintShovel.name=Flint Shovel
+item.CopperChunk.name=Copper Chunk
+item.CopperIngot.name=Copper Ingot
+item.CopperPickaxe.name=Copper Pickaxe
+
+itemGroup.tabVanillaPlus=Vanilla+

@@ -94,6 +94,8 @@ import com.plusmods.vanillaplus.blocks.InfusedOre;
 import com.plusmods.vanillaplus.creativeTab.VanillaPlusTab;
 import com.plusmods.vanillaplus.items.ItemCopperChunk;
 import com.plusmods.vanillaplus.items.ItemCopperIngot;
+import com.plusmods.vanillaplus.items.ItemCopperPickaxe;
+import com.plusmods.vanillaplus.items.ItemCopperSword;
 import com.plusmods.vanillaplus.items.ItemFlintAxe;
 import com.plusmods.vanillaplus.items.ItemFlintPickaxe;
 import com.plusmods.vanillaplus.items.ItemFlintShovel;
@@ -170,6 +172,8 @@ public class VanillaPlus {
 		flintSword = new ItemFlintSword(ToolMaterial.STONE).setUnlocalizedName("FlintSword").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:flint_sword");
 		flintAxe = new ItemFlintAxe(ToolMaterial.STONE).setUnlocalizedName("FlintAxe").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:flint_axe");
 		flintShovel = new ItemFlintShovel(ToolMaterial.STONE).setUnlocalizedName("FlintShovel").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:flint_shovel");
+		copperPickaxe = new ItemCopperPickaxe(ToolMaterial.STONE).setUnlocalizedName("CopperPickaxe").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:copper_pickaxe");
+		copperSword = new ItemCopperSword(ToolMaterial.STONE).setUnlocalizedName("CopperSword").setCreativeTab(CreativeTabs.tabTools).setTextureName("vanillaplus:copper_sword");
 		System.out.println("Items Loaded");
 		
 		//Register Mobs
@@ -191,6 +195,7 @@ public class VanillaPlus {
 		GameRegistry.registerItem(flintSword, "FlintSword");
 		GameRegistry.registerItem(flintAxe, "FlintAxe");
 		GameRegistry.registerItem(flintShovel, "FlintShovel");
+		GameRegistry.registerItem(copperPickaxe, "CopperPickaxe");
 		System.out.println("Tools Registered");
 		//GameRegister Recipes
 		//FlintPickaxe
@@ -209,6 +214,9 @@ public class VanillaPlus {
 		GameRegistry.addRecipe(new ItemStack(flintShovel), " X ", " I ", " I ",  
 				'X', new ItemStack(Items.flint),
 				'I', new ItemStack(Items.stick));
+		GameRegistry.addRecipe(new ItemStack(copperPickaxe), " X ", " I ", " I ",
+				'X', new ItemStack(VanillaPlus.copperIngot),
+				'I', new ItemStack(Items.stick));
 		System.out.println("Recipes Registered");
 		
 		//Smelting Recipes
@@ -219,6 +227,7 @@ public class VanillaPlus {
 		GameRegistry.registerWorldGenerator(new SilverOreGen(), 2);
 		GameRegistry.registerWorldGenerator(new PlatinumOreGen(), 2);
 		GameRegistry.registerWorldGenerator(new InfusedOreGen(), 2);
+		System.out.println("World Generators Registered");
 	}
 
 	public void replaceCraftingItem(ItemStack itemStack,
