@@ -112,7 +112,6 @@ import com.plusmods.vanillaplus.oreGen.SilverOreGen;
 
 import java.util.*;
 
-import jdk.nashorn.internal.ir.Block;
 import io.netty.buffer.ByteBuf;
 import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
 import io.netty.buffer.ByteBuf;
