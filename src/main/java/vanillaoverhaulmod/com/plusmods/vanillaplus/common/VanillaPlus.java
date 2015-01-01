@@ -91,7 +91,9 @@ import org.apache.logging.log4j.Logger;
 import com.plusmods.oresplus.oreGen.JadeOreGenerator;
 import com.plusmods.vanillaplus.blocks.BlockCopperOre;
 import com.plusmods.vanillaplus.blocks.BlockInfusedOre;
+import com.plusmods.vanillaplus.blocks.BlockInfuser;
 import com.plusmods.vanillaplus.creativeTab.VanillaPlusItemsTab;
+import com.plusmods.vanillaplus.creativeTab.VanillaPlusMachinesTab;
 import com.plusmods.vanillaplus.creativeTab.VanillaPlusOresTab;
 import com.plusmods.vanillaplus.creativeTab.VanillaPlusToolsTab;
 import com.plusmods.vanillaplus.items.ItemCopperAxe;
@@ -130,6 +132,7 @@ public class VanillaPlus {
 	public static Block copperOre;
 	public static Block silverOre;
 	public static Block platinumOre;
+	public static Block infuser;
 	
 	//Items
 	public static Item infusedEssence;
@@ -163,6 +166,10 @@ public class VanillaPlus {
 		infusedOre = new BlockInfusedOre(Material.iron).setBlockName("InfusedOre").setHardness(2.0f).setCreativeTab(VanillaPlusOresTab.tab).setBlockTextureName("vanillaplus:infused_ore");
 		infusedOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		infusedOre.setHarvestLevel("pickaxe", 2);
+		infuser = new BlockInfuser(true).setBlockName("Infuser").setHardness(2.0f).setCreativeTab(VanillaPlusMachinesTab.tab).setBlockTextureName("vanillaplus:infused_ore");
+		infuser.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		infuser.setHarvestLevel("pickaxe", 2);
+		
 		copperOre = new BlockCopperOre(Material.iron).setBlockName("CopperOre").setHardness(2.0f).setCreativeTab(VanillaPlusOresTab.tab).setBlockTextureName("vanillaplus:copper_ore");
 		copperOre.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		copperOre.setHarvestLevel("pickaxe", 2);
@@ -195,6 +202,10 @@ public class VanillaPlus {
 		System.out.println("Items Registered");
 		//GameRegister Blocks
 		GameRegistry.registerBlock(infusedOre, "InfusedOre");
+		GameRegistry.registerBlock(copperOre, "CopperOre");
+		//GameRegistry.registerBlock(silverOre, "SilverOre");
+		//GameRegistry.registerBlock(platinumOre, "PlatinumOre");
+		GameRegistry.registerBlock(infuser, "Infuser");
 		System.out.println("Blocks Registered");
 		//GameRegister Tools
 		GameRegistry.registerItem(flintPickaxe, "FlintPickaxe");
