@@ -98,7 +98,7 @@ import net.minecraftforge.common.util.*;
 
 import org.lwjgl.opengl.GL11;
 
-import com.plusmods.boomplus.acheivement.CoolAchievement;
+import com.plusmods.boomplus.acheivement.AchievementCool;
 import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 @SuppressWarnings("unchecked")
@@ -117,7 +117,7 @@ public class ItemCoolGlasses extends ItemArmor {
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
 			String type) {
-		return "boomplus:textures/armor/coolGlasses.png";
+		return "boomplus:textures/armor/cool_glasses.png";
 	}
 
 	@Override
@@ -148,7 +148,7 @@ public class ItemCoolGlasses extends ItemArmor {
 			 */
 			world.getPlayerEntityByName(
 					((EntityPlayer) entity).getDisplayName()).addStat(
-					CoolAchievement.achievement, 1);
+					AchievementCool.achievement, 1);
 			// }
 		}
 	}

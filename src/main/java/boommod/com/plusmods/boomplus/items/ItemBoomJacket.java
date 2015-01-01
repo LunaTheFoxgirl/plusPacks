@@ -115,7 +115,7 @@ public class ItemBoomJacket extends ItemArmor {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
 			String type) {
-		return "boomplus:textures/armor/BoomJacket.png";
+		return "boomplus:textures/armor/boom_jacket.png";
 	}
 
 	@Override

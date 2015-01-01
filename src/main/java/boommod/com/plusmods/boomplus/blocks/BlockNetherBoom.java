@@ -127,7 +127,6 @@ public class BlockNetherBoom extends Block {
 		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
@@ -135,53 +134,14 @@ public class BlockNetherBoom extends Block {
 					world.createExplosion((Entity) null, i, j, k, 2F, true);
 					world.setBlock(i, j, k, Blocks.flowing_lava, 0, 2);
 				}
-				if (!world.isRemote) {
-					Entity sentity = EntityList.createEntityByID(56, world);
-					if (sentity != null) {
-						sentity.setLocationAndAngles(i, j, k,
+				for (int i1 = 0; i1 < 4; i1++)
+					if (!world.isRemote) {
+						Entity sentity = EntityList.createEntityByID(56, world);
+						if (sentity != null) {
+							sentity.setLocationAndAngles(i, j, k,
 								world.rand.nextFloat() * 360F, 0.0F);
-						world.spawnEntityInWorld(sentity);
-						((EntityLiving) sentity).playLivingSound();
-					}
-				}
-
-				if (!world.isRemote) {
-					Entity sentity = EntityList.createEntityByID(56, world);
-					if (sentity != null) {
-						sentity.setLocationAndAngles(i, j, k,
-								world.rand.nextFloat() * 360F, 0.0F);
-						world.spawnEntityInWorld(sentity);
-						((EntityLiving) sentity).playLivingSound();
-					}
-				}
-
-				if (!world.isRemote) {
-					Entity sentity = EntityList.createEntityByID(61, world);
-					if (sentity != null) {
-						sentity.setLocationAndAngles(i, j, k,
-								world.rand.nextFloat() * 360F, 0.0F);
-						world.spawnEntityInWorld(sentity);
-						((EntityLiving) sentity).playLivingSound();
-					}
-				}
-
-				if (!world.isRemote) {
-					Entity sentity = EntityList.createEntityByID(61, world);
-					if (sentity != null) {
-						sentity.setLocationAndAngles(i, j, k,
-								world.rand.nextFloat() * 360F, 0.0F);
-						world.spawnEntityInWorld(sentity);
-						((EntityLiving) sentity).playLivingSound();
-					}
-				}
-
-				if (!world.isRemote) {
-					Entity sentity = EntityList.createEntityByID(61, world);
-					if (sentity != null) {
-						sentity.setLocationAndAngles(i, j, k,
-								world.rand.nextFloat() * 360F, 0.0F);
-						world.spawnEntityInWorld(sentity);
-						((EntityLiving) sentity).playLivingSound();
+							world.spawnEntityInWorld(sentity);
+							((EntityLiving) sentity).playLivingSound();
 					}
 				}
 

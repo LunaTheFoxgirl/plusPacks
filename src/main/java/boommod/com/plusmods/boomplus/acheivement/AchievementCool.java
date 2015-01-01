@@ -96,9 +96,9 @@ import java.util.Random;
 import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.items.ItemCoolGlasses;
 
-public class CoolAchievement {
+public class AchievementCool {
 
-	public CoolAchievement() {
+	public AchievementCool() {
 	}
 
 	public Object instance;

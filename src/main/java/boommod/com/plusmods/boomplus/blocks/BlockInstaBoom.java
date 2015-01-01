@@ -122,39 +122,59 @@ public class BlockInstaBoom extends Block {
 
 	}
 
-	
-	
-	
 	@Override
-	public void onBlockDestroyedByExplosion(World p_149723_1_, int p_149723_2_, int p_149723_3_, int p_149723_4_, Explosion p_149723_5_) 
-	{
-		if (!p_149723_1_.isRemote) {
-			p_149723_1_.createExplosion((Entity) null, p_149723_2_, p_149723_3_, p_149723_4_, 5.0f, true);
-			
-			for (int x = p_149723_2_ - 10; x < p_149723_2_ + 10; x++)
-				for (int y = p_149723_3_ - 10; y < p_149723_3_ + 10; y++)
-					for (int z = p_149723_4_ - 10; z < p_149723_4_ + 10; z++)
-						p_149723_1_.setBlock(x, y, z, Blocks.air);
+	public void onBlockDestroyedByExplosion(World p_149723_1_, int p_149723_2_,
+			int p_149723_3_, int p_149723_4_, Explosion p_149723_5_) {
+		if (!p_149723_1_.isRemote) 
+		{
+			/*p_149723_1_.createExplosion((Entity) null, p_149723_2_, p_149723_3_, p_149723_4_, 5.0f, true);*/
+
+			for (int x = p_149723_2_ - 5; x < p_149723_2_ + 5; x++)
+				for (int y = p_149723_3_ - 5; y < p_149723_3_ + 5; y++)
+					for (int z = p_149723_4_ - 5; z < p_149723_4_ + 5; z++)
+						if (p_149723_1_.getBlock(x, y, z) != Blocks.diamond_ore
+								|| p_149723_1_.getBlock(x, y, z) != Blocks.redstone_ore
+								|| p_149723_1_.getBlock(x, y, z) != Blocks.gold_ore
+								|| p_149723_1_.getBlock(x, y, z) != Blocks.iron_ore
+								|| p_149723_1_.getBlock(x, y, z) != Blocks.coal_ore
+								|| p_149723_1_.getBlock(x, y, z) != Blocks.bedrock)
+						{
+							//Nothing here
+						}
+						else
+						{
+							p_149723_1_.setBlock(x, y, z, Blocks.air);
+						}
 		}
-		super.onBlockDestroyedByExplosion(p_149723_1_, p_149723_2_, p_149723_3_, p_149723_4_, p_149723_5_);
+		super.onBlockDestroyedByExplosion(p_149723_1_, p_149723_2_,
+				p_149723_3_, p_149723_4_, p_149723_5_);
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onNeighborBlockChange(World world, int i, int j, int k, Block l) {
-		EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 		if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 				&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
-			
-			
-			if (!world.isRemote) {
-				world.createExplosion((Entity) null, i, j, k, 5.0f, true);
-				
+			if (!world.isRemote) 
+			{
+				/*world.createExplosion((Entity) null, i, j, k, 5.0f, true);*/
+
 				for (int x = i - 5; x < i + 5; x++)
 					for (int y = j - 5; y < j + 5; y++)
 						for (int z = k - 5; z < k + 5; z++)
-							world.setBlock(x, y, z, Blocks.air);
+							if (world.getBlock(x, y, z) != Blocks.diamond_ore
+									|| world.getBlock(x, y, z) != Blocks.redstone_ore
+									|| world.getBlock(x, y, z) != Blocks.gold_ore
+									|| world.getBlock(x, y, z) != Blocks.iron_ore
+									|| world.getBlock(x, y, z) != Blocks.coal_ore
+									|| world.getBlock(x, y, z) != Blocks.bedrock)
+							{
+								//Nothing here
+							}
+							else
+							{
+								world.setBlock(x, y, z, Blocks.air);
+							}
 			}
 		}
 

@@ -104,6 +104,6 @@ public class AchievementNuclear {
 	public Object instance;
 	public static Achievement achievement = (new Achievement(
 			"achievement.nuclearAchievement", "nuclearAchievement", 5, 5,
-			BoomPlus.radioactiveOre, (Achievement) null))
+			BoomPlus.radioactivePowder, (Achievement) null))
 			.initIndependentStat();
 }

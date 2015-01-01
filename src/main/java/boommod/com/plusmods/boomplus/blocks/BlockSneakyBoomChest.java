@@ -44,7 +44,7 @@ public class BlockSneakyBoomChest extends BlockChest
     private final Random field_149955_b = new Random();
     public final int field_149956_a;
     private static final String __OBFID = "CL_00000214";
-    Minecraft mc = Minecraft.getMinecraft();
+  
     
     
     protected boolean isArmed;
@@ -450,11 +450,13 @@ public class BlockSneakyBoomChest extends BlockChest
 	/**
      * Called upon block activation (right click on the block.)
      */
+    @Override
     public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
+    	
     	TileEntityChestValues val = ((TileEntityChestValues)p_149727_1_.getTileEntity(p_149727_2_, p_149727_3_, p_149727_4_));
     	
-    	if (!val.getArmedStatus() && !mc.thePlayer.isSneaking())
+    	if (!val.getArmedStatus() && !p_149727_5_.isSneaking())
     	{
     		if (p_149727_1_.isRemote)
     		{
@@ -473,10 +475,9 @@ public class BlockSneakyBoomChest extends BlockChest
     
     		}
     	}
-    	else if (!p_149727_1_.isRemote && !val.getArmedStatus() && mc.thePlayer.isSneaking())
+    	else if (!p_149727_1_.isRemote && !val.getArmedStatus() && p_149727_5_.isSneaking())
     	{
     		val.setArmedStatus(true);
-    		((EntityClientPlayerMP) mc.thePlayer).sendChatMessage("The chest is armed!");
     	}
     	else
     	{

@@ -126,17 +126,18 @@ public class BlockMassiveBoom extends Block {
 		
 		
 		@Override
-		public void onBlockDestroyedByExplosion(World p_149723_1_, int p_149723_2_, int p_149723_3_, int p_149723_4_, Explosion p_149723_5_) 
-		{
-			p_149723_1_.createExplosion((Entity) null, p_149723_2_, p_149723_3_, p_149723_4_, 60F, true);
-			super.onBlockDestroyedByExplosion(p_149723_1_, p_149723_2_, p_149723_3_, p_149723_4_, p_149723_5_);
+		public void onBlockDestroyedByExplosion(World world, int i, int j,
+				int k, Explosion e) {
+
+			if (!world.isRemote) {
+				world.createExplosion((Entity) null, i, j, k, 2F, true);
+			}
+
 		}
 		
 		@Override
-		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 

@@ -66,6 +66,7 @@ import net.minecraftforge.client.*;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.event.sound.*;
 import net.minecraftforge.common.*;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.*;
 import net.minecraftforge.event.entity.*;
 import net.minecraftforge.event.entity.item.*;
@@ -87,6 +88,7 @@ import cpw.mods.fml.common.network.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.plusmods.boomplus.acheivement.AchievementCool;
 import com.plusmods.boomplus.acheivement.AchievementNuclear;
 import com.plusmods.boomplus.acheivement.AchievementOreIsIt;
 import com.plusmods.boomplus.blocks.BlockBlazeOre;
@@ -129,6 +131,12 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import cpw.mods.fml.relauncher.*;
 
+/*
+ * Author: Member1221
+ * Boom+ creators: ZakDoesGaming, Member1221.
+ * Code rewritten for multiplayer, and non mcreator sloppyness by: Member1221.
+ */
+
 @Mod(modid = BoomPlus.MODID, version = BoomPlus.VERSION)
 public class BoomPlus
 {
@@ -166,82 +174,234 @@ public class BoomPlus
 			public static Block crashyBoom;
 			public static Block instaBoom;
 			
+			
+		//ToolMaterials
+			public static final Item.ToolMaterial strangeMaterial = EnumHelper.addToolMaterial("jadeToolMaterial", 12, 2000, 6, 999999999, 0);
 	
-	
-	
-	
-	
-	
-	
+			
+		//Achievements & Pages
+			public static Achievement oreIsItAchievement;
+			public static Achievement goingNuclearAchievement;
+			public static Achievement coolAchievement;
+			public static AchievementPage boomPage;
+			
 
 	//@SidedProxy(clientSide = "com.plusmods.boomplus.ClientProxyBoomPlus", serverSide = "com.plusmods.boomplus.CommonProxyBoomPlus")
 
 	@Instance(MODID)
 	public static BoomPlus instance;
-
-	@EventHandler
-	public void load(FMLInitializationEvent event) 
-	{
-		//Items
-			//BoomJacket
-				boomJacket = new ItemBoomJacket(ArmorMaterial.CLOTH, 0, 0).setUnlocalizedName("BoomJacket").setTextureName("boomplus:boom_jacket");
-				
-			//RadioactivePower
-				radioactivePowder = new ItemRadioactivePowder(0).setUnlocalizedName("RadioactivePowder").setTextureName("boomplus:radioactive_powder");
-			
-			//Detonator
-				detonator = new ItemDetonator(2013).setUnlocalizedName("Detonator").setTextureName("boomplus:detonator");
-			
-			//GuideBook
-				guideBook = new ItemGuideBook(1).setUnlocalizedName("GuideBook").setTextureName("boomplus:guide_book");
-			
-			//CoolGlasses
-				coolGlasses = new ItemCoolGlasses(ArmorMaterial.CLOTH, 0, 0).setUnlocalizedName("CoolGlasses").setTextureName("boomplus:cool_glasses");
-			
-			//StrangeSymbol
-				strangeSymbol = new ItemStrangeSymbol(ToolMaterial.EMERALD).setUnlocalizedName("StrangeSymbol").setTextureName("boomplus:strangeSymbol");
-		
-			//SneakyBoomEdible
-				sneakyBoomEdible = new ItemSneakyBoomEdible(2, 1.0f, true).setUnlocalizedName("SneakyBoomEdible").setTextureName("boomplus:sneaky_boom_edible");
-				
-			//CrashyBoom
-			    crashyBoom = new BlockCrashyBoom(Material.tnt).setBlockName("CrashyBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:radioactive_boom");
-			
-			//InstaBoom
-			    instaBoom = new BlockInstaBoom().setBlockName("InstaBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:instant_boom");
-			
-			    
-			    
-			    
-		//Blocks
-				
-			//Ores
-				
-				//BlazeOre
-					Block blazeOre = new BlockBlazeOre().setBlockName("BlazeOre").setBlockTextureName("boomplus:blaze_ore");
-					
-				//RadioactiveOre
-					Block radioactiveOre = new BlockRadioactiveOre().setBlockName("RadioactiveOre").setBlockTextureName("boomplus:radioactive_ore");
-				
-		//Booms
-				//CrashyBoom
-					GameRegistry.registerBlock(crashyBoom, crashyBoom.getUnlocalizedName().substring(5));	
-					
-				//InstaBoom
-					GameRegistry.registerBlock(instaBoom, instaBoom.getUnlocalizedName().substring(5));	
-					
-		
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-	}
-
-	
 	
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
 	{
-		//Tile Entities
-		GameRegistry.registerTileEntity(TileEntityChestValues.class, "isArmed");
+		//Items
+		
+			//BoomJacket
+				boomJacket = new ItemBoomJacket(ArmorMaterial.CLOTH, 0, 1).setUnlocalizedName("BoomJacket").setTextureName("boomplus:boom_jacket");
+			
+			//RadioactivePowder
+				radioactivePowder = new ItemRadioactivePowder(0).setUnlocalizedName("RadioactivePowder").setTextureName("boomplus:radioactive_powder");
+		
+			//Detonator
+				detonator = new ItemDetonator(2013).setUnlocalizedName("Detonator").setTextureName("boomplus:detonator_up");
+		
+			//GuideBook
+				guideBook = new ItemGuideBook(1).setUnlocalizedName("GuideBook").setTextureName("boomplus:guide_book");
+		
+			//CoolGlasses
+				coolGlasses = new ItemCoolGlasses(ArmorMaterial.CLOTH, 0, 0).setUnlocalizedName("CoolGlasses").setTextureName("boomplus:cool_glasses");
+		
+			//StrangeSymbol
+				strangeSymbol = new ItemStrangeSymbol(strangeMaterial).setUnlocalizedName("StrangeSymbol").setTextureName("boomplus:ore_is_it");
+	
+			//SneakyBoomEdible
+				sneakyBoomEdible = new ItemSneakyBoomEdible(2, 1.0f, true).setUnlocalizedName("SneakyBoomEdible").setTextureName("boomplus:sneaky_boom_edible");
+		    
+		    
+	//Blocks
+			
+		//Ores
+			
+			//BlazeOre
+				blazeOre = new BlockBlazeOre().setBlockName("BlazeOre").setBlockTextureName("boomplus:blaze_ore");
+				
+			//RadioactiveOre
+				radioactiveOre = new BlockRadioactiveOre().setBlockName("RadioactiveOre").setBlockTextureName("boomplus:radioactive_ore");
+		
+		//Booms
+				
+			//CrashyBoom
+				crashyBoom = new BlockCrashyBoom(Material.tnt).setBlockName("CrashyBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:radioactive_boom");
+		
+			//InstaBoom
+				instaBoom = new BlockInstaBoom().setBlockName("InstantBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:instant_boom");
+		
+			//EnderBoom
+				enderBoom = new BlockEnderBoom(Material.rock).setBlockName("EnderBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:ender_boom");
+			
+			//SmallBoom
+				smallBoom = new BlockSmallBoom(Material.tnt).setBlockName("SmallBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:small_boom");
+				
+			//MediumBoom
+				mediumBoom = new BlockMediumBoom(Material.tnt).setBlockName("MediumBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:medium_boom");
+				
+			//LargeBoom
+				largeBoom = new BlockLargeBoom(Material.tnt).setBlockName("LargeBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:large_boom");
+				
+			//MassiveBoom
+				massiveBoom = new BlockMassiveBoom(Material.tnt).setBlockName("MassiveBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:massive_boom");
+				
+			//LavaBoom
+				lavaBoom = new BlockLavaBoom().setBlockName("LavaBoom").setBlockName("LavaBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:lava_boom");
+				
+			//SneakyBoomStone
+				sneakyBoomStone = new BlockSneakyBoomStone().setBlockName("SneakyBoomStone").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:sneaky_boom_stone");
+				
+			//SneakyBoomIron
+				sneakyBoomIron = new BlockSneakyBoomIron().setBlockName("SneakyBoomIron").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:sneaky_boom_iron");
+				
+			//SneakyBoomGold
+				sneakyBoomGold = new BlockSneakyBoomGold().setBlockName("SneakyBoomGold").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:sneaky_boom_gold");
+				
+			//SneakyBoomDiamond
+				sneakyBoomDiamond = new BlockSneakyBoomDiamond().setBlockName("SneakyBoomDiamond").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:sneaky_boom_diamond");
+				
+			//SneakyBoomChest
+				sneakyBoomChest = new BlockSneakyBoomChest(1).setBlockName("SneakyBoomChest").setHardness(0.5f).setCreativeTab(BoomPlusTab.tab); //Texture is overwritten by normal chest, so no texture is needed to be defined
+				
+			//NetherBoom
+				netherBoom = new BlockNetherBoom(Material.tnt).setBlockName("NetherBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:nether_boom");
+		
+			//RadioactiveBoom
+				radioactiveBoom = new BlockRadioactiveBoom(Material.tnt).setBlockName("RadioactiveBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:radioactive_boom");
+				
+			//MagicBoom
+				magicBoom = new BlockMagicBoom(Material.tnt).setBlockName("MagicBoom").setHardness(1.0f).setCreativeTab(BoomPlusTab.tab).setBlockTextureName("boomplus:magic_boom");
+				
+	//Achievements
+				
+			//OreIsIt
+				oreIsItAchievement = AchievementOreIsIt.achievement;
+				
+			//GoingNuclear
+				goingNuclearAchievement = AchievementNuclear.achievement;
+				
+			//Cool (Guys don't look at explosions)
+				coolAchievement = AchievementCool.achievement;
+				
+			//BoomPage
+				boomPage =  new AchievementPage("Boom+", new Achievement[]{oreIsItAchievement, goingNuclearAchievement, coolAchievement});
+				
+				
+				
+	
+	//Tile Entities
+			//IsArmed
+				GameRegistry.registerTileEntity(TileEntityChestValues.class, "isArmed");
+	}
+	
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) 
+	{
+		//Items
+		
+			//All
+		
+				//BoomJacket
+					GameRegistry.registerItem(boomJacket, "BoomJacket");
+					
+				//RadioactivePowder
+					GameRegistry.registerItem(radioactivePowder, "RadioactivePowder");
+					
+				//Detonator
+					GameRegistry.registerItem(detonator, "Detonator");
+					
+				//Guidebook
+					GameRegistry.registerItem(guideBook, "GuideBook");
+					
+				//CoolGlasses
+					GameRegistry.registerItem(coolGlasses, "CoolGlasses");
+				
+				//StrangeSymbol
+					GameRegistry.registerItem(strangeSymbol, "StrangeSymbol");
+					
+				//SneakyBoomEdible
+					GameRegistry.registerItem(sneakyBoomEdible, "SneakyBoomEdible");
+		
+		//Blocks
+					
+			//Ores
+					
+				//BlazeOre
+					GameRegistry.registerBlock(blazeOre, "BlazeOre");
+				
+				//RadioactiveOre
+					GameRegistry.registerBlock(radioactiveOre, "RadioactiveOre");
+					
+			//Booms
+				
+				//InstaBoom
+					GameRegistry.registerBlock(instaBoom, "InstantBoom");	
+					
+				//CrashyBoom
+					GameRegistry.registerBlock(crashyBoom, "CrashyBoom");
+					
+				//EnderBoom
+					GameRegistry.registerBlock(enderBoom, "EnderBoom");
+					
+				//SmallBoom
+					GameRegistry.registerBlock(smallBoom, "SmallBoom");
+					
+				//MediumBoom
+					GameRegistry.registerBlock(mediumBoom, "MediumBoom");
+					
+				//LargeBoom
+					GameRegistry.registerBlock(largeBoom, "LargeBoom");
+					
+				//MassiveBoom
+					GameRegistry.registerBlock(massiveBoom, "MassiveBoom");
+					
+				//LavaBoom
+					GameRegistry.registerBlock(lavaBoom, "LavaBoom");
+					
+				//SneakyBoomStone
+					GameRegistry.registerBlock(sneakyBoomStone, "SneakyBoomStone");
+					
+				//SneakyBoomIron
+					GameRegistry.registerBlock(sneakyBoomIron, "SneakyBoomIron");
+					
+				//SneakyBoomGold
+					GameRegistry.registerBlock(sneakyBoomGold, "SneakyBoomGold");
+					
+				//SneakyBoomDiamond
+					GameRegistry.registerBlock(sneakyBoomDiamond, "SneakyBoomDiamond");
+					
+				///SneakyBoomChest
+					GameRegistry.registerBlock(sneakyBoomChest, "SneakyBoomChest");
+					
+				//NetherBoom
+					GameRegistry.registerBlock(netherBoom, "NetherBoom");
+					
+				//RadioactiveBoom
+					GameRegistry.registerBlock(radioactiveBoom, "RadioactiveBoom");
+					
+				//MagicBoom
+					GameRegistry.registerBlock(magicBoom, "MagicBoom");
+					
+					
+		//AchievementPages
+					
+			//BoomPage
+				AchievementPage.registerAchievementPage(boomPage);
+				
+				
+		//CraftingRecipes
+					
+		//GUIHandlers
+				//GuideBook
+					NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
 
 	

@@ -103,7 +103,7 @@ import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 public class BlockSneakyBoomIron extends Block {
 
-		protected BlockSneakyBoomIron() {
+		public BlockSneakyBoomIron() {
 			super(Material.iron);
 
 		}
@@ -124,10 +124,7 @@ public class BlockSneakyBoomIron extends Block {
 
 
 		@Override
-		@SideOnly(Side.CLIENT)
-		public void onBlockDestroyedByPlayer(World world, int i, int j, int k,
-				int l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+		public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l) {
 
 			if (!world.isRemote) {
 				world.createExplosion((Entity) null, i, j, k, 4F, true);

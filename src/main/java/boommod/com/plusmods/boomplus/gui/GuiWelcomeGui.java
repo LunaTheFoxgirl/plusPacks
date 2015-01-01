@@ -254,26 +254,15 @@ public class GuiWelcomeGui {
 		}
 
 		protected void actionPerformed(GuiButton button) {
-			MinecraftServer server = FMLCommonHandler.instance()
-					.getMinecraftServerInstance();
-			World world = server.worldServers[0];
-			EntityLiving living;
 
-			if (button.id == 0) {
-				if (true) {
-					mc.thePlayer.setHealth(40.0f);
-					this.mc.displayGuiScreen((GuiScreen) null);
-
-				}
-				// boom
+				if (button.id == 0) {
+						this.mc.displayGuiScreen((GuiScreen) null);
 			}
-
-		}
-
 	}
 
 	public boolean doesGuiPauseGame() {
 		return false;
 	}
-
+	}
 }
+

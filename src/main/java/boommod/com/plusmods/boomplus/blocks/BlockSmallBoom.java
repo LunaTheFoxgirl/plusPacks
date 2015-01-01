@@ -45,10 +45,8 @@ public class BlockSmallBoom extends Block {
 		}
 
 		@Override
-		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
@@ -60,10 +58,8 @@ public class BlockSmallBoom extends Block {
 		}
 
 		@Override
-		@SideOnly(Side.CLIENT)
 		public void onBlockDestroyedByExplosion(World world, int i, int j,
 				int k, Explosion e) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
 			if (!world.isRemote) {
 				world.createExplosion((Entity) null, i, j, k, 2F, true);

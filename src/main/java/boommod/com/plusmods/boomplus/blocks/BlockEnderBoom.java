@@ -104,18 +104,15 @@ import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 public class BlockEnderBoom extends Block {
 	
-		protected BlockEnderBoom(Material p_i45394_1_) 
+		public BlockEnderBoom(Material p_i45394_1_) 
 		{
 		super(p_i45394_1_);
 		
 		}
 		
 		@Override
-		@SideOnly(Side.CLIENT)
 		public void onNeighborBlockChange(World world, int i, int j, int k,
 				Block l) {
-			Minecraft mc = Minecraft.getMinecraft();
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 

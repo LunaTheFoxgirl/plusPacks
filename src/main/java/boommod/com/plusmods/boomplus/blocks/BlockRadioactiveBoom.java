@@ -123,11 +123,20 @@ public class BlockRadioactiveBoom extends Block {
 
 		}
 
+		
 		@Override
-		@SideOnly(Side.CLIENT)
-		public void onNeighborBlockChange(World world, int i, int j, int k,
-				Block l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+		public void onBlockDestroyedByExplosion(World world, int i, int j,
+				int k, Explosion e) {
+
+			if (!world.isRemote) {
+				world.createExplosion((Entity) null, i, j, k, 2F, true);
+			}
+
+		}
+		
+		@Override
+		public void onNeighborBlockChange(World world, int i, int j, int k, Block l) {
+			String playerName = Minecraft.getMinecraft().thePlayer.getDisplayName();
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
@@ -140,7 +149,7 @@ public class BlockRadioactiveBoom extends Block {
 				}
 
 				if (true) {
-					entity.addPotionEffect(new PotionEffect(15, 30, 2));
+					world.getPlayerEntityByName(playerName).addPotionEffect(new PotionEffect(15, 30, 2));
 				}
 
 				if (true) {

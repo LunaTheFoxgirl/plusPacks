@@ -100,11 +100,12 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.plusmods.boomplus.acheivement.AchievementOreIsIt;
+import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 
 public class BlockSneakyBoomDiamond extends Block {
 
-		protected BlockSneakyBoomDiamond() {
+		public BlockSneakyBoomDiamond() {
 			super(Material.iron);
 
 		}
@@ -122,29 +123,49 @@ public class BlockSneakyBoomDiamond extends Block {
 			world.scheduleBlockUpdate(i, j, k, this, this.tickRate(world));
 
 		}
-
+		
+		
+		
+		
 		@Override
-		@SideOnly(Side.CLIENT)
 		public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l) 
 		{
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-
-			if (!world.isRemote) 
+			/*boolean hasAchievment = false;
+			boolean didGetStat = false;
+			
+			
+			if (world.isRemote) 
 			{
-				if (!((EntityClientPlayerMP)entity).getStatFileWriter().hasAchievementUnlocked(AchievementOreIsIt.achievement))
+				
+				String name = Minecraft.getMinecraft().thePlayer.getDisplayName();
+				if (!((EntityClientPlayerMP) world.getPlayerEntityByName(name)).getStatFileWriter().hasAchievementUnlocked(BoomPlus.oreIsItAchievement))
 				{
-					world.getPlayerEntityByName(entity.getDisplayName()).addStat(AchievementOreIsIt.achievement, 1);
+					
+					
+					System.out.println("Tried to give Stat");
+					
+					((EntityClientPlayerMP) world.getPlayerEntityByName(name)).playSound("boomplus:orIsIt", 1.0f, 1.0f);
+					didGetStat = true;
 				}
+				
+			}*/
+			if (!world.isRemote)
+			{
+				System.out.println("Tried to explode.");
 				world.createExplosion((Entity) null, i, j, k, 4F, true);
-			}
-			else
-			{
-				if (!((EntityClientPlayerMP)entity).getStatFileWriter().hasAchievementUnlocked(AchievementOreIsIt.achievement))
+				/*if (!hasAchievment && didGetStat)
 				{
-					((EntityPlayer) entity).playSound("boomplus:orIsIt", 0.5f, 1);
-				}
+					addAchievement(world.getClosestPlayer(i, j, k, 1));
+					hasAchievment = true;
+					didGetStat = false;
+				}*/
 			}
 		}
+		
+		/*private void addAchievement(EntityPlayer player)
+		{
+			player.addStat(BoomPlus.oreIsItAchievement, 1);
+		}*/
 
 		@Override
 		@SideOnly(Side.CLIENT)

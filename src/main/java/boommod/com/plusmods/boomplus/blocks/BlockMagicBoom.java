@@ -109,12 +109,11 @@ public class BlockMagicBoom extends Block {
 		}
 
 		@Override
-		@SideOnly(Side.CLIENT)
 		public void onBlockAdded(World world, int i, int j, int k) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
-			if (entity != null && world != null) {
+			String playerName = Minecraft.getMinecraft().thePlayer.getDisplayName();
+			if (world.getPlayerEntityByName(playerName) != null && world != null) {
 				int le = MathHelper
-						.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+						.floor_double((double) (world.getPlayerEntityByName(playerName).rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 				world.setBlockMetadataWithNotify(i, j, k, le, 2);
 			}
 
@@ -124,10 +123,12 @@ public class BlockMagicBoom extends Block {
 
 
 		@Override
-		@SideOnly(Side.CLIENT)
-		public void onNeighborBlockChange(World world, int i, int j, int k,
-				Block l) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
+		public void onNeighborBlockChange(World world, int i, int j, int k, Block l) 
+		{
+			String playerName = "Steve";
+			if (world.isRemote)
+				playerName = Minecraft.getMinecraft().thePlayer.getDisplayName();
+			
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k) || Block.getIdFromBlock(l) > 0 && l.canProvidePower()) {
 
 				if (true) {
@@ -140,11 +141,11 @@ public class BlockMagicBoom extends Block {
 				}
 
 				if (true) {
-					entity.attackEntityFrom(DamageSource.generic, 3);
+					world.getPlayerEntityByName(playerName).attackEntityFrom(DamageSource.generic, 3);
 				}
 
 				if (!world.isRemote) {
-					entity.addPotionEffect(new PotionEffect(15, 15, 0));
+					world.getPlayerEntityByName(playerName).addPotionEffect(new PotionEffect(15, 15, 0));
 				}
 
 				if (!world.isRemote) {
@@ -183,10 +184,8 @@ public class BlockMagicBoom extends Block {
 		}
 
 		@Override
-		@SideOnly(Side.CLIENT)
 		public void onBlockDestroyedByExplosion(World world, int i, int j,
 				int k, Explosion e) {
-			EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
 			if (!world.isRemote) {
 				world.spawnEntityInWorld(new EntityLightningBolt(world, i, j, k));
