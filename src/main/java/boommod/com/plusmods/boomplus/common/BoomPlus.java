@@ -30,6 +30,8 @@ import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.entity.projectile.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
 import net.minecraft.item.Item.ToolMaterial;
@@ -184,6 +186,9 @@ public class BoomPlus
 			public static Achievement goingNuclearAchievement;
 			public static Achievement coolAchievement;
 			public static AchievementPage boomPage;
+
+			
+			
 			
 
 	//@SidedProxy(clientSide = "com.plusmods.boomplus.ClientProxyBoomPlus", serverSide = "com.plusmods.boomplus.CommonProxyBoomPlus")
@@ -398,7 +403,169 @@ public class BoomPlus
 				
 				
 		//CraftingRecipes
+			
+			//Items
+				
+				//BoomJacket
+					GameRegistry.addRecipe(new ItemStack(boomJacket),
+							"ITI", 
+							"TCT", 
+							"ITI", 
+							'I', Items.iron_ingot,
+							'T', Blocks.tnt,
+							'C', Items.diamond_chestplate);
+				//Detonator
+					GameRegistry.addRecipe(new ItemStack(detonator),
+							"IWI", 
+							"RRR", 
+							"IRI", 
+							'I', Items.iron_ingot,
+							'W', new ItemStack(Blocks.wool, 1, 14),
+							'R', Items.redstone);
+				//CoolGlasses
+					GameRegistry.addRecipe(new ItemStack(coolGlasses),
+							"   ", 
+							"WGW", 
+							"   ", 
+							'G', Blocks.glass,
+							'W', new ItemStack(Blocks.wool, 1, 15));
+				//SneakyBoomEdible
+					GameRegistry.addRecipe(new ItemStack(sneakyBoomEdible),
+							" B ", 
+							"BTB", 
+							" B ", 
+							'T', Blocks.tnt,
+							'B', Items.beef);
 					
+			//Blocks
+				
+				//InstantBoom
+					GameRegistry.addRecipe(new ItemStack(instaBoom),
+							"PRP", 
+							"TTT", 
+							"PRP", 
+							'P', Items.iron_pickaxe,
+							'R', Items.redstone,
+							'T', Blocks.tnt);
+				//InstantBoom
+					GameRegistry.addRecipe(new ItemStack(enderBoom),
+							"SES", 
+							"ETE", 
+							"SES", 
+							'S', Blocks.end_stone,
+							'E', Items.ender_pearl,
+							'T', Blocks.tnt);
+				//SmallBoom
+					GameRegistry.addRecipe(new ItemStack(smallBoom),
+							"WTW", 
+							"WTW", 
+							"WTW", 
+							'T', Blocks.tnt,
+							'W', new ItemStack(Blocks.wool, 1, 4));
+				//MediumBoom
+					GameRegistry.addRecipe(new ItemStack(mediumBoom),
+							"WTW", 
+							"TTT", 
+							"WTW", 
+							'T', Blocks.tnt,
+							'W', new ItemStack(Blocks.wool, 1, 9));
+				//LargeBoom
+					GameRegistry.addRecipe(new ItemStack(largeBoom),
+							"TTT", 
+							"TWT", 
+							"TTT", 
+							'T', Blocks.tnt,
+							'W', new ItemStack(Blocks.wool, 1, 10));
+				//MassiveBoom
+					GameRegistry.addRecipe(new ItemStack(massiveBoom),
+							"WMW", 
+							"MLM", 
+							"WMW", 
+							'M', largeBoom,
+							'L', mediumBoom,
+							'W', new ItemStack(Blocks.wool, 1, 4));
+				//LavaBoom
+					GameRegistry.addRecipe(new ItemStack(lavaBoom),
+							"CLC", 
+							"LTL", 
+							"CLC", 
+							'C', Blocks.cobblestone,
+							'L', Items.lava_bucket,
+							'T', Blocks.tnt);
+				//LavaBoom
+					GameRegistry.addRecipe(new ItemStack(sneakyBoomStone),
+							"CLC", 
+							"LTL", 
+							"CLC", 
+							'C', Blocks.cobblestone,
+							'L', Items.lava_bucket,
+							'T', Blocks.tnt);
+				//SneakyBoomStone
+					GameRegistry.addRecipe(new ItemStack(sneakyBoomStone),
+							"TTT", 
+							"TST", 
+							"TTT", 
+							'S', Blocks.stone,
+							'T', Blocks.tnt);
+				//SneakyBoomIron
+					GameRegistry.addRecipe(new ItemStack(sneakyBoomIron),
+							"TTT", 
+							"TIT", 
+							"TTT", 
+							'I', Items.iron_ingot,
+							'T', Blocks.tnt);
+				//SneakyBoomGold
+					GameRegistry.addRecipe(new ItemStack(sneakyBoomGold),
+							"TTT", 
+							"TGT", 
+							"TTT", 
+							'G', Items.gold_ingot,
+							'T', Blocks.tnt);
+				//SneakyBoomGold
+					GameRegistry.addRecipe(new ItemStack(sneakyBoomDiamond),
+							"TTT", 
+							"TDT", 
+							"TTT", 
+							'D', Items.diamond,
+							'T', Blocks.tnt);
+				//SneakyBoomChest
+					GameRegistry.addRecipe(new ItemStack(sneakyBoomChest),
+							"TTL", 
+							"TCR", 
+							"TTT", 
+							'C', Blocks.chest,
+							'T', Blocks.tnt,
+							'R', Items.redstone,
+							'L', Blocks.lever);
+				//NetherBoom
+					GameRegistry.addRecipe(new ItemStack(netherBoom),
+							"BGB", 
+							"GTG", 
+							"BGB", 
+							'C', Items.blaze_powder,
+							'T', Blocks.tnt,
+							'G', Items.ghast_tear);
+				//RadioactiveBoom
+					GameRegistry.addRecipe(new ItemStack(radioactiveBoom),
+							"TRT", 
+							"RTR", 
+							"TRT", 
+							'R', radioactivePowder,
+							'T', Blocks.tnt);
+				
+				//Magic
+					/*GameRegistry.addRecipe(new ItemStack(magicBoom),
+							"BGB", 
+							"GTG", 
+							"BGB", 
+							'C', Items.blaze_powder,
+							'T', Blocks.tnt,
+							'G', Items.ghast_tear);*/  //TODO: ADD RECIPE HERE
+					
+				
+				
+				
+				
 		//GUIHandlers
 				//GuideBook
 					NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
