@@ -130,7 +130,7 @@ public class BlockMagicBoom extends Block {
 			if (world.isRemote)
 				playerName = Minecraft.getMinecraft().thePlayer.getDisplayName();
 			
-			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k) || Block.getIdFromBlock(l) > 0 && l.canProvidePower()) {
+			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower() && world.isBlockIndirectlyGettingPowered(i, j, k)) {
 
 				if (true) {
 					world.spawnEntityInWorld(new EntityLightningBolt(world,

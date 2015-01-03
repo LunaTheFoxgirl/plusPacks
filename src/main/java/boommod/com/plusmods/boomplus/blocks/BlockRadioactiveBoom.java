@@ -99,6 +99,7 @@ import net.minecraft.client.renderer.texture.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import com.plusmods.boomplus.common.BoomPlus;
 import com.plusmods.boomplus.creativeTab.BoomPlusTab;
 import com.plusmods.boomplus.items.ItemRadioactivePowder;
 
@@ -129,7 +130,45 @@ public class BlockRadioactiveBoom extends Block {
 				int k, Explosion e) {
 
 			if (!world.isRemote) {
-				world.createExplosion((Entity) null, i, j, k, 2F, true);
+				for (int x = i - 124; x < i + 124; x++)
+					for (int y = j - 32; y < j + 64; y++)
+						for (int z = k - 124; z < k + 124; z++)
+								if (
+										world.getBlock(x, y, z) == Blocks.grass) 
+								{
+									world.setBlock(x, y, z, Block.getBlockById(243));
+								}
+								else if (world.getBlock(x, y, z) == Blocks.leaves || world.getBlock(x, y, z) == Blocks.leaves2)
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.sand) 
+								{
+									world.setBlock(x, y, z, Blocks.glass);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.tallgrass) 
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.water) 
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.waterlily) 
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.flowing_water) 
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.stone) 
+								{
+									world.setBlock(x, y, z, Blocks.gravel);
+								}
+				world.setBlock(i, j, k, Blocks.air);
+				if(!world.isRemote)
+					world.playSoundAtEntity(world.getClosestPlayer(i, j, k, -1), "minecraft:random.explode", 130.0f, 1.0f);
 			}
 
 		}
@@ -140,12 +179,46 @@ public class BlockRadioactiveBoom extends Block {
 			
 			if (Block.getIdFromBlock(l) > 0 && l.canProvidePower()
 					&& world.isBlockIndirectlyGettingPowered(i, j, k)) {
-				if (!world.isRemote) {
-					world.createExplosion((Entity) null, i, j, k, 120F, true);
-					world.setBlock(i, j, k, Blocks.flowing_lava, 0, 2);
-					world.setBlock(i + 1, j, k, Blocks.flowing_lava, 0, 2);
-					world.setBlock(i, j, k + 2, Blocks.flowing_lava, 0, 2);
-				}
+				for (int x = i - 124; x < i + 124; x++)
+					for (int y = j - 32; y < j + 64; y++)
+						for (int z = k - 124; z < k + 124; z++)
+								if (
+										world.getBlock(x, y, z) == Blocks.grass) 
+								{
+									world.setBlock(x, y, z, Block.getBlockById(243));
+								}
+								else if (world.getBlock(x, y, z) == Blocks.leaves || world.getBlock(x, y, z) == Blocks.leaves2)
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.sand) 
+								{
+									world.setBlock(x, y, z, Blocks.glass);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.tallgrass) 
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.water) 
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.waterlily) 
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.flowing_water) 
+								{
+									world.setBlock(x, y, z, Blocks.air);
+								}
+								else if (world.getBlock(x, y, z) == Blocks.stone) 
+								{
+									world.setBlock(x, y, z, Blocks.gravel);
+								}
+				world.setBlock(i, j, k, Blocks.air);
+				if(!world.isRemote)
+					world.playSoundAtEntity(world.getClosestPlayer(i, j, k, -1), "minecraft:random.explode", 130.0f, 1.0f);
+				/* } */
 				/*if (world.isRemote) {
 					world.getPlayerEntityByName(playerName).addPotionEffect(new PotionEffect(15, 30, 2)); //TODO: Find a replacement for this.
 				}*/
